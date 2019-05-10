@@ -1,0 +1,85 @@
+<!-- Dutch -->
+<resources>
+  <!-- Shared with Positec -->
+  <string name="home_mower_error">Fout</string>
+  <string name="home_mower_error_battery_low">Batterij bijna leeg</string>
+  <string name="home_mower_error_battery_overtemp">Batterij te heet</string>
+  <string name="home_mower_error_blade_motor_fault">Messen geblokkeerd</string>
+  <string name="home_mower_error_close_door_to_cut">Sluit de klep voorafgaand aan het maaien</string>
+  <string name="home_mower_error_close_to_go_home">Sluit de klep om naar het basisstation te laten rijden</string>
+  <string name="home_mower_error_home_find_timeout">Home time-out</string>
+  <string name="home_mower_error_lifted">Opgetild</string>
+  <string name="home_mower_error_lock">Vergrendeld</string>
+  <string name="home_mower_error_outside_wire">Buiten werkgebied</string>
+  <string name="home_mower_error_reverse_wire">Draad ontbreekt</string>
+  <string name="home_mower_error_trapped">Vastgelopen</string>
+  <string name="home_mower_error_trapped_timeout_fault">Verstrikt. Veiligheidstime-out</string>
+  <string name="home_mower_error_upside_down">Omgekeerd</string>
+  <string name="home_mower_error_wheel_motor_fault">Wielmotorfout</string>
+  <string name="home_mower_error_wire_missing">Draad ontbreekt</string>
+
+  <string name="home_mower_charging">Aan het opladen</string>
+  <string name="home_mower_going_home">Op weg naar huis</string>
+  <string name="home_mower_leaving_home">Vanaf het laadstation vertrekken</string>
+  <string name="home_mower_manual_stop">Handmatige stop</string>
+  <string name="home_mower_mowing">Aan het maaien</string>
+  <string name="home_mower_home">Huis</string>
+  <string name="home_mower_pause">Pauze</string>
+  <string name="home_mower_rain_delay">Uitstel door regen</string>
+  <string name="home_mower_trapped">Vastgelopen</string>
+  <string name="home_mower_unknown_status">Onbekend</string>
+  <string name="home_mower_wire_follow_area_search">Zones aan het zoeken</string>
+  <string name="home_mower_wire_follow_area_training">Verdelen in zones</string>
+  <string name="home_mower_wire_follow_border_cut">Randen maaien</string>
+  <string name="home_mower_wire_follow_going_home">Naar huis</string>
+
+  <!-- Only in DeskApp da_ -->
+  <string name="da_user">Gebruiker</string>
+  <string name="da_user_email">&amp;Email</string>
+  <string name="da_user_pass">&amp;Wachtwoord</string>
+  <string name="da_user_name">&amp;Naam</string>
+  <string name="da_user_top">Venster op voorgrond</string>
+  <string name="da_user_login">&amp;Inloggen</string>
+  <string name="da_user_con">&amp;Verbinden</string>
+  <string name="da_user_dis">&amp;Uitschakelen</string>
+
+  <string name="da_state">Status</string>
+  <string name="da_state_daywork">Werktijd</string>
+  <string name="da_state_accu">Accu</string>
+  <string name="da_state_pitch">Helling</string>
+  <string name="da_state_roll">Glooiingshoek</string>
+  <string name="da_state_yaw">Richting</string>
+  <string name="da_state_blade">Maaitijd</string>
+  <string name="da_state_blade_info">Mähzeit seit letztem Doppelklick: </string><!--17-->
+  <string name="da_state_dist">Afstand</string>
+  <string name="da_state_dist_info">Gesamtstrecke</string><!--17-->
+  <string name="da_state_work">Werktijd</string>
+  <string name="da_state_work_info">Gesamtzeit</string><!--17-->
+  <string name="da_state_last">Laatste update</string>
+  <string name="da_state_start">&amp;Start</string>
+  <string name="da_state_home">&amp;Huis</string>
+  <string name="da_state_stop">S&amp;top</string>
+  <string name="da_state_poll">&amp;Vernieuw</string>
+  <string name="da_warn_stop">Waarschuwing!!!...Stop!!! </string>
+
+  <string name="da_plan">Planner</string>
+  <string name="da_plan_mode">Mode</string>
+  <string name="da_plan_dow">Dag</string>
+  <string name="da_plan_cut">Kant</string>
+  <string name="da_plan_beg">Start</string>
+  <string name="da_plan_min">Duur</string>
+  <string name="da_plan_end">Einde</string>
+  <string name="da_plan_perc">Werktijd +/-</string>
+  <string name="da_plan_rain">Regentijd</string>
+  <string name="da_plan_save">&amp;Opslaan...</string>
+  <string name="da_error_beg">Start als tijd is hh:mm</string>
+  <string name="da_error_min">Duur in minuten tussen 0 en 1440</string>
+  <string name="da_error_end">Stoppen als tijd is hh:mm</string>
+
+  <string name="da_zone">Zone</string>
+  <string name="da_zone_start">Start [m]</string>
+  <string name="da_zone_perc">%</string>
+  <string name="da_zone_train">&amp;Omtrek</string>
+  <string name="da_zone_save">&amp;Opslaan...</string>
+  <string name="da_error_start">Start in meters tussen 0 en 999</string>
+</resources>

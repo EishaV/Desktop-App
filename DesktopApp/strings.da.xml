@@ -1,0 +1,85 @@
+<!-- Danish -->
+<resources>
+  <!-- Shared with Positec -->
+  <string name="home_mower_error">Fejl</string>
+  <string name="home_mower_error_battery_low">Lav Batteri</string>
+  <string name="home_mower_error_battery_overtemp">Batteri Over Temperatur</string>
+  <string name="home_mower_error_blade_motor_fault">Knivmotor fejl</string>
+  <string name="home_mower_error_close_door_to_cut">Luk klappen til klipning</string>
+  <string name="home_mower_error_close_to_go_home">Tæt på hjemfart</string>
+  <string name="home_mower_error_home_find_timeout">Find hjem Timeout</string>
+  <string name="home_mower_error_lifted">Plæneklipperen løftet</string>
+  <string name="home_mower_error_lock">Plæneklipperen låst</string>
+  <string name="home_mower_error_outside_wire">Plæneklipper udenfor grænsetråd</string>
+  <string name="home_mower_error_reverse_wire">Udskift ledningsforbindelsen</string>
+  <string name="home_mower_error_trapped">Plæneklipper fastlåst</string>
+  <string name="home_mower_error_trapped_timeout_fault">Timeout 'fanget'</string>
+  <string name="home_mower_error_upside_down">Plæneklipper er vendt om</string>
+  <string name="home_mower_error_wheel_motor_fault">Hjulmotor fejl</string>
+  <string name="home_mower_error_wire_missing">Tråd mangler</string>
+
+  <string name="home_mower_charging">Lader</string>
+  <string name="home_mower_going_home">Kører hjem</string>
+  <string name="home_mower_leaving_home">Forlader Ladestation</string>
+  <string name="home_mower_manual_stop">Manuel Stop</string>
+  <string name="home_mower_mowing">Slår græs</string>
+  <string name="home_mower_home">Hjemme</string>
+  <string name="home_mower_pause">Pause</string>
+  <string name="home_mower_rain_delay">Regnudsættelse</string>
+  <string name="home_mower_trapped">Plæneklipper fastlåst</string>
+  <string name="home_mower_unknown_status">Ukendt status</string>
+  <string name="home_mower_wire_follow_area_search">Zone Rutevejledning</string>
+  <string name="home_mower_wire_follow_area_training">Zone Træning</string>
+  <string name="home_mower_wire_follow_border_cut">Kantklipning</string>
+  <string name="home_mower_wire_follow_going_home">Kører hjem</string>
+
+  <!-- Only in DeskApp da_ -->
+  <string name="da_user">Bruger</string>
+  <string name="da_user_email">&amp;Email</string>
+  <string name="da_user_pass">&amp;Adgangskode</string>
+  <string name="da_user_name">&amp;Navn</string>
+  <string name="da_user_top">Behold &amp;i forgrunden</string>
+  <string name="da_user_login">&amp;Login</string>
+  <string name="da_user_con">&amp;Forbind</string>
+  <string name="da_user_dis">&amp;Afbryd</string>
+
+  <string name="da_state">Status</string>
+  <string name="da_state_daywork">Arbejdstid</string>
+  <string name="da_state_accu">Batteri</string>
+  <string name="da_state_pitch">Stigning</string>
+  <string name="da_state_roll">Hældning</string>
+  <string name="da_state_yaw">Retning</string>
+  <string name="da_state_blade">T-slået</string>
+  <string name="da_state_blade_info">Mähzeit seit letztem Doppelklick: </string><!--17-->
+  <string name="da_state_dist">Dist</string>
+  <string name="da_state_dist_info">Gesamtstrecke</string><!--17-->
+  <string name="da_state_work">T-kørt</string>
+  <string name="da_state_work_info">Gesamtzeit</string><!--17-->
+  <string name="da_state_last">Seneste opdatering</string>
+  <string name="da_state_start">&amp;Start</string>
+  <string name="da_state_home">&amp;Hjem</string>
+  <string name="da_state_stop">S&amp;top</string>
+  <string name="da_state_poll">&amp;Hent</string>
+  <string name="da_warn_stop">Din Landroid pauser i 20 minutter og går derefter ud.</string>
+
+  <string name="da_plan">Skema</string>
+  <string name="da_plan_mode">Modul</string>
+  <string name="da_plan_dow">Dag</string>
+  <string name="da_plan_cut">Kant</string>
+  <string name="da_plan_beg">Start</string>
+  <string name="da_plan_min">Varighed</string>
+  <string name="da_plan_end">Slut</string>
+  <string name="da_plan_perc">Klippetid</string>
+  <string name="da_plan_rain">Regnudsættelse</string>
+  <string name="da_plan_save">&amp;Gem</string>
+  <string name="da_error_beg">Starttid i hh:mm</string>
+  <string name="da_error_min">Varighed i minutter mellem 0 og 1440</string>
+  <string name="da_error_end">Sluttid i hh:mm</string>
+
+  <string name="da_zone">Zoner</string>
+  <string name="da_zone_start">Start [m]</string>
+  <string name="da_zone_perc">Andel</string>
+  <string name="da_zone_train">&amp;Træning</string>
+  <string name="da_zone_save">&amp;Gem</string>
+  <string name="da_error_start">Start i meter mellem 0 og 999</string>
+</resources>

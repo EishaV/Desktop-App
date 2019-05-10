@@ -1,0 +1,86 @@
+<!-- German -->
+<resources>
+  <!-- Shared with Positec -->
+  <string name="home_mower_error">Fehler</string>
+  <string name="home_mower_error_battery_low">Batterieladung niedrig</string>
+  <string name="home_mower_error_battery_overtemp">Battery Over Temperature</string>
+  <string name="home_mower_error_blade_motor_fault">Fehler Messermotor</string>
+  <string name="home_mower_error_close_door_to_cut">Klappe zum Mähen schließen</string>
+  <string name="home_mower_error_close_to_go_home">Schließen zur Heimfahrt</string>
+  <string name="home_mower_error_home_find_timeout">Zeitüberschreitung Heimfahrt</string>
+  <string name="home_mower_error_lifted">Mäher angehoben</string>
+  <string name="home_mower_error_lock">Mäher gesperrt</string>
+  <string name="home_mower_error_outside_wire">Mäher außerhalb Grenzdraht</string>
+  <string name="home_mower_error_reverse_wire">Drahtanschluss tauschen</string>
+  <string name="home_mower_error_trapped">Mäher festgefahren</string>
+  <string name="home_mower_error_trapped_timeout_fault">Zeitüberschreitung ‘gefangen’</string>
+  <string name="home_mower_error_upside_down">Mäher umgedreht</string>
+  <string name="home_mower_error_wheel_motor_fault">Fehler Radmotor</string>
+  <string name="home_mower_error_wire_missing">Draht fehlt</string>
+
+  <string name="home_mower_charging">Wird geladen</string>
+  <string name="home_mower_going_home">Heimfahrt</string>
+  <string name="home_mower_leaving_home">Ausfahrt Ladestation</string>
+  <string name="home_mower_manual_stop">Manueller Stopp</string>
+  <string name="home_mower_mowing">Mähen</string>
+  <string name="home_mower_home">zu Hause</string>
+  <string name="home_mower_pause">Pause</string>
+  <string name="home_mower_rain_delay">Regenverzögerung</string>
+  <string name="home_mower_trapped">Mäher festgefahren</string>
+  <string name="home_mower_unknown_status">unbekannt</string>
+  <string name="home_mower_wire_follow_area_search">Zonenanfahrt</string>
+  <string name="home_mower_wire_follow_area_training">Zonen Training</string>
+  <string name="home_mower_wire_follow_border_cut">Kantenschnitt</string>
+  <string name="home_mower_wire_follow_going_home">Heimfahrt</string>
+  
+
+  <!-- Only in DeskApp da_ -->
+  <string name="da_user">Nutzer</string>
+  <string name="da_user_email">&amp;Email</string>
+  <string name="da_user_pass">&amp;Passwort</string>
+  <string name="da_user_name">&amp;Name</string>
+  <string name="da_user_top">Fenster im &amp;Vordergrund halten</string>
+  <string name="da_user_login">&amp;Anmelden</string>
+  <string name="da_user_con">&amp;Verbinden</string>
+  <string name="da_user_dis">&amp;Trennen</string>
+  
+  <string name="da_state">Status</string>
+  <string name="da_state_daywork">Arbeitszeit</string>
+  <string name="da_state_accu">Akkumulator</string>
+  <string name="da_state_pitch">Steigung</string>
+  <string name="da_state_roll">Neigung</string>
+  <string name="da_state_yaw">Richtung</string>
+  <string name="da_state_blade">T-Mäh</string>
+  <string name="da_state_blade_info">Mähzeit seit letztem Doppelklick: </string><!--17-->
+  <string name="da_state_dist">S-Ges</string>
+  <string name="da_state_dist_info">Gesamtstrecke</string><!--17-->
+  <string name="da_state_work">T-Ges</string>
+  <string name="da_state_work_info">Gesamtzeit</string><!--17-->
+  <string name="da_state_last">Letzte Aktualisierung</string>
+  <string name="da_state_start">&amp;Start</string>
+  <string name="da_state_home">&amp;Heim</string>
+  <string name="da_state_stop">S&amp;topp</string>
+  <string name="da_state_poll">&amp;Poll</string>
+  <string name="da_warn_stop">Dein Landroid pausiert 20 min und geht dann aus.</string>
+  
+  <string name="da_plan">Planer</string>
+  <string name="da_plan_mode">Modus</string>
+  <string name="da_plan_dow">Tag</string>
+  <string name="da_plan_cut">Kante</string>
+  <string name="da_plan_beg">Start</string>
+  <string name="da_plan_min">Dauer</string>
+  <string name="da_plan_end">Ende</string>
+  <string name="da_plan_perc">Korrektur</string>
+  <string name="da_plan_rain">Regenzeit</string>
+  <string name="da_plan_save">&amp;Sichern...</string>
+  <string name="da_error_beg">Start als Zeit in hh:mm</string>
+  <string name="da_error_min">Dauer in Minuten zwischen 0 und 1440</string>
+  <string name="da_error_end">Ende als Zeit in hh:mm</string>
+
+  <string name="da_zone">Zonen</string>
+  <string name="da_zone_start">Start [m]</string>
+  <string name="da_zone_perc">Anteil</string>
+  <string name="da_zone_train">&amp;Rundfahrt</string>
+  <string name="da_zone_save">&amp;Sichern...</string>
+  <string name="da_error_start">Start in Metern zwischen 0 und 999</string>
+</resources>

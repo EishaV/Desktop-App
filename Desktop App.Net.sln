@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MqttJson", "MqttJson\MqttJson.csproj", "{56063287-2F56-4797-8A1E-C898A87258A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopApp.Net", "DesktopApp\DesktopApp.Net.csproj", "{3D305AC2-C506-42AD-B087-01B43862D638}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56063287-2F56-4797-8A1E-C898A87258A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56063287-2F56-4797-8A1E-C898A87258A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56063287-2F56-4797-8A1E-C898A87258A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56063287-2F56-4797-8A1E-C898A87258A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D305AC2-C506-42AD-B087-01B43862D638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D305AC2-C506-42AD-B087-01B43862D638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D305AC2-C506-42AD-B087-01B43862D638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D305AC2-C506-42AD-B087-01B43862D638}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F10D7E93-9B8D-439E-8C8C-C022631C6748}
+	EndGlobalSection
+EndGlobal
