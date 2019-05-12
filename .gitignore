@@ -1,0 +1,7 @@
+.vs/
+obj/
+bin/
+mobj/
+mono/
+*.json
+*.userprefs

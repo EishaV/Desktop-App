@@ -804,6 +804,7 @@
       this.txDatDT.Size = new System.Drawing.Size(89, 13);
       this.txDatDT.TabIndex = 6;
       this.txDatDT.Text = "Last Update: ?";
+      this.txDatDT.DoubleClick += new System.EventHandler(this.txDatDT_DoubleClick);
       // 
       // tlDatTri
       // 

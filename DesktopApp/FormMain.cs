@@ -345,6 +345,12 @@ namespace DesktopApp {
       _bladeLast = _lsc.Data.Dat.Statistic.Blade;
       RefreshBlade();
     }
+    private void txDatDT_DoubleClick(object sender, EventArgs e) {
+      DateTime dt = DateTime.Now;
+      string d = dt.ToString("dd/MM/yyyy"), t = dt.ToString("HH:mm:ss");
+
+      _lsc.Publish("{\"tm\":\"" + t + "\",\"dt\":\"" + dt + "\"}");
+    }
     private void pbStart_Click(object sender, EventArgs e) {
       _lsc.Publish("{\"cmd\":1}");
     }
