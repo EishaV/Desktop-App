@@ -311,10 +311,12 @@ namespace DesktopApp
           LsCertificate lsc = (LsCertificate)dcjs.ReadObject(ms);
 
           ms.Close();
-          str = lsc.Pkcs12.Replace("\\/", "/");
-          buf = Convert.FromBase64String(str);
-          File.WriteAllBytes(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AWS" + ArgCfg() + ".p12"), buf);
-          _certWX = new X509Certificate2(buf);
+          if( !string.IsNullOrEmpty(lsc.Pkcs12) ) {
+            str = lsc.Pkcs12.Replace("\\/", "/");
+            buf = Convert.FromBase64String(str);
+            File.WriteAllBytes(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AWS" + ArgCfg() + ".p12"), buf);
+            _certWX = new X509Certificate2(buf);
+          }
 
           //string mac = Products.Count > 0 ? Products[0].MacAdr.Substring(5) : "000000";
           //int xx = int.Parse(mac, System.Globalization.NumberStyles.HexNumber) ^ 0xE1588A;
@@ -364,7 +366,7 @@ namespace DesktopApp
       }
 
       buf = null;
-      return true;
+      return !string.IsNullOrEmpty(Broker) && _certWX != null && Products.Count > 0;
     }
     public bool LoadAWS() {
       string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AWS" + ArgCfg() + ".p12");

@@ -310,8 +310,10 @@ namespace DesktopApp {
         edUsrMac.Text = lspi.MacAdr;
       }
 
-      pbLogin.Enabled = false;
-      if( !_lsc.Connected ) pbConnect.Enabled = true;
+      if( !string.IsNullOrEmpty(edUsrBroker.Text) && !string.IsNullOrEmpty(edUsrBoard.Text) && !string.IsNullOrEmpty(edUsrMac.Text) ) {
+        pbLogin.Enabled = false;
+        if( !_lsc.Connected ) pbConnect.Enabled = true;
+      }
     }
     private void pbConnect_Click(object sender, EventArgs e) {
       if( !_lsc.Start(edUsrBroker.Text, edUsrUuid.Text, edUsrBoard.Text, edUsrMac.Text) ) return;
@@ -439,15 +441,18 @@ namespace DesktopApp {
       }
 
       try {
+        float min = 0.0F;
+
         txDatAccu.Text = string.Format("{0}: {1}% {2}V {3}°", Ressource.Get("da_state_accu"), b.Perc, b.Volt, b.Temp);
         if( d.LastState == StatusCode.HOME ) {
           if( b.Charging == ChargeCoge.CHARGED && b.Volt <= _vpm.HomeOff.Beg && b.Volt >= _vpm.HomeOff.End )
-            txDatAccu.Text += string.Format(" ~ {0:N0}min", (b.Volt - _vpm.HomeOff.End) / _vpm.HomeOff.VoltPerMin);
+            min = (b.Volt - _vpm.HomeOff.End) / _vpm.HomeOff.VoltPerMin;
           if( b.Charging == ChargeCoge.CHARGING && b.Volt <= _vpm.HomeOn.End && b.Volt >= _vpm.HomeOn.Beg )
-            txDatAccu.Text += string.Format(" ~ {0:N0}min", (_vpm.HomeOn.End - b.Volt) / _vpm.HomeOn.VoltPerMin);
+            min = (_vpm.HomeOn.End - b.Volt) / _vpm.HomeOn.VoltPerMin;
         }
         if( d.LastState == StatusCode.GRASS_CUTTING && b.Volt <= _vpm.Mowing.Beg && b.Volt >= _vpm.Mowing.End )
-          txDatAccu.Text += string.Format(" ~ {0:N0}min", (b.Volt - _vpm.Mowing.End) / _vpm.Mowing.VoltPerMin);
+          min = (b.Volt - _vpm.Mowing.End) / _vpm.Mowing.VoltPerMin;
+        if( min > 0.0F ) txDatAccu.Text += " ~ " + TimeSpan.FromMinutes(min).ToString(@"h\:mm");
         pDatAccu.Invalidate();
       } catch(Exception ex) {
         Log("Accu " + ex, 9);
@@ -791,7 +796,7 @@ namespace DesktopApp {
         case ErrorCode.RAINING: return Ressource.Get("home_mower_rain_delay"); //"Regenverzögerung"
         case ErrorCode.REVERSE_WIRE: return Ressource.Get("home_mower_error_reverse_wire"); //"Grenzdraht vertauscht"
         case ErrorCode.TRAPPED: return Ressource.Get("home_mower_trapped"); //"Mäher gefangen"
-        case ErrorCode.TRAPPED_TIMEOUT_FAULT: return Ressource.Get("home_mower_error_trapped_timeout_fault "); //"Gefangen - Timeout"
+        case ErrorCode.TRAPPED_TIMEOUT_FAULT: return Ressource.Get("home_mower_error_trapped_timeout_fault"); //"Gefangen - Timeout"
         case ErrorCode.UPSIDE_DOWN: return Ressource.Get("home_mower_error_upside_down"); //"Mäher umgedreht"
         case ErrorCode.WIRE_MISSING: return Ressource.Get("home_mower_error_wire_missing"); //"Grenzdraht fehlt"
         default: return d.LastError.ToString();
@@ -838,9 +843,10 @@ namespace DesktopApp {
       Statistic s = d.Statistic;
 
       if( notifyIcon != null ) {
-        notifyIcon.Text = string.Format("{0}: {1}V {2}\r\n", edUsrName.Text, b.Volt, c.Time);
-        if( d.LastError != ErrorCode.NONE ) notifyIcon.Text += "!!! " + GetError(d);
-        else notifyIcon.Text += GetState(d);
+        string text = string.Format("{0}: {1}V {2}\r\n", edUsrName.Text, b.Volt, c.Time);
+        if( d.LastError != ErrorCode.NONE ) text += "!!! " + GetError(d);
+        else text += GetState(d);
+        notifyIcon.Text = text.Length < 64 ? text : text.Substring(0, 60) + "...";
       }
 
       if( tcMain.SelectedTab == tpState ) RefreshState();
