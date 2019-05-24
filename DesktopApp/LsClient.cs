@@ -109,7 +109,7 @@ namespace DesktopApp
       bool b;
 
       b = Email == lsj.Email && Password == lsj.Password && Uuid == lsj.Uuid && Name == lsj.Name && Broker == lsj.Broker && MacAdr == lsj.MacAdr;
-      b = b && Top == lsj.Top && X == lsj.X && Y == lsj.Y && W == lsj.W && H == lsj.H;
+      b = b && Top == lsj.Top && X == lsj.X && Y == lsj.Y && W == lsj.W && H == lsj.H && Blade == lsj.Blade;
       if( b && Plugins != null && lsj.Plugins != null ) {
         b = Plugins.Count == lsj.Plugins.Count;
         for( int i = 0; b && i < Plugins.Count; i++ ) b = b && Plugins[i] == lsj.Plugins[i];
