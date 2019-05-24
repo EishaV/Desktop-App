@@ -6,7 +6,7 @@ using MqttJson;
 
 public class CsvLogWriter : IPlugin {
   private void Write(PluginData pd) {
-    string fn = pd.Name + ".csv";
+    string fn = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, pd.Name + ".csv");
     string dts = string.Format("{0} {1}", pd.Config.Date, pd.Config.Time); // parsable DateTime string
     DateTime dt = DateTime.ParseExact(dts, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
     bool nf = !File.Exists(fn); // write column header only on new file
