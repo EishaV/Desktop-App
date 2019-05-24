@@ -81,9 +81,6 @@
     </Compile>
     <Compile Include="LsClient.cs" />
     <Compile Include="Program.cs" />
-    <None Include="PushErrorCode.cs">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <Compile Include="Ressource.cs" />
     <EmbeddedResource Include="AppRes.resx">
       <LastGenOutput>AppRes.Designer.cs</LastGenOutput>
@@ -108,10 +105,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="strings.da.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="strings.de.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="strings.nl.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EstimatedTimes.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Images\bt_charging.png" />
