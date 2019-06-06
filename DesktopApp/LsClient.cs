@@ -501,6 +501,7 @@ namespace DesktopApp
             IPlugin plugin = helper.CreateObject(name) as IPlugin;
 
             Plugins.Add(name, plugin);
+            plugin.Send = Publish;
           } catch( Exception ex ) {
             //MessageBox.Show(ex.ToString(), "Load Plugin " + script, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             Log(ex.ToString());

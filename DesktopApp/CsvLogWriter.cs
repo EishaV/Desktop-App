@@ -30,7 +30,10 @@ public class CsvLogWriter : IPlugin {
     get { return "Write Landroid S data to CSV file: <name>.csv"; }
   }
   object IPlugin.Options {
-    get { return null; } // ther no options at moment for CsvLogWriter
+    get { return null; } // there no options at moment for CsvLogWriter
+  }
+  SendDelegte IPlugin.Send {
+    set { } 
   }
 
   bool IPlugin.Test(PluginData pd) {

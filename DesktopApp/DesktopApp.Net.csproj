@@ -103,6 +103,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Ressource.cs" />
+    <Compile Include="SepManZone.cs" />
     <EmbeddedResource Include="AppRes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AppRes.Designer.cs</LastGenOutput>

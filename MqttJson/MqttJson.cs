@@ -138,11 +138,14 @@ namespace MqttJson{
     public Config Config;
     public Data Data;
   }
+  public delegate void SendDelegte(string msg);
+
   public interface IPlugin {
     object Options { get; }
     string Desc { get; }
     bool Test(PluginData pd);
     string Todo(PluginData pd);
+    SendDelegte Send { set; }
   }
   #endregion
 }
