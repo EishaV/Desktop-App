@@ -3,5 +3,6 @@ obj/
 bin/
 mobj/
 mono/
+*.user
 *.json
 *.userprefs
