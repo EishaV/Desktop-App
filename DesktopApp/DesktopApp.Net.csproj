@@ -13,6 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -25,7 +26,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -133,8 +133,6 @@
     <None Include="EstimatedTimes.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Images\tooltip.png" />
-    <None Include="Images\tooltip2.png" />
     <Content Include="strings.da.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -145,23 +143,6 @@
     <Content Include="strings.nl.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Images\bt_background.png" />
-    <Content Include="Images\bt_charging.png" />
-    <Content Include="Images\Landroid-S-Icon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\Landroid-S-Plan.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\Landroid-S-Side.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\marker_blue.png" />
-    <Content Include="Images\rssi_0.png" />
-    <Content Include="Images\rssi_1.png" />
-    <Content Include="Images\rssi_2.png" />
-    <Content Include="Images\rssi_3.png" />
-    <None Include="Images\wt_background.png" />
     <Content Include="Landroid.ico" />
   </ItemGroup>
   <ItemGroup>
