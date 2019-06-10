@@ -58,7 +58,7 @@ namespace MqttJson{
     ZONE_SEARCH_REQ = 4,
     LOCK = 5,
     UNLOCK = 6,
-    RESET_LOG = 7,
+    RESET_LOG = 7
   }
   #endregion
 
@@ -138,14 +138,16 @@ namespace MqttJson{
     public Config Config;
     public Data Data;
   }
-  public delegate void SendDelegte(string msg);
+
+  public delegate void DelegateString(string msg);
 
   public interface IPlugin {
     object Options { get; }
     string Desc { get; }
     bool Test(PluginData pd);
     string Todo(PluginData pd);
-    SendDelegte Send { set; }
+    DelegateString Send { set; }
+    DelegateString Trace { set; }
   }
   #endregion
 }

@@ -84,7 +84,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppRes.resx</DependentUpon>
     </Compile>
-    <Compile Include="CsvLogWriter.cs">
+    <Compile Include="PluginCsvLogWriter.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="FormChoice.cs">
@@ -100,10 +100,12 @@
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="LsClient.cs" />
+    <Compile Include="PluginMowOutsideArea.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Ressource.cs" />
-    <Compile Include="SepManZone.cs" />
     <EmbeddedResource Include="AppRes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AppRes.Designer.cs</LastGenOutput>

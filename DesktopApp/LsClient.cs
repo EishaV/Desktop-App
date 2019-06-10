@@ -492,6 +492,7 @@ namespace DesktopApp
     }
 
 #if PLUGIN
+    private void LogPlugin(string log) { Log(log); }
     public void LoadPlugins(string dir) {
       Plugins.Clear();
       foreach( string script in Directory.GetFiles(dir, "*.cs") ) {
@@ -504,6 +505,7 @@ namespace DesktopApp
 
             Plugins.Add(name, plugin);
             plugin.Send = Publish;
+            plugin.Trace = LogPlugin;
           } catch( Exception ex ) {
             //MessageBox.Show(ex.ToString(), "Load Plugin " + script, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             Log(ex.ToString());

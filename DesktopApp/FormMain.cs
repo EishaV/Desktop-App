@@ -470,7 +470,7 @@ namespace DesktopApp {
       txDatDT.Text = string.Format("{0}: {1}", Ressource.Get("da_state_last"), dt); //? _msgId
 
       pbPoll.Enabled = true;
-      pbStart.Enabled = d.LastState == StatusCode.HOME || d.LastState == StatusCode.PAUSE;
+      pbStart.Enabled = d.LastState == StatusCode.HOME || d.LastState == StatusCode.PAUSE || d.LastState == StatusCode.IDLE;
       pbHome.Enabled = d.LastState == StatusCode.GRASS_CUTTING || d.LastState == StatusCode.PAUSE || d.LastState == StatusCode.HOME;
       pbStop.Enabled = !(d.LastState == StatusCode.HOME || d.LastState == StatusCode.IDLE || d.LastState == StatusCode.PAUSE);
     }

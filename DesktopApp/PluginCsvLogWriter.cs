@@ -4,7 +4,7 @@ using System.Globalization;
 
 using MqttJson;
 
-public class CsvLogWriter : IPlugin {
+public class PluginCsvLogWriter : IPlugin {
   private void Write(PluginData pd) {
     string fn = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, pd.Name + ".csv");
     string dts = string.Format("{0} {1}", pd.Config.Date, pd.Config.Time); // parsable DateTime string
@@ -32,9 +32,8 @@ public class CsvLogWriter : IPlugin {
   object IPlugin.Options {
     get { return null; } // there no options at moment for CsvLogWriter
   }
-  SendDelegte IPlugin.Send {
-    set { } 
-  }
+  DelegateString IPlugin.Send { set { } }
+  DelegateString IPlugin.Trace { set { } }
 
   bool IPlugin.Test(PluginData pd) {
     Write(pd);
