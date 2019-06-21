@@ -135,6 +135,11 @@ namespace DesktopApp
   public delegate void LogDelegte(string log, int c = 0);
   public delegate void MqttDelegate();
 
+  public static partial class DeskApp {
+    internal static DelegateString _send { get; set; }
+    internal static DelegateString _trace { get; set; }
+  }
+
   public class LsClient {
     private WebClient _client = new WebClient();
     private X509Certificate2 _certWX = null;
@@ -495,6 +500,9 @@ namespace DesktopApp
     private void LogPlugin(string log) { Log(log); }
     public void LoadPlugins(string dir) {
       Plugins.Clear();
+      DeskApp._send = Publish;
+      DeskApp._trace = LogPlugin;
+
       foreach( string script in Directory.GetFiles(dir, "*.cs") ) {
         using( StreamReader sr = new StreamReader(script) ) {
           try {
@@ -504,8 +512,6 @@ namespace DesktopApp
             IPlugin plugin = helper.CreateObject(name) as IPlugin;
 
             Plugins.Add(name, plugin);
-            plugin.Send = Publish;
-            plugin.Trace = LogPlugin;
           } catch( Exception ex ) {
             //MessageBox.Show(ex.ToString(), "Load Plugin " + script, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             Log(ex.ToString());

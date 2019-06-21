@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 
 namespace MqttJson{
   #region Enums
@@ -141,13 +145,42 @@ namespace MqttJson{
 
   public delegate void DelegateString(string msg);
 
+  public static partial class DeskApp {
+    internal static DelegateString _send { get; set; }
+    internal static DelegateString _trace { get; set; }
+
+    public static void Send(string mqtt) { _send?.Invoke(mqtt); }
+    public static void Trace(string text) { _trace?.Invoke(text); }
+
+    public static T GetJson<T>(string name) where T : class, new() {
+      if( File.Exists(name) ) {
+        try {
+          using( FileStream fs = new FileStream(name, FileMode.Open) ) {
+            DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(T));
+
+            return dcjs.ReadObject(fs) as T;
+          }
+        } catch {
+          return new T();
+        }
+      }
+      return new T();
+    }
+
+    public static void PutJson<T>(string name, T json) where T : class {
+      DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(T));
+      FileStream fs = new FileStream(name, FileMode.Create);
+
+      dcjs.WriteObject(fs, json);
+      fs.Close();
+    }
+  }
+
   public interface IPlugin {
     object Options { get; }
     string Desc { get; }
-    bool Test(PluginData pd);
-    string Todo(PluginData pd);
-    DelegateString Send { set; }
-    DelegateString Trace { set; }
+    bool Doit(PluginData pd);
+    bool Todo(PluginData pd);
   }
   #endregion
 }

@@ -110,6 +110,8 @@
       this.edUsrBroker = new System.Windows.Forms.TextBox();
       this.txUsrMac = new System.Windows.Forms.Label();
       this.edUsrMac = new System.Windows.Forms.TextBox();
+      this.txUsrBoard = new System.Windows.Forms.Label();
+      this.edUsrBoard = new System.Windows.Forms.TextBox();
       this.tlpUsrBtn = new System.Windows.Forms.TableLayoutPanel();
       this.pbLogin = new System.Windows.Forms.Button();
       this.pbTest = new System.Windows.Forms.Button();
@@ -149,8 +151,6 @@
       this.rtLog = new System.Windows.Forms.RichTextBox();
       this.toolTip = new System.Windows.Forms.ToolTip(this.components);
       this.timer = new System.Windows.Forms.Timer(this.components);
-      this.edUsrBoard = new System.Windows.Forms.TextBox();
-      this.txUsrBoard = new System.Windows.Forms.Label();
       this.tpPlan.SuspendLayout();
       this.tlPlan.SuspendLayout();
       this.tlScPerc.SuspendLayout();
@@ -677,11 +677,10 @@
       // 
       // txDatFW
       // 
-      this.txDatFW.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.txDatFW.Anchor = System.Windows.Forms.AnchorStyles.Right;
       this.txDatFW.AutoSize = true;
       this.txDatFW.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.txDatFW.Location = new System.Drawing.Point(365, 148);
-      this.txDatFW.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+      this.txDatFW.Location = new System.Drawing.Point(365, 158);
       this.txDatFW.Name = "txDatFW";
       this.txDatFW.Size = new System.Drawing.Size(32, 13);
       this.txDatFW.TabIndex = 4;
@@ -707,8 +706,7 @@
       this.lDatFW.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.lDatFW.AutoSize = true;
       this.lDatFW.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.lDatFW.Location = new System.Drawing.Point(335, 148);
-      this.lDatFW.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+      this.lDatFW.Location = new System.Drawing.Point(335, 158);
       this.lDatFW.Name = "lDatFW";
       this.lDatFW.Size = new System.Drawing.Size(24, 13);
       this.lDatFW.TabIndex = 4;
@@ -747,7 +745,7 @@
       this.lDatSP.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.lDatSP.AutoSize = true;
       this.lDatSP.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.lDatSP.Location = new System.Drawing.Point(335, 135);
+      this.lDatSP.Location = new System.Drawing.Point(335, 145);
       this.lDatSP.Name = "lDatSP";
       this.lDatSP.Size = new System.Drawing.Size(22, 13);
       this.lDatSP.TabIndex = 4;
@@ -757,12 +755,12 @@
       // 
       // txDatSP
       // 
-      this.txDatSP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.txDatSP.Anchor = System.Windows.Forms.AnchorStyles.Right;
       this.txDatSP.AutoSize = true;
       this.txDatSP.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.txDatSP.Location = new System.Drawing.Point(365, 135);
+      this.txDatSP.Location = new System.Drawing.Point(383, 145);
       this.txDatSP.Name = "txDatSP";
-      this.txDatSP.Size = new System.Drawing.Size(32, 13);
+      this.txDatSP.Size = new System.Drawing.Size(14, 13);
       this.txDatSP.TabIndex = 4;
       this.txDatSP.Text = "0";
       this.txDatSP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1274,6 +1272,26 @@
       this.edUsrMac.Size = new System.Drawing.Size(163, 21);
       this.edUsrMac.TabIndex = 15;
       // 
+      // txUsrBoard
+      // 
+      this.txUsrBoard.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.txUsrBoard.AutoSize = true;
+      this.txUsrBoard.Location = new System.Drawing.Point(3, 142);
+      this.txUsrBoard.Name = "txUsrBoard";
+      this.txUsrBoard.Size = new System.Drawing.Size(46, 13);
+      this.txUsrBoard.TabIndex = 9;
+      this.txUsrBoard.Text = "Board:";
+      this.txUsrBoard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      // 
+      // edUsrBoard
+      // 
+      this.edUsrBoard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.edUsrBoard.Location = new System.Drawing.Point(70, 138);
+      this.edUsrBoard.Name = "edUsrBoard";
+      this.edUsrBoard.ReadOnly = true;
+      this.edUsrBoard.Size = new System.Drawing.Size(163, 21);
+      this.edUsrBoard.TabIndex = 15;
+      // 
       // tlpUsrBtn
       // 
       this.tlpUsrBtn.AutoSize = true;
@@ -1699,26 +1717,6 @@
       // 
       this.timer.Interval = 3000;
       this.timer.Tick += new System.EventHandler(this.timer_Tick);
-      // 
-      // edUsrBoard
-      // 
-      this.edUsrBoard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.edUsrBoard.Location = new System.Drawing.Point(70, 138);
-      this.edUsrBoard.Name = "edUsrBoard";
-      this.edUsrBoard.ReadOnly = true;
-      this.edUsrBoard.Size = new System.Drawing.Size(163, 21);
-      this.edUsrBoard.TabIndex = 15;
-      // 
-      // txUsrBoard
-      // 
-      this.txUsrBoard.Anchor = System.Windows.Forms.AnchorStyles.Left;
-      this.txUsrBoard.AutoSize = true;
-      this.txUsrBoard.Location = new System.Drawing.Point(3, 142);
-      this.txUsrBoard.Name = "txUsrBoard";
-      this.txUsrBoard.Size = new System.Drawing.Size(46, 13);
-      this.txUsrBoard.TabIndex = 9;
-      this.txUsrBoard.Text = "Board:";
-      this.txUsrBoard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // FormMain
       // 

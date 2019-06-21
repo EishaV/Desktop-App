@@ -32,15 +32,12 @@ public class PluginCsvLogWriter : IPlugin {
   object IPlugin.Options {
     get { return null; } // there no options at moment for CsvLogWriter
   }
-  DelegateString IPlugin.Send { set { } }
-  DelegateString IPlugin.Trace { set { } }
-
-  bool IPlugin.Test(PluginData pd) {
+  bool IPlugin.Doit(PluginData pd) {
     Write(pd);
     return true;
   }
-  string IPlugin.Todo(PluginData pd) {
+  bool IPlugin.Todo(PluginData pd) {
     Write(pd);
-    return string.Empty; // no json data for Landroid
+    return true;
   }
 }

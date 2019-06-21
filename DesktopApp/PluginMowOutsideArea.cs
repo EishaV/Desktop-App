@@ -53,22 +53,16 @@ public class PluginMowOutsideArea : IPlugin {
   object IPlugin.Options {
     get { return _op; }
   }
-  DelegateString IPlugin.Send {
-    set { _send = value; }
-  }
-  DelegateString IPlugin.Trace {
-    set { _trace = value; }
-  }
 
   bool IPlugin.Test(PluginData pd) {
     if( pd.Data.LastState == StatusCode.PAUSE ) {
       if( _op.BorderCut == 0 ) {
-        _send("{\"cmd\":1}");
-        _trace("MOA: Start mowing (no bc)");
+        DeskApp.Send("{\"cmd\":1}");
+        DeskApp.Trace("MOA: Start mowing (no bc)");
         _state = PbState.MowA;
       } else {
-        _send("{\"cmd\":3}");
-        _trace("MOA: Start border cut");
+        DeskApp.Send("{\"cmd\":3}");
+        DeskApp.Trace("MOA: Start border cut");
         _state = PbState.GoB;
       }
       return true;

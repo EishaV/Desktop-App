@@ -317,6 +317,19 @@ namespace DesktopApp {
       pbConnect.Enabled = false;
       pbDisconnect.Enabled = true;
       //if( udIntervall.Value > 0 ) timer.Start();
+
+      Image i = pictureBox.Image;
+      Graphics g = Graphics.FromImage(i);
+      Rectangle r = new Rectangle(30, 55, 70, 16);
+      StringFormat f = new StringFormat(StringFormat.GenericTypographic);
+
+      f.Alignment = StringAlignment.Center;
+      f.LineAlignment = StringAlignment.Center;
+      g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+      //g.DrawRectangle(Pens.White, r);
+      g.DrawString(edUsrName.Text, Font, Brushes.Yellow, r, f);
+      pictureBox.Image = i;
+
       tcMain.SelectedTab = tpState;
     }
     private void pbDisconnect_Click(object sender, EventArgs e) {
@@ -408,7 +421,7 @@ namespace DesktopApp {
       }
 
       try {
-        txDatSP.Visible = c.MultiZones[0] > 0;
+        lDatSP.Visible = txDatSP.Visible = c.MultiZones[0] > 0;
         if( txDatSP.Visible ) txDatSP.Text = string.Format("{0}", c.MultiZonePercs[d.LastZone]+1);
       } catch(Exception ex) {
         Log("SP " + ex, 9);
@@ -470,7 +483,7 @@ namespace DesktopApp {
       txDatDT.Text = string.Format("{0}: {1}", Ressource.Get("da_state_last"), dt); //? _msgId
 
       pbPoll.Enabled = true;
-      pbStart.Enabled = d.LastState == StatusCode.HOME || d.LastState == StatusCode.PAUSE || d.LastState == StatusCode.IDLE;
+      pbStart.Enabled = d.LastState == StatusCode.HOME || d.LastState == StatusCode.PAUSE;
       pbHome.Enabled = d.LastState == StatusCode.GRASS_CUTTING || d.LastState == StatusCode.PAUSE || d.LastState == StatusCode.HOME;
       pbStop.Enabled = !(d.LastState == StatusCode.HOME || d.LastState == StatusCode.IDLE || d.LastState == StatusCode.PAUSE);
     }
@@ -752,7 +765,7 @@ namespace DesktopApp {
         pd.Config = _lsc.Data.Cfg;
         pd.Data = _lsc.Data.Dat;
 
-        plugin.Test(pd);
+        plugin.Doit(pd);
       }
     }
     #endregion
@@ -925,11 +938,12 @@ namespace DesktopApp {
             pd.Config = _lsc.Data.Cfg;
             pd.Data = _lsc.Data.Dat;
 
-            string req = plugin.Todo(pd);
-            if( !string.IsNullOrEmpty(req) ) {
-              _lsc.Publish(req);
-              pbPoll.Enabled = false;
-            }
+            plugin.Todo(pd);
+            //string req = plugin.Todo(pd);
+            //if( !string.IsNullOrEmpty(req) ) {
+            //  _lsc.Publish(req);
+            //  pbPoll.Enabled = false;
+            //}
           } catch( Exception ex ) {
             rtLog.AppendText(string.Format("Exception {0}.Todo: '{1}'\r\n", lvi.Text, ex.ToString()));
           }
@@ -958,6 +972,9 @@ namespace DesktopApp {
       if( txZoneDist.Tag is int && _lsc.Data.Dat.LastState == StatusCode.APP_WIRE_FOLLOW_AREA_TRAINING && !_lsc.Polling ) {
         _lsc.Poll();
       }
+    }
+
+    private void pictureBox_Paint(object sender, PaintEventArgs e) {
     }
   }
 }

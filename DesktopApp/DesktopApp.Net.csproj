@@ -100,9 +100,10 @@
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="LsClient.cs" />
-    <Compile Include="PluginMowOutsideArea.cs">
+    <Compile Include="PluginHomeBorderCut.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <None Include="PluginMowOutsideArea.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Ressource.cs" />
