@@ -145,9 +145,9 @@ namespace MqttJson{
 
   public delegate void DelegateString(string msg);
 
-  public static partial class DeskApp {
-    internal static DelegateString _send { get; set; }
-    internal static DelegateString _trace { get; set; }
+  public static class DeskApp {
+    public static DelegateString _send { get; set; }
+    public static DelegateString _trace { get; set; }
 
     public static void Send(string mqtt) { _send?.Invoke(mqtt); }
     public static void Trace(string text) { _trace?.Invoke(text); }

@@ -127,12 +127,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MqttJson\MqttJson.csproj">
-      <Project>{56063287-2f56-4797-8a1e-c898a87258a3}</Project>
-      <Name>MqttJson</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="EstimatedTimes.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -162,6 +156,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MqttJson\MqttJson.csproj">
+      <Project>{56063287-2f56-4797-8a1e-c898a87258a3}</Project>
+      <Name>MqttJson</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

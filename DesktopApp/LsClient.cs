@@ -135,10 +135,10 @@ namespace DesktopApp
   public delegate void LogDelegte(string log, int c = 0);
   public delegate void MqttDelegate();
 
-  public static partial class DeskApp {
-    internal static DelegateString _send { get; set; }
-    internal static DelegateString _trace { get; set; }
-  }
+  //public static partial class DeskApp {
+  //  internal static DelegateString _send { get; set; }
+  //  internal static DelegateString _trace { get; set; }
+  //}
 
   public class LsClient {
     private WebClient _client = new WebClient();

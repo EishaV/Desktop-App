@@ -766,6 +766,7 @@ namespace DesktopApp {
         pd.Data = _lsc.Data.Dat;
 
         plugin.Doit(pd);
+        pgPlugin.SelectedObject = plugin.Options;
       }
     }
     #endregion
@@ -939,12 +940,14 @@ namespace DesktopApp {
             pd.Data = _lsc.Data.Dat;
 
             plugin.Todo(pd);
-            //string req = plugin.Todo(pd);
-            //if( !string.IsNullOrEmpty(req) ) {
-            //  _lsc.Publish(req);
-            //  pbPoll.Enabled = false;
-            //}
-          } catch( Exception ex ) {
+            if( tcMain.SelectedTab == tpPlugin && lvPlugin.FocusedItem.Tag == plugin ) pgPlugin.SelectedObject = plugin.Options;
+
+              //string req = plugin.Todo(pd);
+              //if( !string.IsNullOrEmpty(req) ) {
+              //  _lsc.Publish(req);
+              //  pbPoll.Enabled = false;
+              //}
+            } catch( Exception ex ) {
             rtLog.AppendText(string.Format("Exception {0}.Todo: '{1}'\r\n", lvi.Text, ex.ToString()));
           }
         }

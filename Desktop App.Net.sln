@@ -1,11 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2003
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MqttJson", "MqttJson\MqttJson.csproj", "{56063287-2F56-4797-8A1E-C898A87258A3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopApp.Net", "DesktopApp\DesktopApp.Net.csproj", "{3D305AC2-C506-42AD-B087-01B43862D638}"
+	ProjectSection(ProjectDependencies) = postProject
+		{56063287-2F56-4797-8A1E-C898A87258A3} = {56063287-2F56-4797-8A1E-C898A87258A3}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
