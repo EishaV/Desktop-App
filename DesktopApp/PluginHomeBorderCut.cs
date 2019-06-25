@@ -7,16 +7,21 @@ using System.Threading;
 using MqttJson;
 
 public class PluginHomeBorderCut : IPlugin {
-  public enum HbcState { None , Leave, Wait, Pause }
+  public enum HbcState { None, Leave, Wait, Pause }
 
   [DataContract]
   public class HbcOptions { // Options for PropertyGrid on Plugin tab
     [DataMember]
-    [Description("Time to wait on wire before cut")]
-    public int TimeOnWire { get; set; }
+    [Description("Time from Leave before Pause and Home (Default 3s)")]
+    public int TimeToWire { get; set; }
     [DataMember]
     [Description("State of border cut"), ReadOnly(true)]
     public HbcState StateOfBcut { get; set; }
+
+    public HbcOptions() {
+      TimeToWire = 3;
+      StateOfBcut = HbcState.None;
+    }
   }
 
   const string HbcJson = "HomeBorderCut.json"; // file name for options
@@ -50,25 +55,25 @@ public class PluginHomeBorderCut : IPlugin {
       DeskApp.Trace(string.Format("HBC: State {0}", pd.Data.LastState));
       if( d.LastState == StatusCode.HOME || d.LastState == StatusCode.LEAVE_HOUSE ) {
         if( _op.StateOfBcut == HbcState.Leave ) {
-          _tm = new Timer(timer_Callback, null, _op.TimeOnWire * 1000, Timeout.Infinite);
+          _tm = new Timer(timer_Callback, null, _op.TimeToWire * 1000, Timeout.Infinite);
           _op.StateOfBcut = HbcState.Wait;
           DeskApp.Trace("HBC: Leave -> Timer");
         } else {
           DeskApp.Trace("HBC: Leave ignore " + d.LastState);
         }
-      } else if( _op.StateOfBcut == HbcState.Leave && d.LastState == StatusCode.APP_WIRE_FOLLOW_AREA_TRAINING ) {
-        if( _op.TimeOnWire > 0 ) {
-          _tm = new Timer(timer_Callback, null, _op.TimeOnWire * 1000, Timeout.Infinite);
-          _op.StateOfBcut = HbcState.Wait;
-          DeskApp.Trace("HBC: Wire -> Timer");
-        } else {
-          _op.StateOfBcut = HbcState.Pause;
-          DeskApp.Send("{\"cmd\":2}"); // Stop
-          DeskApp.Trace("HBC: Wire -> Pause");
-        }
+      //} else if( _op.StateOfBcut == HbcState.Leave && d.LastState == StatusCode.APP_WIRE_FOLLOW_AREA_TRAINING ) {
+      //  if( _op.TimeOnWire > 0 ) {
+      //    _tm = new Timer(timer_Callback, null, _op.TimeOnWire * 1000, Timeout.Infinite);
+      //    _op.StateOfBcut = HbcState.Wait;
+      //    DeskApp.Trace("HBC: Wire -> Timer");
+      //  } else {
+      //    _op.StateOfBcut = HbcState.Pause;
+      //    DeskApp.Send("{\"cmd\":2}"); // Stop
+      //    DeskApp.Trace("HBC: Wire -> Pause");
+      //  }
       } else if( _op.StateOfBcut == HbcState.Pause && d.LastState == StatusCode.PAUSE ) {
-        _op.StateOfBcut = HbcState.None;
         DeskApp.Send("{\"cmd\":3}"); // Home
+        _op.StateOfBcut = HbcState.None;
         DeskApp.Trace("HBC: Pause -> Home");
       } else {
         _op.StateOfBcut = HbcState.None; // somthing wrong?
@@ -81,8 +86,8 @@ public class PluginHomeBorderCut : IPlugin {
 
   void timer_Callback(object state) {
     DeskApp.Send("{\"cmd\":2}");
-    DeskApp.Trace("HBC: Timer -> Pause");
     _op.StateOfBcut = HbcState.Pause;
+    DeskApp.Trace("HBC: Timer -> Pause");
     _tm = null;
   }
 }

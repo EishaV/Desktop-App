@@ -15,8 +15,6 @@ using System.Windows.Forms;
 using MqttJson;
 
 namespace DesktopApp {
-  public enum EdgeCut { None, Leave, Pause }
-
   partial class FormMain : Form {
     private LsClient _lsc = new LsClient();
     List<DateTime> _calls = new List<DateTime>();
@@ -27,8 +25,8 @@ namespace DesktopApp {
     private string CfgFile { get { return Path.Combine(Application.StartupPath, string.Format("Config{0}.json", _cfgname)); } }
     private string VpmFile { get { return Path.Combine(Application.StartupPath, "EstimatedTimes.json"); } }
     private DateTime _lastWrite = DateTime.Now;
-    private EdgeCut _edgeCut = EdgeCut.None;
     private int _bladeLast = 0;
+    private bool _cmdInOut = false;
 
     enum OS { Unknown, Windows, Linux, Darwin };
     OS _os = OS.Unknown;
@@ -57,6 +55,8 @@ namespace DesktopApp {
       string[] args = Environment.GetCommandLineArgs();
 
       InitializeComponent();
+
+      _cmdInOut = bool.Parse(ConfigurationManager.AppSettings["CommandInOut"]);
 
       if( args.Length > 1 ) _cfgname = "." + args[1];
       _os = Path.DirectorySeparatorChar == '\\' ? OS.Windows : _os = OS.Linux;
@@ -88,8 +88,9 @@ namespace DesktopApp {
       //rtDat.SelectionTabs = new int[] { 150 };
 #if DEBUG
       pbTest.Enabled = pbTest.Visible = true;
-      tlPlan.Enabled = true;
 #endif
+      pbStart.Enabled = pbStop.Enabled = pbHome.Enabled = pbPoll.Enabled = false;
+
       _lsc.Data.Cfg.Schedule.Mode = 1;
       _lsc.Data.Cfg.Schedule.Days = new List<List<object>>();
       for( int idx = 0; idx < 7; idx++ ) {
@@ -98,11 +99,13 @@ namespace DesktopApp {
         _lsc.Data.Cfg.Schedule.Days.Add(new List<object> { "00:00", 0, 0 });
       }
       dgSchedulePlan.Height = dgSchedulePlan.ColumnHeadersHeight + 7*dgSchedulePlan.Rows[0].Height + 2*SystemInformation.BorderSize.Height;
+      pbPlanSave.Enabled = false;
 
       for( int idx = 0; idx < 4; idx++ ) dgMultiZone.Rows.Add();
       _lsc.Data.Cfg.MultiZones = new int[] { 0, 0, 0, 0 };
       _lsc.Data.Cfg.MultiZonePercs = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
       dgMultiZone.Height = dgMultiZone.ColumnHeadersHeight + 4*dgMultiZone.Rows[0].Height + 2*SystemInformation.BorderSize.Height;
+      pbZoneSave.Enabled = pbZoneStart.Enabled = false;
     }
     protected override void OnLoad(EventArgs e) {
       base.OnLoad(e);
@@ -316,7 +319,6 @@ namespace DesktopApp {
       if( !_lsc.Start(edUsrBroker.Text, edUsrUuid.Text, edUsrBoard.Text, edUsrMac.Text) ) return;
       pbConnect.Enabled = false;
       pbDisconnect.Enabled = true;
-      //if( udIntervall.Value > 0 ) timer.Start();
 
       Image i = pictureBox.Image;
       Graphics g = Graphics.FromImage(i);
@@ -333,7 +335,6 @@ namespace DesktopApp {
       tcMain.SelectedTab = tpState;
     }
     private void pbDisconnect_Click(object sender, EventArgs e) {
-      //timer.Stop();
       _lsc.Exit();
 
       pbConnect.Enabled = true;
@@ -373,11 +374,7 @@ namespace DesktopApp {
         _lsc.Publish("{\"cmd\":2}");
     }
     private void pbHome_Click(object sender, EventArgs e) {
-      if( _lsc.Data.Dat.LastState == StatusCode.HOME ) {
-        _edgeCut = EdgeCut.Leave;
-        _lsc.Publish("{\"cmd\":4}"); // Training
-        Log(string.Format("EdgeCut {0} > publised 4", _lsc.Data.Dat.LastState));
-      } else _lsc.Publish("{\"cmd\":3}"); // Home
+      _lsc.Publish("{\"cmd\":3}"); // Home
     }
     private void pbDatPoll_Click(object sender, EventArgs e) {
       _lsc.Poll();
@@ -482,10 +479,13 @@ namespace DesktopApp {
 
       txDatDT.Text = string.Format("{0}: {1}", Ressource.Get("da_state_last"), dt); //? _msgId
 
-      pbPoll.Enabled = true;
-      pbStart.Enabled = d.LastState == StatusCode.HOME || d.LastState == StatusCode.PAUSE;
-      pbHome.Enabled = d.LastState == StatusCode.GRASS_CUTTING || d.LastState == StatusCode.PAUSE || d.LastState == StatusCode.HOME;
-      pbStop.Enabled = !(d.LastState == StatusCode.HOME || d.LastState == StatusCode.IDLE || d.LastState == StatusCode.PAUSE);
+      if( _lsc.Connected ) {
+        pbPoll.Enabled = true;
+        pbStart.Enabled = d.LastState == StatusCode.HOME || d.LastState == StatusCode.PAUSE;
+        pbHome.Enabled = d.LastState == StatusCode.GRASS_CUTTING || d.LastState == StatusCode.PAUSE;
+        pbStop.Enabled = !(d.LastState == StatusCode.HOME || d.LastState == StatusCode.IDLE || d.LastState == StatusCode.PAUSE);
+        pbZoneStart.Enabled = d.LastState == StatusCode.HOME;
+      }
     }
     #endregion
 
@@ -869,7 +869,10 @@ namespace DesktopApp {
           RefreshPlan();
           pbPlanSave.Enabled = true;
         }
-      } else tpPlan.Tag = null;
+      } else {
+        tpPlan.Tag = null;
+        pbPlanSave.Enabled = true;
+      }
 
       tlZone.Enabled = true;
       if( tcMain.SelectedTab == tpZone ) {
@@ -879,20 +882,23 @@ namespace DesktopApp {
           RefreshZone();
           pbZoneSave.Enabled = true;
         }
-        if( txZoneDist.Tag is int ) {
-          int dist = s.Distance - (int)txZoneDist.Tag;
+        //if( txZoneDist.Tag is int ) {
+        //  int dist = s.Distance - (int)txZoneDist.Tag;
 
-          txZoneDist.Text = string.Format("{0} {1}m", d.LastState, dist);
-          if( dgMultiZone.SelectedRows.Count == 1 ) {
-            int zone = Convert.ToInt32(dgMultiZone.SelectedRows[0].Cells[0].Value);
+        //  txZoneDist.Text = string.Format("{0} {1}m", d.LastState, dist);
+        //  if( dgMultiZone.SelectedRows.Count == 1 ) {
+        //    int zone = Convert.ToInt32(dgMultiZone.SelectedRows[0].Cells[0].Value);
 
-            if( zone <= dist ) {
-              _lsc.Publish("{\"cmd\":1}");
-              txZoneDist.Tag = null;
-            }
-          }
-        }
-      } else tpZone.Tag = null;
+        //    if( zone <= dist ) {
+        //      _lsc.Publish("{\"cmd\":1}");
+        //      txZoneDist.Tag = null;
+        //    }
+        //  }
+        //}
+      } else {
+        tpZone.Tag = null;
+        pbZoneSave.Enabled = true;
+      }
 
       //json = json.Substring(1, json.Length-2);
       json = Regex.Replace(json, "(\"(?:cfg|dat)\")", "\r\n  $1");
@@ -903,27 +909,12 @@ namespace DesktopApp {
       txMqtt.Tag = json;
       if( tcMain.SelectedTab == tpMqtt ) txMqtt.Text = json;
 
-      try {
-        File.WriteAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "CmdOut.json"), json);
-        if( !timer.Enabled ) timer.Start();
-      } catch( Exception ex) {
-        rtLog.AppendText(string.Format("Exception CmdOut: '{0}'\r\n", ex.ToString()));
-      }
-
-      if( _edgeCut != EdgeCut.None ) {
-        if( _edgeCut == EdgeCut.Leave && (d.LastState == StatusCode.HOME || d.LastState == StatusCode.LEAVE_HOUSE) ) {
-          Log(string.Format("EdgeCut {0} > ignored", d.LastState));
-        } else if( _edgeCut == EdgeCut.Leave && d.LastState == StatusCode.APP_WIRE_FOLLOW_AREA_TRAINING ) {
-          _edgeCut = EdgeCut.Pause;
-          _lsc.Publish("{\"cmd\":2}"); // Stop
-          Log(string.Format("EdgeCut {0} > 2 published", d.LastState));
-        } else if( _edgeCut == EdgeCut.Pause && d.LastState == StatusCode.PAUSE ) {
-          _edgeCut = EdgeCut.None;
-          _lsc.Publish("{\"cmd\":3}"); // Home
-          Log(string.Format("EdgeCut {0} > 3 published", d.LastState));
-        } else {
-          _edgeCut = EdgeCut.None; // irgend was ist schief gelaufen
-          Log(string.Format("EdgeCut {0} > aborted", d.LastState));
+      if( _cmdInOut ) {
+        try {
+          File.WriteAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "CmdOut.json"), json);
+          if( !timer.Enabled ) timer.Start();
+        } catch( Exception ex ) {
+          rtLog.AppendText(string.Format("Exception CmdOut: '{0}'\r\n", ex.ToString()));
         }
       }
 
@@ -972,9 +963,9 @@ namespace DesktopApp {
         }
       }
 
-      if( txZoneDist.Tag is int && _lsc.Data.Dat.LastState == StatusCode.APP_WIRE_FOLLOW_AREA_TRAINING && !_lsc.Polling ) {
-        _lsc.Poll();
-      }
+      //if( txZoneDist.Tag is int && _lsc.Data.Dat.LastState == StatusCode.APP_WIRE_FOLLOW_AREA_TRAINING && !_lsc.Polling ) {
+      //  _lsc.Poll();
+      //}
     }
 
     private void pictureBox_Paint(object sender, PaintEventArgs e) {

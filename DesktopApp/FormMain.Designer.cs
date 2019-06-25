@@ -144,7 +144,7 @@
       this.chPluginDesc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.pgPlugin = new System.Windows.Forms.PropertyGrid();
       this.tlPluginBtn = new System.Windows.Forms.TableLayoutPanel();
-      this.pbPluginTest = new System.Windows.Forms.Button();
+      this.pbPluginDoit = new System.Windows.Forms.Button();
       this.tpMqtt = new System.Windows.Forms.TabPage();
       this.txMqtt = new System.Windows.Forms.TextBox();
       this.tpTrace = new System.Windows.Forms.TabPage();
@@ -1649,7 +1649,7 @@
       this.tlPluginBtn.ColumnCount = 2;
       this.tlPluginBtn.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
       this.tlPluginBtn.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tlPluginBtn.Controls.Add(this.pbPluginTest, 1, 0);
+      this.tlPluginBtn.Controls.Add(this.pbPluginDoit, 1, 0);
       this.tlPluginBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
       this.tlPluginBtn.Location = new System.Drawing.Point(0, 356);
       this.tlPluginBtn.Margin = new System.Windows.Forms.Padding(0);
@@ -1661,14 +1661,14 @@
       // 
       // pbPluginTest
       // 
-      this.pbPluginTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-      this.pbPluginTest.Location = new System.Drawing.Point(343, 3);
-      this.pbPluginTest.Name = "pbPluginTest";
-      this.pbPluginTest.Size = new System.Drawing.Size(60, 23);
-      this.pbPluginTest.TabIndex = 2;
-      this.pbPluginTest.Text = "Test";
-      this.pbPluginTest.UseVisualStyleBackColor = true;
-      this.pbPluginTest.Click += new System.EventHandler(this.pbPluginTest_Click);
+      this.pbPluginDoit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+      this.pbPluginDoit.Location = new System.Drawing.Point(343, 3);
+      this.pbPluginDoit.Name = "pbPluginDoit";
+      this.pbPluginDoit.Size = new System.Drawing.Size(60, 23);
+      this.pbPluginDoit.TabIndex = 2;
+      this.pbPluginDoit.Text = "DoIt";
+      this.pbPluginDoit.UseVisualStyleBackColor = true;
+      this.pbPluginDoit.Click += new System.EventHandler(this.pbPluginTest_Click);
       // 
       // tpMqtt
       // 
@@ -1809,7 +1809,7 @@
     private System.Windows.Forms.TabControl tcMain;
     private System.Windows.Forms.TabPage tpPlugin;
     private System.Windows.Forms.PropertyGrid pgPlugin;
-    private System.Windows.Forms.Button pbPluginTest;
+    private System.Windows.Forms.Button pbPluginDoit;
     private System.Windows.Forms.ListView lvPlugin;
     private System.Windows.Forms.ColumnHeader chPluginScript;
     private System.Windows.Forms.ColumnHeader chPluginDesc;

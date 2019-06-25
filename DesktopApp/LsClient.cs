@@ -487,8 +487,10 @@ namespace DesktopApp
       }
     }
     private void ConnectionClosed(object sender, EventArgs e) {
+      int num = int.Parse(ConfigurationManager.AppSettings["AutoReconnect"]);
+
       Log("Mqtt connection closed", 9);
-      for( int i = 0; i < 10; i++ ) {
+      for( int i = 0; i < num; i++ ) {
         System.Threading.Thread.Sleep(10000);
         if( _mqtt.IsConnected ) { Log("Mqtt is connected"); break; }
         else if( Start(Broker, _uuid, _board, _mac, false) ) { Log("Mqtt reconnected"); break; }
