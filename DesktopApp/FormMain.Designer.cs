@@ -149,6 +149,16 @@
       this.txMqtt = new System.Windows.Forms.TextBox();
       this.tpTrace = new System.Windows.Forms.TabPage();
       this.rtLog = new System.Windows.Forms.RichTextBox();
+      this.tpAct = new System.Windows.Forms.TabPage();
+      this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      this.lvActLog = new System.Windows.Forms.ListView();
+      this.chActStamp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.chActState = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.chActError = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.chActCharge = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.chActMiss = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.pbActLog = new System.Windows.Forms.Button();
+      this.lActHint = new System.Windows.Forms.Label();
       this.toolTip = new System.Windows.Forms.ToolTip(this.components);
       this.timer = new System.Windows.Forms.Timer(this.components);
       this.tpPlan.SuspendLayout();
@@ -189,6 +199,8 @@
       this.tlPluginBtn.SuspendLayout();
       this.tpMqtt.SuspendLayout();
       this.tpTrace.SuspendLayout();
+      this.tpAct.SuspendLayout();
+      this.tableLayoutPanel1.SuspendLayout();
       this.SuspendLayout();
       // 
       // tpPlan
@@ -1367,6 +1379,7 @@
       this.tcMain.Controls.Add(this.tpPlugin);
       this.tcMain.Controls.Add(this.tpMqtt);
       this.tcMain.Controls.Add(this.tpTrace);
+      this.tcMain.Controls.Add(this.tpAct);
       this.tcMain.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tcMain.Location = new System.Drawing.Point(0, 0);
       this.tcMain.Name = "tcMain";
@@ -1659,7 +1672,7 @@
       this.tlPluginBtn.Size = new System.Drawing.Size(406, 29);
       this.tlPluginBtn.TabIndex = 5;
       // 
-      // pbPluginTest
+      // pbPluginDoit
       // 
       this.pbPluginDoit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
       this.pbPluginDoit.Location = new System.Drawing.Point(343, 3);
@@ -1712,6 +1725,109 @@
       this.rtLog.TabIndex = 2;
       this.rtLog.Text = "";
       this.rtLog.WordWrap = false;
+      // 
+      // tpAct
+      // 
+      this.tpAct.Controls.Add(this.tableLayoutPanel1);
+      this.tpAct.Location = new System.Drawing.Point(4, 22);
+      this.tpAct.Name = "tpAct";
+      this.tpAct.Size = new System.Drawing.Size(406, 385);
+      this.tpAct.TabIndex = 10;
+      this.tpAct.Text = "ActLog";
+      this.tpAct.UseVisualStyleBackColor = true;
+      // 
+      // tableLayoutPanel1
+      // 
+      this.tableLayoutPanel1.ColumnCount = 2;
+      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      this.tableLayoutPanel1.Controls.Add(this.lvActLog, 0, 0);
+      this.tableLayoutPanel1.Controls.Add(this.pbActLog, 1, 1);
+      this.tableLayoutPanel1.Controls.Add(this.lActHint, 0, 1);
+      this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+      this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+      this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+      this.tableLayoutPanel1.RowCount = 2;
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      this.tableLayoutPanel1.Size = new System.Drawing.Size(406, 385);
+      this.tableLayoutPanel1.TabIndex = 0;
+      // 
+      // lvActLog
+      // 
+      this.lvActLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.lvActLog.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chActStamp,
+            this.chActState,
+            this.chActError,
+            this.chActCharge,
+            this.chActMiss});
+      this.tableLayoutPanel1.SetColumnSpan(this.lvActLog, 2);
+      this.lvActLog.FullRowSelect = true;
+      this.lvActLog.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+      this.lvActLog.HideSelection = false;
+      this.lvActLog.Location = new System.Drawing.Point(0, 0);
+      this.lvActLog.Margin = new System.Windows.Forms.Padding(0);
+      this.lvActLog.Name = "lvActLog";
+      this.lvActLog.Size = new System.Drawing.Size(406, 356);
+      this.lvActLog.TabIndex = 0;
+      this.lvActLog.UseCompatibleStateImageBehavior = false;
+      this.lvActLog.View = System.Windows.Forms.View.Details;
+      // 
+      // chActStamp
+      // 
+      this.chActStamp.Text = "Date Time";
+      this.chActStamp.Width = 120;
+      // 
+      // chActState
+      // 
+      this.chActState.Text = "State";
+      this.chActState.Width = 120;
+      // 
+      // chActError
+      // 
+      this.chActError.Text = "Error";
+      this.chActError.Width = 80;
+      // 
+      // chActCharge
+      // 
+      this.chActCharge.Text = "bc";
+      this.chActCharge.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+      this.chActCharge.Width = 30;
+      // 
+      // chActMiss
+      // 
+      this.chActMiss.Text = "bm";
+      this.chActMiss.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+      this.chActMiss.Width = 30;
+      // 
+      // pbActLog
+      // 
+      this.pbActLog.Anchor = System.Windows.Forms.AnchorStyles.Right;
+      this.pbActLog.Enabled = false;
+      this.pbActLog.Image = ((System.Drawing.Image)(resources.GetObject("pbActLog.Image")));
+      this.pbActLog.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.pbActLog.Location = new System.Drawing.Point(331, 359);
+      this.pbActLog.Name = "pbActLog";
+      this.pbActLog.Size = new System.Drawing.Size(72, 23);
+      this.pbActLog.TabIndex = 1;
+      this.pbActLog.Text = "&Poll";
+      this.pbActLog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.pbActLog.UseVisualStyleBackColor = true;
+      this.pbActLog.Click += new System.EventHandler(this.pbActLog_Click);
+      // 
+      // lActHint
+      // 
+      this.lActHint.Anchor = System.Windows.Forms.AnchorStyles.Left;
+      this.lActHint.AutoSize = true;
+      this.lActHint.Location = new System.Drawing.Point(3, 364);
+      this.lActHint.Name = "lActHint";
+      this.lActHint.Size = new System.Drawing.Size(123, 13);
+      this.lActHint.TabIndex = 2;
+      this.lActHint.Text = "Login erforderlich ...";
       // 
       // timer
       // 
@@ -1778,6 +1894,9 @@
       this.tpMqtt.ResumeLayout(false);
       this.tpMqtt.PerformLayout();
       this.tpTrace.ResumeLayout(false);
+      this.tpAct.ResumeLayout(false);
+      this.tableLayoutPanel1.ResumeLayout(false);
+      this.tableLayoutPanel1.PerformLayout();
       this.ResumeLayout(false);
 
     }
@@ -1901,6 +2020,16 @@
     private System.Windows.Forms.Label txDatSP;
     private System.Windows.Forms.Label txUsrBoard;
     private System.Windows.Forms.TextBox edUsrBoard;
+    private System.Windows.Forms.TabPage tpAct;
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+    private System.Windows.Forms.ListView lvActLog;
+    private System.Windows.Forms.ColumnHeader chActStamp;
+    private System.Windows.Forms.ColumnHeader chActState;
+    private System.Windows.Forms.ColumnHeader chActError;
+    private System.Windows.Forms.ColumnHeader chActCharge;
+    private System.Windows.Forms.ColumnHeader chActMiss;
+    private System.Windows.Forms.Button pbActLog;
+    private System.Windows.Forms.Label lActHint;
   }
 }
 

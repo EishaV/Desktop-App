@@ -103,7 +103,9 @@
     <Compile Include="PluginHomeBorderCut.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <None Include="PluginMowOutsideArea.cs" />
+    <Compile Include="PluginMowOutsideArea.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Ressource.cs" />

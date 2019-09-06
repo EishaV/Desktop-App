@@ -131,6 +131,54 @@ namespace DesktopApp
   }
   #endregion
 
+
+  #region Activity-Log
+  /*
+  {
+    "_id":"5d65fcd8241fa136e0551d1f",
+    "timestamp":"2019-08-28 04:02:31",
+    "product_item_id":12061,
+    "payload":{
+      "cfg":{"dt":"28/08/2019","tm":"06:02:23","mzv":[0,0,0,0,0,0,0,0,0,0],"mz":[0,0,0,0]},
+      "dat":{"le":0,"ls":0,"fw":3.51,"lz":0,"lk":0,"bt":{"c":0,"m":1}}
+    }
+  }
+  */
+  [DataContract]
+  public struct ActivityConfig {
+    [DataMember(Name = "dt")] public string Date;
+    [DataMember(Name = "tm")] public string Time;
+    [DataMember(Name = "mz")] public int[] MultiZones; // [0-3] start point in meters
+    [DataMember(Name = "mzv")] public int[] MultiZonePercs; // [0-9] ring list of start indizes
+  }
+  [DataContract]
+  public struct ActivityBattery {
+    [DataMember(Name = "c")] public ChargeCoge Charging;
+    [DataMember(Name = "m")] public int Miss;
+  }
+  [DataContract]
+  public struct ActivityData {
+    [DataMember(Name = "le")] public ErrorCode LastError;
+    [DataMember(Name = "ls")] public StatusCode LastState;
+    [DataMember(Name = "fw")] public double Firmware;
+    [DataMember(Name = "lz")] public int LastZone;
+    [DataMember(Name = "lk")] public int Lock;
+    [DataMember(Name = "bt")] public ActivityBattery Battery;
+  }
+  [DataContract]
+  public struct ActivityPayload {
+    [DataMember(Name = "cfg")] public ActivityConfig Cfg;
+    [DataMember(Name = "dat")] public ActivityData Dat;
+  }
+  [DataContract]
+  public struct Activity {
+    [DataMember(Name = "_id")] public string ActId;
+    [DataMember(Name = "timestamp")] public string Stamp;
+    [DataMember(Name = "product_item_id")] public string MowId;
+    [DataMember(Name = "payload")] public ActivityPayload Payload;
+  }
+  #endregion
+
   public delegate void ErrDelegte(string msg);
   public delegate void LogDelegte(string log, int c = 0);
   public delegate void MqttDelegate();
@@ -364,7 +412,7 @@ namespace DesktopApp
           Recv();
         }
         #endregion
-      } catch( Exception ex ) {
+      } catch(Exception ex ) {
         Err(ex.Message);
         Log(ex.ToString(), 9);
         return false;
@@ -387,6 +435,30 @@ namespace DesktopApp
       return false;
     }
 
+    public List<Activity> GetActivities(string name) {
+      string api = ConfigurationManager.AppSettings["WebApi"];
+      List<Activity> ls = new List<Activity>();
+
+      foreach( LsProductItem pi in Products ) {
+        if( pi.Name == name ) {
+          byte[] buf = _client.DownloadData(api + "product-items/" + pi.SerialNo + "/activity-log");
+
+          if( buf != null ) {
+            MemoryStream ms = new MemoryStream(buf);
+            DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(List<Activity>));
+            
+            ls = dcjs.ReadObject(ms) as List<Activity>;
+            foreach( Activity a in ls ) {
+              ActivityPayload p = a.Payload;
+
+              Log(string.Format("{0}: {1} - {2} - {3} - {4}", a.Stamp, p.Dat.LastError, p.Dat.LastState, p.Dat.Battery.Charging, p.Dat.Battery.Miss));
+            }
+            ms.Close();
+          }
+        }
+      }
+      return ls;
+    }
     //public void AutoUpgrde(string serial, bool b) {
     //  string url = ConfigurationManager.AppSettings["ApiBaseUrl"] +  "product-items/" + serial, str;
 

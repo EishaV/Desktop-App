@@ -313,6 +313,7 @@ namespace DesktopApp {
       if( !string.IsNullOrEmpty(edUsrBroker.Text) && !string.IsNullOrEmpty(edUsrBoard.Text) && !string.IsNullOrEmpty(edUsrMac.Text) ) {
         pbLogin.Enabled = false;
         if( !_lsc.Connected ) pbConnect.Enabled = true;
+        pbActLog.Enabled = true; lActHint.Text = null;
       }
     }
     private void pbConnect_Click(object sender, EventArgs e) {
@@ -969,6 +970,23 @@ namespace DesktopApp {
     }
 
     private void pictureBox_Paint(object sender, PaintEventArgs e) {
+    }
+
+    private void pbActLog_Click(object sender, EventArgs e) {
+      lvActLog.Items.Clear();
+      foreach( Activity a in _lsc.GetActivities(edUsrName.Text)) {
+        ListViewItem li = new ListViewItem();
+
+        li.Text = a.Payload.Cfg.Date + " " + a.Payload.Cfg.Time;
+        li.SubItems.Add(a.Payload.Dat.LastState.ToString());
+        li.SubItems.Add(a.Payload.Dat.LastError.ToString());
+        li.SubItems.Add(a.Payload.Dat.Battery.Charging == ChargeCoge.CHARGING ? "+" : "-");
+        li.SubItems.Add(a.Payload.Dat.Battery.Miss.ToString());
+        lvActLog.Items.Add(li);
+      }
+      chActStamp.Width = -1;
+      chActState.Width = -1;
+      chActError.Width = -1;
     }
   }
 }
