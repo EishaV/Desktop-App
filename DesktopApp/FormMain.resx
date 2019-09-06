@@ -787,6 +787,14 @@
   <metadata name="chMzPerc.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="pbActLog.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAAGlJREFUOE+ljFEO
+        gDAMQnf/S9dlCbUyaNR9vEgfuBERR0j5hTvMyKDr2EXzgHSPo/wsx8JnWEcZ8BCOfVsqeGcLB+9s4eCd
+        LRy8a8vq8eU+wzrEoHrVZ0hBAziwdSwU9QGQHcJfpHxPjAt0iI2PjSYxAQAAAABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>183, 18</value>
   </metadata>
