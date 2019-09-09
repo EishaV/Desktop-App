@@ -331,7 +331,7 @@ namespace DesktopApp {
       sf.LineAlignment = StringAlignment.Center;
       g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
       //g.DrawRectangle(Pens.White, r);
-      g.DrawString(edUsrName.Text, Font, Brushes.Yellow, r, f);
+      g.DrawString(edUsrName.Text, f, Brushes.Yellow, r, sf);
       pictureBox.Image = i;
 
       tcMain.SelectedTab = tpState;
