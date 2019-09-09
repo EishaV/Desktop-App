@@ -323,11 +323,12 @@ namespace DesktopApp {
 
       Image i = pictureBox.Image;
       Graphics g = Graphics.FromImage(i);
-      Rectangle r = new Rectangle(30, 55, 70, 16);
-      StringFormat f = new StringFormat(StringFormat.GenericTypographic);
+      Rectangle r = new Rectangle(120, 220, 280, 64);
+      Font f = new Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+      StringFormat sf = new StringFormat(StringFormat.GenericTypographic);
 
-      f.Alignment = StringAlignment.Center;
-      f.LineAlignment = StringAlignment.Center;
+      sf.Alignment = StringAlignment.Center;
+      sf.LineAlignment = StringAlignment.Center;
       g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
       //g.DrawRectangle(Pens.White, r);
       g.DrawString(edUsrName.Text, Font, Brushes.Yellow, r, f);
