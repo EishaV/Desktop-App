@@ -66,21 +66,35 @@
       this.tlDat = new System.Windows.Forms.TableLayoutPanel();
       this.tlDatPic = new System.Windows.Forms.TableLayoutPanel();
       this.txDatFW = new System.Windows.Forms.Label();
+      this.pictureBox = new System.Windows.Forms.PictureBox();
       this.lDatFW = new System.Windows.Forms.Label();
+      this.picWiFi = new System.Windows.Forms.PictureBox();
       this.txDatRsi = new System.Windows.Forms.Label();
       this.lDatSP = new System.Windows.Forms.Label();
       this.txDatSP = new System.Windows.Forms.Label();
+      this.pDatAccu = new System.Windows.Forms.Panel();
+      this.txDatAccu = new System.Windows.Forms.Label();
       this.txDatDT = new System.Windows.Forms.Label();
       this.tlDatTri = new System.Windows.Forms.TableLayoutPanel();
+      this.picPitch = new System.Windows.Forms.PictureBox();
+      this.picRoll = new System.Windows.Forms.PictureBox();
+      this.picYaw = new System.Windows.Forms.PictureBox();
       this.txDatDmp0 = new System.Windows.Forms.Label();
       this.txDatDmp1 = new System.Windows.Forms.Label();
       this.txDatDmp2 = new System.Windows.Forms.Label();
+      this.txDatStB = new System.Windows.Forms.Label();
       this.txDatStD = new System.Windows.Forms.Label();
       this.txDatStW = new System.Windows.Forms.Label();
       this.tlDatErrorState = new System.Windows.Forms.TableLayoutPanel();
       this.txError = new System.Windows.Forms.Label();
       this.txStatus = new System.Windows.Forms.Label();
+      this.pDatWork = new System.Windows.Forms.Panel();
+      this.txDatWork = new System.Windows.Forms.Label();
       this.tlDatCmd = new System.Windows.Forms.TableLayoutPanel();
+      this.pbStart = new System.Windows.Forms.Button();
+      this.pbPoll = new System.Windows.Forms.Button();
+      this.pbHome = new System.Windows.Forms.Button();
+      this.pbStop = new System.Windows.Forms.Button();
       this.tpUsr = new System.Windows.Forms.TabPage();
       this.tlpUsrSet = new System.Windows.Forms.TableLayoutPanel();
       this.txUsrMail = new System.Windows.Forms.Label();
@@ -143,24 +157,10 @@
       this.chActError = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.chActCharge = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.chActMiss = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.pbActLog = new System.Windows.Forms.Button();
       this.lActHint = new System.Windows.Forms.Label();
       this.toolTip = new System.Windows.Forms.ToolTip(this.components);
       this.timer = new System.Windows.Forms.Timer(this.components);
-      this.pictureBox = new System.Windows.Forms.PictureBox();
-      this.picWiFi = new System.Windows.Forms.PictureBox();
-      this.pDatAccu = new System.Windows.Forms.Panel();
-      this.txDatAccu = new System.Windows.Forms.Label();
-      this.picPitch = new System.Windows.Forms.PictureBox();
-      this.picRoll = new System.Windows.Forms.PictureBox();
-      this.picYaw = new System.Windows.Forms.PictureBox();
-      this.txDatStB = new System.Windows.Forms.Label();
-      this.pDatWork = new System.Windows.Forms.Panel();
-      this.txDatWork = new System.Windows.Forms.Label();
-      this.pbStart = new System.Windows.Forms.Button();
-      this.pbPoll = new System.Windows.Forms.Button();
-      this.pbHome = new System.Windows.Forms.Button();
-      this.pbStop = new System.Windows.Forms.Button();
-      this.pbActLog = new System.Windows.Forms.Button();
       this.tpPlan.SuspendLayout();
       this.tlPlan.SuspendLayout();
       this.tlScPerc.SuspendLayout();
@@ -173,8 +173,15 @@
       this.tpState.SuspendLayout();
       this.tlDat.SuspendLayout();
       this.tlDatPic.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.picWiFi)).BeginInit();
+      this.pDatAccu.SuspendLayout();
       this.tlDatTri.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.picPitch)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.picRoll)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.picYaw)).BeginInit();
       this.tlDatErrorState.SuspendLayout();
+      this.pDatWork.SuspendLayout();
       this.tlDatCmd.SuspendLayout();
       this.tpUsr.SuspendLayout();
       this.tlpUsrSet.SuspendLayout();
@@ -194,13 +201,6 @@
       this.tpTrace.SuspendLayout();
       this.tpAct.SuspendLayout();
       this.tableLayoutPanel1.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.picWiFi)).BeginInit();
-      this.pDatAccu.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.picPitch)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.picRoll)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.picYaw)).BeginInit();
-      this.pDatWork.SuspendLayout();
       this.SuspendLayout();
       // 
       // tpPlan
@@ -700,6 +700,19 @@
       this.txDatFW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       this.toolTip.SetToolTip(this.txDatFW, "Firmware Version");
       // 
+      // pictureBox
+      // 
+      this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.pictureBox.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox.Image")));
+      this.pictureBox.Location = new System.Drawing.Point(12, 10);
+      this.pictureBox.Margin = new System.Windows.Forms.Padding(12, 10, 12, 10);
+      this.pictureBox.Name = "pictureBox";
+      this.tlDatPic.SetRowSpan(this.pictureBox, 4);
+      this.pictureBox.Size = new System.Drawing.Size(308, 151);
+      this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+      this.pictureBox.TabIndex = 1;
+      this.pictureBox.TabStop = false;
+      // 
       // lDatFW
       // 
       this.lDatFW.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -711,6 +724,19 @@
       this.lDatFW.TabIndex = 4;
       this.lDatFW.Text = "FW";
       this.lDatFW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // picWiFi
+      // 
+      this.picWiFi.Anchor = System.Windows.Forms.AnchorStyles.Top;
+      this.picWiFi.BackColor = System.Drawing.Color.Transparent;
+      this.tlDatPic.SetColumnSpan(this.picWiFi, 2);
+      this.picWiFi.Location = new System.Drawing.Point(341, 10);
+      this.picWiFi.Margin = new System.Windows.Forms.Padding(2, 10, 2, 2);
+      this.picWiFi.Name = "picWiFi";
+      this.picWiFi.Size = new System.Drawing.Size(50, 35);
+      this.picWiFi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+      this.picWiFi.TabIndex = 2;
+      this.picWiFi.TabStop = false;
       // 
       // txDatRsi
       // 
@@ -753,6 +779,31 @@
       this.toolTip.SetToolTip(this.txDatSP, "Start Point");
       this.txDatSP.Visible = false;
       // 
+      // pDatAccu
+      // 
+      this.pDatAccu.AutoSize = true;
+      this.pDatAccu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pDatAccu.BackgroundImage")));
+      this.pDatAccu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+      this.pDatAccu.Controls.Add(this.txDatAccu);
+      this.pDatAccu.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.pDatAccu.Location = new System.Drawing.Point(12, 225);
+      this.pDatAccu.Margin = new System.Windows.Forms.Padding(12, 3, 12, 3);
+      this.pDatAccu.Name = "pDatAccu";
+      this.pDatAccu.Size = new System.Drawing.Size(382, 19);
+      this.pDatAccu.TabIndex = 5;
+      // 
+      // txDatAccu
+      // 
+      this.txDatAccu.BackColor = System.Drawing.Color.Transparent;
+      this.txDatAccu.Dock = System.Windows.Forms.DockStyle.Top;
+      this.txDatAccu.Location = new System.Drawing.Point(0, 0);
+      this.txDatAccu.Name = "txDatAccu";
+      this.txDatAccu.Size = new System.Drawing.Size(382, 19);
+      this.txDatAccu.TabIndex = 0;
+      this.txDatAccu.Text = "Accumulator 00.0V 00° 000%";
+      this.txDatAccu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.txDatAccu.Paint += new System.Windows.Forms.PaintEventHandler(this.pStatusAccu_Paint);
+      // 
       // txDatDT
       // 
       this.txDatDT.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -791,6 +842,42 @@
       this.tlDatTri.Size = new System.Drawing.Size(400, 80);
       this.tlDatTri.TabIndex = 7;
       // 
+      // picPitch
+      // 
+      this.picPitch.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.picPitch.Image = ((System.Drawing.Image)(resources.GetObject("picPitch.Image")));
+      this.picPitch.Location = new System.Drawing.Point(26, 0);
+      this.picPitch.Margin = new System.Windows.Forms.Padding(0);
+      this.picPitch.Name = "picPitch";
+      this.picPitch.Size = new System.Drawing.Size(80, 25);
+      this.picPitch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+      this.picPitch.TabIndex = 0;
+      this.picPitch.TabStop = false;
+      // 
+      // picRoll
+      // 
+      this.picRoll.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.picRoll.Image = ((System.Drawing.Image)(resources.GetObject("picRoll.Image")));
+      this.picRoll.Location = new System.Drawing.Point(159, 0);
+      this.picRoll.Margin = new System.Windows.Forms.Padding(0);
+      this.picRoll.Name = "picRoll";
+      this.picRoll.Size = new System.Drawing.Size(80, 25);
+      this.picRoll.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+      this.picRoll.TabIndex = 1;
+      this.picRoll.TabStop = false;
+      // 
+      // picYaw
+      // 
+      this.picYaw.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.picYaw.Image = ((System.Drawing.Image)(resources.GetObject("picYaw.Image")));
+      this.picYaw.Location = new System.Drawing.Point(293, 0);
+      this.picYaw.Margin = new System.Windows.Forms.Padding(0);
+      this.picYaw.Name = "picYaw";
+      this.picYaw.Size = new System.Drawing.Size(80, 25);
+      this.picYaw.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+      this.picYaw.TabIndex = 2;
+      this.picYaw.TabStop = false;
+      // 
       // txDatDmp0
       // 
       this.txDatDmp0.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -823,6 +910,22 @@
       this.txDatDmp2.Size = new System.Drawing.Size(76, 13);
       this.txDatDmp2.TabIndex = 5;
       this.txDatDmp2.Text = "Yaw: 000.0°";
+      // 
+      // txDatStB
+      // 
+      this.txDatStB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+      this.txDatStB.AutoSize = true;
+      this.txDatStB.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+      this.txDatStB.Image = ((System.Drawing.Image)(resources.GetObject("txDatStB.Image")));
+      this.txDatStB.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+      this.txDatStB.Location = new System.Drawing.Point(8, 52);
+      this.txDatStB.Name = "txDatStB";
+      this.txDatStB.Size = new System.Drawing.Size(117, 28);
+      this.txDatStB.TabIndex = 6;
+      this.txDatStB.Text = "Blade: 0d.00h:00m";
+      this.txDatStB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.toolTip.SetToolTip(this.txDatStB, "Mähzeit");
+      this.txDatStB.DoubleClick += new System.EventHandler(this.txDatStB_DoubleClick);
       // 
       // txDatStD
       // 
@@ -893,6 +996,31 @@
       this.txStatus.Text = "???";
       this.txStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
+      // pDatWork
+      // 
+      this.pDatWork.AutoSize = true;
+      this.pDatWork.BackColor = System.Drawing.Color.Transparent;
+      this.pDatWork.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pDatWork.BackgroundImage")));
+      this.pDatWork.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+      this.pDatWork.Controls.Add(this.txDatWork);
+      this.pDatWork.Dock = System.Windows.Forms.DockStyle.Top;
+      this.pDatWork.Location = new System.Drawing.Point(12, 200);
+      this.pDatWork.Margin = new System.Windows.Forms.Padding(12, 3, 12, 3);
+      this.pDatWork.Name = "pDatWork";
+      this.pDatWork.Size = new System.Drawing.Size(382, 19);
+      this.pDatWork.TabIndex = 11;
+      // 
+      // txDatWork
+      // 
+      this.txDatWork.BackColor = System.Drawing.Color.Transparent;
+      this.txDatWork.Dock = System.Windows.Forms.DockStyle.Top;
+      this.txDatWork.Location = new System.Drawing.Point(0, 0);
+      this.txDatWork.Name = "txDatWork";
+      this.txDatWork.Size = new System.Drawing.Size(382, 19);
+      this.txDatWork.TabIndex = 1;
+      this.txDatWork.Text = "Worktime 00:00-00:00 000%";
+      this.txDatWork.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
       // tlDatCmd
       // 
       this.tlDatCmd.ColumnCount = 7;
@@ -915,6 +1043,58 @@
       this.tlDatCmd.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tlDatCmd.Size = new System.Drawing.Size(406, 29);
       this.tlDatCmd.TabIndex = 1;
+      // 
+      // pbStart
+      // 
+      this.pbStart.Enabled = false;
+      this.pbStart.Image = global::DesktopApp.AppRes.play16;
+      this.pbStart.Location = new System.Drawing.Point(57, 3);
+      this.pbStart.Name = "pbStart";
+      this.pbStart.Size = new System.Drawing.Size(72, 24);
+      this.pbStart.TabIndex = 1;
+      this.pbStart.Text = "&Start";
+      this.pbStart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.pbStart.UseVisualStyleBackColor = true;
+      this.pbStart.Click += new System.EventHandler(this.pbStart_Click);
+      // 
+      // pbPoll
+      // 
+      this.pbPoll.Enabled = false;
+      this.pbPoll.Image = global::DesktopApp.AppRes.refresh16;
+      this.pbPoll.Location = new System.Drawing.Point(331, 3);
+      this.pbPoll.Name = "pbPoll";
+      this.pbPoll.Size = new System.Drawing.Size(72, 23);
+      this.pbPoll.TabIndex = 0;
+      this.pbPoll.Text = "&Poll";
+      this.pbPoll.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.pbPoll.UseVisualStyleBackColor = true;
+      this.pbPoll.Click += new System.EventHandler(this.pbDatPoll_Click);
+      // 
+      // pbHome
+      // 
+      this.pbHome.Enabled = false;
+      this.pbHome.Image = global::DesktopApp.AppRes.home16;
+      this.pbHome.Location = new System.Drawing.Point(213, 3);
+      this.pbHome.Name = "pbHome";
+      this.pbHome.Size = new System.Drawing.Size(72, 23);
+      this.pbHome.TabIndex = 3;
+      this.pbHome.Text = "&Home";
+      this.pbHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.pbHome.UseVisualStyleBackColor = true;
+      this.pbHome.Click += new System.EventHandler(this.pbHome_Click);
+      // 
+      // pbStop
+      // 
+      this.pbStop.Enabled = false;
+      this.pbStop.Image = global::DesktopApp.AppRes.stop16;
+      this.pbStop.Location = new System.Drawing.Point(135, 3);
+      this.pbStop.Name = "pbStop";
+      this.pbStop.Size = new System.Drawing.Size(72, 23);
+      this.pbStop.TabIndex = 2;
+      this.pbStop.Text = "S&top";
+      this.pbStop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.pbStop.UseVisualStyleBackColor = true;
+      this.pbStop.Click += new System.EventHandler(this.pbStop_Click);
       // 
       // tpUsr
       // 
@@ -1592,6 +1772,7 @@
       this.lvActLog.Location = new System.Drawing.Point(0, 0);
       this.lvActLog.Margin = new System.Windows.Forms.Padding(0);
       this.lvActLog.Name = "lvActLog";
+      this.lvActLog.ShowItemToolTips = true;
       this.lvActLog.Size = new System.Drawing.Size(406, 356);
       this.lvActLog.TabIndex = 0;
       this.lvActLog.UseCompatibleStateImageBehavior = false;
@@ -1614,15 +1795,29 @@
       // 
       // chActCharge
       // 
-      this.chActCharge.Text = "bc";
+      this.chActCharge.Text = "C";
       this.chActCharge.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-      this.chActCharge.Width = 30;
+      this.chActCharge.Width = 25;
       // 
       // chActMiss
       // 
-      this.chActMiss.Text = "bm";
+      this.chActMiss.Text = "M";
       this.chActMiss.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-      this.chActMiss.Width = 30;
+      this.chActMiss.Width = 25;
+      // 
+      // pbActLog
+      // 
+      this.pbActLog.Anchor = System.Windows.Forms.AnchorStyles.Right;
+      this.pbActLog.Enabled = false;
+      this.pbActLog.Image = global::DesktopApp.AppRes.refresh16;
+      this.pbActLog.Location = new System.Drawing.Point(331, 359);
+      this.pbActLog.Name = "pbActLog";
+      this.pbActLog.Size = new System.Drawing.Size(72, 23);
+      this.pbActLog.TabIndex = 1;
+      this.pbActLog.Text = "&Poll";
+      this.pbActLog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.pbActLog.UseVisualStyleBackColor = true;
+      this.pbActLog.Click += new System.EventHandler(this.pbActLog_Click);
       // 
       // lActHint
       // 
@@ -1638,200 +1833,6 @@
       // 
       this.timer.Interval = 3000;
       this.timer.Tick += new System.EventHandler(this.timer_Tick);
-      // 
-      // pictureBox
-      // 
-      this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.pictureBox.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox.Image")));
-      this.pictureBox.Location = new System.Drawing.Point(12, 10);
-      this.pictureBox.Margin = new System.Windows.Forms.Padding(12, 10, 12, 10);
-      this.pictureBox.Name = "pictureBox";
-      this.tlDatPic.SetRowSpan(this.pictureBox, 4);
-      this.pictureBox.Size = new System.Drawing.Size(308, 151);
-      this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-      this.pictureBox.TabIndex = 1;
-      this.pictureBox.TabStop = false;
-      // 
-      // picWiFi
-      // 
-      this.picWiFi.Anchor = System.Windows.Forms.AnchorStyles.Top;
-      this.picWiFi.BackColor = System.Drawing.Color.Transparent;
-      this.tlDatPic.SetColumnSpan(this.picWiFi, 2);
-      this.picWiFi.Location = new System.Drawing.Point(341, 10);
-      this.picWiFi.Margin = new System.Windows.Forms.Padding(2, 10, 2, 2);
-      this.picWiFi.Name = "picWiFi";
-      this.picWiFi.Size = new System.Drawing.Size(50, 35);
-      this.picWiFi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-      this.picWiFi.TabIndex = 2;
-      this.picWiFi.TabStop = false;
-      // 
-      // pDatAccu
-      // 
-      this.pDatAccu.AutoSize = true;
-      this.pDatAccu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pDatAccu.BackgroundImage")));
-      this.pDatAccu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-      this.pDatAccu.Controls.Add(this.txDatAccu);
-      this.pDatAccu.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.pDatAccu.Location = new System.Drawing.Point(12, 225);
-      this.pDatAccu.Margin = new System.Windows.Forms.Padding(12, 3, 12, 3);
-      this.pDatAccu.Name = "pDatAccu";
-      this.pDatAccu.Size = new System.Drawing.Size(382, 19);
-      this.pDatAccu.TabIndex = 5;
-      // 
-      // txDatAccu
-      // 
-      this.txDatAccu.BackColor = System.Drawing.Color.Transparent;
-      this.txDatAccu.Dock = System.Windows.Forms.DockStyle.Top;
-      this.txDatAccu.Location = new System.Drawing.Point(0, 0);
-      this.txDatAccu.Name = "txDatAccu";
-      this.txDatAccu.Size = new System.Drawing.Size(382, 19);
-      this.txDatAccu.TabIndex = 0;
-      this.txDatAccu.Text = "Accumulator 00.0V 00° 000%";
-      this.txDatAccu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      this.txDatAccu.Paint += new System.Windows.Forms.PaintEventHandler(this.pStatusAccu_Paint);
-      // 
-      // picPitch
-      // 
-      this.picPitch.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.picPitch.Image = ((System.Drawing.Image)(resources.GetObject("picPitch.Image")));
-      this.picPitch.Location = new System.Drawing.Point(26, 0);
-      this.picPitch.Margin = new System.Windows.Forms.Padding(0);
-      this.picPitch.Name = "picPitch";
-      this.picPitch.Size = new System.Drawing.Size(80, 25);
-      this.picPitch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-      this.picPitch.TabIndex = 0;
-      this.picPitch.TabStop = false;
-      // 
-      // picRoll
-      // 
-      this.picRoll.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.picRoll.Image = ((System.Drawing.Image)(resources.GetObject("picRoll.Image")));
-      this.picRoll.Location = new System.Drawing.Point(159, 0);
-      this.picRoll.Margin = new System.Windows.Forms.Padding(0);
-      this.picRoll.Name = "picRoll";
-      this.picRoll.Size = new System.Drawing.Size(80, 25);
-      this.picRoll.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-      this.picRoll.TabIndex = 1;
-      this.picRoll.TabStop = false;
-      // 
-      // picYaw
-      // 
-      this.picYaw.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.picYaw.Image = ((System.Drawing.Image)(resources.GetObject("picYaw.Image")));
-      this.picYaw.Location = new System.Drawing.Point(293, 0);
-      this.picYaw.Margin = new System.Windows.Forms.Padding(0);
-      this.picYaw.Name = "picYaw";
-      this.picYaw.Size = new System.Drawing.Size(80, 25);
-      this.picYaw.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-      this.picYaw.TabIndex = 2;
-      this.picYaw.TabStop = false;
-      // 
-      // txDatStB
-      // 
-      this.txDatStB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-      this.txDatStB.AutoSize = true;
-      this.txDatStB.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.txDatStB.Image = ((System.Drawing.Image)(resources.GetObject("txDatStB.Image")));
-      this.txDatStB.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-      this.txDatStB.Location = new System.Drawing.Point(8, 52);
-      this.txDatStB.Name = "txDatStB";
-      this.txDatStB.Size = new System.Drawing.Size(117, 28);
-      this.txDatStB.TabIndex = 6;
-      this.txDatStB.Text = "Blade: 0d.00h:00m";
-      this.txDatStB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      this.toolTip.SetToolTip(this.txDatStB, "Mähzeit");
-      this.txDatStB.DoubleClick += new System.EventHandler(this.txDatStB_DoubleClick);
-      // 
-      // pDatWork
-      // 
-      this.pDatWork.AutoSize = true;
-      this.pDatWork.BackColor = System.Drawing.Color.Transparent;
-      this.pDatWork.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pDatWork.BackgroundImage")));
-      this.pDatWork.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-      this.pDatWork.Controls.Add(this.txDatWork);
-      this.pDatWork.Dock = System.Windows.Forms.DockStyle.Top;
-      this.pDatWork.Location = new System.Drawing.Point(12, 200);
-      this.pDatWork.Margin = new System.Windows.Forms.Padding(12, 3, 12, 3);
-      this.pDatWork.Name = "pDatWork";
-      this.pDatWork.Size = new System.Drawing.Size(382, 19);
-      this.pDatWork.TabIndex = 11;
-      // 
-      // txDatWork
-      // 
-      this.txDatWork.BackColor = System.Drawing.Color.Transparent;
-      this.txDatWork.Dock = System.Windows.Forms.DockStyle.Top;
-      this.txDatWork.Location = new System.Drawing.Point(0, 0);
-      this.txDatWork.Name = "txDatWork";
-      this.txDatWork.Size = new System.Drawing.Size(382, 19);
-      this.txDatWork.TabIndex = 1;
-      this.txDatWork.Text = "Worktime 00:00-00:00 000%";
-      this.txDatWork.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // pbStart
-      // 
-      this.pbStart.Enabled = false;
-      this.pbStart.Image = global::DesktopApp.AppRes.play16;
-      this.pbStart.Location = new System.Drawing.Point(57, 3);
-      this.pbStart.Name = "pbStart";
-      this.pbStart.Size = new System.Drawing.Size(72, 24);
-      this.pbStart.TabIndex = 1;
-      this.pbStart.Text = "&Start";
-      this.pbStart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-      this.pbStart.UseVisualStyleBackColor = true;
-      this.pbStart.Click += new System.EventHandler(this.pbStart_Click);
-      // 
-      // pbPoll
-      // 
-      this.pbPoll.Enabled = false;
-      this.pbPoll.Image = global::DesktopApp.AppRes.refresh16;
-      this.pbPoll.Location = new System.Drawing.Point(331, 3);
-      this.pbPoll.Name = "pbPoll";
-      this.pbPoll.Size = new System.Drawing.Size(72, 23);
-      this.pbPoll.TabIndex = 0;
-      this.pbPoll.Text = "&Poll";
-      this.pbPoll.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-      this.pbPoll.UseVisualStyleBackColor = true;
-      this.pbPoll.Click += new System.EventHandler(this.pbDatPoll_Click);
-      // 
-      // pbHome
-      // 
-      this.pbHome.Enabled = false;
-      this.pbHome.Image = global::DesktopApp.AppRes.home16;
-      this.pbHome.Location = new System.Drawing.Point(213, 3);
-      this.pbHome.Name = "pbHome";
-      this.pbHome.Size = new System.Drawing.Size(72, 23);
-      this.pbHome.TabIndex = 3;
-      this.pbHome.Text = "&Home";
-      this.pbHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-      this.pbHome.UseVisualStyleBackColor = true;
-      this.pbHome.Click += new System.EventHandler(this.pbHome_Click);
-      // 
-      // pbStop
-      // 
-      this.pbStop.Enabled = false;
-      this.pbStop.Image = global::DesktopApp.AppRes.stop16;
-      this.pbStop.Location = new System.Drawing.Point(135, 3);
-      this.pbStop.Name = "pbStop";
-      this.pbStop.Size = new System.Drawing.Size(72, 23);
-      this.pbStop.TabIndex = 2;
-      this.pbStop.Text = "S&top";
-      this.pbStop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-      this.pbStop.UseVisualStyleBackColor = true;
-      this.pbStop.Click += new System.EventHandler(this.pbStop_Click);
-      // 
-      // pbActLog
-      // 
-      this.pbActLog.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.pbActLog.Enabled = false;
-      this.pbActLog.Image = global::DesktopApp.AppRes.refresh16;
-      this.pbActLog.Location = new System.Drawing.Point(331, 359);
-      this.pbActLog.Name = "pbActLog";
-      this.pbActLog.Size = new System.Drawing.Size(72, 23);
-      this.pbActLog.TabIndex = 1;
-      this.pbActLog.Text = "&Poll";
-      this.pbActLog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-      this.pbActLog.UseVisualStyleBackColor = true;
-      this.pbActLog.Click += new System.EventHandler(this.pbActLog_Click);
       // 
       // FormMain
       // 
@@ -1862,10 +1863,17 @@
       this.tlDat.PerformLayout();
       this.tlDatPic.ResumeLayout(false);
       this.tlDatPic.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.picWiFi)).EndInit();
+      this.pDatAccu.ResumeLayout(false);
       this.tlDatTri.ResumeLayout(false);
       this.tlDatTri.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.picPitch)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.picRoll)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.picYaw)).EndInit();
       this.tlDatErrorState.ResumeLayout(false);
       this.tlDatErrorState.PerformLayout();
+      this.pDatWork.ResumeLayout(false);
       this.tlDatCmd.ResumeLayout(false);
       this.tpUsr.ResumeLayout(false);
       this.tpUsr.PerformLayout();
@@ -1889,13 +1897,6 @@
       this.tpAct.ResumeLayout(false);
       this.tableLayoutPanel1.ResumeLayout(false);
       this.tableLayoutPanel1.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.picWiFi)).EndInit();
-      this.pDatAccu.ResumeLayout(false);
-      ((System.ComponentModel.ISupportInitialize)(this.picPitch)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.picRoll)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.picYaw)).EndInit();
-      this.pDatWork.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
