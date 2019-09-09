@@ -132,6 +132,13 @@
     <None Include="EstimatedTimes.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Images\refresh16.png" />
+    <None Include="Images\home16.png" />
+    <None Include="Images\pause16.png" />
+    <None Include="Images\play16.png" />
+    <None Include="Images\stop16.png" />
+    <None Include="Images\bt_background.png" />
+    <None Include="Images\wt_background.png" />
     <Content Include="strings.da.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
