@@ -150,7 +150,7 @@
       this.tpTrace = new System.Windows.Forms.TabPage();
       this.rtLog = new System.Windows.Forms.RichTextBox();
       this.tpAct = new System.Windows.Forms.TabPage();
-      this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      this.tlpAct = new System.Windows.Forms.TableLayoutPanel();
       this.lvActLog = new System.Windows.Forms.ListView();
       this.chActStamp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.chActState = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -200,7 +200,7 @@
       this.tpMqtt.SuspendLayout();
       this.tpTrace.SuspendLayout();
       this.tpAct.SuspendLayout();
-      this.tableLayoutPanel1.SuspendLayout();
+      this.tlpAct.SuspendLayout();
       this.SuspendLayout();
       // 
       // tpPlan
@@ -1376,10 +1376,10 @@
       this.tcMain.Controls.Add(this.tpState);
       this.tcMain.Controls.Add(this.tpPlan);
       this.tcMain.Controls.Add(this.tpZone);
+      this.tcMain.Controls.Add(this.tpAct);
       this.tcMain.Controls.Add(this.tpPlugin);
       this.tcMain.Controls.Add(this.tpMqtt);
       this.tcMain.Controls.Add(this.tpTrace);
-      this.tcMain.Controls.Add(this.tpAct);
       this.tcMain.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tcMain.Location = new System.Drawing.Point(0, 0);
       this.tcMain.Name = "tcMain";
@@ -1728,7 +1728,7 @@
       // 
       // tpAct
       // 
-      this.tpAct.Controls.Add(this.tableLayoutPanel1);
+      this.tpAct.Controls.Add(this.tlpAct);
       this.tpAct.Location = new System.Drawing.Point(4, 22);
       this.tpAct.Name = "tpAct";
       this.tpAct.Size = new System.Drawing.Size(406, 385);
@@ -1736,23 +1736,23 @@
       this.tpAct.Text = "ActLog";
       this.tpAct.UseVisualStyleBackColor = true;
       // 
-      // tableLayoutPanel1
+      // tlpAct
       // 
-      this.tableLayoutPanel1.ColumnCount = 2;
-      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tableLayoutPanel1.Controls.Add(this.lvActLog, 0, 0);
-      this.tableLayoutPanel1.Controls.Add(this.pbActLog, 1, 1);
-      this.tableLayoutPanel1.Controls.Add(this.lActHint, 0, 1);
-      this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-      this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-      this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-      this.tableLayoutPanel1.RowCount = 2;
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tableLayoutPanel1.Size = new System.Drawing.Size(406, 385);
-      this.tableLayoutPanel1.TabIndex = 0;
+      this.tlpAct.ColumnCount = 2;
+      this.tlpAct.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tlpAct.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      this.tlpAct.Controls.Add(this.lvActLog, 0, 0);
+      this.tlpAct.Controls.Add(this.pbActLog, 1, 1);
+      this.tlpAct.Controls.Add(this.lActHint, 0, 1);
+      this.tlpAct.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tlpAct.Location = new System.Drawing.Point(0, 0);
+      this.tlpAct.Margin = new System.Windows.Forms.Padding(0);
+      this.tlpAct.Name = "tlpAct";
+      this.tlpAct.RowCount = 2;
+      this.tlpAct.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tlpAct.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      this.tlpAct.Size = new System.Drawing.Size(406, 385);
+      this.tlpAct.TabIndex = 0;
       // 
       // lvActLog
       // 
@@ -1765,7 +1765,7 @@
             this.chActError,
             this.chActCharge,
             this.chActMiss});
-      this.tableLayoutPanel1.SetColumnSpan(this.lvActLog, 2);
+      this.tlpAct.SetColumnSpan(this.lvActLog, 2);
       this.lvActLog.FullRowSelect = true;
       this.lvActLog.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
       this.lvActLog.HideSelection = false;
@@ -1895,8 +1895,8 @@
       this.tpMqtt.PerformLayout();
       this.tpTrace.ResumeLayout(false);
       this.tpAct.ResumeLayout(false);
-      this.tableLayoutPanel1.ResumeLayout(false);
-      this.tableLayoutPanel1.PerformLayout();
+      this.tlpAct.ResumeLayout(false);
+      this.tlpAct.PerformLayout();
       this.ResumeLayout(false);
 
     }
@@ -2021,7 +2021,7 @@
     private System.Windows.Forms.Label txUsrBoard;
     private System.Windows.Forms.TextBox edUsrBoard;
     private System.Windows.Forms.TabPage tpAct;
-    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+    private System.Windows.Forms.TableLayoutPanel tlpAct;
     private System.Windows.Forms.ListView lvActLog;
     private System.Windows.Forms.ColumnHeader chActStamp;
     private System.Windows.Forms.ColumnHeader chActState;
