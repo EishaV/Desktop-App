@@ -50,7 +50,7 @@ public class PluginMowOutsideArea : IPlugin {
   bool IPlugin.Todo(PluginData pd) {
     StatusCode ls = pd.Data.LastState;
     DeskApp.Trace(string.Format("MOA: State {0}", ls));
-    if( _op.StateOfMoa == MoaState.Mon && ls == StatusCode.APP_WIRE_FOLLOW_GOING_HOME ) {
+    if( _op.StateOfMoa == MoaState.Mon && ls == StatusCode.WIRE_GOING_HOME ) {
 			DeskApp.Send("{\"cmd\":2}"); // Pause
 			_op.StateOfMoa = MoaState.None;
 			DeskApp.Trace("MOA: Monitor -> End");

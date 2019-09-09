@@ -836,10 +836,10 @@ namespace DesktopApp {
         case StatusCode.SEARCHING_WIRE: // "Suche Draht"
         case StatusCode.SEARCHING_HOME: c = Color.Yellow; return Ressource.Get("home_mower_going_home"); // "Suche Heim";
 
-        case StatusCode.APP_WIRE_FOLLOW_GOING_HOME: c = Color.Yellow; return Ressource.Get("home_mower_wire_follow_going_home");
-        case StatusCode.APP_WIRE_FOLLOW_AREA_SEARCH: c = Color.Yellow; return Ressource.Get("home_mower_wire_follow_area_search");
-        case StatusCode.APP_WIRE_FOLLOW_AREA_TRAINING: c = Color.Yellow; return Ressource.Get("home_mower_wire_follow_area_training");
-        case StatusCode.APP_WIRE_FOLLOW_BORDER_CUT: c = Color.Yellow; return Ressource.Get("home_mower_wire_follow_border_cut");
+        case StatusCode.WIRE_GOING_HOME: c = Color.Yellow; return Ressource.Get("home_mower_wire_follow_going_home");
+        case StatusCode.WIRE_AREA_SEARCH: c = Color.Yellow; return Ressource.Get("home_mower_wire_follow_area_search");
+        case StatusCode.WIRE_AREA_TRAINING: c = Color.Yellow; return Ressource.Get("home_mower_wire_follow_area_training");
+        case StatusCode.WIRE_BORDER_CUT: c = Color.Yellow; return Ressource.Get("home_mower_wire_follow_border_cut");
 
         case StatusCode.LIFT_RECOVERY: // "Fehlerbehebung angehoben";
         case StatusCode.TRAPPED_RECOVERY: // "Fehlerbehebung Mähwerk"
@@ -983,6 +983,7 @@ namespace DesktopApp {
         li.SubItems.Add(a.Payload.Dat.LastError.ToString());
         li.SubItems.Add(a.Payload.Dat.Battery.Charging == ChargeCoge.CHARGING ? "+" : "-");
         li.SubItems.Add(a.Payload.Dat.Battery.Miss.ToString());
+        li.ToolTipText = a.Stamp;
         lvActLog.Items.Add(li);
       }
       chActStamp.Width = -1;
