@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DesktopApp</RootNamespace>
     <AssemblyName>DeskApp</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
@@ -64,9 +64,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppRes.resx</DependentUpon>
     </Compile>
-    <None Include="CsvLogWriter.cs">
+    <Compile Include="PluginCsvLogWriter.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Compile>
     <Compile Include="FormChoice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +80,12 @@
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="LsClient.cs" />
+    <Compile Include="PluginHomeBorderCut.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="PluginMowOutsideArea.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Ressource.cs" />
     <EmbeddedResource Include="AppRes.resx">
@@ -117,9 +123,7 @@
     <Content Include="EstimatedTimes.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="Images\bt_charging.png" />
     <Content Include="Landroid.ico" />
-    <EmbeddedResource Include="Images\marker_blue.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

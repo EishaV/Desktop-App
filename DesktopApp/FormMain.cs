@@ -138,6 +138,8 @@ namespace DesktopApp {
       chScEnd.HeaderText = Ressource.Get("da_plan_end");
       dgSchedulePlan.CellValueChanged += dgSchedulePlan_CellValueChanged;
       lCfgSc.Text = Ressource.Get("da_plan_mode");
+      lCfgScPerc.Text = Ressource.Get("da_plan_perc");
+      lCfgRainDelay.Text = Ressource.Get("da_plan_rain");
       pbPlanSave.Text = Ressource.Get("da_plan_save");
 
       tpZone.Text  = Ressource.Get("da_zone");
@@ -148,9 +150,16 @@ namespace DesktopApp {
       pbZoneStart.Text = Ressource.Get("da_zone_train");
       pbZoneSave.Text = Ressource.Get("da_zone_save");
 
-      string old = Path.Combine(Application.StartupPath, string.Format("LandroidS{0}.json", _cfgname));
+      tpAct.Text  = Ressource.Get("da_act");
+      chActStamp.Text = Ressource.Get("da_act_stamp");
+      chActState.Text = Ressource.Get("da_act_state");
+      chActError.Text = Ressource.Get("da_act_error");
+      lActHint.Text =  Ressource.Get("da_act_hint");
+      pbActLog.Text = Ressource.Get("da_act_poll");
 
-      if( File.Exists(old) && !File.Exists(CfgFile) ) File.Move(old, CfgFile);
+      tpPlugin.Text  = Ressource.Get("da_plug");
+      chPluginScript.Text = Ressource.Get("da_plug_code");
+      chPluginDesc.Text = Ressource.Get("da_plug_desc");
 
       if( File.Exists(CfgFile) ) {
         DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(LsJson));
@@ -313,6 +322,7 @@ namespace DesktopApp {
       if( !string.IsNullOrEmpty(edUsrBroker.Text) && !string.IsNullOrEmpty(edUsrBoard.Text) && !string.IsNullOrEmpty(edUsrMac.Text) ) {
         pbLogin.Enabled = false;
         if( !_lsc.Connected ) pbConnect.Enabled = true;
+        pbActLog.Enabled = true; lActHint.Text = null;
       }
     }
     private void pbConnect_Click(object sender, EventArgs e) {
@@ -835,10 +845,10 @@ namespace DesktopApp {
         case StatusCode.SEARCHING_WIRE: // "Suche Draht"
         case StatusCode.SEARCHING_HOME: c = Color.Yellow; return Ressource.Get("home_mower_going_home"); // "Suche Heim";
 
-        case StatusCode.APP_WIRE_FOLLOW_GOING_HOME: c = Color.Yellow; return Ressource.Get("home_mower_wire_follow_going_home");
-        case StatusCode.APP_WIRE_FOLLOW_AREA_SEARCH: c = Color.Yellow; return Ressource.Get("home_mower_wire_follow_area_search");
-        case StatusCode.APP_WIRE_FOLLOW_AREA_TRAINING: c = Color.Yellow; return Ressource.Get("home_mower_wire_follow_area_training");
-        case StatusCode.APP_WIRE_FOLLOW_BORDER_CUT: c = Color.Yellow; return Ressource.Get("home_mower_wire_follow_border_cut");
+        case StatusCode.WIRE_GOING_HOME: c = Color.Yellow; return Ressource.Get("home_mower_wire_follow_going_home");
+        case StatusCode.WIRE_AREA_SEARCH: c = Color.Yellow; return Ressource.Get("home_mower_wire_follow_area_search");
+        case StatusCode.WIRE_AREA_TRAINING: c = Color.Yellow; return Ressource.Get("home_mower_wire_follow_area_training");
+        case StatusCode.WIRE_BORDER_CUT: c = Color.Yellow; return Ressource.Get("home_mower_wire_follow_border_cut");
 
         case StatusCode.LIFT_RECOVERY: // "Fehlerbehebung angehoben";
         case StatusCode.TRAPPED_RECOVERY: // "Fehlerbehebung Mähwerk"
@@ -970,6 +980,24 @@ namespace DesktopApp {
     }
 
     private void pictureBox_Paint(object sender, PaintEventArgs e) {
+    }
+
+    private void pbActLog_Click(object sender, EventArgs e) {
+      lvActLog.Items.Clear();
+      foreach( Activity a in _lsc.GetActivities(edUsrName.Text)) {
+        ListViewItem li = new ListViewItem();
+
+        li.Text = a.Payload.Cfg.Date + " " + a.Payload.Cfg.Time;
+        li.SubItems.Add(a.Payload.Dat.LastState.ToString());
+        li.SubItems.Add(a.Payload.Dat.LastError.ToString());
+        li.SubItems.Add(a.Payload.Dat.Battery.Charging == ChargeCoge.CHARGING ? "+" : "-");
+        li.SubItems.Add(a.Payload.Dat.Battery.Miss.ToString());
+        li.ToolTipText = a.Stamp;
+        lvActLog.Items.Add(li);
+      }
+      chActStamp.Width = -1;
+      chActState.Width = -1;
+      chActError.Width = -1;
     }
   }
 }
