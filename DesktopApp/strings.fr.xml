@@ -1,0 +1,86 @@
+<!-- German -->
+<resources>
+  <!-- Shared with Positec -->
+  <string name="home_mower_error">Erreur</string>
+  <string name="home_mower_error_battery_low">Batterie faible</string>
+  <string name="home_mower_error_battery_overtemp">Batterie en surchauffe</string>
+  <string name="home_mower_error_blade_motor_fault">Problème du moteur de coupe</string>
+  <string name="home_mower_error_close_door_to_cut">Fermer le capot pour pouvoir tondre</string>
+  <string name="home_mower_error_close_to_go_home">Fermet pour retourner à la base</string>
+  <string name="home_mower_error_home_find_timeout">Temps dépassé pour retourner à la base</string>
+  <string name="home_mower_error_lifted">Robot soulevé du sol</string>
+  <string name="home_mower_error_lock">Robot verrouillé</string>
+  <string name="home_mower_error_outside_wire">Robot en dehors du fil</string>
+  <string name="home_mower_error_reverse_wire">Câble inversé</string>
+  <string name="home_mower_error_trapped">Robot coincé</string>
+  <string name="home_mower_error_trapped_timeout_fault">Robot coincé trop longtemps</string>
+  <string name="home_mower_error_upside_down">Robot renversé</string>
+  <string name="home_mower_error_wheel_motor_fault">Problème du moteur des roues</string>
+  <string name="home_mower_error_wire_missing">Câble manquant ou coupé</string>
+
+  <string name="home_mower_charging">En charge</string>
+  <string name="home_mower_going_home">Retour à la base</string>
+  <string name="home_mower_leaving_home">Départ de la base</string>
+  <string name="home_mower_manual_stop">Arrêt manuel</string>
+  <string name="home_mower_mowing">Tonte en cours</string>
+  <string name="home_mower_home">A la base</string>
+  <string name="home_mower_pause">En pause</string>
+  <string name="home_mower_rain_delay">Délai après la pluie</string>
+  <string name="home_mower_trapped">Robot coincé</string>
+  <string name="home_mower_unknown_status">Inconnu</string>
+  <string name="home_mower_wire_follow_area_search">Recherche de zone</string>
+  <string name="home_mower_wire_follow_area_training">Apprentissage de zone</string>
+  <string name="home_mower_wire_follow_border_cut">Coupe des bords</string>
+  <string name="home_mower_wire_follow_going_home">Retour à la base</string>
+  
+
+  <!-- Only in DeskApp da_ -->
+  <string name="da_user">Utilisateur</string>
+  <string name="da_user_email">&amp;Email</string>
+  <string name="da_user_pass">&amp;Mot de passe</string>
+  <string name="da_user_name">&amp;Nom</string>
+  <string name="da_user_top">Fenêtre &amp;toujours visible</string>
+  <string name="da_user_login">&amp;Inscription</string>
+  <string name="da_user_con">&amp;Connexion</string>
+  <string name="da_user_dis">&amp;Déconnexion</string>
+  
+  <string name="da_state">Status</string>
+  <string name="da_state_daywork">Horaire</string>
+  <string name="da_state_accu">Batterie</string>
+  <string name="da_state_pitch">Tangage</string>
+  <string name="da_state_roll">Roulis</string>
+  <string name="da_state_yaw">Lacet</string>
+  <string name="da_state_blade">Lame</string>
+  <string name="da_state_blade_info">Temps de tonte: </string><!--17-->
+  <string name="da_state_dist">Distance</string>
+  <string name="da_state_dist_info">Distance totale</string><!--17-->
+  <string name="da_state_work">Durée</string>
+  <string name="da_state_work_info">Durée total</string><!--17-->
+  <string name="da_state_last">Dernier état</string>
+  <string name="da_state_start">&amp;Démarrer</string>
+  <string name="da_state_home">&amp;Maison</string>
+  <string name="da_state_stop">&amp;Stop</string>
+  <string name="da_state_poll">&amp;Interroger</string>
+  <string name="da_warn_stop">Pause de 20min puis extinction.</string>
+  
+  <string name="da_plan">Horaires</string>
+  <string name="da_plan_mode">Mode</string>
+  <string name="da_plan_dow">Jour</string>
+  <string name="da_plan_cut">Bord</string>
+  <string name="da_plan_beg">Début</string>
+  <string name="da_plan_min">Durée</string>
+  <string name="da_plan_end">Fin</string>
+  <string name="da_plan_perc">Correction</string>
+  <string name="da_plan_rain">Attente si pluie</string>
+  <string name="da_plan_save">&amp;Enregistrer</string>
+  <string name="da_error_beg">Heure de début au format hh:mm</string>
+  <string name="da_error_min">Durée en minutes entre 0 et 1440</string>
+  <string name="da_error_end">Heure de fin au format hh:mm</string>
+
+  <string name="da_zone">Multi-zone</string>
+  <string name="da_zone_start">Début [m]</string>
+  <string name="da_zone_perc">Pourcentage</string>
+  <string name="da_zone_train">&amp;Tour de bord</string>
+  <string name="da_zone_save">&amp;Enregistrer</string>
+  <string name="da_error_start">Début en mètres entre 0 et 999</string>
+</resources>
