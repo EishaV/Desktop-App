@@ -138,6 +138,8 @@ namespace DesktopApp {
       chScEnd.HeaderText = Ressource.Get("da_plan_end");
       dgSchedulePlan.CellValueChanged += dgSchedulePlan_CellValueChanged;
       lCfgSc.Text = Ressource.Get("da_plan_mode");
+      lCfgScPerc.Text = Ressource.Get("da_plan_perc");
+      lCfgRainDelay.Text = Ressource.Get("da_plan_rain");
       pbPlanSave.Text = Ressource.Get("da_plan_save");
 
       tpZone.Text  = Ressource.Get("da_zone");
@@ -148,9 +150,16 @@ namespace DesktopApp {
       pbZoneStart.Text = Ressource.Get("da_zone_train");
       pbZoneSave.Text = Ressource.Get("da_zone_save");
 
-      string old = Path.Combine(Application.StartupPath, string.Format("LandroidS{0}.json", _cfgname));
+      tpAct.Text  = Ressource.Get("da_act");
+      chActStamp.Text = Ressource.Get("da_act_stamp");
+      chActState.Text = Ressource.Get("da_act_state");
+      chActError.Text = Ressource.Get("da_act_error");
+      lActHint.Text =  Ressource.Get("da_act_hint");
+      pbActLog.Text = Ressource.Get("da_act_poll");
 
-      if( File.Exists(old) && !File.Exists(CfgFile) ) File.Move(old, CfgFile);
+      tpPlugin.Text  = Ressource.Get("da_plug");
+      chPluginScript.Text = Ressource.Get("da_plug_code");
+      chPluginDesc.Text = Ressource.Get("da_plug_desc");
 
       if( File.Exists(CfgFile) ) {
         DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(LsJson));
