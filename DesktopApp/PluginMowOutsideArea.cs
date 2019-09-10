@@ -1,114 +1,68 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.IO;
-using System.Globalization;
 using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
-using System.Windows.Forms;
-
+using System.Threading;
 using MqttJson;
 
 public class PluginMowOutsideArea : IPlugin {
-  public enum PbState { None , GoB, CutB, EndB, MowA, EdA }
-
+  public enum MoaState { None , Mon }
   [DataContract]
-  public class PbOptions { // Options for PropertyGrid on Plugin tab
+  public class MoaOptions { // Options for PropertyGrid on Plugin tab
     [DataMember]
-    [DescriptionAttribute("Time for border cut")]
-    public int BorderCut { get; set; }
+    [DescriptionAttribute("Time for mowing area")]
+    public int TimeInArea { get; set; }
+    [DataMember]
+    [Description("State of mow outside area"), ReadOnly(true)]
+    public MoaState StateOfMoa { get; set; }
+    public MoaOptions() {
+      TimeInArea = 0; // mow until accu empty
+      StateOfMoa = MoaState.None;
+    }
   }
 
-  const string PbJson = "MowOutsideArea.json"; // file name for options
-  private PbOptions _op = new PbOptions(); // options
-  private DelegateString _send = null, _trace = null;
-  private Timer _timer = new Timer();
-  private StatusCode _ls = StatusCode.UNK;
-  private PbState _state = PbState.None;
+  const string MoaJson = "MowOutsideArea.json"; // file name for options
+  private MoaOptions _op;
+  private Timer _tm;
 
   public PluginMowOutsideArea() { // try to read options from file
-    if( File.Exists(PbJson) ) {
-      try {
-        using( FileStream fs = new FileStream(PbJson, FileMode.Open) ) {
-          DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(PbOptions));
-
-          _op = dcjs.ReadObject(fs) as PbOptions;
-        }
-      } catch {
-        _op = new PbOptions();
-      }
-    }
-    _timer.Tick += new System.EventHandler(this.timer_Tick);
+    _op = DeskApp.GetJson<MoaOptions>(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, MoaJson));
   }
   ~PluginMowOutsideArea() { // write non empty options to file
-    DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(PbOptions));
-    FileStream fs = new FileStream(PbJson, FileMode.Create); // Path.Combine(Application.StartupPath, ...
-
-    dcjs.WriteObject(fs, _op);
-    fs.Close();
+    DeskApp.PutJson<MoaOptions>(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, MoaJson), _op);
   }
 
   string IPlugin.Desc {
-    get { return "Mow first border and then area of an outside island"; }
+    get { return "Monitor mowing of an outside island"; }
   }
   object IPlugin.Options {
     get { return _op; }
   }
-
-  bool IPlugin.Test(PluginData pd) {
-    if( pd.Data.LastState == StatusCode.PAUSE ) {
-      if( _op.BorderCut == 0 ) {
-        DeskApp.Send("{\"cmd\":1}");
-        DeskApp.Trace("MOA: Start mowing (no bc)");
-        _state = PbState.MowA;
-      } else {
-        DeskApp.Send("{\"cmd\":3}");
-        DeskApp.Trace("MOA: Start border cut");
-        _state = PbState.GoB;
-      }
-      return true;
-    } else return false;
+  bool IPlugin.Doit(PluginData pd) {
+    DeskApp.Trace("MOA: None -> Mon");
+    _op.StateOfMoa = MoaState.Mon; // begin monitoring
+		if( _op.TimeInArea > 0 ) {
+			_tm = new Timer(timer_Callback, null, _op.TimeInArea * 1000, Timeout.Infinite);
+			DeskApp.Trace(string.Format("MOA: Start Timer {0}", _op.TimeInArea));
+		}
+    return true;
   }
-  string IPlugin.Todo(PluginData pd) {
-    _trace(string.Format("MOA: State {0}", pd.Data.LastState));
-    if( pd.Data.LastState != _ls ) {
-      switch( pd.Data.LastState ) {
-        case StatusCode.SEARCHING_HOME:
-        case StatusCode.FOLLOW_WIRE:
-        case StatusCode.APP_WIRE_FOLLOW_GOING_HOME:
-          if( pd.Data.Battery.Volt > 18.0F ) {
-            if( !_timer.Enabled ) {
-              _timer.Interval = _op.BorderCut * 60 * 1000;
-              _timer.Start();
-              _trace(string.Format("MOA: Wait for {0} min", _op.BorderCut));
-              _state = PbState.CutB;
-            }
-          } else {
-            _send("{\"cmd\":2}");
-            _trace("MOA: Stop mowing (on wire)");
-            _state = PbState.EdA;
-          }
-          break;
-        case StatusCode.PAUSE:
-          if( _timer.Enabled ) {
-            _timer.Stop();
-            _send("{\"cmd\":1}");
-            _trace("MOA: Start mowing (after bc)");
-            _state = PbState.MowA;
-          }
-          break;
-        //case StatusCode.SEARCHING_HOME:
-        //  _send("{\"cmd\":2}");
-        //  _trace("MOA: Stop mowing (search)");
-        //  break;
-      }
-      _ls = pd.Data.LastState;
+  bool IPlugin.Todo(PluginData pd) {
+    StatusCode ls = pd.Data.LastState;
+    DeskApp.Trace(string.Format("MOA: State {0}", ls));
+    if( _op.StateOfMoa == MoaState.Mon && ls == StatusCode.WIRE_GOING_HOME ) {
+			DeskApp.Send("{\"cmd\":2}"); // Pause
+			_op.StateOfMoa = MoaState.None;
+			DeskApp.Trace("MOA: Monitor -> End");
+			// hier noch eine Meldung?
     }
-    return string.Empty; // no json data for Landroid
+    return true;
   }
 
-  void timer_Tick(object sender, EventArgs e) {
-    _send("{\"cmd\":2}");
-    _trace("MOA: Stop border cut");
-    _state = PbState.EndB;
+  void timer_Callback(object state) {
+		DeskApp.Send("{\"cmd\":2}"); // Pause
+		_op.StateOfMoa = MoaState.None;
+		DeskApp.Trace("MOA: Timer -> End");
+    _tm = null;
   }
 }
