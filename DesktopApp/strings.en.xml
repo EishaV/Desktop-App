@@ -1,0 +1,86 @@
+<!-- English -->
+<resources>
+  <!-- Shared with Positec -->
+  <string name="home_mower_error">Error</string>
+  <string name="home_mower_error_battery_low">Battery low</string>
+  <string name="home_mower_error_battery_overtemp">Battery Over Temperature</string>
+  <string name="home_mower_error_blade_motor_fault">blade motor fault</string>
+  <string name="home_mower_error_close_door_to_cut">close door to cut</string>
+  <string name="home_mower_error_close_to_go_home">close to go home</string>
+  <string name="home_mower_error_home_find_timeout">home find timeout</string>
+  <string name="home_mower_error_lifted">lifted</string>
+  <string name="home_mower_error_lock">lock</string>
+  <string name="home_mower_error_outside_wire">outside wire</string>
+  <string name="home_mower_error_reverse_wire">reverse wire</string>
+  <string name="home_mower_error_trapped">trapped</string>
+  <string name="home_mower_error_trapped_timeout_fault">trapped timeout fault</string>
+  <string name="home_mower_error_upside_down">upside down</string>
+  <string name="home_mower_error_wheel_motor_fault">wheel motor fault</string>
+  <string name="home_mower_error_wire_missing">wire missing</string>
+
+  <string name="home_mower_charging">Charging</string>
+  <string name="home_mower_going_home">Going home</string>
+  <string name="home_mower_leaving_home">Leaving home</string>
+  <string name="home_mower_manual_stop">Manual stop</string>
+  <string name="home_mower_mowing">Mowing</string>
+  <string name="home_mower_home">Home</string>
+  <string name="home_mower_pause">Pause</string>
+  <string name="home_mower_rain_delay">Rain delay</string>
+  <string name="home_mower_trapped">Trapped</string>
+  <string name="home_mower_unknown_status">Unknown status</string>
+  <string name="home_mower_wire_follow_area_search">Following wire area search</string>
+  <string name="home_mower_wire_follow_area_training">Following wire area training</string>
+  <string name="home_mower_wire_follow_border_cut">Following wire border cut</string>
+  <string name="home_mower_wire_follow_going_home">Following wire going home</string>
+  
+
+  <!-- Only in DeskApp da_ -->
+  <string name="da_user">User</string>
+  <string name="da_user_email">Email</string>
+  <string name="da_user_pass">Password</string>
+  <string name="da_user_name">Name</string>
+  <string name="da_user_top">Keep window in foreground</string>
+  <string name="da_user_login">Login</string>
+  <string name="da_user_con">Connect</string>
+  <string name="da_user_dis">Disconnect</string>
+  
+  <string name="da_state">Status</string>
+  <string name="da_state_daywork">Working hours</string>
+  <string name="da_state_accu">Battery</string>
+  <string name="da_state_pitch">Pitch</string>
+  <string name="da_state_roll">Roll</string>
+  <string name="da_state_yaw">Yaw</string>
+  <string name="da_state_blade">Mowing time</string>
+  <string name="da_state_blade_info">Mowing time since last double-click: </string><!--17-->
+  <string name="da_state_dist">Distance</string>
+  <string name="da_state_dist_info">Total distance</string><!--17-->
+  <string name="da_state_work">Working time</string>
+  <string name="da_state_work_info">Total time</string><!--17-->
+  <string name="da_state_last">Last update</string>
+  <string name="da_state_start">Start</string>
+  <string name="da_state_home">Home</string>
+  <string name="da_state_stop">Stop</string>
+  <string name="da_state_poll">Poll</string>
+  <string name="da_warn_stop">20 minute pause</string>
+  
+  <string name="da_plan">Plan</string>
+  <string name="da_plan_mode">Mode</string>
+  <string name="da_plan_dow">Day</string>
+  <string name="da_plan_cut">Edge cut</string>
+  <string name="da_plan_beg">Start</string>
+  <string name="da_plan_min">Duration</string>
+  <string name="da_plan_end">End</string>
+  <string name="da_plan_perc">Correction %</string>
+  <string name="da_plan_rain">Rain</string>
+  <string name="da_plan_save">Save...</string>
+  <string name="da_error_beg">Start time hh:mm</string>
+  <string name="da_error_min">Duration in minutes between 0 and 1440</string>
+  <string name="da_error_end">End time hh:mm</string>
+
+  <string name="da_zone">Zone</string>
+  <string name="da_zone_start">Start [m]</string>
+  <string name="da_zone_perc">Proportion %</string>
+  <string name="da_zone_train">Round trip</string>
+  <string name="da_zone_save">Save...</string>
+  <string name="da_error_start">Start in meters between 0 and 999</string>
+</resources>
