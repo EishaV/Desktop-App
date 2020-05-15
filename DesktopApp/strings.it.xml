@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- German -->
+<!-- Italian -->
 <resources>
   <!-- Shared with Positec -->
-  <string name="home_mower_error">Fehler</string>
-  <string name="home_mower_error_battery_low">Batterieladung niedrig</string>
+  <string name="home_mower_error">Errore</string>
+  <string name="home_mower_error_battery_low">Batteria scarica</string>
   <string name="home_mower_error_battery_overtemp">Battery Over Temperature</string>
-  <string name="home_mower_error_blade_motor_fault">Fehler Messermotor</string>
-  <string name="home_mower_error_close_door_to_cut">Klappe zum Mähen schließen</string>
-  <string name="home_mower_error_close_to_go_home">Schließen zur Heimfahrt</string>
-  <string name="home_mower_error_home_find_timeout">Zeitüberschreitung Heimfahrt</string>
-  <string name="home_mower_error_lifted">Mäher angehoben</string>
-  <string name="home_mower_error_lock">Mäher gesperrt</string>
-  <string name="home_mower_error_outside_wire">Mäher außerhalb Grenzdraht</string>
-  <string name="home_mower_error_reverse_wire">Drahtanschluss tauschen</string>
-  <string name="home_mower_error_trapped">Mäher festgefahren</string>
-  <string name="home_mower_error_trapped_timeout_fault">Zeitüberschreitung ‘gefangen’</string>
-  <string name="home_mower_error_upside_down">Mäher umgedreht</string>
-  <string name="home_mower_error_wheel_motor_fault">Fehler Radmotor</string>
-  <string name="home_mower_error_wire_missing">Draht fehlt</string>
+  <string name="home_mower_error_blade_motor_fault">Lama bloccata</string>
+  <string name="home_mower_error_close_door_to_cut">Chiudi lo sportellino per tagliare</string>
+  <string name="home_mower_error_close_to_go_home">Chiudi per andare alla home</string>
+  <string name="home_mower_error_home_find_timeout">Timeout della home</string>
+  <string name="home_mower_error_lifted">Landroid sollevato</string>
+  <string name="home_mower_error_lock">Landroid bloccato</string>
+  <string name="home_mower_error_outside_wire">Landroid fuori dal filo</string>
+  <string name="home_mower_error_reverse_wire">Inverti filo</string>
+  <string name="home_mower_error_trapped">Landroid intrappolato</string>
+  <string name="home_mower_error_trapped_timeout_fault">Intrappolato - limite di sicurezza scaduto</string>
+  <string name="home_mower_error_upside_down">Landroid rovesciato</string>
+  <string name="home_mower_error_wheel_motor_fault">Errore sul motore della ruota</string>
+  <string name="home_mower_error_wire_missing">Filo non rilevato</string>
 
   <string name="home_mower_charging">Wird geladen</string>
-  <string name="home_mower_going_home">Heimfahrt</string>
-  <string name="home_mower_leaving_home">Ausfahrt Ladestation</string>
-  <string name="home_mower_manual_stop">Manueller Stopp</string>
-  <string name="home_mower_mowing">Mähen</string>
-  <string name="home_mower_home">zu Hause</string>
+  <string name="home_mower_going_home">In rientro</string>
+  <string name="home_mower_leaving_home">Uscita dalla base</string>
+  <string name="home_mower_manual_stop">Stop manuale</string>
+  <string name="home_mower_mowing">Taglio in corso</string>
+  <string name="home_mower_home">Home</string>
   <string name="home_mower_pause">Pause</string>
-  <string name="home_mower_rain_delay">Regenverzögerung</string>
-  <string name="home_mower_trapped">Mäher festgefahren</string>
-  <string name="home_mower_unknown_status">unbekannt</string>
+  <string name="home_mower_rain_delay">Ritardo pioggia</string>
+  <string name="home_mower_trapped">Landroid intrappolato</string>
+  <string name="home_mower_unknown_status">Sconosciuto</string>
   <string name="home_mower_wire_follow_area_search">Zonenanfahrt</string>
   <string name="home_mower_wire_follow_area_training">Zonen Training</string>
   <string name="home_mower_wire_follow_border_cut">Kantenschnitt</string>
   <string name="home_mower_wire_follow_going_home">Heimfahrt</string>
-  
+
 
   <!-- Only in DeskApp da_ -->
   <string name="da_user">Nutzer</string>

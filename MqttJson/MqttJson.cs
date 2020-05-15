@@ -73,28 +73,44 @@ namespace MqttJson{
     "cfg":{ "lg":"it",
             "tm":"14:13:57",
             "dt":"30/07/2017",
-            "sc":{"m":1,"p":0,"d":[["15:30",330,0],["15:30",330,1],["15:30",330,0],["15:30",330,1],["15:30",330,0],["15:30",330,1],["15:30",330,0]]},
+            "sc":{"m":1,"distm":0,"ots":{"bc":0,"wtm":30},"p":0,
+                  "d":[["10:30",60,0],["0:0",0,1],["0:0",0,0],["0:0",0,1],["0:0",0,0],["0:0",0,1],["0:0",0,0]], ...},
             "cmd":0,
             "mz":[0,0,0,0],
             "mzv":[0,0,0,0,0,0,0,0,0,0],
-            "rd":120,
-            "sn":"..."},
-    "dat":{ "mac":"F0FE6B...",
-            "fw":2.69,
-            "bt":{"t":31.7,"v":19.53,"p":82,"nr":910,"c":0},
+            "rd":30,
+            "sn":"...",
+            "modules":{"US":{"enabled":1}}
+          },
+    "dat":{ "mac":"...",
+            "fw":3.11, "fwb":9,
+            "bt":{"t":31.7,"v":19.53,"p":82,"nr":910,"c":0,"m":1},
             "dmp":[3.3,-3.2,328.8],
-            "st":{"b":20010,"d":315068,"wt":21307},
+            "st":{"b":20010,"d":315068,"wt":21307,"bl":36},
             "ls":1,
             "le":0,
             "lz":0,
             "rsi":-74,
-            "lk":0}
+            "lk":0,
+            "act":1,
+            "tr":0,
+            "conn":"wifi",
+            "rain":{"s":1,"cnt":30},
+            "modules":{"US":{"stat":"ok"},"DF":{"stat":"ok"}}
+          }
   }
   */
+  [DataContract]
+  public struct OneTimeSchedule {
+    [DataMember(Name = "bc")]   public int BorderCut;
+    [DataMember(Name = "wtm")]  public int WaitTimeMin; // mowing time before idle
+  }
+
   [DataContract] public struct Schedule {
-    [DataMember(Name = "m")]    public int Mode;
-    [DataMember(Name = "p")]    public int Perc; // override from -100% to +100%, 0% is normal
-    [DataMember(Name = "d")]    public List<List<object>> Days;
+    [DataMember(Name = "m")]      public int Mode;
+    //[DataMember(Name = "distm")]  public int Dist; // length of border wire
+    [DataMember(Name = "p")]      public int Perc; // override from -100% to +100%, 0% is normal
+    [DataMember(Name = "d")]      public List<List<object>> Days;
   }
 
   [DataContract] public struct Config {

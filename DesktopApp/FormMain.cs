@@ -93,9 +93,9 @@ namespace DesktopApp {
 
       _lsc.Data.Cfg.Schedule.Mode = 1;
       _lsc.Data.Cfg.Schedule.Days = new List<List<object>>();
-      for( int idx = 0; idx < 7; idx++ ) {
+      for( int idx = 0; idx < 14; idx++ ) {
         dgSchedulePlan.Rows.Add();
-        dgSchedulePlan.Rows[idx].Cells[chScDow.Index].Value = DateTimeFormatInfo.CurrentInfo.GetAbbreviatedDayName((DayOfWeek)idx);
+        dgSchedulePlan.Rows[idx].Cells[chScDow.Index].Value = DateTimeFormatInfo.CurrentInfo.GetAbbreviatedDayName((DayOfWeek)(idx%7));
         _lsc.Data.Cfg.Schedule.Days.Add(new List<object> { "00:00", 0, 0 });
       }
       dgSchedulePlan.Height = dgSchedulePlan.ColumnHeadersHeight + 7*dgSchedulePlan.Rows[0].Height + 2*SystemInformation.BorderSize.Height;
@@ -528,15 +528,17 @@ namespace DesktopApp {
     private void RefreshCfgScEnd() {
       toolTip.SetToolTip(tbCfgScPerc, string.Format("{0}%", tbCfgScPerc.Value));
 
+      dgSchedulePlan.CellValueChanged -= dgSchedulePlan_CellValueChanged;
       foreach( DataGridViewRow row in dgSchedulePlan.Rows ) {
-        TimeSpan beg = TimeSpan.ParseExact(row.Cells[chScBeg.Index].Value.ToString(), "hh\\:mm", CultureInfo.InvariantCulture);
-        int dur = int.Parse(row.Cells[chScMin.Name].Value.ToString());
-        TimeSpan end = beg + TimeSpan.FromMinutes(dur + dur * tbCfgScPerc.Value/100.0);
+        if( row.Cells[chScBeg.Index].Value != null && row.Cells[chScMin.Name].Value != null ) {
+          TimeSpan beg = TimeSpan.ParseExact(row.Cells[chScBeg.Index].Value?.ToString(), "hh\\:mm", CultureInfo.InvariantCulture);
+          int dur = int.Parse(row.Cells[chScMin.Name].Value.ToString());
+          TimeSpan end = beg + TimeSpan.FromMinutes(dur + dur * tbCfgScPerc.Value / 100.0);
 
-        dgSchedulePlan.CellValueChanged -= dgSchedulePlan_CellValueChanged;
-        row.Cells[chScEnd.Name].Value = end.ToString("hh\\:mm");
-        dgSchedulePlan.CellValueChanged += dgSchedulePlan_CellValueChanged;
+          row.Cells[chScEnd.Name].Value = end.ToString("hh\\:mm");
+        }
       }
+      dgSchedulePlan.CellValueChanged += dgSchedulePlan_CellValueChanged;
       chScEnd.ReadOnly = tbCfgScPerc.Value != 0;
     }
 
@@ -611,7 +613,7 @@ namespace DesktopApp {
 
       cfgNew.sc.Mode = int.Parse(txCfgScMode.Text.Substring(1, 1));
       cfgNew.sc.Days = new List<List<object>>(7);
-      for( int idx = 0; idx < 7; idx++ ) {
+      for( int idx = 0; idx < cfg.Schedule.Days.Count; idx++ ) {
         DataGridViewRow row = dgSchedulePlan.Rows[idx];
 
         cfgNew.sc.Days.Add(new List<object>());
@@ -783,7 +785,7 @@ namespace DesktopApp {
     #endregion
 
     private void Err(String s) {
-      MessageBox.Show(this, s, "Landroid-S", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+      MessageBox.Show(this, s, Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
     }
     private void Log(String s, int c = 0) {
       if( InvokeRequired ) Invoke(new LogDelegte(LogInvoke), s, c);

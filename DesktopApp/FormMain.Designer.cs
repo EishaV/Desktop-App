@@ -445,7 +445,7 @@
       this.dgSchedulePlan.MultiSelect = false;
       this.dgSchedulePlan.Name = "dgSchedulePlan";
       this.dgSchedulePlan.RowHeadersWidth = 46;
-      this.dgSchedulePlan.ScrollBars = System.Windows.Forms.ScrollBars.None;
+      this.dgSchedulePlan.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
       this.dgSchedulePlan.Size = new System.Drawing.Size(326, 100);
       this.dgSchedulePlan.TabIndex = 1;
       this.dgSchedulePlan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgSchedulePlan_CellFormatting);

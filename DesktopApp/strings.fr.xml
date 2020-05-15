@@ -1,4 +1,5 @@
-<!-- German -->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- French -->
 <resources>
   <!-- Shared with Positec -->
   <string name="home_mower_error">Erreur</string>
@@ -83,4 +84,16 @@
   <string name="da_zone_train">&amp;Tour de bord</string>
   <string name="da_zone_save">&amp;Enregistrer</string>
   <string name="da_error_start">Début en mètres entre 0 et 999</string>
+	
+  <string name="da_act">Activité</string>
+  <string name="da_act_stamp">Date</string>
+  <string name="da_act_state">Etat</string>
+  <string name="da_act_error">Erreur</string>
+  <string name="da_act_poll">&amp;Actualisation</string>
+  <string name="da_act_hint">La connexion est nécessaire</string>
+
+  <string name="da_plug">Extension</string>
+  <string name="da_plug_code">Script</string>
+  <string name="da_plug_desc">Description</string>
+	
 </resources>
