@@ -471,7 +471,12 @@ namespace DesktopApp
     //}
 
     public bool Start(string broker, string uuid, string board, string mac, bool first = true) {
-      Broker = broker; _uuid = "android-" + uuid; _board = board; _mac = mac;
+      Broker = broker; _board = board; _mac = mac;    
+      if (first)
+        _uuid = "android-" + uuid;
+      else
+        _uuid = uuid;
+      
       Log(string.Format("Broker: '{0}'", broker));
       Log(string.Format("Topic: '{0}/{1}'", board, mac));
       _cmdIn = string.Format("{0}/{1}/commandIn", board, mac);
