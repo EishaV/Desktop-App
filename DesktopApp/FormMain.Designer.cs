@@ -72,6 +72,10 @@
       this.txDatRsi = new System.Windows.Forms.Label();
       this.lDatSP = new System.Windows.Forms.Label();
       this.txDatSP = new System.Windows.Forms.Label();
+      this.tlName = new System.Windows.Forms.TableLayoutPanel();
+      this.txName = new System.Windows.Forms.Label();
+      this.txOLM = new System.Windows.Forms.Label();
+      this.txACS = new System.Windows.Forms.Label();
       this.pDatAccu = new System.Windows.Forms.Panel();
       this.txDatAccu = new System.Windows.Forms.Label();
       this.txDatDT = new System.Windows.Forms.Label();
@@ -175,6 +179,7 @@
       this.tlDatPic.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.picWiFi)).BeginInit();
+      this.tlName.SuspendLayout();
       this.pDatAccu.SuspendLayout();
       this.tlDatTri.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.picPitch)).BeginInit();
@@ -216,10 +221,9 @@
       // 
       // tlPlan
       // 
-      this.tlPlan.ColumnCount = 3;
+      this.tlPlan.ColumnCount = 2;
       this.tlPlan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tlPlan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 98.76543F));
-      this.tlPlan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.234568F));
+      this.tlPlan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tlPlan.Controls.Add(this.tlScPerc, 1, 1);
       this.tlPlan.Controls.Add(this.dgSchedulePlan, 1, 0);
       this.tlPlan.Controls.Add(this.lCfgScPerc, 0, 1);
@@ -236,7 +240,7 @@
       this.tlPlan.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tlPlan.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tlPlan.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tlPlan.Size = new System.Drawing.Size(406, 356);
+      this.tlPlan.Size = new System.Drawing.Size(406, 355);
       this.tlPlan.TabIndex = 2;
       // 
       // tlScPerc
@@ -275,7 +279,7 @@
       this.tlScPerc.RowCount = 2;
       this.tlScPerc.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tlScPerc.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tlScPerc.Size = new System.Drawing.Size(326, 40);
+      this.tlScPerc.Size = new System.Drawing.Size(331, 40);
       this.tlScPerc.TabIndex = 3;
       // 
       // tbCfgScPerc
@@ -290,7 +294,7 @@
       this.tbCfgScPerc.Maximum = 100;
       this.tbCfgScPerc.Minimum = -100;
       this.tbCfgScPerc.Name = "tbCfgScPerc";
-      this.tbCfgScPerc.Size = new System.Drawing.Size(326, 25);
+      this.tbCfgScPerc.Size = new System.Drawing.Size(331, 25);
       this.tbCfgScPerc.TabIndex = 4;
       this.tbCfgScPerc.TickStyle = System.Windows.Forms.TickStyle.None;
       this.toolTip.SetToolTip(this.tbCfgScPerc, "??%");
@@ -316,7 +320,7 @@
       this.pbCfgScCorrP4.AutoSize = true;
       this.pbCfgScCorrP4.Font = new System.Drawing.Font("Verdana", 1F);
       this.pbCfgScCorrP4.ForeColor = System.Drawing.Color.Transparent;
-      this.pbCfgScCorrP4.Location = new System.Drawing.Point(306, 25);
+      this.pbCfgScCorrP4.Location = new System.Drawing.Point(311, 25);
       this.pbCfgScCorrP4.Margin = new System.Windows.Forms.Padding(0);
       this.pbCfgScCorrP4.Name = "pbCfgScCorrP4";
       this.pbCfgScCorrP4.Size = new System.Drawing.Size(20, 12);
@@ -434,6 +438,7 @@
       // 
       this.dgSchedulePlan.AllowUserToAddRows = false;
       this.dgSchedulePlan.AllowUserToDeleteRows = false;
+      this.dgSchedulePlan.ColumnHeadersHeight = 34;
       this.dgSchedulePlan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.chScDow,
             this.chScCut,
@@ -445,8 +450,8 @@
       this.dgSchedulePlan.MultiSelect = false;
       this.dgSchedulePlan.Name = "dgSchedulePlan";
       this.dgSchedulePlan.RowHeadersWidth = 46;
-      this.dgSchedulePlan.ScrollBars = System.Windows.Forms.ScrollBars.None;
-      this.dgSchedulePlan.Size = new System.Drawing.Size(326, 100);
+      this.dgSchedulePlan.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+      this.dgSchedulePlan.Size = new System.Drawing.Size(331, 100);
       this.dgSchedulePlan.TabIndex = 1;
       this.dgSchedulePlan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgSchedulePlan_CellFormatting);
       this.dgSchedulePlan.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgSchedulePlan_CellValidating);
@@ -457,6 +462,7 @@
       this.chScDow.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
       this.chScDow.Frozen = true;
       this.chScDow.HeaderText = "Tag";
+      this.chScDow.MinimumWidth = 8;
       this.chScDow.Name = "chScDow";
       this.chScDow.ReadOnly = true;
       this.chScDow.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -466,6 +472,7 @@
       // 
       this.chScCut.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
       this.chScCut.HeaderText = "Kante";
+      this.chScCut.MinimumWidth = 8;
       this.chScCut.Name = "chScCut";
       this.chScCut.Resizable = System.Windows.Forms.DataGridViewTriState.True;
       this.chScCut.Width = 46;
@@ -477,6 +484,7 @@
       dataGridViewCellStyle1.NullValue = null;
       this.chScBeg.DefaultCellStyle = dataGridViewCellStyle1;
       this.chScBeg.HeaderText = "Start";
+      this.chScBeg.MinimumWidth = 8;
       this.chScBeg.Name = "chScBeg";
       this.chScBeg.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
       this.chScBeg.Width = 41;
@@ -487,6 +495,7 @@
       dataGridViewCellStyle2.Format = "#0";
       this.chScMin.DefaultCellStyle = dataGridViewCellStyle2;
       this.chScMin.HeaderText = "Dauer";
+      this.chScMin.MinimumWidth = 8;
       this.chScMin.Name = "chScMin";
       this.chScMin.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
       this.chScMin.Width = 48;
@@ -498,6 +507,7 @@
       dataGridViewCellStyle3.NullValue = null;
       this.chScEnd.DefaultCellStyle = dataGridViewCellStyle3;
       this.chScEnd.HeaderText = "Ende";
+      this.chScEnd.MinimumWidth = 8;
       this.chScEnd.Name = "chScEnd";
       this.chScEnd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
       // 
@@ -606,20 +616,19 @@
       this.tlScCmd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       this.tlScCmd.Controls.Add(this.pbPlanSave, 2, 0);
       this.tlScCmd.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.tlScCmd.Location = new System.Drawing.Point(0, 356);
+      this.tlScCmd.Location = new System.Drawing.Point(0, 355);
       this.tlScCmd.Margin = new System.Windows.Forms.Padding(0);
       this.tlScCmd.Name = "tlScCmd";
       this.tlScCmd.RowCount = 1;
       this.tlScCmd.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tlScCmd.Size = new System.Drawing.Size(406, 29);
+      this.tlScCmd.Size = new System.Drawing.Size(406, 30);
       this.tlScCmd.TabIndex = 3;
       // 
       // pbPlanSave
       // 
-      this.pbPlanSave.AutoSize = true;
       this.pbPlanSave.Location = new System.Drawing.Point(323, 3);
       this.pbPlanSave.Name = "pbPlanSave";
-      this.pbPlanSave.Size = new System.Drawing.Size(80, 23);
+      this.pbPlanSave.Size = new System.Drawing.Size(80, 24);
       this.pbPlanSave.TabIndex = 6;
       this.pbPlanSave.Text = "&Sichern...";
       this.pbPlanSave.UseVisualStyleBackColor = true;
@@ -659,15 +668,15 @@
       this.tlDat.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tlDat.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tlDat.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-      this.tlDat.Size = new System.Drawing.Size(406, 356);
+      this.tlDat.Size = new System.Drawing.Size(406, 355);
       this.tlDat.TabIndex = 2;
       // 
       // tlDatPic
       // 
       this.tlDatPic.ColumnCount = 3;
       this.tlDatPic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tlDatPic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tlDatPic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      this.tlDatPic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+      this.tlDatPic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
       this.tlDatPic.Controls.Add(this.txDatFW, 2, 3);
       this.tlDatPic.Controls.Add(this.pictureBox, 0, 0);
       this.tlDatPic.Controls.Add(this.lDatFW, 1, 3);
@@ -675,6 +684,7 @@
       this.tlDatPic.Controls.Add(this.txDatRsi, 1, 1);
       this.tlDatPic.Controls.Add(this.lDatSP, 1, 2);
       this.tlDatPic.Controls.Add(this.txDatSP, 2, 2);
+      this.tlDatPic.Controls.Add(this.tlName, 0, 3);
       this.tlDatPic.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tlDatPic.Location = new System.Drawing.Point(3, 23);
       this.tlDatPic.Name = "tlDatPic";
@@ -683,9 +693,7 @@
       this.tlDatPic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tlDatPic.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tlDatPic.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tlDatPic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
-      this.tlDatPic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
-      this.tlDatPic.Size = new System.Drawing.Size(400, 171);
+      this.tlDatPic.Size = new System.Drawing.Size(400, 170);
       this.tlDatPic.TabIndex = 10;
       // 
       // txDatFW
@@ -693,7 +701,7 @@
       this.txDatFW.Anchor = System.Windows.Forms.AnchorStyles.Right;
       this.txDatFW.AutoSize = true;
       this.txDatFW.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.txDatFW.Location = new System.Drawing.Point(365, 158);
+      this.txDatFW.Location = new System.Drawing.Point(365, 156);
       this.txDatFW.Name = "txDatFW";
       this.txDatFW.Size = new System.Drawing.Size(32, 13);
       this.txDatFW.TabIndex = 4;
@@ -708,8 +716,8 @@
       this.pictureBox.Location = new System.Drawing.Point(12, 10);
       this.pictureBox.Margin = new System.Windows.Forms.Padding(12, 10, 12, 10);
       this.pictureBox.Name = "pictureBox";
-      this.tlDatPic.SetRowSpan(this.pictureBox, 4);
-      this.pictureBox.Size = new System.Drawing.Size(308, 151);
+      this.tlDatPic.SetRowSpan(this.pictureBox, 3);
+      this.pictureBox.Size = new System.Drawing.Size(296, 135);
       this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
       this.pictureBox.TabIndex = 1;
       this.pictureBox.TabStop = false;
@@ -719,7 +727,7 @@
       this.lDatFW.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.lDatFW.AutoSize = true;
       this.lDatFW.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.lDatFW.Location = new System.Drawing.Point(335, 158);
+      this.lDatFW.Location = new System.Drawing.Point(323, 156);
       this.lDatFW.Name = "lDatFW";
       this.lDatFW.Size = new System.Drawing.Size(24, 13);
       this.lDatFW.TabIndex = 4;
@@ -731,7 +739,7 @@
       this.picWiFi.Anchor = System.Windows.Forms.AnchorStyles.Top;
       this.picWiFi.BackColor = System.Drawing.Color.Transparent;
       this.tlDatPic.SetColumnSpan(this.picWiFi, 2);
-      this.picWiFi.Location = new System.Drawing.Point(341, 10);
+      this.picWiFi.Location = new System.Drawing.Point(335, 10);
       this.picWiFi.Margin = new System.Windows.Forms.Padding(2, 10, 2, 2);
       this.picWiFi.Name = "picWiFi";
       this.picWiFi.Size = new System.Drawing.Size(50, 35);
@@ -745,7 +753,7 @@
       this.txDatRsi.AutoSize = true;
       this.tlDatPic.SetColumnSpan(this.txDatRsi, 2);
       this.txDatRsi.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.txDatRsi.Location = new System.Drawing.Point(353, 47);
+      this.txDatRsi.Location = new System.Drawing.Point(347, 47);
       this.txDatRsi.Name = "txDatRsi";
       this.txDatRsi.Size = new System.Drawing.Size(26, 13);
       this.txDatRsi.TabIndex = 3;
@@ -758,7 +766,7 @@
       this.lDatSP.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.lDatSP.AutoSize = true;
       this.lDatSP.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.lDatSP.Location = new System.Drawing.Point(335, 145);
+      this.lDatSP.Location = new System.Drawing.Point(323, 142);
       this.lDatSP.Name = "lDatSP";
       this.lDatSP.Size = new System.Drawing.Size(22, 13);
       this.lDatSP.TabIndex = 4;
@@ -771,7 +779,7 @@
       this.txDatSP.Anchor = System.Windows.Forms.AnchorStyles.Right;
       this.txDatSP.AutoSize = true;
       this.txDatSP.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.txDatSP.Location = new System.Drawing.Point(383, 145);
+      this.txDatSP.Location = new System.Drawing.Point(383, 142);
       this.txDatSP.Name = "txDatSP";
       this.txDatSP.Size = new System.Drawing.Size(14, 13);
       this.txDatSP.TabIndex = 4;
@@ -780,6 +788,60 @@
       this.toolTip.SetToolTip(this.txDatSP, "Start Point");
       this.txDatSP.Visible = false;
       // 
+      // tlName
+      // 
+      this.tlName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.tlName.ColumnCount = 3;
+      this.tlName.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tlName.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      this.tlName.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      this.tlName.Controls.Add(this.txName, 0, 0);
+      this.tlName.Controls.Add(this.txOLM, 2, 0);
+      this.tlName.Controls.Add(this.txACS, 1, 0);
+      this.tlName.Location = new System.Drawing.Point(3, 155);
+      this.tlName.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+      this.tlName.Name = "tlName";
+      this.tlName.RowCount = 1;
+      this.tlName.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tlName.Size = new System.Drawing.Size(314, 15);
+      this.tlName.TabIndex = 5;
+      // 
+      // txName
+      // 
+      this.txName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.txName.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txName.ForeColor = System.Drawing.Color.Yellow;
+      this.txName.Location = new System.Drawing.Point(3, 0);
+      this.txName.Name = "txName";
+      this.txName.Size = new System.Drawing.Size(229, 15);
+      this.txName.TabIndex = 0;
+      this.txName.Text = "Name";
+      this.txName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // txOLM
+      // 
+      this.txOLM.ForeColor = System.Drawing.Color.White;
+      this.txOLM.Location = new System.Drawing.Point(279, 0);
+      this.txOLM.Name = "txOLM";
+      this.txOLM.Size = new System.Drawing.Size(32, 13);
+      this.txOLM.TabIndex = 1;
+      this.txOLM.Text = "OLM";
+      this.txOLM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.txOLM.Visible = false;
+      // 
+      // txACS
+      // 
+      this.txACS.ForeColor = System.Drawing.Color.White;
+      this.txACS.Location = new System.Drawing.Point(238, 0);
+      this.txACS.Name = "txACS";
+      this.txACS.Size = new System.Drawing.Size(35, 13);
+      this.txACS.TabIndex = 1;
+      this.txACS.Text = "ACS";
+      this.txACS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.txACS.Visible = false;
+      // 
       // pDatAccu
       // 
       this.pDatAccu.AutoSize = true;
@@ -787,7 +849,7 @@
       this.pDatAccu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
       this.pDatAccu.Controls.Add(this.txDatAccu);
       this.pDatAccu.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.pDatAccu.Location = new System.Drawing.Point(12, 225);
+      this.pDatAccu.Location = new System.Drawing.Point(12, 224);
       this.pDatAccu.Margin = new System.Windows.Forms.Padding(12, 3, 12, 3);
       this.pDatAccu.Name = "pDatAccu";
       this.pDatAccu.Size = new System.Drawing.Size(382, 19);
@@ -810,7 +872,7 @@
       this.txDatDT.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.txDatDT.AutoSize = true;
       this.txDatDT.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.txDatDT.Location = new System.Drawing.Point(158, 333);
+      this.txDatDT.Location = new System.Drawing.Point(158, 332);
       this.txDatDT.Name = "txDatDT";
       this.txDatDT.Size = new System.Drawing.Size(89, 13);
       this.txDatDT.TabIndex = 6;
@@ -833,7 +895,7 @@
       this.tlDatTri.Controls.Add(this.txDatStD, 1, 3);
       this.tlDatTri.Controls.Add(this.txDatStW, 2, 3);
       this.tlDatTri.Dock = System.Windows.Forms.DockStyle.Top;
-      this.tlDatTri.Location = new System.Drawing.Point(3, 250);
+      this.tlDatTri.Location = new System.Drawing.Point(3, 249);
       this.tlDatTri.Name = "tlDatTri";
       this.tlDatTri.RowCount = 4;
       this.tlDatTri.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -1005,7 +1067,7 @@
       this.pDatWork.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
       this.pDatWork.Controls.Add(this.txDatWork);
       this.pDatWork.Dock = System.Windows.Forms.DockStyle.Top;
-      this.pDatWork.Location = new System.Drawing.Point(12, 200);
+      this.pDatWork.Location = new System.Drawing.Point(12, 199);
       this.pDatWork.Margin = new System.Windows.Forms.Padding(12, 3, 12, 3);
       this.pDatWork.Name = "pDatWork";
       this.pDatWork.Size = new System.Drawing.Size(382, 19);
@@ -1037,22 +1099,21 @@
       this.tlDatCmd.Controls.Add(this.pbHome, 3, 0);
       this.tlDatCmd.Controls.Add(this.pbStop, 2, 0);
       this.tlDatCmd.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.tlDatCmd.Location = new System.Drawing.Point(0, 356);
+      this.tlDatCmd.Location = new System.Drawing.Point(0, 355);
       this.tlDatCmd.Margin = new System.Windows.Forms.Padding(0);
       this.tlDatCmd.Name = "tlDatCmd";
       this.tlDatCmd.RowCount = 1;
       this.tlDatCmd.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tlDatCmd.Size = new System.Drawing.Size(406, 29);
+      this.tlDatCmd.Size = new System.Drawing.Size(406, 30);
       this.tlDatCmd.TabIndex = 1;
       // 
       // pbStart
       // 
-      this.pbStart.AutoSize = true;
       this.pbStart.Enabled = false;
       this.pbStart.Image = global::DesktopApp.AppRes.play16;
-      this.pbStart.Location = new System.Drawing.Point(57, 3);
+      this.pbStart.Location = new System.Drawing.Point(25, 3);
       this.pbStart.Name = "pbStart";
-      this.pbStart.Size = new System.Drawing.Size(72, 24);
+      this.pbStart.Size = new System.Drawing.Size(80, 24);
       this.pbStart.TabIndex = 1;
       this.pbStart.Text = "&Start";
       this.pbStart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1061,12 +1122,11 @@
       // 
       // pbPoll
       // 
-      this.pbPoll.AutoSize = true;
       this.pbPoll.Enabled = false;
       this.pbPoll.Image = global::DesktopApp.AppRes.refresh16;
-      this.pbPoll.Location = new System.Drawing.Point(331, 3);
+      this.pbPoll.Location = new System.Drawing.Point(323, 3);
       this.pbPoll.Name = "pbPoll";
-      this.pbPoll.Size = new System.Drawing.Size(72, 23);
+      this.pbPoll.Size = new System.Drawing.Size(80, 24);
       this.pbPoll.TabIndex = 0;
       this.pbPoll.Text = "&Poll";
       this.pbPoll.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1075,12 +1135,11 @@
       // 
       // pbHome
       // 
-      this.pbHome.AutoSize = true;
       this.pbHome.Enabled = false;
       this.pbHome.Image = global::DesktopApp.AppRes.home16;
-      this.pbHome.Location = new System.Drawing.Point(213, 3);
+      this.pbHome.Location = new System.Drawing.Point(197, 3);
       this.pbHome.Name = "pbHome";
-      this.pbHome.Size = new System.Drawing.Size(72, 23);
+      this.pbHome.Size = new System.Drawing.Size(80, 24);
       this.pbHome.TabIndex = 3;
       this.pbHome.Text = "&Home";
       this.pbHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1089,12 +1148,11 @@
       // 
       // pbStop
       // 
-      this.pbStop.AutoSize = true;
       this.pbStop.Enabled = false;
       this.pbStop.Image = global::DesktopApp.AppRes.stop16;
-      this.pbStop.Location = new System.Drawing.Point(135, 3);
+      this.pbStop.Location = new System.Drawing.Point(111, 3);
       this.pbStop.Name = "pbStop";
-      this.pbStop.Size = new System.Drawing.Size(72, 23);
+      this.pbStop.Size = new System.Drawing.Size(80, 24);
       this.pbStop.TabIndex = 2;
       this.pbStop.Text = "S&top";
       this.pbStop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1150,7 +1208,7 @@
       this.tlpUsrSet.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
       this.tlpUsrSet.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tlpUsrSet.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tlpUsrSet.Size = new System.Drawing.Size(406, 356);
+      this.tlpUsrSet.Size = new System.Drawing.Size(406, 355);
       this.tlpUsrSet.TabIndex = 0;
       // 
       // txUsrMail
@@ -1323,20 +1381,19 @@
       this.tlpUsrBtn.Controls.Add(this.pbDisconnect, 4, 0);
       this.tlpUsrBtn.Controls.Add(this.pbConnect, 3, 0);
       this.tlpUsrBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.tlpUsrBtn.Location = new System.Drawing.Point(0, 356);
+      this.tlpUsrBtn.Location = new System.Drawing.Point(0, 355);
       this.tlpUsrBtn.Margin = new System.Windows.Forms.Padding(0);
       this.tlpUsrBtn.Name = "tlpUsrBtn";
       this.tlpUsrBtn.RowCount = 1;
       this.tlpUsrBtn.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tlpUsrBtn.Size = new System.Drawing.Size(406, 29);
+      this.tlpUsrBtn.Size = new System.Drawing.Size(406, 30);
       this.tlpUsrBtn.TabIndex = 1;
       // 
       // pbLogin
       // 
-      this.pbLogin.AutoSize = true;
       this.pbLogin.Location = new System.Drawing.Point(131, 3);
       this.pbLogin.Name = "pbLogin";
-      this.pbLogin.Size = new System.Drawing.Size(80, 23);
+      this.pbLogin.Size = new System.Drawing.Size(80, 24);
       this.pbLogin.TabIndex = 1;
       this.pbLogin.Text = "A&nmelden";
       this.pbLogin.UseVisualStyleBackColor = true;
@@ -1347,7 +1404,7 @@
       this.pbTest.Enabled = false;
       this.pbTest.Location = new System.Drawing.Point(3, 3);
       this.pbTest.Name = "pbTest";
-      this.pbTest.Size = new System.Drawing.Size(60, 23);
+      this.pbTest.Size = new System.Drawing.Size(60, 24);
       this.pbTest.TabIndex = 0;
       this.pbTest.Text = "Test";
       this.pbTest.UseVisualStyleBackColor = true;
@@ -1356,11 +1413,10 @@
       // 
       // pbDisconnect
       // 
-      this.pbDisconnect.AutoSize = true;
       this.pbDisconnect.Enabled = false;
       this.pbDisconnect.Location = new System.Drawing.Point(323, 3);
       this.pbDisconnect.Name = "pbDisconnect";
-      this.pbDisconnect.Size = new System.Drawing.Size(80, 23);
+      this.pbDisconnect.Size = new System.Drawing.Size(80, 24);
       this.pbDisconnect.TabIndex = 2;
       this.pbDisconnect.Text = "&Trennen";
       this.pbDisconnect.UseVisualStyleBackColor = true;
@@ -1368,11 +1424,10 @@
       // 
       // pbConnect
       // 
-      this.pbConnect.AutoSize = true;
       this.pbConnect.Enabled = false;
       this.pbConnect.Location = new System.Drawing.Point(237, 3);
       this.pbConnect.Name = "pbConnect";
-      this.pbConnect.Size = new System.Drawing.Size(80, 23);
+      this.pbConnect.Size = new System.Drawing.Size(80, 24);
       this.pbConnect.TabIndex = 3;
       this.pbConnect.Text = "&Verbinden";
       this.pbConnect.UseVisualStyleBackColor = true;
@@ -1420,13 +1475,14 @@
       this.tlZone.RowCount = 2;
       this.tlZone.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tlZone.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tlZone.Size = new System.Drawing.Size(406, 356);
+      this.tlZone.Size = new System.Drawing.Size(406, 355);
       this.tlZone.TabIndex = 14;
       // 
       // dgMultiZone
       // 
       this.dgMultiZone.AllowUserToAddRows = false;
       this.dgMultiZone.AllowUserToDeleteRows = false;
+      this.dgMultiZone.ColumnHeadersHeight = 34;
       this.dgMultiZone.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.chMzStart,
             this.chMz0,
@@ -1455,14 +1511,16 @@
       // 
       this.chMzStart.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
       this.chMzStart.HeaderText = "Start [m]";
+      this.chMzStart.MinimumWidth = 8;
       this.chMzStart.Name = "chMzStart";
       this.chMzStart.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-      this.chMzStart.Width = 66;
+      this.chMzStart.Width = 41;
       // 
       // chMz0
       // 
       this.chMz0.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
       this.chMz0.HeaderText = "0";
+      this.chMz0.MinimumWidth = 8;
       this.chMz0.Name = "chMz0";
       this.chMz0.Resizable = System.Windows.Forms.DataGridViewTriState.True;
       this.chMz0.Width = 20;
@@ -1471,6 +1529,7 @@
       // 
       this.chMz1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
       this.chMz1.HeaderText = "1";
+      this.chMz1.MinimumWidth = 8;
       this.chMz1.Name = "chMz1";
       this.chMz1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
       this.chMz1.Width = 20;
@@ -1479,6 +1538,7 @@
       // 
       this.chMz2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
       this.chMz2.HeaderText = "2";
+      this.chMz2.MinimumWidth = 8;
       this.chMz2.Name = "chMz2";
       this.chMz2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
       this.chMz2.Width = 20;
@@ -1487,6 +1547,7 @@
       // 
       this.chMz3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
       this.chMz3.HeaderText = "3";
+      this.chMz3.MinimumWidth = 8;
       this.chMz3.Name = "chMz3";
       this.chMz3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
       this.chMz3.Width = 20;
@@ -1495,6 +1556,7 @@
       // 
       this.chMz4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
       this.chMz4.HeaderText = "4";
+      this.chMz4.MinimumWidth = 8;
       this.chMz4.Name = "chMz4";
       this.chMz4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
       this.chMz4.Width = 20;
@@ -1503,6 +1565,7 @@
       // 
       this.chMz5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
       this.chMz5.HeaderText = "5";
+      this.chMz5.MinimumWidth = 8;
       this.chMz5.Name = "chMz5";
       this.chMz5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
       this.chMz5.Width = 20;
@@ -1511,6 +1574,7 @@
       // 
       this.chMz6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
       this.chMz6.HeaderText = "6";
+      this.chMz6.MinimumWidth = 8;
       this.chMz6.Name = "chMz6";
       this.chMz6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
       this.chMz6.Width = 20;
@@ -1519,6 +1583,7 @@
       // 
       this.chMz7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
       this.chMz7.HeaderText = "7";
+      this.chMz7.MinimumWidth = 8;
       this.chMz7.Name = "chMz7";
       this.chMz7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
       this.chMz7.Width = 20;
@@ -1527,6 +1592,7 @@
       // 
       this.chMz8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
       this.chMz8.HeaderText = "8";
+      this.chMz8.MinimumWidth = 8;
       this.chMz8.Name = "chMz8";
       this.chMz8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
       this.chMz8.Width = 20;
@@ -1535,6 +1601,7 @@
       // 
       this.chMz9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
       this.chMz9.HeaderText = "9";
+      this.chMz9.MinimumWidth = 8;
       this.chMz9.Name = "chMz9";
       this.chMz9.Resizable = System.Windows.Forms.DataGridViewTriState.True;
       this.chMz9.Width = 20;
@@ -1543,6 +1610,7 @@
       // 
       this.chMzPerc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
       this.chMzPerc.HeaderText = "Anteil";
+      this.chMzPerc.MinimumWidth = 8;
       this.chMzPerc.Name = "chMzPerc";
       this.chMzPerc.ReadOnly = true;
       this.chMzPerc.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -1553,7 +1621,7 @@
       this.txZoneDist.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.txZoneDist.Location = new System.Drawing.Point(3, 86);
       this.txZoneDist.Name = "txZoneDist";
-      this.txZoneDist.Size = new System.Drawing.Size(400, 270);
+      this.txZoneDist.Size = new System.Drawing.Size(400, 269);
       this.txZoneDist.TabIndex = 13;
       this.txZoneDist.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
@@ -1567,20 +1635,19 @@
       this.tlZoneBtn.Controls.Add(this.pbZoneSave, 3, 0);
       this.tlZoneBtn.Controls.Add(this.pbZoneStart, 1, 0);
       this.tlZoneBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.tlZoneBtn.Location = new System.Drawing.Point(0, 356);
+      this.tlZoneBtn.Location = new System.Drawing.Point(0, 355);
       this.tlZoneBtn.Margin = new System.Windows.Forms.Padding(0);
       this.tlZoneBtn.Name = "tlZoneBtn";
       this.tlZoneBtn.RowCount = 1;
       this.tlZoneBtn.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tlZoneBtn.Size = new System.Drawing.Size(406, 29);
+      this.tlZoneBtn.Size = new System.Drawing.Size(406, 30);
       this.tlZoneBtn.TabIndex = 13;
       // 
       // pbZoneSave
       // 
-      this.pbZoneSave.AutoSize = true;
       this.pbZoneSave.Location = new System.Drawing.Point(323, 3);
       this.pbZoneSave.Name = "pbZoneSave";
-      this.pbZoneSave.Size = new System.Drawing.Size(80, 23);
+      this.pbZoneSave.Size = new System.Drawing.Size(80, 24);
       this.pbZoneSave.TabIndex = 6;
       this.pbZoneSave.Text = "&Sichern...";
       this.pbZoneSave.UseVisualStyleBackColor = true;
@@ -1590,7 +1657,7 @@
       // 
       this.pbZoneStart.Location = new System.Drawing.Point(217, 3);
       this.pbZoneStart.Name = "pbZoneStart";
-      this.pbZoneStart.Size = new System.Drawing.Size(80, 23);
+      this.pbZoneStart.Size = new System.Drawing.Size(80, 24);
       this.pbZoneStart.TabIndex = 7;
       this.pbZoneStart.Text = "&Rundfahrt";
       this.pbZoneStart.UseVisualStyleBackColor = true;
@@ -1643,7 +1710,7 @@
       this.lvActLog.Margin = new System.Windows.Forms.Padding(0);
       this.lvActLog.Name = "lvActLog";
       this.lvActLog.ShowItemToolTips = true;
-      this.lvActLog.Size = new System.Drawing.Size(406, 356);
+      this.lvActLog.Size = new System.Drawing.Size(406, 355);
       this.lvActLog.TabIndex = 0;
       this.lvActLog.UseCompatibleStateImageBehavior = false;
       this.lvActLog.View = System.Windows.Forms.View.Details;
@@ -1678,12 +1745,11 @@
       // pbActLog
       // 
       this.pbActLog.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.pbActLog.AutoSize = true;
       this.pbActLog.Enabled = false;
       this.pbActLog.Image = global::DesktopApp.AppRes.refresh16;
-      this.pbActLog.Location = new System.Drawing.Point(331, 359);
+      this.pbActLog.Location = new System.Drawing.Point(283, 358);
       this.pbActLog.Name = "pbActLog";
-      this.pbActLog.Size = new System.Drawing.Size(72, 23);
+      this.pbActLog.Size = new System.Drawing.Size(120, 24);
       this.pbActLog.TabIndex = 1;
       this.pbActLog.Text = "&Poll";
       this.pbActLog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1694,7 +1760,7 @@
       // 
       this.lActHint.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.lActHint.AutoSize = true;
-      this.lActHint.Location = new System.Drawing.Point(3, 364);
+      this.lActHint.Location = new System.Drawing.Point(3, 363);
       this.lActHint.Name = "lActHint";
       this.lActHint.Size = new System.Drawing.Size(123, 13);
       this.lActHint.TabIndex = 2;
@@ -1726,8 +1792,8 @@
       // spPlugin.Panel2
       // 
       this.spPlugin.Panel2.Controls.Add(this.pgPlugin);
-      this.spPlugin.Size = new System.Drawing.Size(406, 356);
-      this.spPlugin.SplitterDistance = 170;
+      this.spPlugin.Size = new System.Drawing.Size(406, 355);
+      this.spPlugin.SplitterDistance = 168;
       this.spPlugin.TabIndex = 4;
       // 
       // lvPlugin
@@ -1743,7 +1809,7 @@
       this.lvPlugin.Margin = new System.Windows.Forms.Padding(2);
       this.lvPlugin.MultiSelect = false;
       this.lvPlugin.Name = "lvPlugin";
-      this.lvPlugin.Size = new System.Drawing.Size(406, 170);
+      this.lvPlugin.Size = new System.Drawing.Size(406, 168);
       this.lvPlugin.TabIndex = 0;
       this.lvPlugin.UseCompatibleStateImageBehavior = false;
       this.lvPlugin.View = System.Windows.Forms.View.Details;
@@ -1766,7 +1832,7 @@
       this.pgPlugin.Location = new System.Drawing.Point(0, 0);
       this.pgPlugin.Margin = new System.Windows.Forms.Padding(2);
       this.pgPlugin.Name = "pgPlugin";
-      this.pgPlugin.Size = new System.Drawing.Size(406, 182);
+      this.pgPlugin.Size = new System.Drawing.Size(406, 183);
       this.pgPlugin.TabIndex = 3;
       this.pgPlugin.ToolbarVisible = false;
       // 
@@ -1777,20 +1843,20 @@
       this.tlPluginBtn.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       this.tlPluginBtn.Controls.Add(this.pbPluginDoit, 1, 0);
       this.tlPluginBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.tlPluginBtn.Location = new System.Drawing.Point(0, 356);
+      this.tlPluginBtn.Location = new System.Drawing.Point(0, 355);
       this.tlPluginBtn.Margin = new System.Windows.Forms.Padding(0);
       this.tlPluginBtn.Name = "tlPluginBtn";
       this.tlPluginBtn.RowCount = 1;
       this.tlPluginBtn.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tlPluginBtn.Size = new System.Drawing.Size(406, 29);
+      this.tlPluginBtn.Size = new System.Drawing.Size(406, 30);
       this.tlPluginBtn.TabIndex = 5;
       // 
       // pbPluginDoit
       // 
       this.pbPluginDoit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-      this.pbPluginDoit.Location = new System.Drawing.Point(343, 3);
+      this.pbPluginDoit.Location = new System.Drawing.Point(323, 3);
       this.pbPluginDoit.Name = "pbPluginDoit";
-      this.pbPluginDoit.Size = new System.Drawing.Size(60, 23);
+      this.pbPluginDoit.Size = new System.Drawing.Size(80, 24);
       this.pbPluginDoit.TabIndex = 2;
       this.pbPluginDoit.Text = "DoIt";
       this.pbPluginDoit.UseVisualStyleBackColor = true;
@@ -1868,7 +1934,6 @@
       this.tlCgRainDelay.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.udCfgRainDelay)).EndInit();
       this.tlScCmd.ResumeLayout(false);
-      this.tlScCmd.PerformLayout();
       this.tpState.ResumeLayout(false);
       this.tlDat.ResumeLayout(false);
       this.tlDat.PerformLayout();
@@ -1876,6 +1941,7 @@
       this.tlDatPic.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.picWiFi)).EndInit();
+      this.tlName.ResumeLayout(false);
       this.pDatAccu.ResumeLayout(false);
       this.tlDatTri.ResumeLayout(false);
       this.tlDatTri.PerformLayout();
@@ -1886,19 +1952,16 @@
       this.tlDatErrorState.PerformLayout();
       this.pDatWork.ResumeLayout(false);
       this.tlDatCmd.ResumeLayout(false);
-      this.tlDatCmd.PerformLayout();
       this.tpUsr.ResumeLayout(false);
       this.tpUsr.PerformLayout();
       this.tlpUsrSet.ResumeLayout(false);
       this.tlpUsrSet.PerformLayout();
       this.tlpUsrBtn.ResumeLayout(false);
-      this.tlpUsrBtn.PerformLayout();
       this.tcMain.ResumeLayout(false);
       this.tpZone.ResumeLayout(false);
       this.tlZone.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.dgMultiZone)).EndInit();
       this.tlZoneBtn.ResumeLayout(false);
-      this.tlZoneBtn.PerformLayout();
       this.tpAct.ResumeLayout(false);
       this.tlpAct.ResumeLayout(false);
       this.tlpAct.PerformLayout();
@@ -2044,6 +2107,10 @@
     private System.Windows.Forms.ColumnHeader chActMiss;
     private System.Windows.Forms.Button pbActLog;
     private System.Windows.Forms.Label lActHint;
+    private System.Windows.Forms.TableLayoutPanel tlName;
+    private System.Windows.Forms.Label txName;
+    private System.Windows.Forms.Label txACS;
+    private System.Windows.Forms.Label txOLM;
   }
 }
 

@@ -422,11 +422,13 @@ namespace DesktopApp
       return !string.IsNullOrEmpty(Broker) && _certWX != null && Products.Count > 0;
     }
     public bool LoadAWS() {
-      string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AWS" + ArgCfg() + ".p12");
+      string name = "AWS" + ArgCfg() + ".p12";
+      string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, name);
 
       if( File.Exists(path) ) {
         try {
           _certWX = new X509Certificate2(path);
+          Log(string.Format("AwsFile: {0}", name));
           return true;
         } catch( Exception ex ) {
           Log(ex.ToString());
@@ -470,16 +472,19 @@ namespace DesktopApp
     //  Debug.WriteLine("Auto upgd: {0}", str);
     //}
 
-    public bool Start(string broker, string uuid, string board, string mac, bool first = true) {
+    public bool Start(string broker, string uuid, string board, string mac) {
       Broker = broker; _uuid = "android-" + uuid; _board = board; _mac = mac;
       Log(string.Format("Broker: '{0}'", broker));
       Log(string.Format("Topic: '{0}/{1}'", board, mac));
       _cmdIn = string.Format("{0}/{1}/commandIn", board, mac);
       _cmdOut = new string[] { string.Format("{0}/{1}/commandOut", board, mac) };
-      _cmdQos = new byte[] { MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE }; // | MqttMsgBase.QOS_LEVEL_GRANTED_FAILURE 
+      _cmdQos = new byte[] { MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE }; // | MqttMsgBase.QOS_LEVEL_GRANTED_FAILURE
+      return Start(true);
+    }
 
+    public bool Start(bool first) {
       try {
-        _mqtt = new MqttClient(broker, 8883, true, null, _certWX, MqttSslProtocols.TLSv1_2);
+        _mqtt = new MqttClient(Broker, 8883, true, null, _certWX, MqttSslProtocols.TLSv1_2);
       } catch( Exception ex ) {
         if( first ) Err(ex.Message);
         Log(ex.ToString(), 9);
@@ -565,7 +570,7 @@ namespace DesktopApp
       for( int i = 0; i < num; i++ ) {
         System.Threading.Thread.Sleep(10000);
         if( _mqtt.IsConnected ) { Log("Mqtt is connected"); break; }
-        else if( Start(Broker, _uuid, _board, _mac, false) ) { Log("Mqtt reconnected"); break; }
+        else if( Start(false) ) { Log("Mqtt reconnected"); break; }
         else Log(string.Format("Mqtt reconnect {0} failed", i), 1);
       }
     }

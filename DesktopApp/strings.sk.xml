@@ -1,0 +1,97 @@
+<!-- Slovak -->
+<resources>
+  <!-- Shared with Positec -->
+  <string name="home_mower_error">Chyba</string>
+  <string name="home_mower_error_battery_low">Batéria vybitá</string>
+  <string name="home_mower_error_battery_overtemp">Batéria prehriata</string>
+  <string name="home_mower_error_blade_motor_fault">Chyba motora kosenia</string>
+  <string name="home_mower_error_close_door_to_cut">Zatvorte kryt kosačky</string>
+  <string name="home_mower_error_close_to_go_home">Blížim sa k nabíjačke</string>
+  <string name="home_mower_error_home_find_timeout">Nenašiel som nabíjaciu stanicu</string>
+  <string name="home_mower_error_lifted">Kosačka zdvihnutá</string>
+  <string name="home_mower_error_lock">Kosačka zamknutá</string>
+  <string name="home_mower_error_outside_wire">Kosačka mimo okrajového drôtu</string>
+  <string name="home_mower_error_reverse_wire">Prever zapojenie okrajového drôtu</string>
+  <string name="home_mower_error_trapped">Kosačka uviazla</string>
+  <string name="home_mower_error_trapped_timeout_fault">Kosačka uviazla</string>
+  <string name="home_mower_error_upside_down">Kosačka je prevrátená</string>
+  <string name="home_mower_error_wheel_motor_fault">Chyba motora</string>
+  <string name="home_mower_error_wire_missing">Okrajový drát je chybný</string>
+
+  <string name="home_mower_charging">Nabíjanie</string>
+  <string name="home_mower_going_home">Na ceste k nabíjačke</string>
+  <string name="home_mower_leaving_home">Odchádzam z nabíjačky</string>
+  <string name="home_mower_manual_stop">Manuálne zastvenie</string>
+  <string name="home_mower_mowing">Kosím</string>
+  <string name="home_mower_home">Doma - v nabíjačke</string>
+  <string name="home_mower_pause">Pauza</string>
+  <string name="home_mower_rain_delay">Prestávka kôli dažďu</string>
+  <string name="home_mower_trapped">Kosačka uviazla</string>
+  <string name="home_mower_unknown_status">neznámy stav</string>
+  <string name="home_mower_wire_follow_area_search">Hľadám zónu</string>
+  <string name="home_mower_wire_follow_area_training">Testujem zónu</string>
+  <string name="home_mower_wire_follow_border_cut">Kosím okraj</string>
+  <string name="home_mower_wire_follow_going_home">Na ceste k nabíjačke</string>
+  
+
+  <!-- Only in DeskApp da_ -->
+  <string name="da_user">Užívateľ</string>
+  <string name="da_user_email">&amp;Email</string>
+  <string name="da_user_pass">&amp;Heslo</string>
+  <string name="da_user_name">&amp;Meno</string>
+  <string name="da_user_top">Ponechať okno &amp;na popredí</string>
+  <string name="da_user_login">&amp;Prihlásiť</string>
+  <string name="da_user_con">P&amp;ripojiť</string>
+  <string name="da_user_dis">&amp;Odpojiť</string>
+  
+  <string name="da_state">Stav</string>
+  <string name="da_state_daywork">Pracovný čas</string>
+  <string name="da_state_accu">Batéria</string>
+  <string name="da_state_pitch">Náklon</string>
+  <string name="da_state_roll">Sklon bočný</string>
+  <string name="da_state_yaw">Smer</string>
+  <string name="da_state_blade">čas kosenia</string>
+  <string name="da_state_blade_info">Čas kosenia od posledného dvojkliku: </string><!--17-->
+  <string name="da_state_dist">Celková vzdialenosť</string>
+  <string name="da_state_dist_info">Celková ubehnutá vzdialnosť</string><!--17-->
+  <string name="da_state_work">Celkový čas</string>
+  <string name="da_state_work_info">Celkový čas</string><!--17-->
+  <string name="da_state_last">Posledná aktualizácia</string>
+  <string name="da_state_start">Št&amp;art</string>
+  <string name="da_state_home">&amp;Domov</string>
+  <string name="da_state_stop">S&amp;top</string>
+  <string name="da_state_poll">&amp;Obnov</string>
+  <string name="da_warn_stop">Váš Landroid sa zastaví na 20 minút a potom zhasne.</string>
+  
+  <string name="da_plan">Plánovač</string>
+  <string name="da_plan_mode">Mód</string>
+  <string name="da_plan_dow">Deň</string>
+  <string name="da_plan_cut">Okraj</string>
+  <string name="da_plan_beg">Štart</string>
+  <string name="da_plan_min">Trvanie</string>
+  <string name="da_plan_end">Koniec</string>
+  <string name="da_plan_perc">Korekcia</string>
+  <string name="da_plan_rain">Prestávka po daždi</string>
+  <string name="da_plan_save">&amp;Uložiť...</string>
+  <string name="da_error_beg">Začiatok v hh:mm</string>
+  <string name="da_error_min">Trvanie v minútach od 0 do 1440</string>
+  <string name="da_error_end">Koniec v hh:mm</string>
+
+  <string name="da_zone">Zóny</string>
+  <string name="da_zone_start">Štart [m]</string>
+  <string name="da_zone_perc">Pomer</string>
+  <string name="da_zone_train">U&amp;kážka</string>
+  <string name="da_zone_save">&amp;Uložiť...</string>
+  <string name="da_error_start">Začiatok v metroch od 0 do 999</string>
+  
+  <string name="da_act">Activities</string>
+  <string name="da_act_stamp">Date Time</string>
+  <string name="da_act_state">State</string>
+  <string name="da_act_error">Error</string>
+  <string name="da_act_poll">&amp;Refresh</string>
+  <string name="da_act_hint">Login required</string>
+
+  <string name="da_plug">Plugin</string>
+  <string name="da_plug_code">Script</string>
+  <string name="da_plug_desc">Description</string>
+</resources>

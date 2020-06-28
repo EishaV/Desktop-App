@@ -51,7 +51,7 @@ namespace DesktopApp {
 
     #region FormMain
     public FormMain() {
-      string api = ConfigurationManager.AppSettings["WebApi"];
+      string api = ConfigurationManager.AppSettings["WebApi"], oem;
       string[] args = Environment.GetCommandLineArgs();
 
       InitializeComponent();
@@ -64,7 +64,11 @@ namespace DesktopApp {
         notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
 
         notifyIcon.Icon = this.Icon;
-        notifyIcon.Text = string.Format("{0} DeskApp", api.Contains("kress") ? "Mission" : "Landroid");
+        if( api.Contains("worx") ) oem = "Landroid";
+        else if( api.Contains("kress") ) oem = "Mission";
+        else if( api.Contains("landxcape") ) oem = "Landxcape";
+        else oem = "NoName";
+        notifyIcon.Text = string.Format("{0} DeskApp", oem);
         notifyIcon.Visible = true;
         notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
       } catch {
@@ -88,15 +92,18 @@ namespace DesktopApp {
       //rtDat.SelectionTabs = new int[] { 150 };
 #if DEBUG
       pbTest.Enabled = pbTest.Visible = true;
+      pbConnect.Enabled = true;
 #endif
       pbStart.Enabled = pbStop.Enabled = pbHome.Enabled = pbPoll.Enabled = false;
 
       _lsc.Data.Cfg.Schedule.Mode = 1;
       _lsc.Data.Cfg.Schedule.Days = new List<List<object>>();
-      for( int idx = 0; idx < 7; idx++ ) {
+      for( int idx = 0; idx < 14; idx++ ) {
         dgSchedulePlan.Rows.Add();
-        dgSchedulePlan.Rows[idx].Cells[chScDow.Index].Value = DateTimeFormatInfo.CurrentInfo.GetAbbreviatedDayName((DayOfWeek)idx);
         _lsc.Data.Cfg.Schedule.Days.Add(new List<object> { "00:00", 0, 0 });
+
+        if( idx % 2 == 1 ) dgSchedulePlan.Rows[idx].Visible = false;
+        else dgSchedulePlan.Rows[idx].Cells[chScDow.Index].Value = DateTimeFormatInfo.CurrentInfo.GetAbbreviatedDayName((DayOfWeek)(idx/2));
       }
       dgSchedulePlan.Height = dgSchedulePlan.ColumnHeadersHeight + 7*dgSchedulePlan.Rows[0].Height + 2*SystemInformation.BorderSize.Height;
       pbPlanSave.Enabled = false;
@@ -326,10 +333,13 @@ namespace DesktopApp {
       }
     }
     private void pbConnect_Click(object sender, EventArgs e) {
+      string png ;
+
       if( !_lsc.Start(edUsrBroker.Text, edUsrUuid.Text, edUsrBoard.Text, edUsrMac.Text) ) return;
       pbConnect.Enabled = false;
       pbDisconnect.Enabled = true;
 
+      /*
       Image i = pictureBox.Image;
       Graphics g = Graphics.FromImage(i);
       Rectangle r = new Rectangle(120, 220, 280, 64);
@@ -342,7 +352,15 @@ namespace DesktopApp {
       //g.DrawRectangle(Pens.White, r);
       g.DrawString(edUsrName.Text, f, Brushes.Yellow, r, sf);
       pictureBox.Image = i;
+      */
 
+      txName.Text = edUsrName.Text;
+      png = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, edUsrName.Text + ".png");
+      if( File.Exists(png) ) {
+        Image img = Image.FromFile(png);
+
+        pictureBox.Image = img;
+      }
       tcMain.SelectedTab = tpState;
     }
     private void pbDisconnect_Click(object sender, EventArgs e) {
@@ -442,9 +460,27 @@ namespace DesktopApp {
       }
 
       try {
+        if( d.ModulesD != null ) {
+          if( d.ModulesD.US != null ) {
+            txACS.Visible = true;
+            txACS.ForeColor = d.ModulesD.US.State == "ok" ? Color.Green : Color.Red;
+          }
+          if( d.ModulesD.DF != null ) {
+            txOLM.Visible = true;
+            txOLM.ForeColor = d.ModulesD.US.State == "ok" ? Color.Green : Color.Red;
+          }
+        } else {
+          txACS.Visible = txOLM.Visible = false;
+        }
+      } catch( Exception ex ) {
+        Log("Modules " + ex, 9);
+      }
+
+
+      try {
         int idx = (int)dt.DayOfWeek;
-        TimeSpan beg = TimeSpan.ParseExact(c.Schedule.Days[idx][0].ToString(), @"hh\:mm", CultureInfo.InvariantCulture);
-        int min = (int)c.Schedule.Days[idx][1];
+        TimeSpan beg = TimeSpan.ParseExact(c.Schedule.Days[2*idx][0].ToString(), @"hh\:mm", CultureInfo.InvariantCulture);
+        int min = (int)c.Schedule.Days[2*idx][1];
         int dur = min + min * c.Schedule.Perc / 100;
         TimeSpan end = beg + TimeSpan.FromMinutes(dur);
         TimeSpan cur = TimeSpan.ParseExact(c.Time, @"hh\:mm\:ss", CultureInfo.InvariantCulture);
@@ -511,10 +547,16 @@ namespace DesktopApp {
           dgSchedulePlan.CellValueChanged -= dgSchedulePlan_CellValueChanged;
           txCfgScMode.Text = string.Format("({0})", sc.Mode);
           if( sc.Days != null ) {
-            for( int idx = 0; idx < sc.Days.Count; idx++ ) {
-              dgSchedulePlan.Rows[idx].Cells[chScCut.Index].Value = (int)sc.Days[idx][2] == 1;
-              dgSchedulePlan.Rows[idx].Cells[chScBeg.Index].Value = sc.Days[idx][0];
-              dgSchedulePlan.Rows[idx].Cells[chScMin.Index].Value = (int)sc.Days[idx][1];
+            for( int idx = 0; idx < 7; idx++ ) {
+              dgSchedulePlan.Rows[2*idx].Cells[chScCut.Index].Value = (int)sc.Days[idx][2] == 1;
+              dgSchedulePlan.Rows[2*idx].Cells[chScBeg.Index].Value = sc.Days[idx][0];
+              dgSchedulePlan.Rows[2*idx].Cells[chScMin.Index].Value = (int)sc.Days[idx][1];
+              if( sc.Days.Count == 14 ) { // DoubleScheduler
+                dgSchedulePlan.Rows[2 * idx + 1].Visible = true;
+                dgSchedulePlan.Rows[2*idx+1].Cells[chScCut.Index].Value = (int)sc.Days[7+idx][2] == 1;
+                dgSchedulePlan.Rows[2*idx+1].Cells[chScBeg.Index].Value = sc.Days[7+idx][0];
+                dgSchedulePlan.Rows[2*idx+1].Cells[chScMin.Index].Value = (int)sc.Days[7+idx][1];
+              }
             }
           }
           tbCfgScPerc.Value = sc.Perc;
@@ -529,13 +571,15 @@ namespace DesktopApp {
       toolTip.SetToolTip(tbCfgScPerc, string.Format("{0}%", tbCfgScPerc.Value));
 
       foreach( DataGridViewRow row in dgSchedulePlan.Rows ) {
-        TimeSpan beg = TimeSpan.ParseExact(row.Cells[chScBeg.Index].Value.ToString(), "hh\\:mm", CultureInfo.InvariantCulture);
-        int dur = int.Parse(row.Cells[chScMin.Name].Value.ToString());
-        TimeSpan end = beg + TimeSpan.FromMinutes(dur + dur * tbCfgScPerc.Value/100.0);
+        if( row.Visible ) {
+          TimeSpan beg = TimeSpan.ParseExact(row.Cells[chScBeg.Index].Value.ToString(), "hh\\:mm", CultureInfo.InvariantCulture);
+          int dur = int.Parse(row.Cells[chScMin.Name].Value.ToString());
+          TimeSpan end = beg + TimeSpan.FromMinutes(dur + dur * tbCfgScPerc.Value/100.0);
 
-        dgSchedulePlan.CellValueChanged -= dgSchedulePlan_CellValueChanged;
-        row.Cells[chScEnd.Name].Value = end.ToString("hh\\:mm");
-        dgSchedulePlan.CellValueChanged += dgSchedulePlan_CellValueChanged;
+          dgSchedulePlan.CellValueChanged -= dgSchedulePlan_CellValueChanged;
+          row.Cells[chScEnd.Name].Value = end.ToString("hh\\:mm");
+          dgSchedulePlan.CellValueChanged += dgSchedulePlan_CellValueChanged;
+        }
       }
       chScEnd.ReadOnly = tbCfgScPerc.Value != 0;
     }
@@ -610,14 +654,26 @@ namespace DesktopApp {
       cfgOld.rd = cfg.RainDelay;
 
       cfgNew.sc.Mode = int.Parse(txCfgScMode.Text.Substring(1, 1));
+      cfgOld.sc.Party = cfgNew.sc.Party = null;
+      cfgOld.sc.Ots = cfgNew.sc.Ots = null;
       cfgNew.sc.Days = new List<List<object>>(7);
       for( int idx = 0; idx < 7; idx++ ) {
-        DataGridViewRow row = dgSchedulePlan.Rows[idx];
+        DataGridViewRow row = dgSchedulePlan.Rows[2*idx];
 
         cfgNew.sc.Days.Add(new List<object>());
         cfgNew.sc.Days[idx].Add(row.Cells[chScBeg.Index].Value);
         cfgNew.sc.Days[idx].Add(int.Parse(row.Cells[chScMin.Index].Value.ToString()));
         cfgNew.sc.Days[idx].Add((bool)row.Cells[chScCut.Index].Value ? 1 : 0);
+      }
+      if( cfgOld.sc.Days.Count == 14 ) { // DoubleScheduler
+        for( int idx = 0; idx < 7; idx++ ) {
+          DataGridViewRow row = dgSchedulePlan.Rows[2*idx];
+
+          cfgNew.sc.Days.Add(new List<object>());
+          cfgNew.sc.Days[7+idx].Add(row.Cells[chScBeg.Index].Value);
+          cfgNew.sc.Days[7+idx].Add(int.Parse(row.Cells[chScMin.Index].Value.ToString()));
+          cfgNew.sc.Days[7+idx].Add((bool)row.Cells[chScCut.Index].Value ? 1 : 0);
+        }
       }
       cfgNew.sc.Perc = tbCfgScPerc.Value;
 
@@ -631,7 +687,7 @@ namespace DesktopApp {
       if( strSet.Length > 2 ) strSet = strSet.Substring(0, strSet.Length-1);
       strSet += "}";
 
-      if( /*strSet == "{}" ||*/ MessageBox.Show(strSet, "Publish Cfg.Sc > Landroid-S", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No ) return;
+      if( /*strSet == "{}" ||*/ MessageBox.Show(strSet, "Publish", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No ) return;
 
       if( _lsc.Connected ) {
         _lsc.Publish(strSet); //, MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
@@ -732,7 +788,7 @@ namespace DesktopApp {
       if( strSet.Length > 2 ) strSet = strSet.Substring(0, strSet.Length-1);
       strSet += "}";
 
-      if( /*strSet == "{}" ||*/ MessageBox.Show(strSet, "Publish Cfg.Mz > Landroid-S", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No ) return;
+      if( /*strSet == "{}" ||*/ MessageBox.Show(strSet, "Publish", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No ) return;
 
       if( _lsc.Connected ) {
         _lsc.Publish(strSet); //, MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
@@ -913,8 +969,8 @@ namespace DesktopApp {
 
       //json = json.Substring(1, json.Length-2);
       json = Regex.Replace(json, "(\"(?:cfg|dat)\")", "\r\n  $1");
-      json = Regex.Replace(json, "(\"(?:lg|tm|dt|sc|cmd|mz|mzv|rd|sn)\")", "\r\n    $1");
-      json = Regex.Replace(json, "\"(mac|fw|bt|dmp|st|ls|le|lz|rsi|lk)\"", "\r\n    \"$1\"");
+      json = Regex.Replace(json, "(\"(?:tm|sc|cmd|mz|rd|sn|modules)\")", "\r\n    $1");
+      json = Regex.Replace(json, "\"(mac|fw|bt|dmp|st|ls|rsi|rain|moules)\"", "\r\n    \"$1\"");
       json = Regex.Replace(json, "(\\[|\\],)\\[", "$1\r\n      [");
       json = Regex.Replace(json, "\\}\\}", "}\r\n}");
       txMqtt.Tag = json;

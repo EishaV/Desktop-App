@@ -11,11 +11,11 @@
   <string name="home_mower_error_lifted">Opgetild</string>
   <string name="home_mower_error_lock">Vergrendeld</string>
   <string name="home_mower_error_outside_wire">Buiten werkgebied</string>
-  <string name="home_mower_error_reverse_wire">Draad ontbreekt</string>
+  <string name="home_mower_error_reverse_wire">Aansluitfout, draden verwisselen</string>
   <string name="home_mower_error_trapped">Vastgelopen</string>
   <string name="home_mower_error_trapped_timeout_fault">Verstrikt. Veiligheidstime-out</string>
   <string name="home_mower_error_upside_down">Omgekeerd</string>
-  <string name="home_mower_error_wheel_motor_fault">Wielmotorfout</string>
+  <string name="home_mower_error_wheel_motor_fault">Fout wielmotor</string>
   <string name="home_mower_error_wire_missing">Draad ontbreekt</string>
 
   <string name="home_mower_charging">Aan het opladen</string>
@@ -50,11 +50,11 @@
   <string name="da_state_roll">Glooiingshoek</string>
   <string name="da_state_yaw">Richting</string>
   <string name="da_state_blade">Maaitijd</string>
-  <string name="da_state_blade_info">Mähzeit seit letztem Doppelklick: </string><!--17-->
+  <string name="da_state_blade_info">Maaitijd sinds laatste dubbele klick: </string><!--17-->
   <string name="da_state_dist">Afstand</string>
-  <string name="da_state_dist_info">Gesamtstrecke</string><!--17-->
+  <string name="da_state_dist_info">Totale afstand</string><!--17-->
   <string name="da_state_work">Werktijd</string>
-  <string name="da_state_work_info">Gesamtzeit</string><!--17-->
+  <string name="da_state_work_info">Totale tijd</string><!--17-->
   <string name="da_state_last">Laatste update</string>
   <string name="da_state_start">&amp;Start</string>
   <string name="da_state_home">&amp;Huis</string>
@@ -82,4 +82,15 @@
   <string name="da_zone_train">&amp;Omtrek</string>
   <string name="da_zone_save">&amp;Opslaan...</string>
   <string name="da_error_start">Start in meters tussen 0 en 999</string>
+  
+  <string name="da_act">Activities</string>
+  <string name="da_act_stamp">Date Time</string>
+  <string name="da_act_state">State</string>
+  <string name="da_act_error">Error</string>
+  <string name="da_act_poll">&amp;Refresh</string>
+  <string name="da_act_hint">Login required</string>
+
+  <string name="da_plug">Plugin</string>
+  <string name="da_plug_code">Script</string>
+  <string name="da_plug_desc">Description</string>
 </resources>

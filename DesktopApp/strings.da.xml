@@ -50,11 +50,11 @@
   <string name="da_state_roll">Hældning</string>
   <string name="da_state_yaw">Retning</string>
   <string name="da_state_blade">T-slået</string>
-  <string name="da_state_blade_info">Mähzeit seit letztem Doppelklick: </string><!--17-->
+  <string name="da_state_blade_info">Klippetid efter sidste dobbeltklik: </string><!--17-->
   <string name="da_state_dist">Dist</string>
-  <string name="da_state_dist_info">Gesamtstrecke</string><!--17-->
+  <string name="da_state_dist_info">Samlet afstand</string><!--17-->
   <string name="da_state_work">T-kørt</string>
-  <string name="da_state_work_info">Gesamtzeit</string><!--17-->
+  <string name="da_state_work_info">Samlet tid</string><!--17-->
   <string name="da_state_last">Seneste opdatering</string>
   <string name="da_state_start">&amp;Start</string>
   <string name="da_state_home">&amp;Hjem</string>

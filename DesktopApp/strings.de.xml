@@ -3,7 +3,7 @@
   <!-- Shared with Positec -->
   <string name="home_mower_error">Fehler</string>
   <string name="home_mower_error_battery_low">Batterieladung niedrig</string>
-  <string name="home_mower_error_battery_overtemp">Battery Over Temperature</string>
+  <string name="home_mower_error_battery_overtemp">Batterietemperatur unzulässig</string>
   <string name="home_mower_error_blade_motor_fault">Fehler Messermotor</string>
   <string name="home_mower_error_close_door_to_cut">Klappe zum Mähen schließen</string>
   <string name="home_mower_error_close_to_go_home">Schließen zur Heimfahrt</string>

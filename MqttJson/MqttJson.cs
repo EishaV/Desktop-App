@@ -91,22 +91,40 @@ namespace MqttJson{
             "lk":0}
   }
   */
+  [DataContract]
+  public class OneTimeScheduler {
+    [DataMember(Name = "bc")]   public int BorderCut; // cmommand for border cut
+    [DataMember(Name = "wtm")]  public int WorkTime; // working time in minutes
+  }
+
   [DataContract] public struct Schedule {
-    [DataMember(Name = "m")]    public int Mode;
-    [DataMember(Name = "p")]    public int Perc; // override from -100% to +100%, 0% is normal
-    [DataMember(Name = "d")]    public List<List<object>> Days;
+    [DataMember(Name = "m")]      public int Mode;
+    [DataMember(Name = "distm", EmitDefaultValue = false)]  public int? Party;
+    [DataMember(Name = "ots", EmitDefaultValue = false)]    public OneTimeScheduler Ots;
+    [DataMember(Name = "p")]      public int Perc; // override from -100% to +100%, 0% is normal
+    [DataMember(Name = "d")]      public List<List<object>> Days;
+  }
+
+  [DataContract]
+  public class ModuleConfig {
+    [DataMember(Name = "enabled")] public int Enabled; // config of module
+  }
+
+  [DataContract]  public class ModuleConfigs {
+    [DataMember(Name = "US")] public ModuleConfig US; // config of module ACS
   }
 
   [DataContract] public struct Config {
-    [DataMember(Name = "lg")]   public string Language; // always it :-(
-    [DataMember(Name = "tm")]   public string Time;
-    [DataMember(Name = "dt")]   public string Date;
-    [DataMember(Name = "sc")]   public Schedule Schedule;
-    [DataMember(Name = "cmd")]  public Command Cmd;
-    [DataMember(Name = "mz")]   public int[] MultiZones; // [0-3] start point in meters
-    [DataMember(Name = "mzv")]  public int[] MultiZonePercs; // [0-9] ring list of start indizes
-    [DataMember(Name = "rd")]   public int RainDelay;
-    [DataMember(Name = "sn")]   public string SerialNo;
+    [DataMember(Name = "lg")]      public string Language; // always it :-(
+    [DataMember(Name = "tm")]      public string Time;
+    [DataMember(Name = "dt")]      public string Date;
+    [DataMember(Name = "sc")]      public Schedule Schedule;
+    [DataMember(Name = "cmd")]     public Command Cmd;
+    [DataMember(Name = "mz")]      public int[] MultiZones; // [0-3] start point in meters
+    [DataMember(Name = "mzv")]     public int[] MultiZonePercs; // [0-9] ring list of start indizes
+    [DataMember(Name = "rd")]      public int RainDelay;
+    [DataMember(Name = "sn")]      public string SerialNo;
+    [DataMember(Name = "modules",EmitDefaultValue = false)] public ModuleConfigs ModulesC;
   }
 
   [DataContract] public struct Battery {
@@ -121,19 +139,39 @@ namespace MqttJson{
     [DataMember(Name = "b")]    public int Blade; // total runtime with blade on in minutes
     [DataMember(Name = "d")]    public int Distance; // total distance in meters
     [DataMember(Name = "wt")]   public int WorkTime; // total worktim in minutes
+    [DataMember(Name = "bl")]   public int BladeLast; // blade time since last reset
+  }
+
+  [DataContract]  public class Rain {
+    [DataMember(Name = "s")]    public int State; // state of sensor
+    [DataMember(Name = "cnt")]  public int Counter; // delay counter
+  }
+
+  [DataContract]  public class ModuleState {
+    [DataMember(Name = "stat")] public string State; // state of module
+  }
+
+  [DataContract] public class ModuleStates {
+    [DataMember(Name = "US")] public ModuleState US; // state of module ACS
+    [DataMember(Name = "DF")] public ModuleState DF; // state of module OLM
   }
 
   [DataContract] public struct Data {
-    [DataMember(Name = "mac")]  public string MacAdr;
-    [DataMember(Name = "fw")]   public double Firmware;
-    [DataMember(Name = "bt")]   public Battery Battery;
-    [DataMember(Name = "dmp")]  public float[] Orient; // 0-pitch, 1-roll, 2-yaw
-    [DataMember(Name = "st")]   public Statistic Statistic;
-    [DataMember(Name = "ls")]   public StatusCode LastState;
-    [DataMember(Name = "le")]   public ErrorCode LastError;
-    [DataMember(Name = "lz")]   public int LastZone;
-    [DataMember(Name = "rsi")]  public int RecvSignal;
-    [DataMember(Name = "lk")]   public int Lock;
+    [DataMember(Name = "mac")]      public string MacAdr;
+    [DataMember(Name = "fw")]       public double Firmware;
+    [DataMember(Name = "bt")]       public Battery Battery;
+    [DataMember(Name = "dmp")]      public float[] Orient; // 0-pitch, 1-roll, 2-yaw
+    [DataMember(Name = "st")]       public Statistic Statistic;
+    [DataMember(Name = "ls")]       public StatusCode LastState;
+    [DataMember(Name = "le")]       public ErrorCode LastError;
+    [DataMember(Name = "lz")]       public int LastZone;
+    [DataMember(Name = "rsi")]      public int RecvSignal;
+    [DataMember(Name = "lk")]       public int Lock;
+    [DataMember(Name = "act", EmitDefaultValue = false)]      public int? Act;
+    [DataMember(Name = "tr", EmitDefaultValue = false)]       public int? Tr;
+    [DataMember(Name = "conn", EmitDefaultValue = false)]     public string Conn;
+    [DataMember(Name = "rain", EmitDefaultValue = false)]     public Rain Rain;
+    [DataMember(Name = "modules", EmitDefaultValue = false)]  public ModuleStates ModulesD;
   }
   #endregion
 

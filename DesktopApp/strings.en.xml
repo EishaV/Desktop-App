@@ -83,4 +83,16 @@
   <string name="da_zone_train">Round trip</string>
   <string name="da_zone_save">Save...</string>
   <string name="da_error_start">Start in meters between 0 and 999</string>
+
+  <string name="da_act">Activities</string>
+  <string name="da_act_stamp">Date Time</string>
+  <string name="da_act_state">State</string>
+  <string name="da_act_error">Error</string>
+  <string name="da_act_poll">&amp;Refresh</string>
+  <string name="da_act_hint">Login nessesary</string>
+
+  <string name="da_plug">Plugin</string>
+  <string name="da_plug_code">Script</string>
+  <string name="da_plug_desc">Description</string>
+  
 </resources>
