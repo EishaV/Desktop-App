@@ -67,7 +67,7 @@ namespace MqttJson{
   }
   #endregion
 
-  #region Structs MqttJson
+  #region MqttJson
   /*
   {
     "cfg":{ "lg":"it",

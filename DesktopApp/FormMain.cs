@@ -467,7 +467,7 @@ namespace DesktopApp {
           }
           if( d.ModulesD.DF != null ) {
             txOLM.Visible = true;
-            txOLM.ForeColor = d.ModulesD.US.State == "ok" ? Color.Green : Color.Red;
+            txOLM.ForeColor = d.ModulesD.DF.State == "ok" ? Color.Green : Color.Red;
           }
         } else {
           txACS.Visible = txOLM.Visible = false;
@@ -667,7 +667,7 @@ namespace DesktopApp {
       }
       if( cfgOld.sc.Days.Count == 14 ) { // DoubleScheduler
         for( int idx = 0; idx < 7; idx++ ) {
-          DataGridViewRow row = dgSchedulePlan.Rows[2*idx];
+          DataGridViewRow row = dgSchedulePlan.Rows[2*idx+1];
 
           cfgNew.sc.Days.Add(new List<object>());
           cfgNew.sc.Days[7+idx].Add(row.Cells[chScBeg.Index].Value);
