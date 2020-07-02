@@ -476,16 +476,24 @@ namespace DesktopApp {
         Log("Modules " + ex, 9);
       }
 
-
       try {
         int idx = (int)dt.DayOfWeek;
-        TimeSpan beg = TimeSpan.ParseExact(c.Schedule.Days[2*idx][0].ToString(), @"hh\:mm", CultureInfo.InvariantCulture);
-        int min = (int)c.Schedule.Days[2*idx][1];
+        TimeSpan beg = TimeSpan.ParseExact(c.Schedule.Days[idx][0].ToString(), @"hh\:mm", CultureInfo.InvariantCulture);
+        int min = (int)c.Schedule.Days[idx][1];
         int dur = min + min * c.Schedule.Perc / 100;
         TimeSpan end = beg + TimeSpan.FromMinutes(dur);
         TimeSpan cur = TimeSpan.ParseExact(c.Time, @"hh\:mm\:ss", CultureInfo.InvariantCulture);
         int perc;
 
+        if( c.Schedule.Days.Count == 14 ) {
+          TimeSpan beg2 = TimeSpan.ParseExact(c.Schedule.Days[7+idx][0].ToString(), @"hh\:mm", CultureInfo.InvariantCulture);
+          int min2 = (int)c.Schedule.Days[7+idx][1];
+
+          if( (beg2.Hours != 0 || beg2.Minutes != 0) && min2 > 0 ) {
+            end = beg2 + TimeSpan.FromMinutes(min2);
+            dur = (int)(end - beg).TotalMinutes; // no perc
+          }
+        }
         if(cur < beg) perc = 0;
         else if(cur > end) perc = 100;
         else perc = (int)(cur - beg).TotalMinutes * 100 / dur;
