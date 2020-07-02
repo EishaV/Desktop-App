@@ -463,11 +463,11 @@ namespace DesktopApp {
         if( d.ModulesD != null ) {
           if( d.ModulesD.US != null ) {
             txACS.Visible = true;
-            txACS.ForeColor = d.ModulesD.US.State == "ok" ? Color.Green : Color.Red;
+            txACS.ForeColor = d.ModulesD.US.State == "ok" ? Color.LawnGreen : Color.Orange;
           }
           if( d.ModulesD.DF != null ) {
             txOLM.Visible = true;
-            txOLM.ForeColor = d.ModulesD.DF.State == "ok" ? Color.Green : Color.Red;
+            txOLM.ForeColor = d.ModulesD.DF.State == "ok" ? Color.LawnGreen : Color.Orange;
           }
         } else {
           txACS.Visible = txOLM.Visible = false;
@@ -541,7 +541,7 @@ namespace DesktopApp {
       if( tpPlan.Tag is Config ) {
         Config cfg = (Config)tpPlan.Tag;
 
-        if( cfg.Schedule.Mode == 1 ) {
+        //if( cfg.Schedule.Mode == 1 ) {
           Schedule sc = cfg.Schedule;
 
           dgSchedulePlan.CellValueChanged -= dgSchedulePlan_CellValueChanged;
@@ -562,7 +562,7 @@ namespace DesktopApp {
           tbCfgScPerc.Value = sc.Perc;
           RefreshCfgScEnd();
           dgSchedulePlan.CellValueChanged += dgSchedulePlan_CellValueChanged;
-        }
+        //}
 
         udCfgRainDelay.Value = cfg.RainDelay;
       }
@@ -1033,9 +1033,6 @@ namespace DesktopApp {
       //if( txZoneDist.Tag is int && _lsc.Data.Dat.LastState == StatusCode.APP_WIRE_FOLLOW_AREA_TRAINING && !_lsc.Polling ) {
       //  _lsc.Poll();
       //}
-    }
-
-    private void pictureBox_Paint(object sender, PaintEventArgs e) {
     }
 
     private void pbActLog_Click(object sender, EventArgs e) {
