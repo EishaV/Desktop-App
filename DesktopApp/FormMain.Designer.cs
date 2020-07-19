@@ -74,8 +74,8 @@
       this.txDatSP = new System.Windows.Forms.Label();
       this.tlName = new System.Windows.Forms.TableLayoutPanel();
       this.txName = new System.Windows.Forms.Label();
-      this.txOLM = new System.Windows.Forms.Label();
-      this.txACS = new System.Windows.Forms.Label();
+      this.txRL = new System.Windows.Forms.Label();
+      this.tx4G = new System.Windows.Forms.Label();
       this.pDatAccu = new System.Windows.Forms.Panel();
       this.txDatAccu = new System.Windows.Forms.Label();
       this.txDatDT = new System.Windows.Forms.Label();
@@ -165,6 +165,8 @@
       this.rtLog = new System.Windows.Forms.RichTextBox();
       this.toolTip = new System.Windows.Forms.ToolTip(this.components);
       this.timer = new System.Windows.Forms.Timer(this.components);
+      this.txUS = new System.Windows.Forms.Label();
+      this.txDF = new System.Windows.Forms.Label();
       this.tpPlan.SuspendLayout();
       this.tlPlan.SuspendLayout();
       this.tlScPerc.SuspendLayout();
@@ -793,13 +795,17 @@
       this.tlName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.tlName.ColumnCount = 3;
+      this.tlName.ColumnCount = 5;
       this.tlName.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tlName.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       this.tlName.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      this.tlName.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      this.tlName.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      this.tlName.Controls.Add(this.txDF, 0, 0);
+      this.tlName.Controls.Add(this.txUS, 0, 0);
       this.tlName.Controls.Add(this.txName, 0, 0);
-      this.tlName.Controls.Add(this.txOLM, 2, 0);
-      this.tlName.Controls.Add(this.txACS, 1, 0);
+      this.tlName.Controls.Add(this.txRL, 2, 0);
+      this.tlName.Controls.Add(this.tx4G, 1, 0);
       this.tlName.Location = new System.Drawing.Point(3, 155);
       this.tlName.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
       this.tlName.Name = "tlName";
@@ -815,32 +821,32 @@
       this.txName.ForeColor = System.Drawing.Color.Yellow;
       this.txName.Location = new System.Drawing.Point(3, 0);
       this.txName.Name = "txName";
-      this.txName.Size = new System.Drawing.Size(229, 15);
+      this.txName.Size = new System.Drawing.Size(153, 15);
       this.txName.TabIndex = 0;
       this.txName.Text = "Name";
       this.txName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // txOLM
+      // txRL
       // 
-      this.txOLM.ForeColor = System.Drawing.Color.White;
-      this.txOLM.Location = new System.Drawing.Point(279, 0);
-      this.txOLM.Name = "txOLM";
-      this.txOLM.Size = new System.Drawing.Size(32, 13);
-      this.txOLM.TabIndex = 1;
-      this.txOLM.Text = "OLM";
-      this.txOLM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      this.txOLM.Visible = false;
+      this.txRL.ForeColor = System.Drawing.Color.White;
+      this.txRL.Location = new System.Drawing.Point(279, 0);
+      this.txRL.Name = "txRL";
+      this.txRL.Size = new System.Drawing.Size(32, 13);
+      this.txRL.TabIndex = 1;
+      this.txRL.Text = "RL";
+      this.txRL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.txRL.Visible = false;
       // 
-      // txACS
+      // tx4G
       // 
-      this.txACS.ForeColor = System.Drawing.Color.White;
-      this.txACS.Location = new System.Drawing.Point(238, 0);
-      this.txACS.Name = "txACS";
-      this.txACS.Size = new System.Drawing.Size(35, 13);
-      this.txACS.TabIndex = 1;
-      this.txACS.Text = "ACS";
-      this.txACS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      this.txACS.Visible = false;
+      this.tx4G.ForeColor = System.Drawing.Color.White;
+      this.tx4G.Location = new System.Drawing.Point(238, 0);
+      this.tx4G.Name = "tx4G";
+      this.tx4G.Size = new System.Drawing.Size(35, 13);
+      this.tx4G.TabIndex = 1;
+      this.tx4G.Text = "FML";
+      this.tx4G.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.tx4G.Visible = false;
       // 
       // pDatAccu
       // 
@@ -1910,6 +1916,28 @@
       this.timer.Interval = 3000;
       this.timer.Tick += new System.EventHandler(this.timer_Tick);
       // 
+      // txUS
+      // 
+      this.txUS.ForeColor = System.Drawing.Color.White;
+      this.txUS.Location = new System.Drawing.Point(162, 0);
+      this.txUS.Name = "txUS";
+      this.txUS.Size = new System.Drawing.Size(32, 13);
+      this.txUS.TabIndex = 2;
+      this.txUS.Text = "ACS";
+      this.txUS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.txUS.Visible = false;
+      // 
+      // txDF
+      // 
+      this.txDF.ForeColor = System.Drawing.Color.White;
+      this.txDF.Location = new System.Drawing.Point(200, 0);
+      this.txDF.Name = "txDF";
+      this.txDF.Size = new System.Drawing.Size(32, 13);
+      this.txDF.TabIndex = 3;
+      this.txDF.Text = "OLM";
+      this.txDF.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.txDF.Visible = false;
+      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -2109,8 +2137,10 @@
     private System.Windows.Forms.Label lActHint;
     private System.Windows.Forms.TableLayoutPanel tlName;
     private System.Windows.Forms.Label txName;
-    private System.Windows.Forms.Label txACS;
-    private System.Windows.Forms.Label txOLM;
+    private System.Windows.Forms.Label tx4G;
+    private System.Windows.Forms.Label txRL;
+    private System.Windows.Forms.Label txDF;
+    private System.Windows.Forms.Label txUS;
   }
 }
 

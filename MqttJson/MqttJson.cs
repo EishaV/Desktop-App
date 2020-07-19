@@ -112,6 +112,7 @@ namespace MqttJson{
 
   [DataContract]  public class ModuleConfigs {
     [DataMember(Name = "US")] public ModuleConfig US; // config of module ACS
+    [DataMember(Name = "4G")] public ModuleConfig G4; // config of module FML
   }
 
   [DataContract] public struct Config {
@@ -154,6 +155,8 @@ namespace MqttJson{
   [DataContract] public class ModuleStates {
     [DataMember(Name = "US")] public ModuleState US; // state of module ACS
     [DataMember(Name = "DF")] public ModuleState DF; // state of module OLM
+    [DataMember(Name = "RL")] public ModuleState RL; // state of module RLM
+    [DataMember(Name = "4G")] public ModuleState G4; // state of module FML
   }
 
   [DataContract] public struct Data {

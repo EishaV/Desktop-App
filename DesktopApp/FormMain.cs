@@ -428,8 +428,12 @@ namespace DesktopApp {
         Color fc;
 
         txError.Text = GetError(d);
-        if( d.LastError == ErrorCode.RAINING ) txError.ForeColor = Color.Aqua;
-        else txError.ForeColor = Color.Red;
+        if( d.LastError == ErrorCode.RAINING ) {
+          txError.ForeColor = Color.Aqua;
+          if( d.Rain != null && d.Rain.State == 0 ) {
+            txError.Text += string.Format(" {0} min", d.Rain.Counter);
+          }
+        } else txError.ForeColor = Color.Red;
         txStatus.Text = GetState(d, out fc);
         txStatus.ForeColor = fc;
       } catch(Exception ex) {
@@ -462,15 +466,23 @@ namespace DesktopApp {
       try {
         if( d.ModulesD != null ) {
           if( d.ModulesD.US != null ) {
-            txACS.Visible = true;
-            txACS.ForeColor = d.ModulesD.US.State == "ok" ? Color.LawnGreen : Color.Orange;
+            txUS.Visible = true;
+            txUS.ForeColor = d.ModulesD.US.State == "ok" ? Color.LawnGreen : Color.Orange;
           }
           if( d.ModulesD.DF != null ) {
-            txOLM.Visible = true;
-            txOLM.ForeColor = d.ModulesD.DF.State == "ok" ? Color.LawnGreen : Color.Orange;
+            txDF.Visible = true;
+            txDF.ForeColor = d.ModulesD.DF.State == "ok" ? Color.LawnGreen : Color.Orange;
+          }
+          if( d.ModulesD.G4 != null ) {
+            tx4G.Visible = true;
+            tx4G.ForeColor = d.ModulesD.G4.State == "ok" ? Color.LawnGreen : Color.Orange;
+          }
+          if( d.ModulesD.RL != null ) {
+            txRL.Visible = true;
+            txRL.ForeColor = d.ModulesD.RL.State == "ok" ? Color.LawnGreen : Color.Orange;
           }
         } else {
-          txACS.Visible = txOLM.Visible = false;
+          txUS.Visible = txDF.Visible = tx4G.Visible = txRL.Visible = false;
         }
       } catch( Exception ex ) {
         Log("Modules " + ex, 9);
