@@ -98,11 +98,12 @@ namespace MqttJson{
   }
 
   [DataContract] public struct Schedule {
-    [DataMember(Name = "m")]      public int Mode;
+    [DataMember(Name = "m")]                                public int Mode;
     [DataMember(Name = "distm", EmitDefaultValue = false)]  public int? Party;
     [DataMember(Name = "ots", EmitDefaultValue = false)]    public OneTimeScheduler Ots;
-    [DataMember(Name = "p")]      public int Perc; // override from -100% to +100%, 0% is normal
-    [DataMember(Name = "d")]      public List<List<object>> Days;
+    [DataMember(Name = "p")]                                public int Perc; // override from -100% to +100%, 0% is normal
+    [DataMember(Name = "d")]                                public List<List<object>> Days;
+    [DataMember(Name = "dd", EmitDefaultValue = false)]     public List<List<object>> DDays;
   }
 
   [DataContract]
