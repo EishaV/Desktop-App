@@ -36,16 +36,9 @@
       this.tpPlan = new System.Windows.Forms.TabPage();
       this.tlPlan = new System.Windows.Forms.TableLayoutPanel();
       this.tlScPerc = new System.Windows.Forms.TableLayoutPanel();
-      this.tbCfgScPerc = new System.Windows.Forms.TrackBar();
-      this.pbCfgScCorrM4 = new System.Windows.Forms.Button();
-      this.pbCfgScCorrP4 = new System.Windows.Forms.Button();
-      this.pbCfgScCorrP2 = new System.Windows.Forms.Button();
-      this.pbCfgScCorrM1 = new System.Windows.Forms.Button();
       this.pbCfgScCorrM3 = new System.Windows.Forms.Button();
-      this.pbCfgScCorrM2 = new System.Windows.Forms.Button();
       this.pbCfgScCorrP3 = new System.Windows.Forms.Button();
       this.pbCfgScCorrMP = new System.Windows.Forms.Button();
-      this.pbCfgScCorrP1 = new System.Windows.Forms.Button();
       this.dgSchedulePlan = new System.Windows.Forms.DataGridView();
       this.chScDow = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.chScCut = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -73,6 +66,8 @@
       this.lDatSP = new System.Windows.Forms.Label();
       this.txDatSP = new System.Windows.Forms.Label();
       this.tlName = new System.Windows.Forms.TableLayoutPanel();
+      this.txDF = new System.Windows.Forms.Label();
+      this.txUS = new System.Windows.Forms.Label();
       this.txName = new System.Windows.Forms.Label();
       this.txRL = new System.Windows.Forms.Label();
       this.tx4G = new System.Windows.Forms.Label();
@@ -165,12 +160,12 @@
       this.rtLog = new System.Windows.Forms.RichTextBox();
       this.toolTip = new System.Windows.Forms.ToolTip(this.components);
       this.timer = new System.Windows.Forms.Timer(this.components);
-      this.txUS = new System.Windows.Forms.Label();
-      this.txDF = new System.Windows.Forms.Label();
+      this.pbCfgScCorrP5 = new System.Windows.Forms.Button();
+      this.pbCfgScCorrM5 = new System.Windows.Forms.Button();
+      this.tbCfgScPerc = new System.Windows.Forms.TrackBar();
       this.tpPlan.SuspendLayout();
       this.tlPlan.SuspendLayout();
       this.tlScPerc.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.tbCfgScPerc)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.dgSchedulePlan)).BeginInit();
       this.tlCfgScMode.SuspendLayout();
       this.tlCgRainDelay.SuspendLayout();
@@ -208,6 +203,7 @@
       this.tlPluginBtn.SuspendLayout();
       this.tpMqtt.SuspendLayout();
       this.tpTrace.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.tbCfgScPerc)).BeginInit();
       this.SuspendLayout();
       // 
       // tpPlan
@@ -247,34 +243,22 @@
       // 
       // tlScPerc
       // 
-      this.tlScPerc.ColumnCount = 17;
+      this.tlScPerc.ColumnCount = 9;
       this.tlScPerc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tlScPerc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+      this.tlScPerc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
       this.tlScPerc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tlScPerc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+      this.tlScPerc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
       this.tlScPerc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tlScPerc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+      this.tlScPerc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
       this.tlScPerc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tlScPerc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-      this.tlScPerc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tlScPerc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-      this.tlScPerc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tlScPerc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-      this.tlScPerc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tlScPerc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-      this.tlScPerc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tlScPerc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+      this.tlScPerc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
       this.tlScPerc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       this.tlScPerc.Controls.Add(this.tbCfgScPerc, 0, 0);
-      this.tlScPerc.Controls.Add(this.pbCfgScCorrM4, 0, 1);
-      this.tlScPerc.Controls.Add(this.pbCfgScCorrP4, 16, 1);
-      this.tlScPerc.Controls.Add(this.pbCfgScCorrP2, 12, 1);
-      this.tlScPerc.Controls.Add(this.pbCfgScCorrM1, 6, 1);
       this.tlScPerc.Controls.Add(this.pbCfgScCorrM3, 2, 1);
-      this.tlScPerc.Controls.Add(this.pbCfgScCorrM2, 4, 1);
-      this.tlScPerc.Controls.Add(this.pbCfgScCorrP3, 14, 1);
-      this.tlScPerc.Controls.Add(this.pbCfgScCorrMP, 8, 1);
-      this.tlScPerc.Controls.Add(this.pbCfgScCorrP1, 10, 1);
+      this.tlScPerc.Controls.Add(this.pbCfgScCorrP3, 6, 1);
+      this.tlScPerc.Controls.Add(this.pbCfgScCorrMP, 4, 1);
+      this.tlScPerc.Controls.Add(this.pbCfgScCorrP5, 8, 1);
+      this.tlScPerc.Controls.Add(this.pbCfgScCorrM5, 0, 1);
       this.tlScPerc.Dock = System.Windows.Forms.DockStyle.Top;
       this.tlScPerc.Location = new System.Drawing.Point(72, 109);
       this.tlScPerc.Name = "tlScPerc";
@@ -284,111 +268,19 @@
       this.tlScPerc.Size = new System.Drawing.Size(331, 40);
       this.tlScPerc.TabIndex = 3;
       // 
-      // tbCfgScPerc
-      // 
-      this.tbCfgScPerc.AutoSize = false;
-      this.tbCfgScPerc.BackColor = System.Drawing.SystemColors.Control;
-      this.tlScPerc.SetColumnSpan(this.tbCfgScPerc, 18);
-      this.tbCfgScPerc.Dock = System.Windows.Forms.DockStyle.Top;
-      this.tbCfgScPerc.LargeChange = 10;
-      this.tbCfgScPerc.Location = new System.Drawing.Point(0, 0);
-      this.tbCfgScPerc.Margin = new System.Windows.Forms.Padding(0);
-      this.tbCfgScPerc.Maximum = 100;
-      this.tbCfgScPerc.Minimum = -100;
-      this.tbCfgScPerc.Name = "tbCfgScPerc";
-      this.tbCfgScPerc.Size = new System.Drawing.Size(331, 25);
-      this.tbCfgScPerc.TabIndex = 4;
-      this.tbCfgScPerc.TickStyle = System.Windows.Forms.TickStyle.None;
-      this.toolTip.SetToolTip(this.tbCfgScPerc, "??%");
-      this.tbCfgScPerc.ValueChanged += new System.EventHandler(this.tbSchedulePerc_ValueChanged);
-      // 
-      // pbCfgScCorrM4
-      // 
-      this.pbCfgScCorrM4.AutoSize = true;
-      this.pbCfgScCorrM4.Font = new System.Drawing.Font("Verdana", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.pbCfgScCorrM4.ForeColor = System.Drawing.Color.Transparent;
-      this.pbCfgScCorrM4.Location = new System.Drawing.Point(0, 25);
-      this.pbCfgScCorrM4.Margin = new System.Windows.Forms.Padding(0);
-      this.pbCfgScCorrM4.Name = "pbCfgScCorrM4";
-      this.pbCfgScCorrM4.Size = new System.Drawing.Size(20, 12);
-      this.pbCfgScCorrM4.TabIndex = 7;
-      this.pbCfgScCorrM4.Text = "-100";
-      this.toolTip.SetToolTip(this.pbCfgScCorrM4, "-100%");
-      this.pbCfgScCorrM4.Click += new System.EventHandler(this.pbCfgScCorrMP_Click);
-      // 
-      // pbCfgScCorrP4
-      // 
-      this.pbCfgScCorrP4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-      this.pbCfgScCorrP4.AutoSize = true;
-      this.pbCfgScCorrP4.Font = new System.Drawing.Font("Verdana", 1F);
-      this.pbCfgScCorrP4.ForeColor = System.Drawing.Color.Transparent;
-      this.pbCfgScCorrP4.Location = new System.Drawing.Point(311, 25);
-      this.pbCfgScCorrP4.Margin = new System.Windows.Forms.Padding(0);
-      this.pbCfgScCorrP4.Name = "pbCfgScCorrP4";
-      this.pbCfgScCorrP4.Size = new System.Drawing.Size(20, 12);
-      this.pbCfgScCorrP4.TabIndex = 8;
-      this.pbCfgScCorrP4.Text = "+100";
-      this.toolTip.SetToolTip(this.pbCfgScCorrP4, "+100%");
-      this.pbCfgScCorrP4.Click += new System.EventHandler(this.pbCfgScCorrMP_Click);
-      // 
-      // pbCfgScCorrP2
-      // 
-      this.pbCfgScCorrP2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-      this.pbCfgScCorrP2.AutoSize = true;
-      this.pbCfgScCorrP2.Font = new System.Drawing.Font("Verdana", 1F);
-      this.pbCfgScCorrP2.ForeColor = System.Drawing.Color.Transparent;
-      this.pbCfgScCorrP2.Location = new System.Drawing.Point(228, 25);
-      this.pbCfgScCorrP2.Margin = new System.Windows.Forms.Padding(0);
-      this.pbCfgScCorrP2.Name = "pbCfgScCorrP2";
-      this.pbCfgScCorrP2.Size = new System.Drawing.Size(20, 12);
-      this.pbCfgScCorrP2.TabIndex = 9;
-      this.pbCfgScCorrP2.Text = "+50";
-      this.toolTip.SetToolTip(this.pbCfgScCorrP2, "+50%");
-      this.pbCfgScCorrP2.Click += new System.EventHandler(this.pbCfgScCorrMP_Click);
-      // 
-      // pbCfgScCorrM1
-      // 
-      this.pbCfgScCorrM1.AutoSize = true;
-      this.pbCfgScCorrM1.Font = new System.Drawing.Font("Verdana", 1F);
-      this.pbCfgScCorrM1.ForeColor = System.Drawing.Color.Transparent;
-      this.pbCfgScCorrM1.Location = new System.Drawing.Point(114, 25);
-      this.pbCfgScCorrM1.Margin = new System.Windows.Forms.Padding(0);
-      this.pbCfgScCorrM1.Name = "pbCfgScCorrM1";
-      this.pbCfgScCorrM1.Size = new System.Drawing.Size(20, 12);
-      this.pbCfgScCorrM1.TabIndex = 11;
-      this.pbCfgScCorrM1.Text = "-25";
-      this.toolTip.SetToolTip(this.pbCfgScCorrM1, "-25%");
-      this.pbCfgScCorrM1.UseVisualStyleBackColor = true;
-      this.pbCfgScCorrM1.Click += new System.EventHandler(this.pbCfgScCorrMP_Click);
-      // 
       // pbCfgScCorrM3
       // 
       this.pbCfgScCorrM3.AutoSize = true;
       this.pbCfgScCorrM3.Font = new System.Drawing.Font("Verdana", 1F);
       this.pbCfgScCorrM3.ForeColor = System.Drawing.Color.Transparent;
-      this.pbCfgScCorrM3.Location = new System.Drawing.Point(38, 25);
+      this.pbCfgScCorrM3.Location = new System.Drawing.Point(77, 25);
       this.pbCfgScCorrM3.Margin = new System.Windows.Forms.Padding(0);
       this.pbCfgScCorrM3.Name = "pbCfgScCorrM3";
       this.pbCfgScCorrM3.Size = new System.Drawing.Size(20, 12);
       this.pbCfgScCorrM3.TabIndex = 12;
-      this.pbCfgScCorrM3.Text = "-75";
-      this.toolTip.SetToolTip(this.pbCfgScCorrM3, "-75%");
+      this.pbCfgScCorrM3.Text = "-50";
+      this.toolTip.SetToolTip(this.pbCfgScCorrM3, "-50%");
       this.pbCfgScCorrM3.Click += new System.EventHandler(this.pbCfgScCorrMP_Click);
-      // 
-      // pbCfgScCorrM2
-      // 
-      this.pbCfgScCorrM2.AutoSize = true;
-      this.pbCfgScCorrM2.Font = new System.Drawing.Font("Verdana", 1F);
-      this.pbCfgScCorrM2.ForeColor = System.Drawing.Color.Transparent;
-      this.pbCfgScCorrM2.Location = new System.Drawing.Point(76, 25);
-      this.pbCfgScCorrM2.Margin = new System.Windows.Forms.Padding(0);
-      this.pbCfgScCorrM2.Name = "pbCfgScCorrM2";
-      this.pbCfgScCorrM2.Size = new System.Drawing.Size(20, 12);
-      this.pbCfgScCorrM2.TabIndex = 13;
-      this.pbCfgScCorrM2.Text = "-50";
-      this.toolTip.SetToolTip(this.pbCfgScCorrM2, "-50%");
-      this.pbCfgScCorrM2.UseVisualStyleBackColor = true;
-      this.pbCfgScCorrM2.Click += new System.EventHandler(this.pbCfgScCorrMP_Click);
       // 
       // pbCfgScCorrP3
       // 
@@ -396,13 +288,13 @@
       this.pbCfgScCorrP3.AutoSize = true;
       this.pbCfgScCorrP3.Font = new System.Drawing.Font("Verdana", 1F);
       this.pbCfgScCorrP3.ForeColor = System.Drawing.Color.Transparent;
-      this.pbCfgScCorrP3.Location = new System.Drawing.Point(266, 25);
+      this.pbCfgScCorrP3.Location = new System.Drawing.Point(231, 25);
       this.pbCfgScCorrP3.Margin = new System.Windows.Forms.Padding(0);
       this.pbCfgScCorrP3.Name = "pbCfgScCorrP3";
       this.pbCfgScCorrP3.Size = new System.Drawing.Size(20, 12);
       this.pbCfgScCorrP3.TabIndex = 14;
-      this.pbCfgScCorrP3.Text = "75";
-      this.toolTip.SetToolTip(this.pbCfgScCorrP3, "+75%");
+      this.pbCfgScCorrP3.Text = "50";
+      this.toolTip.SetToolTip(this.pbCfgScCorrP3, "+50%");
       this.pbCfgScCorrP3.Click += new System.EventHandler(this.pbCfgScCorrMP_Click);
       // 
       // pbCfgScCorrMP
@@ -412,7 +304,7 @@
       this.pbCfgScCorrMP.AutoSize = true;
       this.pbCfgScCorrMP.Font = new System.Drawing.Font("Verdana", 1F);
       this.pbCfgScCorrMP.ForeColor = System.Drawing.Color.Transparent;
-      this.pbCfgScCorrMP.Location = new System.Drawing.Point(152, 25);
+      this.pbCfgScCorrMP.Location = new System.Drawing.Point(154, 25);
       this.pbCfgScCorrMP.Margin = new System.Windows.Forms.Padding(0);
       this.pbCfgScCorrMP.Name = "pbCfgScCorrMP";
       this.pbCfgScCorrMP.Size = new System.Drawing.Size(20, 12);
@@ -420,21 +312,6 @@
       this.pbCfgScCorrMP.Text = "0";
       this.toolTip.SetToolTip(this.pbCfgScCorrMP, "0%");
       this.pbCfgScCorrMP.Click += new System.EventHandler(this.pbCfgScCorrMP_Click);
-      // 
-      // pbCfgScCorrP1
-      // 
-      this.pbCfgScCorrP1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-      this.pbCfgScCorrP1.AutoSize = true;
-      this.pbCfgScCorrP1.Font = new System.Drawing.Font("Verdana", 1F);
-      this.pbCfgScCorrP1.ForeColor = System.Drawing.Color.Transparent;
-      this.pbCfgScCorrP1.Location = new System.Drawing.Point(190, 25);
-      this.pbCfgScCorrP1.Margin = new System.Windows.Forms.Padding(0);
-      this.pbCfgScCorrP1.Name = "pbCfgScCorrP1";
-      this.pbCfgScCorrP1.Size = new System.Drawing.Size(20, 12);
-      this.pbCfgScCorrP1.TabIndex = 15;
-      this.pbCfgScCorrP1.Text = "25";
-      this.toolTip.SetToolTip(this.pbCfgScCorrP1, "+25%");
-      this.pbCfgScCorrP1.Click += new System.EventHandler(this.pbCfgScCorrMP_Click);
       // 
       // dgSchedulePlan
       // 
@@ -813,6 +690,28 @@
       this.tlName.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tlName.Size = new System.Drawing.Size(314, 15);
       this.tlName.TabIndex = 5;
+      // 
+      // txDF
+      // 
+      this.txDF.ForeColor = System.Drawing.Color.White;
+      this.txDF.Location = new System.Drawing.Point(200, 0);
+      this.txDF.Name = "txDF";
+      this.txDF.Size = new System.Drawing.Size(32, 13);
+      this.txDF.TabIndex = 3;
+      this.txDF.Text = "OLM";
+      this.txDF.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.txDF.Visible = false;
+      // 
+      // txUS
+      // 
+      this.txUS.ForeColor = System.Drawing.Color.White;
+      this.txUS.Location = new System.Drawing.Point(162, 0);
+      this.txUS.Name = "txUS";
+      this.txUS.Size = new System.Drawing.Size(32, 13);
+      this.txUS.TabIndex = 2;
+      this.txUS.Text = "ACS";
+      this.txUS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.txUS.Visible = false;
       // 
       // txName
       // 
@@ -1916,27 +1815,51 @@
       this.timer.Interval = 3000;
       this.timer.Tick += new System.EventHandler(this.timer_Tick);
       // 
-      // txUS
+      // pbCfgScCorrP5
       // 
-      this.txUS.ForeColor = System.Drawing.Color.White;
-      this.txUS.Location = new System.Drawing.Point(162, 0);
-      this.txUS.Name = "txUS";
-      this.txUS.Size = new System.Drawing.Size(32, 13);
-      this.txUS.TabIndex = 2;
-      this.txUS.Text = "ACS";
-      this.txUS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      this.txUS.Visible = false;
+      this.pbCfgScCorrP5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+      this.pbCfgScCorrP5.AutoSize = true;
+      this.pbCfgScCorrP5.Font = new System.Drawing.Font("Verdana", 1F);
+      this.pbCfgScCorrP5.ForeColor = System.Drawing.Color.Transparent;
+      this.pbCfgScCorrP5.Location = new System.Drawing.Point(311, 25);
+      this.pbCfgScCorrP5.Margin = new System.Windows.Forms.Padding(0);
+      this.pbCfgScCorrP5.Name = "pbCfgScCorrP5";
+      this.pbCfgScCorrP5.Size = new System.Drawing.Size(20, 12);
+      this.pbCfgScCorrP5.TabIndex = 8;
+      this.pbCfgScCorrP5.Text = "+100";
+      this.toolTip.SetToolTip(this.pbCfgScCorrP5, "+100%");
+      this.pbCfgScCorrP5.Click += new System.EventHandler(this.pbCfgScCorrMP_Click);
       // 
-      // txDF
+      // pbCfgScCorrM5
       // 
-      this.txDF.ForeColor = System.Drawing.Color.White;
-      this.txDF.Location = new System.Drawing.Point(200, 0);
-      this.txDF.Name = "txDF";
-      this.txDF.Size = new System.Drawing.Size(32, 13);
-      this.txDF.TabIndex = 3;
-      this.txDF.Text = "OLM";
-      this.txDF.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      this.txDF.Visible = false;
+      this.pbCfgScCorrM5.AutoSize = true;
+      this.pbCfgScCorrM5.Font = new System.Drawing.Font("Verdana", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.pbCfgScCorrM5.ForeColor = System.Drawing.Color.Transparent;
+      this.pbCfgScCorrM5.Location = new System.Drawing.Point(0, 25);
+      this.pbCfgScCorrM5.Margin = new System.Windows.Forms.Padding(0);
+      this.pbCfgScCorrM5.Name = "pbCfgScCorrM5";
+      this.pbCfgScCorrM5.Size = new System.Drawing.Size(20, 12);
+      this.pbCfgScCorrM5.TabIndex = 7;
+      this.pbCfgScCorrM5.Text = "-100";
+      this.pbCfgScCorrM5.Click += new System.EventHandler(this.pbCfgScCorrMP_Click);
+      // 
+      // tbCfgScPerc
+      // 
+      this.tbCfgScPerc.AutoSize = false;
+      this.tbCfgScPerc.BackColor = System.Drawing.SystemColors.Control;
+      this.tlScPerc.SetColumnSpan(this.tbCfgScPerc, 9);
+      this.tbCfgScPerc.Dock = System.Windows.Forms.DockStyle.Top;
+      this.tbCfgScPerc.LargeChange = 10;
+      this.tbCfgScPerc.Location = new System.Drawing.Point(0, 0);
+      this.tbCfgScPerc.Margin = new System.Windows.Forms.Padding(0);
+      this.tbCfgScPerc.Maximum = 100;
+      this.tbCfgScPerc.Minimum = -100;
+      this.tbCfgScPerc.Name = "tbCfgScPerc";
+      this.tbCfgScPerc.Size = new System.Drawing.Size(331, 25);
+      this.tbCfgScPerc.TabIndex = 4;
+      this.tbCfgScPerc.TickStyle = System.Windows.Forms.TickStyle.None;
+      this.toolTip.SetToolTip(this.tbCfgScPerc, "??%");
+      this.tbCfgScPerc.ValueChanged += new System.EventHandler(this.tbSchedulePerc_ValueChanged);
       // 
       // FormMain
       // 
@@ -1954,7 +1877,6 @@
       this.tlPlan.PerformLayout();
       this.tlScPerc.ResumeLayout(false);
       this.tlScPerc.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.tbCfgScPerc)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.dgSchedulePlan)).EndInit();
       this.tlCfgScMode.ResumeLayout(false);
       this.tlCfgScMode.PerformLayout();
@@ -2002,6 +1924,7 @@
       this.tpMqtt.ResumeLayout(false);
       this.tpMqtt.PerformLayout();
       this.tpTrace.ResumeLayout(false);
+      ((System.ComponentModel.ISupportInitialize)(this.tbCfgScPerc)).EndInit();
       this.ResumeLayout(false);
 
     }
@@ -2010,7 +1933,6 @@
     private System.Windows.Forms.TabPage tpPlan;
     private System.Windows.Forms.TableLayoutPanel tlPlan;
     private System.Windows.Forms.DataGridView dgSchedulePlan;
-    private System.Windows.Forms.TrackBar tbCfgScPerc;
     private System.Windows.Forms.Label lCfgScPerc;
     private System.Windows.Forms.TabPage tpState;
     private System.Windows.Forms.TableLayoutPanel tlDatCmd;
@@ -2057,15 +1979,9 @@
     private System.Windows.Forms.Label txDatRsi;
     private System.Windows.Forms.Label txUsrUuid;
     private System.Windows.Forms.TextBox edUsrUuid;
-    private System.Windows.Forms.Button pbCfgScCorrM4;
-    private System.Windows.Forms.Button pbCfgScCorrP4;
-    private System.Windows.Forms.Button pbCfgScCorrP2;
     private System.Windows.Forms.Button pbCfgScCorrMP;
-    private System.Windows.Forms.Button pbCfgScCorrM1;
     private System.Windows.Forms.Button pbCfgScCorrM3;
-    private System.Windows.Forms.Button pbCfgScCorrM2;
     private System.Windows.Forms.Button pbCfgScCorrP3;
-    private System.Windows.Forms.Button pbCfgScCorrP1;
     private System.Windows.Forms.TableLayoutPanel tlDatErrorState;
     private System.Windows.Forms.Label txError;
     private System.Windows.Forms.Label txStatus;
@@ -2141,6 +2057,9 @@
     private System.Windows.Forms.Label txRL;
     private System.Windows.Forms.Label txDF;
     private System.Windows.Forms.Label txUS;
+    private System.Windows.Forms.TrackBar tbCfgScPerc;
+    private System.Windows.Forms.Button pbCfgScCorrP5;
+    private System.Windows.Forms.Button pbCfgScCorrM5;
   }
 }
 
