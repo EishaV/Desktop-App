@@ -245,9 +245,16 @@ namespace DesktopApp {
       }
     }
     protected override void OnClosed(EventArgs e) {
+      int wait = 10;
+
       _lsc.Exit();
       if( notifyIcon != null ) notifyIcon.Visible = false;
 
+      while( _lsc.Connected && wait-- > 0 ) {
+        System.Threading.Thread.Sleep(100);
+        Application.DoEvents();
+      }
+      if( wait == 0 ) Log("Timeout disconnect", 9);
       base.OnClosed(e);
     }
     protected override void OnResize(EventArgs e) {

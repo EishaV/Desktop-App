@@ -14,6 +14,7 @@ using System.Net;
 
 using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Messages;
+using System.Threading;
 
 #if PLUGIN
 using CSScriptLibrary;
@@ -189,6 +190,8 @@ namespace DesktopApp
   //}
 
   public class LsClient {
+    public enum States { None, Connected, Subscribed, Exit, Unsubscribed, Disconnected };
+
     private WebClient _client = new WebClient();
     private X509Certificate2 _certWX = null;
     private MqttClient _mqtt = null;
@@ -204,6 +207,8 @@ namespace DesktopApp
     public List<LsProductItem> Products = new List<LsProductItem>();
     public Dictionary<string, IPlugin> Plugins = new Dictionary<string, IPlugin>();
 
+    public States State = States.None;
+
     public ErrDelegte Err;
     public LogDelegte Log;
     public MqttDelegate Recv;
@@ -218,93 +223,6 @@ namespace DesktopApp
     }
     public bool Login(string mail, string pass, string uuid) {
       return WebApi(mail, pass, uuid);
-    }
-    public bool WorxApiV1(string mail, string pass, string uuid) {
-      NameValueCollection nvc = new NameValueCollection();
-      string str;
-      string api = ConfigurationManager.AppSettings["ApiWorx"];
-      string tok = ConfigurationManager.AppSettings["TokWorx"];
-      byte[] buf;
-
-      //ServicePointManager.ServerCertificateValidationCallback += (o, certificate, chain, errors) => true;
-
-      nvc.Add("email", mail);
-      nvc.Add("password", pass);
-      nvc.Add("type", "app");
-      nvc.Add("platform", "android");
-      nvc.Add("uuid", uuid);
-
-      try {
-        #region User auth
-        _client.Headers["X-Auth-Token"] = tok;
-        buf = _client.UploadValues(api + "users/auth", nvc);
-        str = Encoding.UTF8.GetString(buf);
-        Debug.WriteLine("User auth: {0}", str);
-        Log(string.Format("User auth: {0}", str), 1);
-        using( MemoryStream ms = new MemoryStream(buf) ) {
-          DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(WorxUser));
-          WorxUser wu = (WorxUser)dcjs.ReadObject(ms);
-
-          Log(string.Format("User token '{0}'", wu.ApiToken));
-          Broker = wu.MqttEndpoint;
-          _client.Headers["X-Auth-Token"] = wu.ApiToken;
-          ms.Close();
-        }
-        #endregion
-
-        #region Product items
-        buf = _client.DownloadData(api + "product-items");
-        str = Encoding.UTF8.GetString(buf);
-        Log(string.Format("Product items: {0}", str), 1);
-        Debug.WriteLine("Product items: {0}", str);
-        str = string.Empty;
-        using( MemoryStream ms = new MemoryStream(buf) ) {
-          DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(List<LsProductItem>));
-          Products = (List<LsProductItem>)dcjs.ReadObject(ms);
-
-          ms.Close();
-        }
-        #endregion
-
-        #region Status
-        foreach( LsProductItem pi in Products ) {
-          buf = _client.DownloadData(api + "product-items/" + pi.SerialNo + "/status");
-          str = Encoding.UTF8.GetString(buf);
-          Log(string.Format("Status {0}: {1}", pi.Name, str), 1);
-          Debug.WriteLine("Status {0}: {1}", pi.Name, str);
-        }
-        #endregion
-
-        #region Certificate
-        buf = _client.DownloadData(api + "users/certificate");
-        str = Encoding.UTF8.GetString(buf);
-        Log(string.Format("AWS Certificate: {0}", str), 1);
-        Debug.WriteLine("AWS Certificate: {0}", str);
-        using( MemoryStream ms = new MemoryStream(buf) ) {
-          DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(LsCertificate));
-          LsCertificate lsc = (LsCertificate)dcjs.ReadObject(ms);
-
-          ms.Close();
-          str = lsc.Pkcs12.Replace("\\/", "/");
-          buf = Convert.FromBase64String(str);
-          File.WriteAllBytes(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AWS.p12"), buf);
-          _certWX = new X509Certificate2(buf);
-          string mac = Products.Count > 0 ? Products[0].MacAdr.Substring(5) : "000000";
-          int xx = int.Parse(mac, System.Globalization.NumberStyles.HexNumber) ^ 0xE1588A;
-
-          Log(string.Format("AWS certificate done ({0})", xx), 2);
-          //buf = _certWX.Export(X509ContentType.Cert);
-          //File.WriteAllBytes(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "WX.p12"), buf);
-        }
-        #endregion
-      } catch( Exception ex ) {
-        Err(ex.Message);
-        Log(ex.ToString(), 9);
-        return false;
-      }
-
-      buf = null;
-      return true;
     }
     public bool WebApi(string mail, string pass, string uuid) {
       NameValueCollection nvc = new NameValueCollection();
@@ -483,6 +401,15 @@ namespace DesktopApp
     }
 
     public bool Start(bool first) {
+      if( _mqtt != null ) {
+        _mqtt.MqttMsgSubscribed -= MqttMsgSubscribed;
+        _mqtt.MqttMsgUnsubscribed -= MqttMsgUnsubscribed;
+        _mqtt.MqttMsgPublishReceived -= MqttMsgPublishReceived;
+        _mqtt.MqttMsgPublished -= MqttMsgPublished;
+        _mqtt.ConnectionClosed -= ConnectionClosed;
+        _mqtt = null;
+      }
+
       try {
         _mqtt = new MqttClient(Broker, 8883, true, null, _certWX, MqttSslProtocols.TLSv1_2);
       } catch( Exception ex ) {
@@ -493,12 +420,14 @@ namespace DesktopApp
 
       try {
         _mqtt.MqttMsgSubscribed += MqttMsgSubscribed;
+        _mqtt.MqttMsgUnsubscribed += MqttMsgUnsubscribed;
         _mqtt.MqttMsgPublished += MqttMsgPublished;
         _mqtt.MqttMsgPublishReceived += MqttMsgPublishReceived;
         _mqtt.ConnectionClosed += ConnectionClosed;
 
         byte code = _mqtt.Connect(_uuid);
         Log(string.Format("Connect '{0} ({1})'", code, _mqtt.IsConnected));
+        State = States.Connected;
 
         _mqtt.Subscribe(_cmdOut, _cmdQos);
         Log(string.Format("Subscribe init"));
@@ -517,13 +446,22 @@ namespace DesktopApp
 
     public void Exit() {
       if( _mqtt != null && _mqtt.IsConnected ) {
-        _mqtt.ConnectionClosed -= ConnectionClosed;
-        _mqtt.MqttMsgPublishReceived -= MqttMsgPublishReceived;
-        _mqtt.MqttMsgPublished -= MqttMsgPublished;
-        _mqtt.MqttMsgSubscribed -= MqttMsgSubscribed;
+        int wait = 20;
+
+        //_mqtt.MqttMsgPublishReceived -= MqttMsgPublishReceived;
+        //_mqtt.MqttMsgPublished -= MqttMsgPublished;
         _mqtt.Unsubscribe(_cmdOut);
-        try { _mqtt.Disconnect(); } catch { }
-        _mqtt = null;
+        while( State != States.Unsubscribed && wait-- > 0 ) Thread.Sleep(100);
+        if( wait == 0 ) {
+          Log("Timeout unsubscribe", 9);
+          State = States.Unsubscribed;
+        }
+        //_mqtt.MqttMsgSubscribed -= MqttMsgSubscribed;
+        //_mqtt.MqttMsgUnsubscribed -= MqttMsgUnsubscribed;
+        //_mqtt.ConnectionClosed -= ConnectionClosed;
+        try { _mqtt.Disconnect(); }
+        catch( Exception ex) { Log(ex.ToString(), 9); }
+        //_mqtt = null;
       }
     }
 
@@ -538,6 +476,11 @@ namespace DesktopApp
     }
     private void MqttMsgSubscribed(object sender, MqttMsgSubscribedEventArgs e) {
       Log(string.Format("Subscribe done '{0}'", e.MessageId));
+      State = States.Subscribed;
+    }
+    private void MqttMsgUnsubscribed(object sender, MqttMsgUnsubscribedEventArgs e) {
+      State = States.Unsubscribed;
+      Log(string.Format("Unsubscribe done '{0}'", e.MessageId));
     }
     private void MqttMsgPublished(object sender, MqttMsgPublishedEventArgs e) {
       Log(string.Format("Published done '{0}' ({1})", e.MessageId, e.IsPublished));
@@ -564,14 +507,17 @@ namespace DesktopApp
       }
     }
     private void ConnectionClosed(object sender, EventArgs e) {
-      int num = int.Parse(ConfigurationManager.AppSettings["AutoReconnect"]);
+      if( State == States.Unsubscribed ) {
+        State = States.Disconnected;
+        Log("Disconnect");
+      } else {
+        int num = int.Parse(ConfigurationManager.AppSettings["AutoReconnect"]);
 
-      Log("Mqtt connection closed", 9);
-      for( int i = 0; i < num; i++ ) {
-        System.Threading.Thread.Sleep(10000);
-        if( _mqtt.IsConnected ) { Log("Mqtt is connected"); break; }
-        else if( Start(false) ) { Log("Mqtt reconnected"); break; }
-        else Log(string.Format("Mqtt reconnect {0} failed", i), 1);
+        Log("Mqtt connection closed", 9);
+        for( int i = 0; i < num; i++ ) {
+          System.Threading.Thread.Sleep(10000);
+          if( _mqtt.IsConnected ) { Log("Mqtt is connected"); break; } else if( Start(false) ) { Log("Mqtt reconnected"); break; } else Log(string.Format("Mqtt reconnect {0} failed", i), 1);
+        }
       }
     }
 
