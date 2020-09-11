@@ -100,22 +100,22 @@ namespace DesktopApp {
       _lsc.Data.Cfg.Schedule.Days = new List<List<object>>();
       _lsc.Data.Cfg.Schedule.DDays = new List<List<object>>();
       for( int idx = 0; idx < 14; idx++ ) {
-        dgSchedulePlan.Rows.Add();
+        dgPlan.Rows.Add();
         if( idx % 2 == 0 ) {
           _lsc.Data.Cfg.Schedule.Days.Add(new List<object> { "00:00", 0, 0 });
-          dgSchedulePlan.Rows[idx].Cells[chScDow.Index].Value = DateTimeFormatInfo.CurrentInfo.GetAbbreviatedDayName((DayOfWeek)(idx / 2));
+          dgPlan.Rows[idx].Cells[chScDow.Index].Value = DateTimeFormatInfo.CurrentInfo.GetAbbreviatedDayName((DayOfWeek)(idx / 2));
         } else {
           _lsc.Data.Cfg.Schedule.DDays.Add(new List<object> { "00:00", 0, 0 });
-          dgSchedulePlan.Rows[idx].Visible = false;
+          dgPlan.Rows[idx].Visible = false;
         }
       }
-      dgSchedulePlan.Height = dgSchedulePlan.ColumnHeadersHeight + 7*dgSchedulePlan.Rows[0].Height + 2*SystemInformation.BorderSize.Height;
+      //dgSchedulePlan.Height = dgSchedulePlan.ColumnHeadersHeight + 7*dgSchedulePlan.Rows[0].Height + 2*SystemInformation.BorderSize.Height;
       pbPlanSave.Enabled = false;
 
-      for( int idx = 0; idx < 4; idx++ ) dgMultiZone.Rows.Add();
+      for( int idx = 0; idx < 4; idx++ ) dgZone.Rows.Add();
       _lsc.Data.Cfg.MultiZones = new int[] { 0, 0, 0, 0 };
       _lsc.Data.Cfg.MultiZonePercs = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-      dgMultiZone.Height = dgMultiZone.ColumnHeadersHeight + 4*dgMultiZone.Rows[0].Height + 2*SystemInformation.BorderSize.Height;
+      dgZone.Height = dgZone.ColumnHeadersHeight + 4*dgZone.Rows[0].Height + 2*SystemInformation.BorderSize.Height;
       pbZoneSave.Enabled = pbZoneStart.Enabled = false;
     }
     protected override void OnLoad(EventArgs e) {
@@ -141,23 +141,24 @@ namespace DesktopApp {
 
       tpPlan.Text  = Ressource.Get("da_plan");
       lCfgSc.Text = Ressource.Get("da_plan_mode");
-      dgSchedulePlan.CellValueChanged -= dgSchedulePlan_CellValueChanged;
+      toolTip.SetToolTip(pbPlanCopy, Ressource.Get("da_plan_copy_info"));
+      dgPlan.CellValueChanged -= dgSchedulePlan_CellValueChanged;
       chScDow.HeaderText = Ressource.Get("da_plan_dow");
       chScCut.HeaderText = Ressource.Get("da_plan_cut");
       chScBeg.HeaderText = Ressource.Get("da_plan_beg");
       chScMin.HeaderText = Ressource.Get("da_plan_min");
       chScEnd.HeaderText = Ressource.Get("da_plan_end");
-      dgSchedulePlan.CellValueChanged += dgSchedulePlan_CellValueChanged;
+      dgPlan.CellValueChanged += dgSchedulePlan_CellValueChanged;
       lCfgSc.Text = Ressource.Get("da_plan_mode");
       lCfgScPerc.Text = Ressource.Get("da_plan_perc");
       lCfgRainDelay.Text = Ressource.Get("da_plan_rain");
       pbPlanSave.Text = Ressource.Get("da_plan_save");
 
       tpZone.Text  = Ressource.Get("da_zone");
-      dgMultiZone.CellValueChanged -= dgMultiZone_CellValueChanged;
+      dgZone.CellValueChanged -= dgMultiZone_CellValueChanged;
       chMzStart.HeaderText = Ressource.Get("da_zone_start");
       chMzPerc.HeaderText = Ressource.Get("da_zone_perc");
-      dgMultiZone.CellValueChanged += dgMultiZone_CellValueChanged;
+      dgZone.CellValueChanged += dgMultiZone_CellValueChanged;
       pbZoneStart.Text = Ressource.Get("da_zone_train");
       pbZoneSave.Text = Ressource.Get("da_zone_save");
 
@@ -388,12 +389,6 @@ namespace DesktopApp {
     #endregion
 
     #region Status
-    private void pStatusAccu_Paint(object sender, PaintEventArgs e) {
-      int x = 10 + (int)((pDatAccu.Width - 20) * _lsc.Data.Dat.Battery.Perc / 100.0F);
-
-      e.Graphics.DrawImage(AppRes.marker_blue, x - AppRes.marker_blue.Width/2, 1);
-      if( _lsc.Data.Dat.Battery.Charging == ChargeCoge.CHARGING ) e.Graphics.DrawImage(AppRes.bt_charging, pDatAccu.Width-40, 2);
-    }
     private void txDatStB_DoubleClick(object sender, EventArgs e) {
       _bladeLast = _lsc.Data.Dat.Statistic.Blade;
       RefreshBlade();
@@ -538,7 +533,7 @@ namespace DesktopApp {
         if( d.LastState == StatusCode.GRASS_CUTTING && b.Volt <= _vpm.Mowing.Beg && b.Volt >= _vpm.Mowing.End )
           min = (b.Volt - _vpm.Mowing.End) / _vpm.Mowing.VoltPerMin;
         if( min > 0.0F ) txDatAccu.Text += " ~ " + TimeSpan.FromMinutes(min).ToString(@"h\:mm");
-        pDatAccu.Invalidate();
+        //pDatAccu.Invalidate();
       } catch(Exception ex) {
         Log("Accu " + ex, 9);
       }
@@ -575,21 +570,21 @@ namespace DesktopApp {
         //if( cfg.Schedule.Mode == 1 ) {
           Schedule sc = cfg.Schedule;
 
-          dgSchedulePlan.CellValueChanged -= dgSchedulePlan_CellValueChanged;
+          dgPlan.CellValueChanged -= dgSchedulePlan_CellValueChanged;
           txCfgScMode.Text = string.Format("({0})", sc.Mode);
           if( sc.Days != null ) {
             for( int idx = 0; idx < 7; idx++ ) {
-              dgSchedulePlan.Rows[2*idx].Cells[chScCut.Index].Value = (int)sc.Days[idx][2] == 1;
-              dgSchedulePlan.Rows[2*idx].Cells[chScBeg.Index].Value = sc.Days[idx][0];
-              dgSchedulePlan.Rows[2*idx].Cells[chScMin.Index].Value = (int)sc.Days[idx][1];
+              dgPlan.Rows[2*idx].Cells[chScCut.Index].Value = (int)sc.Days[idx][2] == 1;
+              dgPlan.Rows[2*idx].Cells[chScBeg.Index].Value = sc.Days[idx][0];
+              dgPlan.Rows[2*idx].Cells[chScMin.Index].Value = (int)sc.Days[idx][1];
             }
           }
           if( sc.DDays != null ) { // DoubleScheduler
             for( int idx = 0; idx < 7; idx++ ) {
-              dgSchedulePlan.Rows[2*idx+1].Visible = true;
-              dgSchedulePlan.Rows[2*idx+1].Cells[chScCut.Index].Value = (int)sc.DDays[idx][2] == 1;
-              dgSchedulePlan.Rows[2*idx+1].Cells[chScBeg.Index].Value = sc.DDays[idx][0];
-              dgSchedulePlan.Rows[2*idx+1].Cells[chScMin.Index].Value = (int)sc.DDays[idx][1];
+              dgPlan.Rows[2*idx+1].Visible = true;
+              dgPlan.Rows[2*idx+1].Cells[chScCut.Index].Value = (int)sc.DDays[idx][2] == 1;
+              dgPlan.Rows[2*idx+1].Cells[chScBeg.Index].Value = sc.DDays[idx][0];
+              dgPlan.Rows[2*idx+1].Cells[chScMin.Index].Value = (int)sc.DDays[idx][1];
             }
           }
           try {
@@ -598,7 +593,7 @@ namespace DesktopApp {
             tbCfgScPerc.Value = sc.Perc > 0 ? 100 : -100;
           }
           RefreshCfgScEnd();
-          dgSchedulePlan.CellValueChanged += dgSchedulePlan_CellValueChanged;
+          dgPlan.CellValueChanged += dgSchedulePlan_CellValueChanged;
         //}
 
         udCfgRainDelay.Value = cfg.RainDelay;
@@ -607,67 +602,83 @@ namespace DesktopApp {
     private void RefreshCfgScEnd() {
       toolTip.SetToolTip(tbCfgScPerc, string.Format("{0}%", tbCfgScPerc.Value));
 
-      foreach( DataGridViewRow row in dgSchedulePlan.Rows ) {
+      foreach( DataGridViewRow row in dgPlan.Rows ) {
         if( row.Visible ) {
           TimeSpan beg = TimeSpan.ParseExact(row.Cells[chScBeg.Index].Value.ToString(), "hh\\:mm", CultureInfo.InvariantCulture);
           int dur = int.Parse(row.Cells[chScMin.Name].Value.ToString());
           TimeSpan end = beg + TimeSpan.FromMinutes(dur + dur * tbCfgScPerc.Value/100.0);
 
-          dgSchedulePlan.CellValueChanged -= dgSchedulePlan_CellValueChanged;
+          dgPlan.CellValueChanged -= dgSchedulePlan_CellValueChanged;
           row.Cells[chScEnd.Name].Value = end.ToString("hh\\:mm");
-          dgSchedulePlan.CellValueChanged += dgSchedulePlan_CellValueChanged;
+          dgPlan.CellValueChanged += dgSchedulePlan_CellValueChanged;
         }
       }
       chScEnd.ReadOnly = tbCfgScPerc.Value != 0;
     }
 
     private void dgSchedulePlan_CellValidating(object sender, DataGridViewCellValidatingEventArgs e) {
-      dgSchedulePlan.Rows[e.RowIndex].ErrorText = null;
+      dgPlan.Rows[e.RowIndex].ErrorText = null;
       if( e.ColumnIndex == chScBeg.Index ) {
         TimeSpan ts;
 
         if( !TimeSpan.TryParseExact(e.FormattedValue.ToString(), "hh\\:mm", CultureInfo.InvariantCulture, out ts) ) {
-          dgSchedulePlan.Rows[e.RowIndex].ErrorText = Ressource.Get("da_error_beg");
+          dgPlan.Rows[e.RowIndex].ErrorText = Ressource.Get("da_error_beg");
           e.Cancel = true;
         }
       } else if( e.ColumnIndex == chScMin.Index ) {
         int m;
 
         if( !(int.TryParse(e.FormattedValue.ToString(), out m) && 0 <= m && m < 24*60) ) {
-          dgSchedulePlan.Rows[e.RowIndex].ErrorText = Ressource.Get("da_error_min");
+          dgPlan.Rows[e.RowIndex].ErrorText = Ressource.Get("da_error_min");
           e.Cancel = true;
         }
       } else if( e.ColumnIndex == chScEnd.Index ) {
         TimeSpan ts;
 
         if( !TimeSpan.TryParseExact(e.FormattedValue.ToString(), "hh\\:mm", CultureInfo.InvariantCulture, out ts) ) {
-          dgSchedulePlan.Rows[e.RowIndex].ErrorText = Ressource.Get("da_error_end");
+          dgPlan.Rows[e.RowIndex].ErrorText = Ressource.Get("da_error_end");
           e.Cancel = true;
         }
       }
     }
     private void dgSchedulePlan_CellValueChanged(object sender, DataGridViewCellEventArgs e) {
       if( !IsHandleCreated ) return;
-      dgSchedulePlan.CellValueChanged -= dgSchedulePlan_CellValueChanged;
+      dgPlan.CellValueChanged -= dgSchedulePlan_CellValueChanged;
       if( -1 < e.ColumnIndex && e.ColumnIndex < chScEnd.Index ) RefreshCfgScEnd();
       else if( tbCfgScPerc.Value == 0 && e.ColumnIndex == chScEnd.Index ) {
-        DataGridViewRow row = dgSchedulePlan.Rows[e.RowIndex];
+        DataGridViewRow row = dgPlan.Rows[e.RowIndex];
         TimeSpan beg = TimeSpan.ParseExact(row.Cells[chScBeg.Index].Value.ToString(), "hh\\:mm", CultureInfo.InvariantCulture);
         TimeSpan end = TimeSpan.ParseExact(row.Cells[chScEnd.Index].Value.ToString(), "hh\\:mm", CultureInfo.InvariantCulture);
 
         row.Cells[chScMin.Index].Value = end.TotalMinutes - beg.TotalMinutes;
       }
-      dgSchedulePlan.CellValueChanged += dgSchedulePlan_CellValueChanged;
+      dgPlan.CellValueChanged += dgSchedulePlan_CellValueChanged;
     }
     private void dgSchedulePlan_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
-      if( e.ColumnIndex == chScEnd.Index ) e.CellStyle.ForeColor = chScEnd.ReadOnly ? SystemColors.GrayText : dgSchedulePlan.DefaultCellStyle.ForeColor;
+      if( e.ColumnIndex == chScEnd.Index ) e.CellStyle.ForeColor = chScEnd.ReadOnly ? SystemColors.GrayText : dgPlan.DefaultCellStyle.ForeColor;
+    }
+    private void dgSchedulePlan_SelectionChanged(object sender, EventArgs e) {
+      pbPlanCopy.Enabled = dgPlan.SelectedRows.Count > 0;
+    }
+    private void pbPlanCopy_Click(object sender, EventArgs e) {
+      if( dgPlan.SelectedRows.Count > 0 ) {
+        DataGridViewRow row = dgPlan.SelectedRows[0];
+
+        foreach( DataGridViewRow r in dgPlan.Rows ) {
+          if( r != row && (r.Index%2 == row.Index%2) ) {
+            r.Cells[chScCut.Index].Value = row.Cells[chScCut.Index].Value;
+            r.Cells[chScBeg.Index].Value = row.Cells[chScBeg.Index].Value;
+            r.Cells[chScMin.Index].Value = row.Cells[chScMin.Index].Value;
+          }
+        }
+      }
     }
 
     private void tbSchedulePerc_ValueChanged(object sender, EventArgs e) {
       if( !IsHandleCreated ) return;
 
       RefreshCfgScEnd(); // don't change TrackBar.Value
-      dgSchedulePlan.Update();
+      dgPlan.Update();
     }
     private void pbCfgScCorrMP_Click(object sender, EventArgs e) {
       Button pb = sender as Button;
@@ -695,7 +706,7 @@ namespace DesktopApp {
       cfgOld.sc.Ots = cfgNew.sc.Ots = null;
       cfgNew.sc.Days = new List<List<object>>(7);
       for( int idx = 0; idx < 7; idx++ ) {
-        DataGridViewRow row = dgSchedulePlan.Rows[2*idx];
+        DataGridViewRow row = dgPlan.Rows[2*idx];
 
         cfgNew.sc.Days.Add(new List<object>());
         cfgNew.sc.Days[idx].Add(row.Cells[chScBeg.Index].Value);
@@ -705,7 +716,7 @@ namespace DesktopApp {
       if( cfgOld.sc.DDays != null ) { // DoubleScheduler
         cfgNew.sc.DDays = new List<List<object>>(7);
         for( int idx = 0; idx < 7; idx++ ) {
-          DataGridViewRow row = dgSchedulePlan.Rows[2*idx+1];
+          DataGridViewRow row = dgPlan.Rows[2*idx+1];
 
           cfgNew.sc.DDays.Add(new List<object>());
           cfgNew.sc.DDays[idx].Add(row.Cells[chScBeg.Index].Value);
@@ -741,23 +752,23 @@ namespace DesktopApp {
       if( tpZone.Tag is Config ) {
         Config cfg = (Config)tpZone.Tag;
 
-        dgMultiZone.CellValueChanged -= dgMultiZone_CellValueChanged;
+        dgZone.CellValueChanged -= dgMultiZone_CellValueChanged;
         for( int idx = 0; idx < cfg.MultiZones.Length; idx++ ) {
-          dgMultiZone.Rows[idx].Cells[chMzStart.Name].Value = cfg.MultiZones[idx];
+          dgZone.Rows[idx].Cells[chMzStart.Name].Value = cfg.MultiZones[idx];
           for( int j = 0; j < 10; j++ ) {
-            dgMultiZone.Rows[idx].Cells[j + 1].Value = cfg.MultiZonePercs[j] == idx;
+            dgZone.Rows[idx].Cells[j + 1].Value = cfg.MultiZonePercs[j] == idx;
           }
         }
         RefreshCfgMzPerc();
-        dgMultiZone.CellValueChanged += dgMultiZone_CellValueChanged;
+        dgZone.CellValueChanged += dgMultiZone_CellValueChanged;
       }
     }
     private void RefreshCfgMzPerc() {
       for( int r = 0; r < 4; r++ ) {
         int perc = 0;
 
-        for( int c = 0; c < 10; c++ ) perc += (bool)dgMultiZone.Rows[r].Cells[c + 1].Value ? 1 : 0;
-        dgMultiZone.Rows[r].Cells[chMzPerc.Name].Value = perc * 10;
+        for( int c = 0; c < 10; c++ ) perc += (bool)dgZone.Rows[r].Cells[c + 1].Value ? 1 : 0;
+        dgZone.Rows[r].Cells[chMzPerc.Name].Value = perc * 10;
       }
     }
 
@@ -766,30 +777,30 @@ namespace DesktopApp {
         int m;
 
         if( int.TryParse(e.FormattedValue.ToString(), out m) && 0 <= m && m < 1000 ) {
-          dgMultiZone.Rows[e.RowIndex].ErrorText = null;
+          dgZone.Rows[e.RowIndex].ErrorText = null;
         } else {
-          dgMultiZone.Rows[e.RowIndex].ErrorText = Ressource.Get("da_error_start");
+          dgZone.Rows[e.RowIndex].ErrorText = Ressource.Get("da_error_start");
           e.Cancel = true;
         }
       }
     }
     private void dgMultiZone_CellContentClick(object sender, DataGridViewCellEventArgs e) {
       if( chMz0.Index <= e.ColumnIndex && e.ColumnIndex <= chMz9.Index ) {
-        dgMultiZone.CommitEdit(DataGridViewDataErrorContexts.Commit); // immediately commit checkox 
+        dgZone.CommitEdit(DataGridViewDataErrorContexts.Commit); // immediately commit checkox 
       }
     }
     private void dgMultiZone_CellValueChanged(object sender, DataGridViewCellEventArgs e) {
       if( !IsHandleCreated ) return;
 
-      dgMultiZone.CellValueChanged -= dgMultiZone_CellValueChanged;
+      dgZone.CellValueChanged -= dgMultiZone_CellValueChanged;
       if( chMz0.Index <= e.ColumnIndex && e.ColumnIndex <= chMz9.Index &&
-          (bool)dgMultiZone.Rows[e.RowIndex].Cells[e.ColumnIndex].Value ) {
-        for( int i = 0; i < dgMultiZone.RowCount; i++ ) {
-          if( i != e.RowIndex ) dgMultiZone.Rows[i].Cells[e.ColumnIndex].Value = false;
+          (bool)dgZone.Rows[e.RowIndex].Cells[e.ColumnIndex].Value ) {
+        for( int i = 0; i < dgZone.RowCount; i++ ) {
+          if( i != e.RowIndex ) dgZone.Rows[i].Cells[e.ColumnIndex].Value = false;
         }
         RefreshCfgMzPerc();
       }
-      dgMultiZone.CellValueChanged += dgMultiZone_CellValueChanged;
+      dgZone.CellValueChanged += dgMultiZone_CellValueChanged;
     }
     private void pbMzStart_Click(object sender, EventArgs e) {
       txZoneDist.Tag = _lsc.Data.Dat.Statistic.Distance;
@@ -810,11 +821,11 @@ namespace DesktopApp {
       cfgOld.mzv = cfg.MultiZonePercs;
 
       cfgNew.mz = new int[4];
-      for( int idx = 0; idx < 4; idx++ ) cfgNew.mz[idx] = int.Parse(dgMultiZone.Rows[idx].Cells[chMzStart.Name].Value.ToString());
+      for( int idx = 0; idx < 4; idx++ ) cfgNew.mz[idx] = int.Parse(dgZone.Rows[idx].Cells[chMzStart.Name].Value.ToString());
       cfgNew.mzv = new int[10];
       for( int r = 0; r < 4; r++ ) {
         for( int c = 0; c < 10; c++ ) {
-          if( (bool)dgMultiZone.Rows[r].Cells[chMz0.Index + c].Value ) cfgNew.mzv[c] = r;
+          if( (bool)dgZone.Rows[r].Cells[chMz0.Index + c].Value ) cfgNew.mzv[c] = r;
         }
       }
 

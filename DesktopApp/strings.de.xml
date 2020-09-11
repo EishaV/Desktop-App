@@ -66,6 +66,7 @@
   
   <string name="da_plan">Planer</string>
   <string name="da_plan_mode">Modus</string>
+  <string name="da_plan_copy_info">Übernehme selektierte Zeile für alle Tage</string>
   <string name="da_plan_dow">Tag</string>
   <string name="da_plan_cut">Kante</string>
   <string name="da_plan_beg">Start</string>

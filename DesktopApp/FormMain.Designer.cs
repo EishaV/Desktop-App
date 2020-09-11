@@ -36,10 +36,13 @@
       this.tpPlan = new System.Windows.Forms.TabPage();
       this.tlPlan = new System.Windows.Forms.TableLayoutPanel();
       this.tlScPerc = new System.Windows.Forms.TableLayoutPanel();
+      this.tbCfgScPerc = new System.Windows.Forms.TrackBar();
       this.pbCfgScCorrM3 = new System.Windows.Forms.Button();
       this.pbCfgScCorrP3 = new System.Windows.Forms.Button();
       this.pbCfgScCorrMP = new System.Windows.Forms.Button();
-      this.dgSchedulePlan = new System.Windows.Forms.DataGridView();
+      this.pbCfgScCorrP5 = new System.Windows.Forms.Button();
+      this.pbCfgScCorrM5 = new System.Windows.Forms.Button();
+      this.dgPlan = new System.Windows.Forms.DataGridView();
       this.chScDow = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.chScCut = new System.Windows.Forms.DataGridViewCheckBoxColumn();
       this.chScBeg = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,9 +62,7 @@
       this.tlDat = new System.Windows.Forms.TableLayoutPanel();
       this.tlDatPic = new System.Windows.Forms.TableLayoutPanel();
       this.txDatFW = new System.Windows.Forms.Label();
-      this.pictureBox = new System.Windows.Forms.PictureBox();
       this.lDatFW = new System.Windows.Forms.Label();
-      this.picWiFi = new System.Windows.Forms.PictureBox();
       this.txDatRsi = new System.Windows.Forms.Label();
       this.lDatSP = new System.Windows.Forms.Label();
       this.txDatSP = new System.Windows.Forms.Label();
@@ -71,29 +72,17 @@
       this.txName = new System.Windows.Forms.Label();
       this.txRL = new System.Windows.Forms.Label();
       this.tx4G = new System.Windows.Forms.Label();
-      this.pDatAccu = new System.Windows.Forms.Panel();
-      this.txDatAccu = new System.Windows.Forms.Label();
       this.txDatDT = new System.Windows.Forms.Label();
       this.tlDatTri = new System.Windows.Forms.TableLayoutPanel();
-      this.picPitch = new System.Windows.Forms.PictureBox();
-      this.picRoll = new System.Windows.Forms.PictureBox();
-      this.picYaw = new System.Windows.Forms.PictureBox();
       this.txDatDmp0 = new System.Windows.Forms.Label();
       this.txDatDmp1 = new System.Windows.Forms.Label();
       this.txDatDmp2 = new System.Windows.Forms.Label();
-      this.txDatStB = new System.Windows.Forms.Label();
       this.txDatStD = new System.Windows.Forms.Label();
       this.txDatStW = new System.Windows.Forms.Label();
       this.tlDatErrorState = new System.Windows.Forms.TableLayoutPanel();
       this.txError = new System.Windows.Forms.Label();
       this.txStatus = new System.Windows.Forms.Label();
-      this.pDatWork = new System.Windows.Forms.Panel();
-      this.txDatWork = new System.Windows.Forms.Label();
       this.tlDatCmd = new System.Windows.Forms.TableLayoutPanel();
-      this.pbStart = new System.Windows.Forms.Button();
-      this.pbPoll = new System.Windows.Forms.Button();
-      this.pbHome = new System.Windows.Forms.Button();
-      this.pbStop = new System.Windows.Forms.Button();
       this.tpUsr = new System.Windows.Forms.TabPage();
       this.tlpUsrSet = new System.Windows.Forms.TableLayoutPanel();
       this.txUsrMail = new System.Windows.Forms.Label();
@@ -119,7 +108,7 @@
       this.tcMain = new System.Windows.Forms.TabControl();
       this.tpZone = new System.Windows.Forms.TabPage();
       this.tlZone = new System.Windows.Forms.TableLayoutPanel();
-      this.dgMultiZone = new System.Windows.Forms.DataGridView();
+      this.dgZone = new System.Windows.Forms.DataGridView();
       this.chMzStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.chMz0 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
       this.chMz1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -144,7 +133,6 @@
       this.chActError = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.chActCharge = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.chActMiss = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-      this.pbActLog = new System.Windows.Forms.Button();
       this.lActHint = new System.Windows.Forms.Label();
       this.tpPlugin = new System.Windows.Forms.TabPage();
       this.spPlugin = new System.Windows.Forms.SplitContainer();
@@ -160,13 +148,27 @@
       this.rtLog = new System.Windows.Forms.RichTextBox();
       this.toolTip = new System.Windows.Forms.ToolTip(this.components);
       this.timer = new System.Windows.Forms.Timer(this.components);
-      this.pbCfgScCorrP5 = new System.Windows.Forms.Button();
-      this.pbCfgScCorrM5 = new System.Windows.Forms.Button();
-      this.tbCfgScPerc = new System.Windows.Forms.TrackBar();
+      this.pictureBox = new System.Windows.Forms.PictureBox();
+      this.picWiFi = new System.Windows.Forms.PictureBox();
+      this.pDatAccu = new System.Windows.Forms.Panel();
+      this.txDatAccu = new System.Windows.Forms.Label();
+      this.picPitch = new System.Windows.Forms.PictureBox();
+      this.picRoll = new System.Windows.Forms.PictureBox();
+      this.picYaw = new System.Windows.Forms.PictureBox();
+      this.txDatStB = new System.Windows.Forms.Label();
+      this.pDatWork = new System.Windows.Forms.Panel();
+      this.txDatWork = new System.Windows.Forms.Label();
+      this.pbStart = new System.Windows.Forms.Button();
+      this.pbPoll = new System.Windows.Forms.Button();
+      this.pbHome = new System.Windows.Forms.Button();
+      this.pbStop = new System.Windows.Forms.Button();
+      this.pbPlanCopy = new System.Windows.Forms.Button();
+      this.pbActLog = new System.Windows.Forms.Button();
       this.tpPlan.SuspendLayout();
       this.tlPlan.SuspendLayout();
       this.tlScPerc.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.dgSchedulePlan)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.tbCfgScPerc)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.dgPlan)).BeginInit();
       this.tlCfgScMode.SuspendLayout();
       this.tlCgRainDelay.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.udCfgRainDelay)).BeginInit();
@@ -174,16 +176,9 @@
       this.tpState.SuspendLayout();
       this.tlDat.SuspendLayout();
       this.tlDatPic.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.picWiFi)).BeginInit();
       this.tlName.SuspendLayout();
-      this.pDatAccu.SuspendLayout();
       this.tlDatTri.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.picPitch)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.picRoll)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.picYaw)).BeginInit();
       this.tlDatErrorState.SuspendLayout();
-      this.pDatWork.SuspendLayout();
       this.tlDatCmd.SuspendLayout();
       this.tpUsr.SuspendLayout();
       this.tlpUsrSet.SuspendLayout();
@@ -191,7 +186,7 @@
       this.tcMain.SuspendLayout();
       this.tpZone.SuspendLayout();
       this.tlZone.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.dgMultiZone)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.dgZone)).BeginInit();
       this.tlZoneBtn.SuspendLayout();
       this.tpAct.SuspendLayout();
       this.tlpAct.SuspendLayout();
@@ -203,7 +198,13 @@
       this.tlPluginBtn.SuspendLayout();
       this.tpMqtt.SuspendLayout();
       this.tpTrace.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.tbCfgScPerc)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.picWiFi)).BeginInit();
+      this.pDatAccu.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.picPitch)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.picRoll)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.picYaw)).BeginInit();
+      this.pDatWork.SuspendLayout();
       this.SuspendLayout();
       // 
       // tpPlan
@@ -223,7 +224,7 @@
       this.tlPlan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       this.tlPlan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tlPlan.Controls.Add(this.tlScPerc, 1, 1);
-      this.tlPlan.Controls.Add(this.dgSchedulePlan, 1, 0);
+      this.tlPlan.Controls.Add(this.dgPlan, 1, 0);
       this.tlPlan.Controls.Add(this.lCfgScPerc, 0, 1);
       this.tlPlan.Controls.Add(this.lCfgRainDelay, 0, 2);
       this.tlPlan.Controls.Add(this.tlCfgScMode, 0, 0);
@@ -234,10 +235,10 @@
       this.tlPlan.Margin = new System.Windows.Forms.Padding(0);
       this.tlPlan.Name = "tlPlan";
       this.tlPlan.RowCount = 4;
-      this.tlPlan.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tlPlan.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tlPlan.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tlPlan.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tlPlan.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      this.tlPlan.RowStyles.Add(new System.Windows.Forms.RowStyle());
+      this.tlPlan.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0F));
       this.tlPlan.Size = new System.Drawing.Size(406, 355);
       this.tlPlan.TabIndex = 2;
       // 
@@ -260,13 +261,31 @@
       this.tlScPerc.Controls.Add(this.pbCfgScCorrP5, 8, 1);
       this.tlScPerc.Controls.Add(this.pbCfgScCorrM5, 0, 1);
       this.tlScPerc.Dock = System.Windows.Forms.DockStyle.Top;
-      this.tlScPerc.Location = new System.Drawing.Point(72, 109);
+      this.tlScPerc.Location = new System.Drawing.Point(72, 285);
       this.tlScPerc.Name = "tlScPerc";
       this.tlScPerc.RowCount = 2;
       this.tlScPerc.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tlScPerc.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tlScPerc.Size = new System.Drawing.Size(331, 40);
       this.tlScPerc.TabIndex = 3;
+      // 
+      // tbCfgScPerc
+      // 
+      this.tbCfgScPerc.AutoSize = false;
+      this.tbCfgScPerc.BackColor = System.Drawing.SystemColors.Control;
+      this.tlScPerc.SetColumnSpan(this.tbCfgScPerc, 9);
+      this.tbCfgScPerc.Dock = System.Windows.Forms.DockStyle.Top;
+      this.tbCfgScPerc.LargeChange = 10;
+      this.tbCfgScPerc.Location = new System.Drawing.Point(0, 0);
+      this.tbCfgScPerc.Margin = new System.Windows.Forms.Padding(0);
+      this.tbCfgScPerc.Maximum = 100;
+      this.tbCfgScPerc.Minimum = -100;
+      this.tbCfgScPerc.Name = "tbCfgScPerc";
+      this.tbCfgScPerc.Size = new System.Drawing.Size(331, 25);
+      this.tbCfgScPerc.TabIndex = 4;
+      this.tbCfgScPerc.TickStyle = System.Windows.Forms.TickStyle.None;
+      this.toolTip.SetToolTip(this.tbCfgScPerc, "??%");
+      this.tbCfgScPerc.ValueChanged += new System.EventHandler(this.tbSchedulePerc_ValueChanged);
       // 
       // pbCfgScCorrM3
       // 
@@ -313,28 +332,59 @@
       this.toolTip.SetToolTip(this.pbCfgScCorrMP, "0%");
       this.pbCfgScCorrMP.Click += new System.EventHandler(this.pbCfgScCorrMP_Click);
       // 
-      // dgSchedulePlan
+      // pbCfgScCorrP5
       // 
-      this.dgSchedulePlan.AllowUserToAddRows = false;
-      this.dgSchedulePlan.AllowUserToDeleteRows = false;
-      this.dgSchedulePlan.ColumnHeadersHeight = 34;
-      this.dgSchedulePlan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+      this.pbCfgScCorrP5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+      this.pbCfgScCorrP5.AutoSize = true;
+      this.pbCfgScCorrP5.Font = new System.Drawing.Font("Verdana", 1F);
+      this.pbCfgScCorrP5.ForeColor = System.Drawing.Color.Transparent;
+      this.pbCfgScCorrP5.Location = new System.Drawing.Point(311, 25);
+      this.pbCfgScCorrP5.Margin = new System.Windows.Forms.Padding(0);
+      this.pbCfgScCorrP5.Name = "pbCfgScCorrP5";
+      this.pbCfgScCorrP5.Size = new System.Drawing.Size(20, 12);
+      this.pbCfgScCorrP5.TabIndex = 8;
+      this.pbCfgScCorrP5.Text = "+100";
+      this.toolTip.SetToolTip(this.pbCfgScCorrP5, "+100%");
+      this.pbCfgScCorrP5.Click += new System.EventHandler(this.pbCfgScCorrMP_Click);
+      // 
+      // pbCfgScCorrM5
+      // 
+      this.pbCfgScCorrM5.AutoSize = true;
+      this.pbCfgScCorrM5.Font = new System.Drawing.Font("Verdana", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.pbCfgScCorrM5.ForeColor = System.Drawing.Color.Transparent;
+      this.pbCfgScCorrM5.Location = new System.Drawing.Point(0, 25);
+      this.pbCfgScCorrM5.Margin = new System.Windows.Forms.Padding(0);
+      this.pbCfgScCorrM5.Name = "pbCfgScCorrM5";
+      this.pbCfgScCorrM5.Size = new System.Drawing.Size(20, 12);
+      this.pbCfgScCorrM5.TabIndex = 7;
+      this.pbCfgScCorrM5.Text = "-100";
+      this.pbCfgScCorrM5.Click += new System.EventHandler(this.pbCfgScCorrMP_Click);
+      // 
+      // dgPlan
+      // 
+      this.dgPlan.AllowUserToAddRows = false;
+      this.dgPlan.AllowUserToDeleteRows = false;
+      this.dgPlan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.dgPlan.ColumnHeadersHeight = 34;
+      this.dgPlan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.chScDow,
             this.chScCut,
             this.chScBeg,
             this.chScMin,
             this.chScEnd});
-      this.dgSchedulePlan.Dock = System.Windows.Forms.DockStyle.Top;
-      this.dgSchedulePlan.Location = new System.Drawing.Point(72, 3);
-      this.dgSchedulePlan.MultiSelect = false;
-      this.dgSchedulePlan.Name = "dgSchedulePlan";
-      this.dgSchedulePlan.RowHeadersWidth = 46;
-      this.dgSchedulePlan.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-      this.dgSchedulePlan.Size = new System.Drawing.Size(331, 100);
-      this.dgSchedulePlan.TabIndex = 1;
-      this.dgSchedulePlan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgSchedulePlan_CellFormatting);
-      this.dgSchedulePlan.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgSchedulePlan_CellValidating);
-      this.dgSchedulePlan.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSchedulePlan_CellValueChanged);
+      this.dgPlan.Location = new System.Drawing.Point(72, 3);
+      this.dgPlan.MultiSelect = false;
+      this.dgPlan.Name = "dgPlan";
+      this.dgPlan.RowHeadersWidth = 46;
+      this.dgPlan.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+      this.dgPlan.Size = new System.Drawing.Size(331, 276);
+      this.dgPlan.TabIndex = 1;
+      this.dgPlan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgSchedulePlan_CellFormatting);
+      this.dgPlan.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgSchedulePlan_CellValidating);
+      this.dgPlan.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSchedulePlan_CellValueChanged);
+      this.dgPlan.SelectionChanged += new System.EventHandler(this.dgSchedulePlan_SelectionChanged);
       // 
       // chScDow
       // 
@@ -393,8 +443,8 @@
       // lCfgScPerc
       // 
       this.lCfgScPerc.AutoSize = true;
-      this.lCfgScPerc.Dock = System.Windows.Forms.DockStyle.Left;
-      this.lCfgScPerc.Location = new System.Drawing.Point(3, 112);
+      this.lCfgScPerc.Dock = System.Windows.Forms.DockStyle.Right;
+      this.lCfgScPerc.Location = new System.Drawing.Point(4, 288);
       this.lCfgScPerc.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
       this.lCfgScPerc.Name = "lCfgScPerc";
       this.lCfgScPerc.Size = new System.Drawing.Size(62, 40);
@@ -404,7 +454,7 @@
       // lCfgRainDelay
       // 
       this.lCfgRainDelay.AutoSize = true;
-      this.lCfgRainDelay.Location = new System.Drawing.Point(3, 158);
+      this.lCfgRainDelay.Location = new System.Drawing.Point(3, 334);
       this.lCfgRainDelay.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
       this.lCfgRainDelay.Name = "lCfgRainDelay";
       this.lCfgRainDelay.Size = new System.Drawing.Size(63, 13);
@@ -414,25 +464,30 @@
       // 
       // tlCfgScMode
       // 
+      this.tlCfgScMode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
       this.tlCfgScMode.AutoSize = true;
       this.tlCfgScMode.ColumnCount = 2;
       this.tlCfgScMode.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tlCfgScMode.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73F));
+      this.tlCfgScMode.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tlCfgScMode.Controls.Add(this.lCfgSc, 0, 0);
       this.tlCfgScMode.Controls.Add(this.txCfgScMode, 1, 0);
+      this.tlCfgScMode.Controls.Add(this.pbPlanCopy, 0, 1);
       this.tlCfgScMode.Location = new System.Drawing.Point(0, 0);
       this.tlCfgScMode.Margin = new System.Windows.Forms.Padding(0);
       this.tlCfgScMode.Name = "tlCfgScMode";
-      this.tlCfgScMode.RowCount = 1;
-      this.tlCfgScMode.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tlCfgScMode.Size = new System.Drawing.Size(68, 19);
+      this.tlCfgScMode.RowCount = 2;
+      this.tlCfgScMode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+      this.tlCfgScMode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tlCfgScMode.Size = new System.Drawing.Size(69, 282);
       this.tlCfgScMode.TabIndex = 12;
       // 
       // lCfgSc
       // 
+      this.lCfgSc.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.lCfgSc.AutoSize = true;
-      this.lCfgSc.Location = new System.Drawing.Point(3, 6);
-      this.lCfgSc.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+      this.lCfgSc.Location = new System.Drawing.Point(3, 10);
       this.lCfgSc.Name = "lCfgSc";
       this.lCfgSc.Size = new System.Drawing.Size(43, 13);
       this.lCfgSc.TabIndex = 9;
@@ -441,9 +496,9 @@
       // 
       // txCfgScMode
       // 
+      this.txCfgScMode.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.txCfgScMode.AutoSize = true;
-      this.txCfgScMode.Location = new System.Drawing.Point(52, 6);
-      this.txCfgScMode.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+      this.txCfgScMode.Location = new System.Drawing.Point(52, 10);
       this.txCfgScMode.Name = "txCfgScMode";
       this.txCfgScMode.Size = new System.Drawing.Size(13, 13);
       this.txCfgScMode.TabIndex = 10;
@@ -457,7 +512,7 @@
       this.tlCgRainDelay.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
       this.tlCgRainDelay.Controls.Add(this.udCfgRainDelay, 0, 0);
       this.tlCgRainDelay.Controls.Add(this.txCfgRainDelay, 1, 0);
-      this.tlCgRainDelay.Location = new System.Drawing.Point(69, 152);
+      this.tlCgRainDelay.Location = new System.Drawing.Point(69, 328);
       this.tlCgRainDelay.Margin = new System.Windows.Forms.Padding(0);
       this.tlCgRainDelay.Name = "tlCgRainDelay";
       this.tlCgRainDelay.RowCount = 1;
@@ -588,19 +643,6 @@
       this.txDatFW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       this.toolTip.SetToolTip(this.txDatFW, "Firmware Version");
       // 
-      // pictureBox
-      // 
-      this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.pictureBox.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox.Image")));
-      this.pictureBox.Location = new System.Drawing.Point(12, 10);
-      this.pictureBox.Margin = new System.Windows.Forms.Padding(12, 10, 12, 10);
-      this.pictureBox.Name = "pictureBox";
-      this.tlDatPic.SetRowSpan(this.pictureBox, 3);
-      this.pictureBox.Size = new System.Drawing.Size(296, 135);
-      this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-      this.pictureBox.TabIndex = 1;
-      this.pictureBox.TabStop = false;
-      // 
       // lDatFW
       // 
       this.lDatFW.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -612,19 +654,6 @@
       this.lDatFW.TabIndex = 4;
       this.lDatFW.Text = "FW";
       this.lDatFW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // picWiFi
-      // 
-      this.picWiFi.Anchor = System.Windows.Forms.AnchorStyles.Top;
-      this.picWiFi.BackColor = System.Drawing.Color.Transparent;
-      this.tlDatPic.SetColumnSpan(this.picWiFi, 2);
-      this.picWiFi.Location = new System.Drawing.Point(335, 10);
-      this.picWiFi.Margin = new System.Windows.Forms.Padding(2, 10, 2, 2);
-      this.picWiFi.Name = "picWiFi";
-      this.picWiFi.Size = new System.Drawing.Size(50, 35);
-      this.picWiFi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-      this.picWiFi.TabIndex = 2;
-      this.picWiFi.TabStop = false;
       // 
       // txDatRsi
       // 
@@ -747,31 +776,6 @@
       this.tx4G.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       this.tx4G.Visible = false;
       // 
-      // pDatAccu
-      // 
-      this.pDatAccu.AutoSize = true;
-      this.pDatAccu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pDatAccu.BackgroundImage")));
-      this.pDatAccu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-      this.pDatAccu.Controls.Add(this.txDatAccu);
-      this.pDatAccu.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.pDatAccu.Location = new System.Drawing.Point(12, 224);
-      this.pDatAccu.Margin = new System.Windows.Forms.Padding(12, 3, 12, 3);
-      this.pDatAccu.Name = "pDatAccu";
-      this.pDatAccu.Size = new System.Drawing.Size(382, 19);
-      this.pDatAccu.TabIndex = 5;
-      // 
-      // txDatAccu
-      // 
-      this.txDatAccu.BackColor = System.Drawing.Color.Transparent;
-      this.txDatAccu.Dock = System.Windows.Forms.DockStyle.Top;
-      this.txDatAccu.Location = new System.Drawing.Point(0, 0);
-      this.txDatAccu.Name = "txDatAccu";
-      this.txDatAccu.Size = new System.Drawing.Size(382, 19);
-      this.txDatAccu.TabIndex = 0;
-      this.txDatAccu.Text = "Accumulator 00.0V 00° 000%";
-      this.txDatAccu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      this.txDatAccu.Paint += new System.Windows.Forms.PaintEventHandler(this.pStatusAccu_Paint);
-      // 
       // txDatDT
       // 
       this.txDatDT.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -810,42 +814,6 @@
       this.tlDatTri.Size = new System.Drawing.Size(400, 80);
       this.tlDatTri.TabIndex = 7;
       // 
-      // picPitch
-      // 
-      this.picPitch.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.picPitch.Image = ((System.Drawing.Image)(resources.GetObject("picPitch.Image")));
-      this.picPitch.Location = new System.Drawing.Point(26, 0);
-      this.picPitch.Margin = new System.Windows.Forms.Padding(0);
-      this.picPitch.Name = "picPitch";
-      this.picPitch.Size = new System.Drawing.Size(80, 25);
-      this.picPitch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-      this.picPitch.TabIndex = 0;
-      this.picPitch.TabStop = false;
-      // 
-      // picRoll
-      // 
-      this.picRoll.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.picRoll.Image = ((System.Drawing.Image)(resources.GetObject("picRoll.Image")));
-      this.picRoll.Location = new System.Drawing.Point(159, 0);
-      this.picRoll.Margin = new System.Windows.Forms.Padding(0);
-      this.picRoll.Name = "picRoll";
-      this.picRoll.Size = new System.Drawing.Size(80, 25);
-      this.picRoll.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-      this.picRoll.TabIndex = 1;
-      this.picRoll.TabStop = false;
-      // 
-      // picYaw
-      // 
-      this.picYaw.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.picYaw.Image = ((System.Drawing.Image)(resources.GetObject("picYaw.Image")));
-      this.picYaw.Location = new System.Drawing.Point(293, 0);
-      this.picYaw.Margin = new System.Windows.Forms.Padding(0);
-      this.picYaw.Name = "picYaw";
-      this.picYaw.Size = new System.Drawing.Size(80, 25);
-      this.picYaw.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-      this.picYaw.TabIndex = 2;
-      this.picYaw.TabStop = false;
-      // 
       // txDatDmp0
       // 
       this.txDatDmp0.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -878,22 +846,6 @@
       this.txDatDmp2.Size = new System.Drawing.Size(76, 13);
       this.txDatDmp2.TabIndex = 5;
       this.txDatDmp2.Text = "Yaw: 000.0°";
-      // 
-      // txDatStB
-      // 
-      this.txDatStB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-      this.txDatStB.AutoSize = true;
-      this.txDatStB.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.txDatStB.Image = ((System.Drawing.Image)(resources.GetObject("txDatStB.Image")));
-      this.txDatStB.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-      this.txDatStB.Location = new System.Drawing.Point(8, 52);
-      this.txDatStB.Name = "txDatStB";
-      this.txDatStB.Size = new System.Drawing.Size(117, 28);
-      this.txDatStB.TabIndex = 6;
-      this.txDatStB.Text = "Blade: 0d.00h:00m";
-      this.txDatStB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      this.toolTip.SetToolTip(this.txDatStB, "Mähzeit");
-      this.txDatStB.DoubleClick += new System.EventHandler(this.txDatStB_DoubleClick);
       // 
       // txDatStD
       // 
@@ -964,31 +916,6 @@
       this.txStatus.Text = "???";
       this.txStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
-      // pDatWork
-      // 
-      this.pDatWork.AutoSize = true;
-      this.pDatWork.BackColor = System.Drawing.Color.Transparent;
-      this.pDatWork.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pDatWork.BackgroundImage")));
-      this.pDatWork.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-      this.pDatWork.Controls.Add(this.txDatWork);
-      this.pDatWork.Dock = System.Windows.Forms.DockStyle.Top;
-      this.pDatWork.Location = new System.Drawing.Point(12, 199);
-      this.pDatWork.Margin = new System.Windows.Forms.Padding(12, 3, 12, 3);
-      this.pDatWork.Name = "pDatWork";
-      this.pDatWork.Size = new System.Drawing.Size(382, 19);
-      this.pDatWork.TabIndex = 11;
-      // 
-      // txDatWork
-      // 
-      this.txDatWork.BackColor = System.Drawing.Color.Transparent;
-      this.txDatWork.Dock = System.Windows.Forms.DockStyle.Top;
-      this.txDatWork.Location = new System.Drawing.Point(0, 0);
-      this.txDatWork.Name = "txDatWork";
-      this.txDatWork.Size = new System.Drawing.Size(382, 19);
-      this.txDatWork.TabIndex = 1;
-      this.txDatWork.Text = "Worktime 00:00-00:00 000%";
-      this.txDatWork.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
       // tlDatCmd
       // 
       this.tlDatCmd.ColumnCount = 7;
@@ -1011,58 +938,6 @@
       this.tlDatCmd.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tlDatCmd.Size = new System.Drawing.Size(406, 30);
       this.tlDatCmd.TabIndex = 1;
-      // 
-      // pbStart
-      // 
-      this.pbStart.Enabled = false;
-      this.pbStart.Image = global::DesktopApp.AppRes.play16;
-      this.pbStart.Location = new System.Drawing.Point(25, 3);
-      this.pbStart.Name = "pbStart";
-      this.pbStart.Size = new System.Drawing.Size(80, 24);
-      this.pbStart.TabIndex = 1;
-      this.pbStart.Text = "&Start";
-      this.pbStart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-      this.pbStart.UseVisualStyleBackColor = true;
-      this.pbStart.Click += new System.EventHandler(this.pbStart_Click);
-      // 
-      // pbPoll
-      // 
-      this.pbPoll.Enabled = false;
-      this.pbPoll.Image = global::DesktopApp.AppRes.refresh16;
-      this.pbPoll.Location = new System.Drawing.Point(323, 3);
-      this.pbPoll.Name = "pbPoll";
-      this.pbPoll.Size = new System.Drawing.Size(80, 24);
-      this.pbPoll.TabIndex = 0;
-      this.pbPoll.Text = "&Poll";
-      this.pbPoll.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-      this.pbPoll.UseVisualStyleBackColor = true;
-      this.pbPoll.Click += new System.EventHandler(this.pbDatPoll_Click);
-      // 
-      // pbHome
-      // 
-      this.pbHome.Enabled = false;
-      this.pbHome.Image = global::DesktopApp.AppRes.home16;
-      this.pbHome.Location = new System.Drawing.Point(197, 3);
-      this.pbHome.Name = "pbHome";
-      this.pbHome.Size = new System.Drawing.Size(80, 24);
-      this.pbHome.TabIndex = 3;
-      this.pbHome.Text = "&Home";
-      this.pbHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-      this.pbHome.UseVisualStyleBackColor = true;
-      this.pbHome.Click += new System.EventHandler(this.pbHome_Click);
-      // 
-      // pbStop
-      // 
-      this.pbStop.Enabled = false;
-      this.pbStop.Image = global::DesktopApp.AppRes.stop16;
-      this.pbStop.Location = new System.Drawing.Point(111, 3);
-      this.pbStop.Name = "pbStop";
-      this.pbStop.Size = new System.Drawing.Size(80, 24);
-      this.pbStop.TabIndex = 2;
-      this.pbStop.Text = "S&top";
-      this.pbStop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-      this.pbStop.UseVisualStyleBackColor = true;
-      this.pbStop.Click += new System.EventHandler(this.pbStop_Click);
       // 
       // tpUsr
       // 
@@ -1371,7 +1246,7 @@
       // 
       this.tlZone.ColumnCount = 1;
       this.tlZone.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tlZone.Controls.Add(this.dgMultiZone, 0, 0);
+      this.tlZone.Controls.Add(this.dgZone, 0, 0);
       this.tlZone.Controls.Add(this.txZoneDist, 0, 1);
       this.tlZone.Dock = System.Windows.Forms.DockStyle.Fill;
       this.tlZone.Location = new System.Drawing.Point(0, 0);
@@ -1383,12 +1258,12 @@
       this.tlZone.Size = new System.Drawing.Size(406, 355);
       this.tlZone.TabIndex = 14;
       // 
-      // dgMultiZone
+      // dgZone
       // 
-      this.dgMultiZone.AllowUserToAddRows = false;
-      this.dgMultiZone.AllowUserToDeleteRows = false;
-      this.dgMultiZone.ColumnHeadersHeight = 34;
-      this.dgMultiZone.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+      this.dgZone.AllowUserToAddRows = false;
+      this.dgZone.AllowUserToDeleteRows = false;
+      this.dgZone.ColumnHeadersHeight = 34;
+      this.dgZone.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.chMzStart,
             this.chMz0,
             this.chMz1,
@@ -1401,16 +1276,16 @@
             this.chMz8,
             this.chMz9,
             this.chMzPerc});
-      this.dgMultiZone.Dock = System.Windows.Forms.DockStyle.Top;
-      this.dgMultiZone.Location = new System.Drawing.Point(3, 3);
-      this.dgMultiZone.MultiSelect = false;
-      this.dgMultiZone.Name = "dgMultiZone";
-      this.dgMultiZone.RowHeadersWidth = 46;
-      this.dgMultiZone.ScrollBars = System.Windows.Forms.ScrollBars.None;
-      this.dgMultiZone.Size = new System.Drawing.Size(400, 80);
-      this.dgMultiZone.TabIndex = 12;
-      this.dgMultiZone.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgMultiZone_CellContentClick);
-      this.dgMultiZone.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgMultiZone_CellValueChanged);
+      this.dgZone.Dock = System.Windows.Forms.DockStyle.Top;
+      this.dgZone.Location = new System.Drawing.Point(3, 3);
+      this.dgZone.MultiSelect = false;
+      this.dgZone.Name = "dgZone";
+      this.dgZone.RowHeadersWidth = 46;
+      this.dgZone.ScrollBars = System.Windows.Forms.ScrollBars.None;
+      this.dgZone.Size = new System.Drawing.Size(400, 80);
+      this.dgZone.TabIndex = 12;
+      this.dgZone.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgMultiZone_CellContentClick);
+      this.dgZone.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgMultiZone_CellValueChanged);
       // 
       // chMzStart
       // 
@@ -1647,20 +1522,6 @@
       this.chActMiss.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
       this.chActMiss.Width = 25;
       // 
-      // pbActLog
-      // 
-      this.pbActLog.Anchor = System.Windows.Forms.AnchorStyles.Right;
-      this.pbActLog.Enabled = false;
-      this.pbActLog.Image = global::DesktopApp.AppRes.refresh16;
-      this.pbActLog.Location = new System.Drawing.Point(283, 358);
-      this.pbActLog.Name = "pbActLog";
-      this.pbActLog.Size = new System.Drawing.Size(120, 24);
-      this.pbActLog.TabIndex = 1;
-      this.pbActLog.Text = "&Poll";
-      this.pbActLog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-      this.pbActLog.UseVisualStyleBackColor = true;
-      this.pbActLog.Click += new System.EventHandler(this.pbActLog_Click);
-      // 
       // lActHint
       // 
       this.lActHint.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -1815,51 +1676,213 @@
       this.timer.Interval = 3000;
       this.timer.Tick += new System.EventHandler(this.timer_Tick);
       // 
-      // pbCfgScCorrP5
+      // pictureBox
       // 
-      this.pbCfgScCorrP5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-      this.pbCfgScCorrP5.AutoSize = true;
-      this.pbCfgScCorrP5.Font = new System.Drawing.Font("Verdana", 1F);
-      this.pbCfgScCorrP5.ForeColor = System.Drawing.Color.Transparent;
-      this.pbCfgScCorrP5.Location = new System.Drawing.Point(311, 25);
-      this.pbCfgScCorrP5.Margin = new System.Windows.Forms.Padding(0);
-      this.pbCfgScCorrP5.Name = "pbCfgScCorrP5";
-      this.pbCfgScCorrP5.Size = new System.Drawing.Size(20, 12);
-      this.pbCfgScCorrP5.TabIndex = 8;
-      this.pbCfgScCorrP5.Text = "+100";
-      this.toolTip.SetToolTip(this.pbCfgScCorrP5, "+100%");
-      this.pbCfgScCorrP5.Click += new System.EventHandler(this.pbCfgScCorrMP_Click);
+      this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.pictureBox.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox.Image")));
+      this.pictureBox.Location = new System.Drawing.Point(12, 10);
+      this.pictureBox.Margin = new System.Windows.Forms.Padding(12, 10, 12, 10);
+      this.pictureBox.Name = "pictureBox";
+      this.tlDatPic.SetRowSpan(this.pictureBox, 3);
+      this.pictureBox.Size = new System.Drawing.Size(296, 135);
+      this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+      this.pictureBox.TabIndex = 1;
+      this.pictureBox.TabStop = false;
       // 
-      // pbCfgScCorrM5
+      // picWiFi
       // 
-      this.pbCfgScCorrM5.AutoSize = true;
-      this.pbCfgScCorrM5.Font = new System.Drawing.Font("Verdana", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.pbCfgScCorrM5.ForeColor = System.Drawing.Color.Transparent;
-      this.pbCfgScCorrM5.Location = new System.Drawing.Point(0, 25);
-      this.pbCfgScCorrM5.Margin = new System.Windows.Forms.Padding(0);
-      this.pbCfgScCorrM5.Name = "pbCfgScCorrM5";
-      this.pbCfgScCorrM5.Size = new System.Drawing.Size(20, 12);
-      this.pbCfgScCorrM5.TabIndex = 7;
-      this.pbCfgScCorrM5.Text = "-100";
-      this.pbCfgScCorrM5.Click += new System.EventHandler(this.pbCfgScCorrMP_Click);
+      this.picWiFi.Anchor = System.Windows.Forms.AnchorStyles.Top;
+      this.picWiFi.BackColor = System.Drawing.Color.Transparent;
+      this.tlDatPic.SetColumnSpan(this.picWiFi, 2);
+      this.picWiFi.Location = new System.Drawing.Point(335, 10);
+      this.picWiFi.Margin = new System.Windows.Forms.Padding(2, 10, 2, 2);
+      this.picWiFi.Name = "picWiFi";
+      this.picWiFi.Size = new System.Drawing.Size(50, 35);
+      this.picWiFi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+      this.picWiFi.TabIndex = 2;
+      this.picWiFi.TabStop = false;
       // 
-      // tbCfgScPerc
+      // pDatAccu
       // 
-      this.tbCfgScPerc.AutoSize = false;
-      this.tbCfgScPerc.BackColor = System.Drawing.SystemColors.Control;
-      this.tlScPerc.SetColumnSpan(this.tbCfgScPerc, 9);
-      this.tbCfgScPerc.Dock = System.Windows.Forms.DockStyle.Top;
-      this.tbCfgScPerc.LargeChange = 10;
-      this.tbCfgScPerc.Location = new System.Drawing.Point(0, 0);
-      this.tbCfgScPerc.Margin = new System.Windows.Forms.Padding(0);
-      this.tbCfgScPerc.Maximum = 100;
-      this.tbCfgScPerc.Minimum = -100;
-      this.tbCfgScPerc.Name = "tbCfgScPerc";
-      this.tbCfgScPerc.Size = new System.Drawing.Size(331, 25);
-      this.tbCfgScPerc.TabIndex = 4;
-      this.tbCfgScPerc.TickStyle = System.Windows.Forms.TickStyle.None;
-      this.toolTip.SetToolTip(this.tbCfgScPerc, "??%");
-      this.tbCfgScPerc.ValueChanged += new System.EventHandler(this.tbSchedulePerc_ValueChanged);
+      this.pDatAccu.AutoSize = true;
+      this.pDatAccu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pDatAccu.BackgroundImage")));
+      this.pDatAccu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+      this.pDatAccu.Controls.Add(this.txDatAccu);
+      this.pDatAccu.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.pDatAccu.Location = new System.Drawing.Point(12, 224);
+      this.pDatAccu.Margin = new System.Windows.Forms.Padding(12, 3, 12, 3);
+      this.pDatAccu.Name = "pDatAccu";
+      this.pDatAccu.Size = new System.Drawing.Size(382, 19);
+      this.pDatAccu.TabIndex = 5;
+      // 
+      // txDatAccu
+      // 
+      this.txDatAccu.BackColor = System.Drawing.Color.Transparent;
+      this.txDatAccu.Dock = System.Windows.Forms.DockStyle.Top;
+      this.txDatAccu.Location = new System.Drawing.Point(0, 0);
+      this.txDatAccu.Name = "txDatAccu";
+      this.txDatAccu.Size = new System.Drawing.Size(382, 19);
+      this.txDatAccu.TabIndex = 0;
+      this.txDatAccu.Text = "Accumulator 00.0V 00° 000%";
+      this.txDatAccu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // picPitch
+      // 
+      this.picPitch.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.picPitch.Image = ((System.Drawing.Image)(resources.GetObject("picPitch.Image")));
+      this.picPitch.Location = new System.Drawing.Point(26, 0);
+      this.picPitch.Margin = new System.Windows.Forms.Padding(0);
+      this.picPitch.Name = "picPitch";
+      this.picPitch.Size = new System.Drawing.Size(80, 25);
+      this.picPitch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+      this.picPitch.TabIndex = 0;
+      this.picPitch.TabStop = false;
+      // 
+      // picRoll
+      // 
+      this.picRoll.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.picRoll.Image = ((System.Drawing.Image)(resources.GetObject("picRoll.Image")));
+      this.picRoll.Location = new System.Drawing.Point(159, 0);
+      this.picRoll.Margin = new System.Windows.Forms.Padding(0);
+      this.picRoll.Name = "picRoll";
+      this.picRoll.Size = new System.Drawing.Size(80, 25);
+      this.picRoll.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+      this.picRoll.TabIndex = 1;
+      this.picRoll.TabStop = false;
+      // 
+      // picYaw
+      // 
+      this.picYaw.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.picYaw.Image = ((System.Drawing.Image)(resources.GetObject("picYaw.Image")));
+      this.picYaw.Location = new System.Drawing.Point(293, 0);
+      this.picYaw.Margin = new System.Windows.Forms.Padding(0);
+      this.picYaw.Name = "picYaw";
+      this.picYaw.Size = new System.Drawing.Size(80, 25);
+      this.picYaw.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+      this.picYaw.TabIndex = 2;
+      this.picYaw.TabStop = false;
+      // 
+      // txDatStB
+      // 
+      this.txDatStB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+      this.txDatStB.AutoSize = true;
+      this.txDatStB.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+      this.txDatStB.Image = ((System.Drawing.Image)(resources.GetObject("txDatStB.Image")));
+      this.txDatStB.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+      this.txDatStB.Location = new System.Drawing.Point(8, 52);
+      this.txDatStB.Name = "txDatStB";
+      this.txDatStB.Size = new System.Drawing.Size(117, 28);
+      this.txDatStB.TabIndex = 6;
+      this.txDatStB.Text = "Blade: 0d.00h:00m";
+      this.txDatStB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.toolTip.SetToolTip(this.txDatStB, "Mähzeit");
+      this.txDatStB.DoubleClick += new System.EventHandler(this.txDatStB_DoubleClick);
+      // 
+      // pDatWork
+      // 
+      this.pDatWork.AutoSize = true;
+      this.pDatWork.BackColor = System.Drawing.Color.Transparent;
+      this.pDatWork.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pDatWork.BackgroundImage")));
+      this.pDatWork.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+      this.pDatWork.Controls.Add(this.txDatWork);
+      this.pDatWork.Dock = System.Windows.Forms.DockStyle.Top;
+      this.pDatWork.Location = new System.Drawing.Point(12, 199);
+      this.pDatWork.Margin = new System.Windows.Forms.Padding(12, 3, 12, 3);
+      this.pDatWork.Name = "pDatWork";
+      this.pDatWork.Size = new System.Drawing.Size(382, 19);
+      this.pDatWork.TabIndex = 11;
+      // 
+      // txDatWork
+      // 
+      this.txDatWork.BackColor = System.Drawing.Color.Transparent;
+      this.txDatWork.Dock = System.Windows.Forms.DockStyle.Top;
+      this.txDatWork.Location = new System.Drawing.Point(0, 0);
+      this.txDatWork.Name = "txDatWork";
+      this.txDatWork.Size = new System.Drawing.Size(382, 19);
+      this.txDatWork.TabIndex = 1;
+      this.txDatWork.Text = "Worktime 00:00-00:00 000%";
+      this.txDatWork.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      // 
+      // pbStart
+      // 
+      this.pbStart.Enabled = false;
+      this.pbStart.Image = global::DesktopApp.AppRes.play16;
+      this.pbStart.Location = new System.Drawing.Point(25, 3);
+      this.pbStart.Name = "pbStart";
+      this.pbStart.Size = new System.Drawing.Size(80, 24);
+      this.pbStart.TabIndex = 1;
+      this.pbStart.Text = "&Start";
+      this.pbStart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.pbStart.UseVisualStyleBackColor = true;
+      this.pbStart.Click += new System.EventHandler(this.pbStart_Click);
+      // 
+      // pbPoll
+      // 
+      this.pbPoll.Enabled = false;
+      this.pbPoll.Image = global::DesktopApp.AppRes.refresh16;
+      this.pbPoll.Location = new System.Drawing.Point(323, 3);
+      this.pbPoll.Name = "pbPoll";
+      this.pbPoll.Size = new System.Drawing.Size(80, 24);
+      this.pbPoll.TabIndex = 0;
+      this.pbPoll.Text = "&Poll";
+      this.pbPoll.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.pbPoll.UseVisualStyleBackColor = true;
+      this.pbPoll.Click += new System.EventHandler(this.pbDatPoll_Click);
+      // 
+      // pbHome
+      // 
+      this.pbHome.Enabled = false;
+      this.pbHome.Image = global::DesktopApp.AppRes.home16;
+      this.pbHome.Location = new System.Drawing.Point(197, 3);
+      this.pbHome.Name = "pbHome";
+      this.pbHome.Size = new System.Drawing.Size(80, 24);
+      this.pbHome.TabIndex = 3;
+      this.pbHome.Text = "&Home";
+      this.pbHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.pbHome.UseVisualStyleBackColor = true;
+      this.pbHome.Click += new System.EventHandler(this.pbHome_Click);
+      // 
+      // pbStop
+      // 
+      this.pbStop.Enabled = false;
+      this.pbStop.Image = global::DesktopApp.AppRes.stop16;
+      this.pbStop.Location = new System.Drawing.Point(111, 3);
+      this.pbStop.Name = "pbStop";
+      this.pbStop.Size = new System.Drawing.Size(80, 24);
+      this.pbStop.TabIndex = 2;
+      this.pbStop.Text = "S&top";
+      this.pbStop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.pbStop.UseVisualStyleBackColor = true;
+      this.pbStop.Click += new System.EventHandler(this.pbStop_Click);
+      // 
+      // pbPlanCopy
+      // 
+      this.pbPlanCopy.Anchor = System.Windows.Forms.AnchorStyles.Top;
+      this.tlCfgScMode.SetColumnSpan(this.pbPlanCopy, 2);
+      this.pbPlanCopy.Image = global::DesktopApp.AppRes.right16;
+      this.pbPlanCopy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.pbPlanCopy.Location = new System.Drawing.Point(9, 37);
+      this.pbPlanCopy.Name = "pbPlanCopy";
+      this.pbPlanCopy.Size = new System.Drawing.Size(50, 23);
+      this.pbPlanCopy.TabIndex = 11;
+      this.pbPlanCopy.Text = "vv";
+      this.pbPlanCopy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.pbPlanCopy.UseVisualStyleBackColor = true;
+      this.pbPlanCopy.Click += new System.EventHandler(this.pbPlanCopy_Click);
+      // 
+      // pbActLog
+      // 
+      this.pbActLog.Anchor = System.Windows.Forms.AnchorStyles.Right;
+      this.pbActLog.Enabled = false;
+      this.pbActLog.Image = global::DesktopApp.AppRes.refresh16;
+      this.pbActLog.Location = new System.Drawing.Point(283, 358);
+      this.pbActLog.Name = "pbActLog";
+      this.pbActLog.Size = new System.Drawing.Size(120, 24);
+      this.pbActLog.TabIndex = 1;
+      this.pbActLog.Text = "&Poll";
+      this.pbActLog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.pbActLog.UseVisualStyleBackColor = true;
+      this.pbActLog.Click += new System.EventHandler(this.pbActLog_Click);
       // 
       // FormMain
       // 
@@ -1877,7 +1900,8 @@
       this.tlPlan.PerformLayout();
       this.tlScPerc.ResumeLayout(false);
       this.tlScPerc.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.dgSchedulePlan)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.tbCfgScPerc)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.dgPlan)).EndInit();
       this.tlCfgScMode.ResumeLayout(false);
       this.tlCfgScMode.PerformLayout();
       this.tlCgRainDelay.ResumeLayout(false);
@@ -1889,18 +1913,11 @@
       this.tlDat.PerformLayout();
       this.tlDatPic.ResumeLayout(false);
       this.tlDatPic.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.picWiFi)).EndInit();
       this.tlName.ResumeLayout(false);
-      this.pDatAccu.ResumeLayout(false);
       this.tlDatTri.ResumeLayout(false);
       this.tlDatTri.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.picPitch)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.picRoll)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.picYaw)).EndInit();
       this.tlDatErrorState.ResumeLayout(false);
       this.tlDatErrorState.PerformLayout();
-      this.pDatWork.ResumeLayout(false);
       this.tlDatCmd.ResumeLayout(false);
       this.tpUsr.ResumeLayout(false);
       this.tpUsr.PerformLayout();
@@ -1910,7 +1927,7 @@
       this.tcMain.ResumeLayout(false);
       this.tpZone.ResumeLayout(false);
       this.tlZone.ResumeLayout(false);
-      ((System.ComponentModel.ISupportInitialize)(this.dgMultiZone)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.dgZone)).EndInit();
       this.tlZoneBtn.ResumeLayout(false);
       this.tpAct.ResumeLayout(false);
       this.tlpAct.ResumeLayout(false);
@@ -1924,7 +1941,13 @@
       this.tpMqtt.ResumeLayout(false);
       this.tpMqtt.PerformLayout();
       this.tpTrace.ResumeLayout(false);
-      ((System.ComponentModel.ISupportInitialize)(this.tbCfgScPerc)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.picWiFi)).EndInit();
+      this.pDatAccu.ResumeLayout(false);
+      ((System.ComponentModel.ISupportInitialize)(this.picPitch)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.picRoll)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.picYaw)).EndInit();
+      this.pDatWork.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -1932,7 +1955,7 @@
     #endregion
     private System.Windows.Forms.TabPage tpPlan;
     private System.Windows.Forms.TableLayoutPanel tlPlan;
-    private System.Windows.Forms.DataGridView dgSchedulePlan;
+    private System.Windows.Forms.DataGridView dgPlan;
     private System.Windows.Forms.Label lCfgScPerc;
     private System.Windows.Forms.TabPage tpState;
     private System.Windows.Forms.TableLayoutPanel tlDatCmd;
@@ -1996,7 +2019,7 @@
     private System.Windows.Forms.RichTextBox rtLog;
     private System.Windows.Forms.TableLayoutPanel tlScCmd;
     private System.Windows.Forms.TabPage tpZone;
-    private System.Windows.Forms.DataGridView dgMultiZone;
+    private System.Windows.Forms.DataGridView dgZone;
     private System.Windows.Forms.TableLayoutPanel tlZone;
     private System.Windows.Forms.TableLayoutPanel tlZoneBtn;
     private System.Windows.Forms.Button pbZoneSave;
@@ -2060,6 +2083,7 @@
     private System.Windows.Forms.TrackBar tbCfgScPerc;
     private System.Windows.Forms.Button pbCfgScCorrP5;
     private System.Windows.Forms.Button pbCfgScCorrM5;
+    private System.Windows.Forms.Button pbPlanCopy;
   }
 }
 

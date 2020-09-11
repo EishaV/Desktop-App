@@ -65,6 +65,7 @@
   
   <string name="da_plan">Plan</string>
   <string name="da_plan_mode">Mode</string>
+  <string name="da_plan_copy_info">Take selected row for all days</string>
   <string name="da_plan_dow">Day</string>
   <string name="da_plan_cut">Edge cut</string>
   <string name="da_plan_beg">Start</string>
