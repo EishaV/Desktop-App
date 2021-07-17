@@ -71,14 +71,16 @@ namespace MqttJson{
   /*
   {
     "cfg":{ "lg":"it",
-            "tm":"14:13:57",
-            "dt":"30/07/2017",
-            "sc":{"m":1,"p":0,"d":[["15:30",330,0],["15:30",330,1],["15:30",330,0],["15:30",330,1],["15:30",330,0],["15:30",330,1],["15:30",330,0]]},
+            "tm":"14:13:57", "dt":"30/07/2017",
+            "sc":{"m":1,"p":0,
+            "d":[["15:30",330,0],["15:30",330,1],["15:30",330,0],["15:30",330,1],["15:30",330,0],["15:30",330,1],["15:30",330,0]]},
             "cmd":0,
-            "mz":[0,0,0,0],
-            "mzv":[0,0,0,0,0,0,0,0,0,0],
+            "mz":[0,0,0,0], "mzv":[0,0,0,0,0,0,0,0,0,0],
             "rd":120,
             "sn":"..."},
+            "al":{"lvl":0,"t":60},
+            "t":-13,
+            "modules":{"DF":{"cut":1,"fh":1}
     "dat":{ "mac":"F0FE6B...",
             "fw":2.69,
             "bt":{"t":31.7,"v":19.53,"p":82,"nr":910,"c":0},
@@ -111,12 +113,25 @@ namespace MqttJson{
     [DataMember(Name = "enabled")] public int Enabled; // config of module
   }
 
+  [DataContract]
+  public class ModuleDF { // config of module OLM
+    [DataMember(Name = "cut")] public int Cutting;
+    [DataMember(Name = "fh")]  public int FastHome;
+  }
+
   [DataContract]  public class ModuleConfigs {
     [DataMember(Name = "US")] public ModuleConfig US; // config of module ACS
     [DataMember(Name = "4G")] public ModuleConfig G4; // config of module FML
   }
 
+  [DataContract]
+  public class AutoLock {
+    [DataMember(Name = "lvl")] public int Level;
+    [DataMember(Name = "t")] public int Time;
+  }
+
   [DataContract] public struct Config {
+    [DataMember(Name = "id",EmitDefaultValue = false)] public int? Id;
     [DataMember(Name = "lg")]      public string Language; // always it :-(
     [DataMember(Name = "tm")]      public string Time;
     [DataMember(Name = "dt")]      public string Date;
@@ -126,6 +141,8 @@ namespace MqttJson{
     [DataMember(Name = "mzv")]     public int[] MultiZonePercs; // [0-9] ring list of start indizes
     [DataMember(Name = "rd")]      public int RainDelay;
     [DataMember(Name = "sn")]      public string SerialNo;
+    [DataMember(Name = "al",EmitDefaultValue = false)] public AutoLock AutoLock;
+    [DataMember(Name = "t",EmitDefaultValue = false)] public int? Torque;
     [DataMember(Name = "modules",EmitDefaultValue = false)] public ModuleConfigs ModulesC;
   }
 
@@ -163,6 +180,7 @@ namespace MqttJson{
   [DataContract] public struct Data {
     [DataMember(Name = "mac")]      public string MacAdr;
     [DataMember(Name = "fw")]       public double Firmware;
+    [DataMember(Name = "fwb", EmitDefaultValue = false)] public int? Beta;
     [DataMember(Name = "bt")]       public Battery Battery;
     [DataMember(Name = "dmp")]      public float[] Orient; // 0-pitch, 1-roll, 2-yaw
     [DataMember(Name = "st")]       public Statistic Statistic;

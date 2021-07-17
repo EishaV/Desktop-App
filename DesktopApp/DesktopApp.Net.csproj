@@ -101,7 +101,9 @@
     </Compile>
     <Compile Include="LsClient.cs" />
     <Compile Include="PluginHomeBorderCut.cs" />
-    <Compile Include="PluginMowOutsideArea.cs" />
+    <Compile Include="PluginMowOutsideArea.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Ressource.cs" />

@@ -51,7 +51,6 @@ namespace DesktopApp {
 
     #region FormMain
     public FormMain() {
-      string api = ConfigurationManager.AppSettings["WebApi"], oem;
       string[] args = Environment.GetCommandLineArgs();
 
       InitializeComponent();
@@ -64,11 +63,7 @@ namespace DesktopApp {
         notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
 
         notifyIcon.Icon = this.Icon;
-        if( api.Contains("worx") ) oem = "Landroid";
-        else if( api.Contains("kress") ) oem = "Mission";
-        else if( api.Contains("landxcape") ) oem = "Landxcape";
-        else oem = "NoName";
-        notifyIcon.Text = string.Format("{0} DeskApp", oem);
+        notifyIcon.Text = string.Format("DeskApp");
         notifyIcon.Visible = true;
         notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
       } catch {
@@ -76,7 +71,6 @@ namespace DesktopApp {
         _os = OS.Darwin;
       }
 
-      this.Text = string.Format( "{0} DeskApp - V{1}", api.Contains("kress") ? "Mission" : "Landroid", Application.ProductVersion);
       if( DesignMode ) return;
 
       _lsc.Err = Err;
@@ -180,6 +174,10 @@ namespace DesktopApp {
         try {
           _settings = (LsJson)dcjs.ReadObject(fs);
 
+          if( _settings.Api != null ) {
+            for( int i = 0; i < cbUsrApi.Items.Count; i++ )
+              if( cbUsrApi.Items[i].ToString().StartsWith(_settings.Api) ) cbUsrApi.SelectedIndex = i;
+          }
           edUsrUuid.Text = _settings.Uuid;
           edUsrMail.Text = _settings.Email;
           edUsrPass.Text = _settings.Password;
@@ -221,6 +219,7 @@ namespace DesktopApp {
       if( e.CloseReason == CloseReason.UserClosing ) {
         LsJson lsj;
 
+        lsj.Api = cbUsrApi.SelectedIndex != -1 ? cbUsrApi.Text.Substring(0, 2) : null;
         lsj.Uuid = edUsrUuid.Text;
         lsj.Email = edUsrMail.Text;
         lsj.Password = edUsrPass.Text;
@@ -312,10 +311,17 @@ namespace DesktopApp {
     }
 
     #region FirstPage
+    private void cbUsrApi_SelectedIndexChanged(object sender, EventArgs e) {
+      Text = string.Format("{0} DeskApp - V{1}", cbUsrApi.Text.Substring(5), Application.ProductVersion);
+      //if( api.Contains("worx") ) oem = "Landroid";
+      //else if( api.Contains("kress") ) oem = "Mission";
+      //else if( api.Contains("landxcape") ) oem = "Landxcape";
+      //else oem = "NoName";
+    }
     private void pbTest_Click(object sender, EventArgs e) {
     }
     private void pbUsrLogin_Click(object sender, EventArgs e) {
-      if( !_lsc.Login(edUsrMail.Text, edUsrPass.Text, edUsrUuid.Text) ) return;
+      if( !_lsc.Login(cbUsrApi.Text.Substring(0, 2), edUsrMail.Text, edUsrPass.Text, edUsrUuid.Text) ) return;
 
       edUsrBroker.Text = _lsc.Broker;
       if( _lsc.Products.Count > 0 ) {
@@ -341,7 +347,7 @@ namespace DesktopApp {
       if( !string.IsNullOrEmpty(edUsrBroker.Text) && !string.IsNullOrEmpty(edUsrBoard.Text) && !string.IsNullOrEmpty(edUsrMac.Text) ) {
         pbLogin.Enabled = false;
         if( !_lsc.Connected ) pbConnect.Enabled = true;
-        pbActLog.Enabled = true; lActHint.Text = null;
+        pbActLog.Enabled = pbActCsv.Enabled = true; lActHint.Text = null;
       }
     }
     private void pbConnect_Click(object sender, EventArgs e) {
@@ -458,7 +464,7 @@ namespace DesktopApp {
 
       try {
         lDatSP.Visible = txDatSP.Visible = c.MultiZones[0] > 0;
-        if( txDatSP.Visible ) txDatSP.Text = string.Format("{0}", c.MultiZonePercs[d.LastZone]+1);
+        if( txDatSP.Visible ) txDatSP.Text = $"{c.MultiZonePercs[d.LastZone] + 1} : {d.LastZone}";
       } catch(Exception ex) {
         Log("SP " + ex, 9);
       }
@@ -757,6 +763,7 @@ namespace DesktopApp {
           dgZone.Rows[idx].Cells[chMzStart.Name].Value = cfg.MultiZones[idx];
           for( int j = 0; j < 10; j++ ) {
             dgZone.Rows[idx].Cells[j + 1].Value = cfg.MultiZonePercs[j] == idx;
+            dgZone.Rows[idx].Cells[j + 1].Style.BackColor = j == _lsc.Data.Dat.LastZone ? Color.Yellow : Color.White;
           }
         }
         RefreshCfgMzPerc();
@@ -1018,9 +1025,10 @@ namespace DesktopApp {
 
       //json = json.Substring(1, json.Length-2);
       json = Regex.Replace(json, "(\"(?:cfg|dat)\")", "\r\n  $1");
-      json = Regex.Replace(json, "(\"(?:tm|sc|cmd|mz|rd|sn|modules)\")", "\r\n    $1");
+      json = Regex.Replace(json, "(\"(?:tm|sc|cmd|mz|rd|sn|al|modules)\")", "\r\n    $1");
+      json = Regex.Replace(json, "(\"(?:d|dd)\":\\[)", "\r\n      $1");
       json = Regex.Replace(json, "\"(mac|fw|bt|dmp|st|ls|rsi|rain|moules)\"", "\r\n    \"$1\"");
-      json = Regex.Replace(json, "(\\[|\\],)\\[", "$1\r\n      [");
+      //json = Regex.Replace(json, "(\\[|\\],)\\[", "$1\r\n      [");
       json = Regex.Replace(json, "\\}\\}", "}\r\n}");
       txMqtt.Tag = json;
       if( tcMain.SelectedTab == tpMqtt ) txMqtt.Text = json;
@@ -1100,6 +1108,25 @@ namespace DesktopApp {
       chActStamp.Width = -1;
       chActState.Width = -1;
       chActError.Width = -1;
+    }
+
+    private void pbActCsv_Click(object sender, EventArgs e) {
+      SaveFileDialog sfd = new SaveFileDialog();
+
+      sfd.Filter = "CSV File|*.csv";
+      sfd.FileName = $"ActLog_{edUsrName.Text}.csv";
+      if( sfd.ShowDialog() == DialogResult.OK ) {
+        using( StreamWriter sw = new StreamWriter(sfd.FileName, true) ) {
+          sw.WriteLine("Id;Stamp;Date;Time;Error;State;Charge;Miss");
+          foreach( Activity a in _lsc.GetActivities(edUsrName.Text) ) {
+            sw.Write($"{a.ActId};{a.Stamp};");
+            sw.Write($"{a.Payload.Cfg.Date};{a.Payload.Cfg.Time};");
+            sw.Write($"{a.Payload.Dat.LastError};{a.Payload.Dat.LastState};");
+            sw.Write($"{a.Payload.Dat.Battery.Charging};{a.Payload.Dat.Battery.Miss}");
+            sw.WriteLine();
+          }
+        }
+      }
     }
   }
 }

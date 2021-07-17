@@ -91,6 +91,7 @@ namespace DesktopApp
 
   [DataContract]
   public struct LsJson {
+    [DataMember(Name = "api")]      public string Api;
     [DataMember(Name = "email")]    public string Email;
     [DataMember(Name = "pass")]     public string Password;
     [DataMember(Name = "uuid")]     public string Uuid;
@@ -195,7 +196,7 @@ namespace DesktopApp
     private WebClient _client = new WebClient();
     private X509Certificate2 _certWX = null;
     private MqttClient _mqtt = null;
-    private string _uuid, _board, _mac;
+    private string _api, _uuid, _board, _mac;
     private string _cmdIn;
     private string[] _cmdOut;
     private byte[] _cmdQos;
@@ -221,16 +222,16 @@ namespace DesktopApp
       if( args.Length > 1 ) return "." + args[1];
       else return string.Empty;
     }
-    public bool Login(string mail, string pass, string uuid) {
-      return WebApi(mail, pass, uuid);
+    public bool Login(string api, string mail, string pass, string uuid) {
+      return WebApi(api, mail, pass, uuid);
     }
-    public bool WebApi(string mail, string pass, string uuid) {
+    public bool WebApi(string api, string mail, string pass, string uuid) {
       NameValueCollection nvc = new NameValueCollection();
       string str;
-      string api = ConfigurationManager.AppSettings["WebApi"];
-      string sec = ConfigurationManager.AppSettings["CliSec"];
+      string sec = ConfigurationManager.AppSettings[$"{api}_CliSec"];
       byte[] buf;
 
+      _api = ConfigurationManager.AppSettings[$"{api}_WebApi"];
       #region Anmeldung
       nvc.Add("username", mail);
       nvc.Add("password", pass);
@@ -239,7 +240,7 @@ namespace DesktopApp
       nvc.Add("client_secret", sec);
       nvc.Add("scope", "*");
       try {
-        buf = _client.UploadValues(api + "oauth/token", nvc);
+        buf = _client.UploadValues(_api + "oauth/token", nvc);
         str = Encoding.UTF8.GetString(buf);
         Debug.WriteLine("Oauth token: {0}", str);
         Log(string.Format("Oauth token: {0}", str), 1);
@@ -259,7 +260,7 @@ namespace DesktopApp
 
       try {
         #region Benutzer
-        buf = _client.DownloadData(api + "users/me");
+        buf = _client.DownloadData(_api + "users/me");
         str = Encoding.UTF8.GetString(buf);
         Debug.WriteLine("User info: {0}", str);
         Log(string.Format("User info: {0}", str), 1);
@@ -272,8 +273,43 @@ namespace DesktopApp
         }
         #endregion
 
+        #region Product items
+        buf = _client.DownloadData(_api + "product-items");
+        str = Encoding.UTF8.GetString(buf);
+        Debug.WriteLine("Product items: {0}", str);
+        Log(string.Format("Product items: {0}", str), 1);
+        using( MemoryStream ms = new MemoryStream(buf) ) {
+          DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(List<LsProductItem>));
+          Products = (List<LsProductItem>)dcjs.ReadObject(ms);
+
+          ms.Close();
+        }
+        #endregion
+
+        #region Status
+        buf = null;
+        foreach( LsProductItem pi in Products ) {
+          buf = _client.DownloadData(_api + "product-items/" + pi.SerialNo + "/status");
+          str = Encoding.UTF8.GetString(buf);
+          Debug.WriteLine("Status {0}: {1}", pi.Name, str);
+          Log(string.Format("Status {0}: {1}", pi.Name, str), 1);
+        }
+        if( buf != null ) {
+          MemoryStream ms = new MemoryStream(buf);
+          DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(LsMqtt));
+          LsMqtt jm = (LsMqtt)dcjs.ReadObject(ms);
+
+          Json = str;
+          Data = jm;
+          //_msgPoll = false;
+          ms.Close();
+          Recv();
+        }
+        #endregion
+
+        if( api == "SM" ) return Products.Count > 0;
         #region Certificate
-        buf = _client.DownloadData(api + "users/certificate");
+        buf = _client.DownloadData(_api + "users/certificate");
         str = Encoding.UTF8.GetString(buf);
         Debug.WriteLine("Certificate: {0}", str);
         Log(string.Format("Certificate: {0}", str), 1);
@@ -294,40 +330,6 @@ namespace DesktopApp
           //Log(string.Format("AWS certificate done ({0})", xx), 2);
           //buf = _certWX.Export(X509ContentType.Cert);
           //File.WriteAllBytes(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "WX.p12"), buf);
-        }
-        #endregion
-
-        #region Product items
-        buf = _client.DownloadData(api + "product-items");
-        str = Encoding.UTF8.GetString(buf);
-        Debug.WriteLine("Product items: {0}", str);
-        Log(string.Format("Product items: {0}", str), 1);
-        using( MemoryStream ms = new MemoryStream(buf) ) {
-          DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(List<LsProductItem>));
-          Products = (List<LsProductItem>)dcjs.ReadObject(ms);
-
-          ms.Close();
-        }
-        #endregion
-
-        #region Status
-        buf = null;
-        foreach( LsProductItem pi in Products ) {
-          buf = _client.DownloadData(api + "product-items/" + pi.SerialNo + "/status");
-          str = Encoding.UTF8.GetString(buf);
-          Debug.WriteLine("Status {0}: {1}", pi.Name, str);
-          Log(string.Format("Status {0}: {1}", pi.Name, str), 1);
-        }
-        if( buf != null ) {
-          MemoryStream ms = new MemoryStream(buf);
-          DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(LsMqtt));
-          LsMqtt jm = (LsMqtt)dcjs.ReadObject(ms);
-
-          Json = str;
-          Data = jm;
-          //_msgPoll = false;
-          ms.Close();
-          Recv();
         }
         #endregion
       } catch(Exception ex ) {
@@ -356,12 +358,11 @@ namespace DesktopApp
     }
 
     public List<Activity> GetActivities(string name) {
-      string api = ConfigurationManager.AppSettings["WebApi"];
       List<Activity> ls = new List<Activity>();
 
       foreach( LsProductItem pi in Products ) {
         if( pi.Name == name ) {
-          byte[] buf = _client.DownloadData(api + "product-items/" + pi.SerialNo + "/activity-log");
+          byte[] buf = _client.DownloadData(_api + "product-items/" + pi.SerialNo + "/activity-log");
 
           if( buf != null ) {
             MemoryStream ms = new MemoryStream(buf);
