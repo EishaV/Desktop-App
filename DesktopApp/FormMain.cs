@@ -464,13 +464,14 @@ namespace DesktopApp {
 
       try {
         lDatSP.Visible = txDatSP.Visible = c.MultiZones[0] > 0;
-        if( txDatSP.Visible ) txDatSP.Text = $"{c.MultiZonePercs[d.LastZone] + 1} : {d.LastZone}";
+        if( txDatSP.Visible ) txDatSP.Text = $"{c.MultiZonePercs[d.LastZone] + 1} [{d.LastZone}]";
       } catch(Exception ex) {
         Log("SP " + ex, 9);
       }
 
       try {
         txDatFW.Text = d.Firmware.ToString(CultureInfo.InvariantCulture);
+        if( d.Beta != null ) txDatFW.Text += $"b{d.Beta}";
       } catch(Exception ex) {
         Log("FW " + ex, 9);
       }
@@ -763,7 +764,7 @@ namespace DesktopApp {
           dgZone.Rows[idx].Cells[chMzStart.Name].Value = cfg.MultiZones[idx];
           for( int j = 0; j < 10; j++ ) {
             dgZone.Rows[idx].Cells[j + 1].Value = cfg.MultiZonePercs[j] == idx;
-            dgZone.Rows[idx].Cells[j + 1].Style.BackColor = j == _lsc.Data.Dat.LastZone ? Color.Yellow : Color.White;
+            dgZone.Rows[idx].Cells[j + 1].Style.BackColor = j == _lsc.Data.Dat.LastZone ? Color.Gold : Color.White;
           }
         }
         RefreshCfgMzPerc();
@@ -1117,11 +1118,11 @@ namespace DesktopApp {
       sfd.FileName = $"ActLog_{edUsrName.Text}.csv";
       if( sfd.ShowDialog() == DialogResult.OK ) {
         using( StreamWriter sw = new StreamWriter(sfd.FileName, true) ) {
-          sw.WriteLine("Id;Stamp;Date;Time;Error;State;Charge;Miss");
+          sw.WriteLine("CloudId;CloudStamp;Date;Time;State;Error;Charge;Miss");
           foreach( Activity a in _lsc.GetActivities(edUsrName.Text) ) {
             sw.Write($"{a.ActId};{a.Stamp};");
             sw.Write($"{a.Payload.Cfg.Date};{a.Payload.Cfg.Time};");
-            sw.Write($"{a.Payload.Dat.LastError};{a.Payload.Dat.LastState};");
+            sw.Write($"{a.Payload.Dat.LastState};{a.Payload.Dat.LastError};");
             sw.Write($"{a.Payload.Dat.Battery.Charging};{a.Payload.Dat.Battery.Miss}");
             sw.WriteLine();
           }

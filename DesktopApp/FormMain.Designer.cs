@@ -144,6 +144,7 @@
       this.pbZoneStart = new System.Windows.Forms.Button();
       this.tpAct = new System.Windows.Forms.TabPage();
       this.tlpAct = new System.Windows.Forms.TableLayoutPanel();
+      this.pbActCsv = new System.Windows.Forms.Button();
       this.lvActLog = new System.Windows.Forms.ListView();
       this.chActStamp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.chActState = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -166,7 +167,6 @@
       this.rtLog = new System.Windows.Forms.RichTextBox();
       this.toolTip = new System.Windows.Forms.ToolTip(this.components);
       this.timer = new System.Windows.Forms.Timer(this.components);
-      this.pbActCsv = new System.Windows.Forms.Button();
       this.tpPlan.SuspendLayout();
       this.tlPlan.SuspendLayout();
       this.tlScPerc.SuspendLayout();
@@ -627,8 +627,8 @@
       // 
       this.tlDatPic.ColumnCount = 3;
       this.tlDatPic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tlDatPic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-      this.tlDatPic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+      this.tlDatPic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+      this.tlDatPic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       this.tlDatPic.Controls.Add(this.txDatFW, 2, 3);
       this.tlDatPic.Controls.Add(this.pictureBox, 0, 0);
       this.tlDatPic.Controls.Add(this.lDatFW, 1, 3);
@@ -653,11 +653,11 @@
       this.txDatFW.Anchor = System.Windows.Forms.AnchorStyles.Right;
       this.txDatFW.AutoSize = true;
       this.txDatFW.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.txDatFW.Location = new System.Drawing.Point(365, 156);
+      this.txDatFW.Location = new System.Drawing.Point(351, 156);
       this.txDatFW.Name = "txDatFW";
-      this.txDatFW.Size = new System.Drawing.Size(32, 13);
+      this.txDatFW.Size = new System.Drawing.Size(46, 13);
       this.txDatFW.TabIndex = 4;
-      this.txDatFW.Text = "0.00";
+      this.txDatFW.Text = "0.00b0";
       this.txDatFW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       this.toolTip.SetToolTip(this.txDatFW, "Firmware Version");
       // 
@@ -669,7 +669,7 @@
       this.pictureBox.Margin = new System.Windows.Forms.Padding(12, 10, 12, 10);
       this.pictureBox.Name = "pictureBox";
       this.tlDatPic.SetRowSpan(this.pictureBox, 3);
-      this.pictureBox.Size = new System.Drawing.Size(296, 135);
+      this.pictureBox.Size = new System.Drawing.Size(249, 135);
       this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
       this.pictureBox.TabIndex = 1;
       this.pictureBox.TabStop = false;
@@ -679,11 +679,11 @@
       this.lDatFW.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.lDatFW.AutoSize = true;
       this.lDatFW.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.lDatFW.Location = new System.Drawing.Point(323, 156);
+      this.lDatFW.Location = new System.Drawing.Point(276, 156);
       this.lDatFW.Name = "lDatFW";
-      this.lDatFW.Size = new System.Drawing.Size(24, 13);
+      this.lDatFW.Size = new System.Drawing.Size(60, 13);
       this.lDatFW.TabIndex = 4;
-      this.lDatFW.Text = "FW";
+      this.lDatFW.Text = "Firmware";
       this.lDatFW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // picWiFi
@@ -691,7 +691,7 @@
       this.picWiFi.Anchor = System.Windows.Forms.AnchorStyles.Top;
       this.picWiFi.BackColor = System.Drawing.Color.Transparent;
       this.tlDatPic.SetColumnSpan(this.picWiFi, 2);
-      this.picWiFi.Location = new System.Drawing.Point(335, 10);
+      this.picWiFi.Location = new System.Drawing.Point(311, 10);
       this.picWiFi.Margin = new System.Windows.Forms.Padding(2, 10, 2, 2);
       this.picWiFi.Name = "picWiFi";
       this.picWiFi.Size = new System.Drawing.Size(50, 35);
@@ -705,7 +705,7 @@
       this.txDatRsi.AutoSize = true;
       this.tlDatPic.SetColumnSpan(this.txDatRsi, 2);
       this.txDatRsi.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.txDatRsi.Location = new System.Drawing.Point(347, 47);
+      this.txDatRsi.Location = new System.Drawing.Point(323, 47);
       this.txDatRsi.Name = "txDatRsi";
       this.txDatRsi.Size = new System.Drawing.Size(26, 13);
       this.txDatRsi.TabIndex = 3;
@@ -718,27 +718,25 @@
       this.lDatSP.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.lDatSP.AutoSize = true;
       this.lDatSP.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.lDatSP.Location = new System.Drawing.Point(323, 142);
+      this.lDatSP.Location = new System.Drawing.Point(276, 142);
       this.lDatSP.Name = "lDatSP";
-      this.lDatSP.Size = new System.Drawing.Size(22, 13);
+      this.lDatSP.Size = new System.Drawing.Size(69, 13);
       this.lDatSP.TabIndex = 4;
-      this.lDatSP.Text = "SP";
+      this.lDatSP.Text = "Zone [Idx]";
       this.lDatSP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      this.lDatSP.Visible = false;
       // 
       // txDatSP
       // 
       this.txDatSP.Anchor = System.Windows.Forms.AnchorStyles.Right;
       this.txDatSP.AutoSize = true;
       this.txDatSP.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.txDatSP.Location = new System.Drawing.Point(383, 142);
+      this.txDatSP.Location = new System.Drawing.Point(362, 142);
       this.txDatSP.Name = "txDatSP";
-      this.txDatSP.Size = new System.Drawing.Size(14, 13);
+      this.txDatSP.Size = new System.Drawing.Size(35, 13);
       this.txDatSP.TabIndex = 4;
-      this.txDatSP.Text = "0";
+      this.txDatSP.Text = "0 [0]";
       this.txDatSP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       this.toolTip.SetToolTip(this.txDatSP, "Start Point");
-      this.txDatSP.Visible = false;
       // 
       // tlName
       // 
@@ -761,13 +759,13 @@
       this.tlName.Name = "tlName";
       this.tlName.RowCount = 1;
       this.tlName.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tlName.Size = new System.Drawing.Size(314, 15);
+      this.tlName.Size = new System.Drawing.Size(267, 15);
       this.tlName.TabIndex = 5;
       // 
       // txDF
       // 
       this.txDF.ForeColor = System.Drawing.Color.White;
-      this.txDF.Location = new System.Drawing.Point(200, 0);
+      this.txDF.Location = new System.Drawing.Point(153, 0);
       this.txDF.Name = "txDF";
       this.txDF.Size = new System.Drawing.Size(32, 13);
       this.txDF.TabIndex = 3;
@@ -778,7 +776,7 @@
       // txUS
       // 
       this.txUS.ForeColor = System.Drawing.Color.White;
-      this.txUS.Location = new System.Drawing.Point(162, 0);
+      this.txUS.Location = new System.Drawing.Point(115, 0);
       this.txUS.Name = "txUS";
       this.txUS.Size = new System.Drawing.Size(32, 13);
       this.txUS.TabIndex = 2;
@@ -793,7 +791,7 @@
       this.txName.ForeColor = System.Drawing.Color.Yellow;
       this.txName.Location = new System.Drawing.Point(3, 0);
       this.txName.Name = "txName";
-      this.txName.Size = new System.Drawing.Size(153, 15);
+      this.txName.Size = new System.Drawing.Size(106, 15);
       this.txName.TabIndex = 0;
       this.txName.Text = "Name";
       this.txName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -801,7 +799,7 @@
       // txRL
       // 
       this.txRL.ForeColor = System.Drawing.Color.White;
-      this.txRL.Location = new System.Drawing.Point(279, 0);
+      this.txRL.Location = new System.Drawing.Point(232, 0);
       this.txRL.Name = "txRL";
       this.txRL.Size = new System.Drawing.Size(32, 13);
       this.txRL.TabIndex = 1;
@@ -812,7 +810,7 @@
       // tx4G
       // 
       this.tx4G.ForeColor = System.Drawing.Color.White;
-      this.tx4G.Location = new System.Drawing.Point(238, 0);
+      this.tx4G.Location = new System.Drawing.Point(191, 0);
       this.tx4G.Name = "tx4G";
       this.tx4G.Size = new System.Drawing.Size(35, 13);
       this.tx4G.TabIndex = 1;
@@ -1699,6 +1697,19 @@
       this.tlpAct.Size = new System.Drawing.Size(406, 385);
       this.tlpAct.TabIndex = 0;
       // 
+      // pbActCsv
+      // 
+      this.pbActCsv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+      this.pbActCsv.Enabled = false;
+      this.pbActCsv.Location = new System.Drawing.Point(197, 358);
+      this.pbActCsv.Name = "pbActCsv";
+      this.pbActCsv.Size = new System.Drawing.Size(80, 24);
+      this.pbActCsv.TabIndex = 3;
+      this.pbActCsv.Text = "&CSV ...";
+      this.pbActCsv.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.pbActCsv.UseVisualStyleBackColor = true;
+      this.pbActCsv.Click += new System.EventHandler(this.pbActCsv_Click);
+      // 
       // lvActLog
       // 
       this.lvActLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1918,19 +1929,6 @@
       // 
       this.timer.Interval = 3000;
       this.timer.Tick += new System.EventHandler(this.timer_Tick);
-      // 
-      // pbActCsv
-      // 
-      this.pbActCsv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.pbActCsv.Enabled = false;
-      this.pbActCsv.Location = new System.Drawing.Point(197, 358);
-      this.pbActCsv.Name = "pbActCsv";
-      this.pbActCsv.Size = new System.Drawing.Size(80, 24);
-      this.pbActCsv.TabIndex = 3;
-      this.pbActCsv.Text = "&CSV ...";
-      this.pbActCsv.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-      this.pbActCsv.UseVisualStyleBackColor = true;
-      this.pbActCsv.Click += new System.EventHandler(this.pbActCsv_Click);
       // 
       // FormMain
       // 

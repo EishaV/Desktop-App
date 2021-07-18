@@ -16,8 +16,8 @@ namespace MqttJson{
     WIRE_MISSING = 3,
     OUTSIDE_WIRE = 4,
     RAINING = 5,
-    //L_MSG_CLOSE_DOOR_TO_CUT_GRASS = 6,
-    //L_MSG_CLOSE_DOOR_GO_HOME = 7,
+    CLOSE_DOOR_TO_CUT_GRASS = 6,
+    CLOSE_DOOR_GO_HOME = 7,
     MOTOR_BLADE_FAULT = 8,
     MOTOR_WHEELS_FAULT = 9,
     TRAPPED_TIMEOUT_FAULT = 10,
@@ -26,8 +26,12 @@ namespace MqttJson{
     REVERSE_WIRE = 13,
     BATTERY_CHARGE_ERROR = 14,
     HOME_FIND_TIMEOUT = 15,
-    LOCK = 16, //? 1
-    BATTERY_OVERTEMP = 17
+    LOCK = 16,
+    BATTERY_OVERTEMP = 17,
+    DUMMY_MODEL = 18,
+    BATTERY_TRUNK_OPEN_TIMEOUT = 19,
+    ERR_WIRE_SYNC = 20,
+    NUM = 21
   }
   public enum StatusCode : int {
     UNK = -1,
@@ -44,6 +48,7 @@ namespace MqttJson{
     BLADE_BLOCKED_RECOVERY = 10,
     DEBUG = 11,
     REMOTE_CONTROL = 12,
+    OFF_LIMITS_ESCAPE = 13,
     WIRE_GOING_HOME = 30,
     WIRE_AREA_TRAINING = 31,
     WIRE_BORDER_CUT = 32,
@@ -63,7 +68,9 @@ namespace MqttJson{
     ZONE_SEARCH_REQ = 4,
     LOCK = 5,
     UNLOCK = 6,
-    RESET_LOG = 7
+    RESET_LOG = 7,
+    PAUSE_OVER_WIRE,
+    SAFE_HOMING
   }
   #endregion
 
@@ -114,7 +121,7 @@ namespace MqttJson{
   }
 
   [DataContract]
-  public class ModuleDF { // config of module OLM
+  public class ModuleConfigDF { // config of module OLM
     [DataMember(Name = "cut")] public int Cutting;
     [DataMember(Name = "fh")]  public int FastHome;
   }
@@ -122,6 +129,7 @@ namespace MqttJson{
   [DataContract]  public class ModuleConfigs {
     [DataMember(Name = "US")] public ModuleConfig US; // config of module ACS
     [DataMember(Name = "4G")] public ModuleConfig G4; // config of module FML
+    [DataMember(Name = "DF")] public ModuleConfigDF DF; // config of module OML
   }
 
   [DataContract]

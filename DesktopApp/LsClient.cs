@@ -110,7 +110,8 @@ namespace DesktopApp
     public bool Equals(LsJson lsj) {
       bool b;
 
-      b = Email == lsj.Email && Password == lsj.Password && Uuid == lsj.Uuid && Name == lsj.Name && Broker == lsj.Broker && MacAdr == lsj.MacAdr;
+      b = Api == lsj.Api && Email == lsj.Email && Password == lsj.Password && Uuid == lsj.Uuid;
+      b = b && Name == lsj.Name && Broker == lsj.Broker && MacAdr == lsj.MacAdr;
       b = b && Top == lsj.Top && X == lsj.X && Y == lsj.Y && W == lsj.W && H == lsj.H && Blade == lsj.Blade;
       if( b && Plugins != null && lsj.Plugins != null ) {
         b = Plugins.Count == lsj.Plugins.Count;
