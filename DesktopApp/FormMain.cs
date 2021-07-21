@@ -954,8 +954,9 @@ namespace DesktopApp {
         case StatusCode.START_SEQUENCE: // "Starte Sequenz"
         case StatusCode.LEAVE_HOUSE: c = Color.Yellow; return Ressource.Get("home_mower_leaving_home"); // "Verlasse Heim"
 
-        case StatusCode.FOLLOW_WIRE: //" Folge Draht"
+        case StatusCode.FOLLOW_WIRE: //"Folge Draht"
         case StatusCode.SEARCHING_WIRE: // "Suche Draht"
+        case StatusCode.OFF_LIMITS_ESCAPE: // "Verkürze Weg"
         case StatusCode.SEARCHING_HOME: c = Color.Yellow; return Ressource.Get("home_mower_going_home"); // "Suche Heim";
 
         case StatusCode.WIRE_GOING_HOME: c = Color.Yellow; return Ressource.Get("home_mower_wire_follow_going_home");
@@ -1102,7 +1103,7 @@ namespace DesktopApp {
         li.SubItems.Add(a.Payload.Dat.LastState.ToString());
         li.SubItems.Add(a.Payload.Dat.LastError.ToString());
         li.SubItems.Add(a.Payload.Dat.Battery.Charging == ChargeCoge.CHARGING ? "+" : "-");
-        li.SubItems.Add(a.Payload.Dat.Battery.Miss.ToString());
+        li.SubItems.Add(a.Payload.Dat.Battery.Maintenance.ToString());
         li.ToolTipText = a.Stamp;
         lvActLog.Items.Add(li);
       }
@@ -1123,7 +1124,7 @@ namespace DesktopApp {
             sw.Write($"{a.ActId};{a.Stamp};");
             sw.Write($"{a.Payload.Cfg.Date};{a.Payload.Cfg.Time};");
             sw.Write($"{a.Payload.Dat.LastState};{a.Payload.Dat.LastError};");
-            sw.Write($"{a.Payload.Dat.Battery.Charging};{a.Payload.Dat.Battery.Miss}");
+            sw.Write($"{a.Payload.Dat.Battery.Charging};{a.Payload.Dat.Battery.Maintenance}");
             sw.WriteLine();
           }
         }

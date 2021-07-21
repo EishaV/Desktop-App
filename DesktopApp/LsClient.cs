@@ -157,7 +157,7 @@ namespace DesktopApp
   [DataContract]
   public struct ActivityBattery {
     [DataMember(Name = "c")] public ChargeCoge Charging;
-    [DataMember(Name = "m")] public int Miss;
+    [DataMember(Name = "m")] public int Maintenance;
   }
   [DataContract]
   public struct ActivityData {
@@ -373,7 +373,7 @@ namespace DesktopApp
             foreach( Activity a in ls ) {
               ActivityPayload p = a.Payload;
 
-              Log(string.Format("{0}: {1} - {2} - {3} - {4}", a.Stamp, p.Dat.LastError, p.Dat.LastState, p.Dat.Battery.Charging, p.Dat.Battery.Miss));
+              Log(string.Format("{0}: {1} - {2} - {3} - {4}", a.Stamp, p.Dat.LastError, p.Dat.LastState, p.Dat.Battery.Charging, p.Dat.Battery.Maintenance));
             }
             ms.Close();
           }

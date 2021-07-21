@@ -160,6 +160,7 @@ namespace MqttJson{
     [DataMember(Name = "p")]    public float Perc;
     [DataMember(Name = "nr")]   public int Cycle;
     [DataMember(Name = "c")]    public ChargeCoge Charging;
+    [DataMember(Name = "m")]    public int Maintenance;
   }
 
   [DataContract] public struct Statistic {
