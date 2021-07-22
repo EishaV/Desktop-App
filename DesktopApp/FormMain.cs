@@ -896,7 +896,7 @@ namespace DesktopApp {
     #endregion
 
     private void Err(String s) {
-      MessageBox.Show(this, s, "Landroid-S", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+      MessageBox.Show(this, s, Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
     }
     private void Log(String s, int c = 0) {
       if( InvokeRequired ) Invoke(new LogDelegte(LogInvoke), s, c);
