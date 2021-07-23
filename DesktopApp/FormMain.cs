@@ -311,13 +311,19 @@ namespace DesktopApp {
     }
 
     #region FirstPage
+    private void AbleLogin() {
+      pbLogin.Enabled = cbUsrApi.SelectedIndex != -1 && edUsrMail.Text.Length > 0 && edUsrPass.Text.Length > 0;
+    }
     private void cbUsrApi_SelectedIndexChanged(object sender, EventArgs e) {
       Text = string.Format("{0} DeskApp - V{1}", cbUsrApi.Text.Substring(5), Application.ProductVersion);
+      AbleLogin();
       //if( api.Contains("worx") ) oem = "Landroid";
       //else if( api.Contains("kress") ) oem = "Mission";
       //else if( api.Contains("landxcape") ) oem = "Landxcape";
       //else oem = "NoName";
     }
+    private void edUsrMail_TextChanged(object sender, EventArgs e) { AbleLogin(); }
+    private void edUsrPass_TextChanged(object sender, EventArgs e) { AbleLogin(); }
     private void pbTest_Click(object sender, EventArgs e) {
     }
     private void pbUsrLogin_Click(object sender, EventArgs e) {

@@ -1209,6 +1209,7 @@
       this.edUsrMail.Size = new System.Drawing.Size(333, 21);
       this.edUsrMail.TabIndex = 2;
       this.toolTip.SetToolTip(this.edUsrMail, "Siehe Email: Worx Landroid account created");
+      this.edUsrMail.TextChanged += new System.EventHandler(this.edUsrMail_TextChanged);
       // 
       // txUsrPass
       // 
@@ -1230,6 +1231,7 @@
       this.edUsrPass.Size = new System.Drawing.Size(163, 21);
       this.edUsrPass.TabIndex = 4;
       this.toolTip.SetToolTip(this.edUsrPass, "Siehe Email: Worx Landroid account created");
+      this.edUsrPass.TextChanged += new System.EventHandler(this.edUsrPass_TextChanged);
       // 
       // txUsrName
       // 
@@ -1395,6 +1397,7 @@
       // 
       // pbLogin
       // 
+      this.pbLogin.Enabled = false;
       this.pbLogin.Location = new System.Drawing.Point(131, 3);
       this.pbLogin.Name = "pbLogin";
       this.pbLogin.Size = new System.Drawing.Size(80, 24);

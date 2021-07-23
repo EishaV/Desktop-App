@@ -150,7 +150,7 @@ namespace MqttJson{
     [DataMember(Name = "rd")]      public int RainDelay;
     [DataMember(Name = "sn")]      public string SerialNo;
     [DataMember(Name = "al",EmitDefaultValue = false)] public AutoLock AutoLock;
-    [DataMember(Name = "t",EmitDefaultValue = false)] public int? Torque;
+    [DataMember(Name = "tq",EmitDefaultValue = false)] public int? Torque;
     [DataMember(Name = "modules",EmitDefaultValue = false)] public ModuleConfigs ModulesC;
   }
 
