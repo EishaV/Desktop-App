@@ -329,7 +329,7 @@ namespace DesktopApp {
     private void pbUsrLogin_Click(object sender, EventArgs e) {
       if( !_lsc.Login(cbUsrApi.Text.Substring(0, 2), edUsrMail.Text, edUsrPass.Text, edUsrUuid.Text) ) return;
 
-      edUsrBroker.Text = _lsc.Broker;
+      
       if( _lsc.Products.Count > 0 ) {
         LsProductItem lspi = new LsProductItem();
 
@@ -346,6 +346,7 @@ namespace DesktopApp {
           }
         }
         edUsrName.Text = lspi.Name;
+        edUsrBroker.Text = lspi.Endpoint;
         edUsrBoard.Text = lspi.Topic.CmdIn.Substring(0, lspi.Topic.CmdIn.IndexOf('/'));
         edUsrMac.Text = lspi.MacAdr;
       }
@@ -357,7 +358,7 @@ namespace DesktopApp {
       }
     }
     private void pbConnect_Click(object sender, EventArgs e) {
-      string png ;
+      string png;
 
       if( !_lsc.Start(edUsrBroker.Text, edUsrUuid.Text, edUsrBoard.Text, edUsrMac.Text) ) return;
       pbConnect.Enabled = false;
@@ -409,19 +410,19 @@ namespace DesktopApp {
       DateTime dt = DateTime.Now;
       string d = dt.ToString("dd/MM/yyyy"), t = dt.ToString("HH:mm:ss");
 
-      _lsc.Publish("{\"tm\":\"" + t + "\",\"dt\":\"" + dt + "\"}");
+      _lsc.PublishWithId("\"tm\":\"" + t + "\",\"dt\":\"" + dt + "\"");
     }
     private void pbStart_Click(object sender, EventArgs e) {
-      _lsc.Publish("{\"cmd\":1}");
+      _lsc.PublishWithId("\"cmd\":1");
     }
     private void pbStop_Click(object sender, EventArgs e) {
       string txt = Ressource.Get("da_warn_stop");
 
       if( MessageBox.Show(txt, "Stop Landroid S", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK )
-        _lsc.Publish("{\"cmd\":2}");
+        _lsc.PublishWithId("\"cmd\":2");
     }
     private void pbHome_Click(object sender, EventArgs e) {
-      _lsc.Publish("{\"cmd\":3}"); // Home
+      _lsc.PublishWithId("\"cmd\":3"); // Home
     }
     private void pbDatPoll_Click(object sender, EventArgs e) {
       _lsc.Poll();
@@ -709,7 +710,7 @@ namespace DesktopApp {
     private void pbScSave_Click(object sender, EventArgs e) {
       Config cfg = (Config)tpPlan.Tag;
       CfgSc cfgOld, cfgNew;
-      string strOld, strNew, strSet = "{";
+      string strOld, strNew, strSet = string.Empty;
 
       cfgOld.sc = cfg.Schedule;
       cfgOld.rd = cfg.RainDelay;
@@ -747,12 +748,11 @@ namespace DesktopApp {
       if( cfgOld.rd != cfgNew.rd ) strSet += string.Format("\"rd\":{0},", cfgNew.rd);
 
       if( strSet.Length > 2 ) strSet = strSet.Substring(0, strSet.Length-1);
-      strSet += "}";
 
-      if( strSet == "{}" || MessageBox.Show(strSet, "Publish", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No ) return;
+      if( strSet.Length == 0 || MessageBox.Show(strSet, "Publish", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No ) return;
 
       if( _lsc.Connected ) {
-        _lsc.Publish(strSet); //, MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+        _lsc.PublishWithId(strSet); //, MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
         pbPlanSave.Enabled = false;
       }
     }
@@ -818,7 +818,7 @@ namespace DesktopApp {
     }
     private void pbMzStart_Click(object sender, EventArgs e) {
       txZoneDist.Tag = _lsc.Data.Dat.Statistic.Distance;
-      _lsc.Publish("{\"cmd\":4}");
+      _lsc.PublishWithId("\"cmd\":4");
     }
     public struct CfgMz {
       [DataMember]
@@ -829,7 +829,7 @@ namespace DesktopApp {
     private void pbMzSave_Click(object sender, EventArgs e) {
       Config cfg = (Config)tpZone.Tag;
       CfgMz cfgOld, cfgNew;
-      string strOld, strNew, strSet = "{";
+      string strOld, strNew, strSet = string.Empty;
 
       cfgOld.mz = cfg.MultiZones;
       cfgOld.mzv = cfg.MultiZonePercs;
@@ -849,12 +849,11 @@ namespace DesktopApp {
       if( string.Compare(strOld, strNew) != 0 ) strSet += "\"mzv\":" + strNew + ",";
 
       if( strSet.Length > 2 ) strSet = strSet.Substring(0, strSet.Length-1);
-      strSet += "}";
 
-      if( /*strSet == "{}" ||*/ MessageBox.Show(strSet, "Publish", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No ) return;
+      if( strSet.Length == 0 || MessageBox.Show(strSet, "Publish", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No ) return;
 
       if( _lsc.Connected ) {
-        _lsc.Publish(strSet); //, MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
+        _lsc.PublishWithId(strSet); //, MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
         pbZoneSave.Enabled = false;
       }
     }

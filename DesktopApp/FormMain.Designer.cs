@@ -214,9 +214,9 @@
       // 
       this.tpPlan.Controls.Add(this.tlPlan);
       this.tpPlan.Controls.Add(this.tlScCmd);
-      this.tpPlan.Location = new System.Drawing.Point(4, 22);
+      this.tpPlan.Location = new System.Drawing.Point(4, 29);
       this.tpPlan.Name = "tpPlan";
-      this.tpPlan.Size = new System.Drawing.Size(406, 385);
+      this.tpPlan.Size = new System.Drawing.Size(406, 378);
       this.tpPlan.TabIndex = 5;
       this.tpPlan.Text = "Planer";
       this.tpPlan.UseVisualStyleBackColor = true;
@@ -242,7 +242,7 @@
       this.tlPlan.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tlPlan.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tlPlan.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0F));
-      this.tlPlan.Size = new System.Drawing.Size(406, 355);
+      this.tlPlan.Size = new System.Drawing.Size(406, 348);
       this.tlPlan.TabIndex = 2;
       // 
       // tlScPerc
@@ -264,12 +264,12 @@
       this.tlScPerc.Controls.Add(this.pbCfgScCorrP5, 8, 1);
       this.tlScPerc.Controls.Add(this.pbCfgScCorrM5, 0, 1);
       this.tlScPerc.Dock = System.Windows.Forms.DockStyle.Top;
-      this.tlScPerc.Location = new System.Drawing.Point(72, 285);
+      this.tlScPerc.Location = new System.Drawing.Point(103, 271);
       this.tlScPerc.Name = "tlScPerc";
       this.tlScPerc.RowCount = 2;
       this.tlScPerc.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tlScPerc.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tlScPerc.Size = new System.Drawing.Size(331, 40);
+      this.tlScPerc.Size = new System.Drawing.Size(300, 40);
       this.tlScPerc.TabIndex = 3;
       // 
       // tbCfgScPerc
@@ -284,7 +284,7 @@
       this.tbCfgScPerc.Maximum = 100;
       this.tbCfgScPerc.Minimum = -100;
       this.tbCfgScPerc.Name = "tbCfgScPerc";
-      this.tbCfgScPerc.Size = new System.Drawing.Size(331, 25);
+      this.tbCfgScPerc.Size = new System.Drawing.Size(300, 25);
       this.tbCfgScPerc.TabIndex = 4;
       this.tbCfgScPerc.TickStyle = System.Windows.Forms.TickStyle.None;
       this.toolTip.SetToolTip(this.tbCfgScPerc, "??%");
@@ -295,7 +295,7 @@
       this.pbCfgScCorrM3.AutoSize = true;
       this.pbCfgScCorrM3.Font = new System.Drawing.Font("Verdana", 1F);
       this.pbCfgScCorrM3.ForeColor = System.Drawing.Color.Transparent;
-      this.pbCfgScCorrM3.Location = new System.Drawing.Point(77, 25);
+      this.pbCfgScCorrM3.Location = new System.Drawing.Point(70, 25);
       this.pbCfgScCorrM3.Margin = new System.Windows.Forms.Padding(0);
       this.pbCfgScCorrM3.Name = "pbCfgScCorrM3";
       this.pbCfgScCorrM3.Size = new System.Drawing.Size(20, 12);
@@ -310,7 +310,7 @@
       this.pbCfgScCorrP3.AutoSize = true;
       this.pbCfgScCorrP3.Font = new System.Drawing.Font("Verdana", 1F);
       this.pbCfgScCorrP3.ForeColor = System.Drawing.Color.Transparent;
-      this.pbCfgScCorrP3.Location = new System.Drawing.Point(231, 25);
+      this.pbCfgScCorrP3.Location = new System.Drawing.Point(210, 25);
       this.pbCfgScCorrP3.Margin = new System.Windows.Forms.Padding(0);
       this.pbCfgScCorrP3.Name = "pbCfgScCorrP3";
       this.pbCfgScCorrP3.Size = new System.Drawing.Size(20, 12);
@@ -326,7 +326,7 @@
       this.pbCfgScCorrMP.AutoSize = true;
       this.pbCfgScCorrMP.Font = new System.Drawing.Font("Verdana", 1F);
       this.pbCfgScCorrMP.ForeColor = System.Drawing.Color.Transparent;
-      this.pbCfgScCorrMP.Location = new System.Drawing.Point(154, 25);
+      this.pbCfgScCorrMP.Location = new System.Drawing.Point(140, 25);
       this.pbCfgScCorrMP.Margin = new System.Windows.Forms.Padding(0);
       this.pbCfgScCorrMP.Name = "pbCfgScCorrMP";
       this.pbCfgScCorrMP.Size = new System.Drawing.Size(20, 12);
@@ -341,7 +341,7 @@
       this.pbCfgScCorrP5.AutoSize = true;
       this.pbCfgScCorrP5.Font = new System.Drawing.Font("Verdana", 1F);
       this.pbCfgScCorrP5.ForeColor = System.Drawing.Color.Transparent;
-      this.pbCfgScCorrP5.Location = new System.Drawing.Point(311, 25);
+      this.pbCfgScCorrP5.Location = new System.Drawing.Point(280, 25);
       this.pbCfgScCorrP5.Margin = new System.Windows.Forms.Padding(0);
       this.pbCfgScCorrP5.Name = "pbCfgScCorrP5";
       this.pbCfgScCorrP5.Size = new System.Drawing.Size(20, 12);
@@ -377,12 +377,12 @@
             this.chScBeg,
             this.chScMin,
             this.chScEnd});
-      this.dgPlan.Location = new System.Drawing.Point(72, 3);
+      this.dgPlan.Location = new System.Drawing.Point(103, 3);
       this.dgPlan.MultiSelect = false;
       this.dgPlan.Name = "dgPlan";
       this.dgPlan.RowHeadersWidth = 46;
       this.dgPlan.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-      this.dgPlan.Size = new System.Drawing.Size(331, 276);
+      this.dgPlan.Size = new System.Drawing.Size(300, 262);
       this.dgPlan.TabIndex = 1;
       this.dgPlan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgSchedulePlan_CellFormatting);
       this.dgPlan.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgSchedulePlan_CellValidating);
@@ -398,7 +398,7 @@
       this.chScDow.Name = "chScDow";
       this.chScDow.ReadOnly = true;
       this.chScDow.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-      this.chScDow.Width = 33;
+      this.chScDow.Width = 44;
       // 
       // chScCut
       // 
@@ -407,7 +407,7 @@
       this.chScCut.MinimumWidth = 8;
       this.chScCut.Name = "chScCut";
       this.chScCut.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-      this.chScCut.Width = 46;
+      this.chScCut.Width = 65;
       // 
       // chScBeg
       // 
@@ -419,7 +419,7 @@
       this.chScBeg.MinimumWidth = 8;
       this.chScBeg.Name = "chScBeg";
       this.chScBeg.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-      this.chScBeg.Width = 41;
+      this.chScBeg.Width = 58;
       // 
       // chScMin
       // 
@@ -430,7 +430,7 @@
       this.chScMin.MinimumWidth = 8;
       this.chScMin.Name = "chScMin";
       this.chScMin.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-      this.chScMin.Width = 48;
+      this.chScMin.Width = 66;
       // 
       // chScEnd
       // 
@@ -447,20 +447,20 @@
       // 
       this.lCfgScPerc.AutoSize = true;
       this.lCfgScPerc.Dock = System.Windows.Forms.DockStyle.Right;
-      this.lCfgScPerc.Location = new System.Drawing.Point(4, 288);
+      this.lCfgScPerc.Location = new System.Drawing.Point(8, 274);
       this.lCfgScPerc.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
       this.lCfgScPerc.Name = "lCfgScPerc";
-      this.lCfgScPerc.Size = new System.Drawing.Size(62, 40);
+      this.lCfgScPerc.Size = new System.Drawing.Size(89, 40);
       this.lCfgScPerc.TabIndex = 5;
       this.lCfgScPerc.Text = "Korrektur";
       // 
       // lCfgRainDelay
       // 
       this.lCfgRainDelay.AutoSize = true;
-      this.lCfgRainDelay.Location = new System.Drawing.Point(3, 334);
+      this.lCfgRainDelay.Location = new System.Drawing.Point(3, 320);
       this.lCfgRainDelay.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
       this.lCfgRainDelay.Name = "lCfgRainDelay";
-      this.lCfgRainDelay.Size = new System.Drawing.Size(63, 13);
+      this.lCfgRainDelay.Size = new System.Drawing.Size(94, 20);
       this.lCfgRainDelay.TabIndex = 7;
       this.lCfgRainDelay.Text = "Regenzeit";
       this.lCfgRainDelay.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -483,16 +483,16 @@
       this.tlCfgScMode.RowCount = 2;
       this.tlCfgScMode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
       this.tlCfgScMode.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tlCfgScMode.Size = new System.Drawing.Size(69, 282);
+      this.tlCfgScMode.Size = new System.Drawing.Size(100, 268);
       this.tlCfgScMode.TabIndex = 12;
       // 
       // lCfgSc
       // 
       this.lCfgSc.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.lCfgSc.AutoSize = true;
-      this.lCfgSc.Location = new System.Drawing.Point(3, 10);
+      this.lCfgSc.Location = new System.Drawing.Point(3, 7);
       this.lCfgSc.Name = "lCfgSc";
-      this.lCfgSc.Size = new System.Drawing.Size(43, 13);
+      this.lCfgSc.Size = new System.Drawing.Size(64, 20);
       this.lCfgSc.TabIndex = 9;
       this.lCfgSc.Text = "Modus";
       this.lCfgSc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -501,9 +501,9 @@
       // 
       this.txCfgScMode.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.txCfgScMode.AutoSize = true;
-      this.txCfgScMode.Location = new System.Drawing.Point(52, 10);
+      this.txCfgScMode.Location = new System.Drawing.Point(73, 7);
       this.txCfgScMode.Name = "txCfgScMode";
-      this.txCfgScMode.Size = new System.Drawing.Size(13, 13);
+      this.txCfgScMode.Size = new System.Drawing.Size(18, 20);
       this.txCfgScMode.TabIndex = 10;
       this.txCfgScMode.Text = "?";
       // 
@@ -513,7 +513,7 @@
       this.tlCfgScMode.SetColumnSpan(this.pbPlanCopy, 2);
       this.pbPlanCopy.Image = global::DesktopApp.AppRes.right16;
       this.pbPlanCopy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.pbPlanCopy.Location = new System.Drawing.Point(9, 37);
+      this.pbPlanCopy.Location = new System.Drawing.Point(25, 37);
       this.pbPlanCopy.Name = "pbPlanCopy";
       this.pbPlanCopy.Size = new System.Drawing.Size(50, 23);
       this.pbPlanCopy.TabIndex = 11;
@@ -530,12 +530,12 @@
       this.tlCgRainDelay.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
       this.tlCgRainDelay.Controls.Add(this.udCfgRainDelay, 0, 0);
       this.tlCgRainDelay.Controls.Add(this.txCfgRainDelay, 1, 0);
-      this.tlCgRainDelay.Location = new System.Drawing.Point(69, 328);
+      this.tlCgRainDelay.Location = new System.Drawing.Point(100, 314);
       this.tlCgRainDelay.Margin = new System.Windows.Forms.Padding(0);
       this.tlCgRainDelay.Name = "tlCgRainDelay";
       this.tlCgRainDelay.RowCount = 1;
       this.tlCgRainDelay.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tlCgRainDelay.Size = new System.Drawing.Size(120, 27);
+      this.tlCgRainDelay.Size = new System.Drawing.Size(140, 34);
       this.tlCgRainDelay.TabIndex = 13;
       // 
       // udCfgRainDelay
@@ -547,7 +547,7 @@
             0,
             0});
       this.udCfgRainDelay.Name = "udCfgRainDelay";
-      this.udCfgRainDelay.Size = new System.Drawing.Size(70, 21);
+      this.udCfgRainDelay.Size = new System.Drawing.Size(70, 28);
       this.udCfgRainDelay.TabIndex = 8;
       // 
       // txCfgRainDelay
@@ -556,7 +556,7 @@
       this.txCfgRainDelay.Location = new System.Drawing.Point(79, 6);
       this.txCfgRainDelay.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
       this.txCfgRainDelay.Name = "txCfgRainDelay";
-      this.txCfgRainDelay.Size = new System.Drawing.Size(38, 13);
+      this.txCfgRainDelay.Size = new System.Drawing.Size(58, 20);
       this.txCfgRainDelay.TabIndex = 9;
       this.txCfgRainDelay.Text = "[min]";
       // 
@@ -568,7 +568,7 @@
       this.tlScCmd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       this.tlScCmd.Controls.Add(this.pbPlanSave, 2, 0);
       this.tlScCmd.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.tlScCmd.Location = new System.Drawing.Point(0, 355);
+      this.tlScCmd.Location = new System.Drawing.Point(0, 348);
       this.tlScCmd.Margin = new System.Windows.Forms.Padding(0);
       this.tlScCmd.Name = "tlScCmd";
       this.tlScCmd.RowCount = 1;
@@ -590,9 +590,9 @@
       // 
       this.tpState.Controls.Add(this.tlDat);
       this.tpState.Controls.Add(this.tlDatCmd);
-      this.tpState.Location = new System.Drawing.Point(4, 22);
+      this.tpState.Location = new System.Drawing.Point(4, 29);
       this.tpState.Name = "tpState";
-      this.tpState.Size = new System.Drawing.Size(406, 385);
+      this.tpState.Size = new System.Drawing.Size(406, 378);
       this.tpState.TabIndex = 4;
       this.tpState.Text = "Status";
       // 
@@ -620,7 +620,7 @@
       this.tlDat.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tlDat.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tlDat.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-      this.tlDat.Size = new System.Drawing.Size(406, 355);
+      this.tlDat.Size = new System.Drawing.Size(406, 348);
       this.tlDat.TabIndex = 2;
       // 
       // tlDatPic
@@ -638,14 +638,14 @@
       this.tlDatPic.Controls.Add(this.txDatSP, 2, 2);
       this.tlDatPic.Controls.Add(this.tlName, 0, 3);
       this.tlDatPic.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tlDatPic.Location = new System.Drawing.Point(3, 23);
+      this.tlDatPic.Location = new System.Drawing.Point(3, 32);
       this.tlDatPic.Name = "tlDatPic";
       this.tlDatPic.RowCount = 4;
       this.tlDatPic.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tlDatPic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tlDatPic.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tlDatPic.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tlDatPic.Size = new System.Drawing.Size(400, 170);
+      this.tlDatPic.Size = new System.Drawing.Size(400, 147);
       this.tlDatPic.TabIndex = 10;
       // 
       // txDatFW
@@ -653,9 +653,9 @@
       this.txDatFW.Anchor = System.Windows.Forms.AnchorStyles.Right;
       this.txDatFW.AutoSize = true;
       this.txDatFW.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.txDatFW.Location = new System.Drawing.Point(351, 156);
+      this.txDatFW.Location = new System.Drawing.Point(327, 127);
       this.txDatFW.Name = "txDatFW";
-      this.txDatFW.Size = new System.Drawing.Size(46, 13);
+      this.txDatFW.Size = new System.Drawing.Size(70, 20);
       this.txDatFW.TabIndex = 4;
       this.txDatFW.Text = "0.00b0";
       this.txDatFW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -669,7 +669,7 @@
       this.pictureBox.Margin = new System.Windows.Forms.Padding(12, 10, 12, 10);
       this.pictureBox.Name = "pictureBox";
       this.tlDatPic.SetRowSpan(this.pictureBox, 3);
-      this.pictureBox.Size = new System.Drawing.Size(249, 135);
+      this.pictureBox.Size = new System.Drawing.Size(191, 107);
       this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
       this.pictureBox.TabIndex = 1;
       this.pictureBox.TabStop = false;
@@ -679,9 +679,9 @@
       this.lDatFW.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.lDatFW.AutoSize = true;
       this.lDatFW.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.lDatFW.Location = new System.Drawing.Point(276, 156);
+      this.lDatFW.Location = new System.Drawing.Point(218, 127);
       this.lDatFW.Name = "lDatFW";
-      this.lDatFW.Size = new System.Drawing.Size(60, 13);
+      this.lDatFW.Size = new System.Drawing.Size(89, 20);
       this.lDatFW.TabIndex = 4;
       this.lDatFW.Text = "Firmware";
       this.lDatFW.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -691,7 +691,7 @@
       this.picWiFi.Anchor = System.Windows.Forms.AnchorStyles.Top;
       this.picWiFi.BackColor = System.Drawing.Color.Transparent;
       this.tlDatPic.SetColumnSpan(this.picWiFi, 2);
-      this.picWiFi.Location = new System.Drawing.Point(311, 10);
+      this.picWiFi.Location = new System.Drawing.Point(282, 10);
       this.picWiFi.Margin = new System.Windows.Forms.Padding(2, 10, 2, 2);
       this.picWiFi.Name = "picWiFi";
       this.picWiFi.Size = new System.Drawing.Size(50, 35);
@@ -705,9 +705,9 @@
       this.txDatRsi.AutoSize = true;
       this.tlDatPic.SetColumnSpan(this.txDatRsi, 2);
       this.txDatRsi.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.txDatRsi.Location = new System.Drawing.Point(323, 47);
+      this.txDatRsi.Location = new System.Drawing.Point(288, 47);
       this.txDatRsi.Name = "txDatRsi";
-      this.txDatRsi.Size = new System.Drawing.Size(26, 13);
+      this.txDatRsi.Size = new System.Drawing.Size(39, 20);
       this.txDatRsi.TabIndex = 3;
       this.txDatRsi.Text = "-00";
       this.txDatRsi.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -718,9 +718,9 @@
       this.lDatSP.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.lDatSP.AutoSize = true;
       this.lDatSP.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.lDatSP.Location = new System.Drawing.Point(276, 142);
+      this.lDatSP.Location = new System.Drawing.Point(218, 107);
       this.lDatSP.Name = "lDatSP";
-      this.lDatSP.Size = new System.Drawing.Size(69, 13);
+      this.lDatSP.Size = new System.Drawing.Size(103, 20);
       this.lDatSP.TabIndex = 4;
       this.lDatSP.Text = "Zone [Idx]";
       this.lDatSP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -730,9 +730,9 @@
       this.txDatSP.Anchor = System.Windows.Forms.AnchorStyles.Right;
       this.txDatSP.AutoSize = true;
       this.txDatSP.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.txDatSP.Location = new System.Drawing.Point(362, 142);
+      this.txDatSP.Location = new System.Drawing.Point(344, 107);
       this.txDatSP.Name = "txDatSP";
-      this.txDatSP.Size = new System.Drawing.Size(35, 13);
+      this.txDatSP.Size = new System.Drawing.Size(53, 20);
       this.txDatSP.TabIndex = 4;
       this.txDatSP.Text = "0 [0]";
       this.txDatSP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -754,18 +754,19 @@
       this.tlName.Controls.Add(this.txName, 0, 0);
       this.tlName.Controls.Add(this.txRL, 2, 0);
       this.tlName.Controls.Add(this.tx4G, 1, 0);
-      this.tlName.Location = new System.Drawing.Point(3, 155);
+      this.tlName.Location = new System.Drawing.Point(3, 127);
       this.tlName.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
       this.tlName.Name = "tlName";
       this.tlName.RowCount = 1;
       this.tlName.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tlName.Size = new System.Drawing.Size(267, 15);
+      this.tlName.Size = new System.Drawing.Size(209, 20);
       this.tlName.TabIndex = 5;
       // 
       // txDF
       // 
+      this.txDF.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.txDF.ForeColor = System.Drawing.Color.White;
-      this.txDF.Location = new System.Drawing.Point(153, 0);
+      this.txDF.Location = new System.Drawing.Point(95, 3);
       this.txDF.Name = "txDF";
       this.txDF.Size = new System.Drawing.Size(32, 13);
       this.txDF.TabIndex = 3;
@@ -775,8 +776,9 @@
       // 
       // txUS
       // 
+      this.txUS.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.txUS.ForeColor = System.Drawing.Color.White;
-      this.txUS.Location = new System.Drawing.Point(115, 0);
+      this.txUS.Location = new System.Drawing.Point(57, 3);
       this.txUS.Name = "txUS";
       this.txUS.Size = new System.Drawing.Size(32, 13);
       this.txUS.TabIndex = 2;
@@ -789,17 +791,18 @@
       this.txName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
       this.txName.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.txName.ForeColor = System.Drawing.Color.Yellow;
-      this.txName.Location = new System.Drawing.Point(3, 0);
+      this.txName.Location = new System.Drawing.Point(3, 2);
       this.txName.Name = "txName";
-      this.txName.Size = new System.Drawing.Size(106, 15);
+      this.txName.Size = new System.Drawing.Size(48, 15);
       this.txName.TabIndex = 0;
       this.txName.Text = "Name";
       this.txName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // txRL
       // 
+      this.txRL.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.txRL.ForeColor = System.Drawing.Color.White;
-      this.txRL.Location = new System.Drawing.Point(232, 0);
+      this.txRL.Location = new System.Drawing.Point(174, 3);
       this.txRL.Name = "txRL";
       this.txRL.Size = new System.Drawing.Size(32, 13);
       this.txRL.TabIndex = 1;
@@ -809,8 +812,9 @@
       // 
       // tx4G
       // 
+      this.tx4G.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.tx4G.ForeColor = System.Drawing.Color.White;
-      this.tx4G.Location = new System.Drawing.Point(191, 0);
+      this.tx4G.Location = new System.Drawing.Point(133, 3);
       this.tx4G.Name = "tx4G";
       this.tx4G.Size = new System.Drawing.Size(35, 13);
       this.tx4G.TabIndex = 1;
@@ -825,7 +829,7 @@
       this.pDatAccu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
       this.pDatAccu.Controls.Add(this.txDatAccu);
       this.pDatAccu.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.pDatAccu.Location = new System.Drawing.Point(12, 224);
+      this.pDatAccu.Location = new System.Drawing.Point(12, 210);
       this.pDatAccu.Margin = new System.Windows.Forms.Padding(12, 3, 12, 3);
       this.pDatAccu.Name = "pDatAccu";
       this.pDatAccu.Size = new System.Drawing.Size(382, 19);
@@ -847,9 +851,9 @@
       this.txDatDT.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.txDatDT.AutoSize = true;
       this.txDatDT.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.txDatDT.Location = new System.Drawing.Point(158, 332);
+      this.txDatDT.Location = new System.Drawing.Point(136, 318);
       this.txDatDT.Name = "txDatDT";
-      this.txDatDT.Size = new System.Drawing.Size(89, 13);
+      this.txDatDT.Size = new System.Drawing.Size(134, 20);
       this.txDatDT.TabIndex = 6;
       this.txDatDT.Text = "Last Update: ?";
       this.txDatDT.DoubleClick += new System.EventHandler(this.txDatDT_DoubleClick);
@@ -870,7 +874,7 @@
       this.tlDatTri.Controls.Add(this.txDatStD, 1, 3);
       this.tlDatTri.Controls.Add(this.txDatStW, 2, 3);
       this.tlDatTri.Dock = System.Windows.Forms.DockStyle.Top;
-      this.tlDatTri.Location = new System.Drawing.Point(3, 249);
+      this.tlDatTri.Location = new System.Drawing.Point(3, 235);
       this.tlDatTri.Name = "tlDatTri";
       this.tlDatTri.RowCount = 4;
       this.tlDatTri.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -921,9 +925,9 @@
       this.txDatDmp0.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.txDatDmp0.AutoSize = true;
       this.txDatDmp0.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.txDatDmp0.Location = new System.Drawing.Point(33, 32);
+      this.txDatDmp0.Location = new System.Drawing.Point(15, 28);
       this.txDatDmp0.Name = "txDatDmp0";
-      this.txDatDmp0.Size = new System.Drawing.Size(67, 13);
+      this.txDatDmp0.Size = new System.Drawing.Size(102, 20);
       this.txDatDmp0.TabIndex = 3;
       this.txDatDmp0.Text = "Pitch: 0.0°";
       // 
@@ -932,9 +936,9 @@
       this.txDatDmp1.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.txDatDmp1.AutoSize = true;
       this.txDatDmp1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.txDatDmp1.Location = new System.Drawing.Point(169, 32);
+      this.txDatDmp1.Location = new System.Drawing.Point(153, 28);
       this.txDatDmp1.Name = "txDatDmp1";
-      this.txDatDmp1.Size = new System.Drawing.Size(61, 13);
+      this.txDatDmp1.Size = new System.Drawing.Size(92, 20);
       this.txDatDmp1.TabIndex = 4;
       this.txDatDmp1.Text = "Roll: 0.0°";
       // 
@@ -943,9 +947,9 @@
       this.txDatDmp2.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.txDatDmp2.AutoSize = true;
       this.txDatDmp2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.txDatDmp2.Location = new System.Drawing.Point(295, 32);
+      this.txDatDmp2.Location = new System.Drawing.Point(275, 28);
       this.txDatDmp2.Name = "txDatDmp2";
-      this.txDatDmp2.Size = new System.Drawing.Size(76, 13);
+      this.txDatDmp2.Size = new System.Drawing.Size(115, 20);
       this.txDatDmp2.TabIndex = 5;
       this.txDatDmp2.Text = "Yaw: 000.0°";
       // 
@@ -970,9 +974,9 @@
       this.txDatStD.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.txDatStD.AutoSize = true;
       this.txDatStD.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.txDatStD.Location = new System.Drawing.Point(152, 59);
+      this.txDatStD.Location = new System.Drawing.Point(150, 52);
       this.txDatStD.Name = "txDatStD";
-      this.txDatStD.Size = new System.Drawing.Size(95, 13);
+      this.txDatStD.Size = new System.Drawing.Size(98, 28);
       this.txDatStD.TabIndex = 8;
       this.txDatStD.Text = "Dist: 000.000m";
       this.toolTip.SetToolTip(this.txDatStD, "Gesamtstrecke");
@@ -983,9 +987,9 @@
       this.txDatStW.AutoSize = true;
       this.txDatStW.BackColor = System.Drawing.Color.DimGray;
       this.txDatStW.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-      this.txDatStW.Location = new System.Drawing.Point(278, 59);
+      this.txDatStW.Location = new System.Drawing.Point(274, 52);
       this.txDatStW.Name = "txDatStW";
-      this.txDatStW.Size = new System.Drawing.Size(109, 13);
+      this.txDatStW.Size = new System.Drawing.Size(117, 28);
       this.txDatStW.TabIndex = 9;
       this.txDatStW.Text = "Work 0d.00h:00m";
       this.toolTip.SetToolTip(this.txDatStW, "Arbeitszeit");
@@ -1006,8 +1010,8 @@
       this.tlDatErrorState.Name = "tlDatErrorState";
       this.tlDatErrorState.RowCount = 1;
       this.tlDatErrorState.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tlDatErrorState.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tlDatErrorState.Size = new System.Drawing.Size(406, 20);
+      this.tlDatErrorState.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+      this.tlDatErrorState.Size = new System.Drawing.Size(406, 29);
       this.tlDatErrorState.TabIndex = 9;
       // 
       // txError
@@ -1015,9 +1019,9 @@
       this.txError.AutoSize = true;
       this.txError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.txError.ForeColor = System.Drawing.Color.White;
-      this.txError.Location = new System.Drawing.Point(161, 0);
+      this.txError.Location = new System.Drawing.Point(148, 0);
       this.txError.Name = "txError";
-      this.txError.Size = new System.Drawing.Size(39, 20);
+      this.txError.Size = new System.Drawing.Size(52, 29);
       this.txError.TabIndex = 12;
       this.txError.Text = "???";
       this.txError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1029,7 +1033,7 @@
       this.txStatus.ForeColor = System.Drawing.Color.White;
       this.txStatus.Location = new System.Drawing.Point(206, 0);
       this.txStatus.Name = "txStatus";
-      this.txStatus.Size = new System.Drawing.Size(39, 20);
+      this.txStatus.Size = new System.Drawing.Size(52, 29);
       this.txStatus.TabIndex = 11;
       this.txStatus.Text = "???";
       this.txStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1042,7 +1046,7 @@
       this.pDatWork.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
       this.pDatWork.Controls.Add(this.txDatWork);
       this.pDatWork.Dock = System.Windows.Forms.DockStyle.Top;
-      this.pDatWork.Location = new System.Drawing.Point(12, 199);
+      this.pDatWork.Location = new System.Drawing.Point(12, 185);
       this.pDatWork.Margin = new System.Windows.Forms.Padding(12, 3, 12, 3);
       this.pDatWork.Name = "pDatWork";
       this.pDatWork.Size = new System.Drawing.Size(382, 19);
@@ -1074,7 +1078,7 @@
       this.tlDatCmd.Controls.Add(this.pbHome, 3, 0);
       this.tlDatCmd.Controls.Add(this.pbStop, 2, 0);
       this.tlDatCmd.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.tlDatCmd.Location = new System.Drawing.Point(0, 355);
+      this.tlDatCmd.Location = new System.Drawing.Point(0, 348);
       this.tlDatCmd.Margin = new System.Windows.Forms.Padding(0);
       this.tlDatCmd.Name = "tlDatCmd";
       this.tlDatCmd.RowCount = 1;
@@ -1138,9 +1142,9 @@
       // 
       this.tpUsr.Controls.Add(this.tlpUsrSet);
       this.tpUsr.Controls.Add(this.tlpUsrBtn);
-      this.tpUsr.Location = new System.Drawing.Point(4, 22);
+      this.tpUsr.Location = new System.Drawing.Point(4, 29);
       this.tpUsr.Name = "tpUsr";
-      this.tpUsr.Size = new System.Drawing.Size(406, 385);
+      this.tpUsr.Size = new System.Drawing.Size(406, 378);
       this.tpUsr.TabIndex = 0;
       this.tpUsr.Text = "Nutzer";
       this.tpUsr.UseVisualStyleBackColor = true;
@@ -1186,16 +1190,16 @@
       this.tlpUsrSet.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
       this.tlpUsrSet.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
       this.tlpUsrSet.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-      this.tlpUsrSet.Size = new System.Drawing.Size(406, 355);
+      this.tlpUsrSet.Size = new System.Drawing.Size(406, 348);
       this.tlpUsrSet.TabIndex = 0;
       // 
       // txUsrMail
       // 
       this.txUsrMail.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.txUsrMail.AutoSize = true;
-      this.txUsrMail.Location = new System.Drawing.Point(3, 61);
+      this.txUsrMail.Location = new System.Drawing.Point(3, 75);
       this.txUsrMail.Name = "txUsrMail";
-      this.txUsrMail.Size = new System.Drawing.Size(38, 13);
+      this.txUsrMail.Size = new System.Drawing.Size(57, 20);
       this.txUsrMail.TabIndex = 1;
       this.txUsrMail.Text = "&Email";
       this.txUsrMail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1204,9 +1208,9 @@
       // 
       this.edUsrMail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
       this.tlpUsrSet.SetColumnSpan(this.edUsrMail, 2);
-      this.edUsrMail.Location = new System.Drawing.Point(70, 57);
+      this.edUsrMail.Location = new System.Drawing.Point(99, 71);
       this.edUsrMail.Name = "edUsrMail";
-      this.edUsrMail.Size = new System.Drawing.Size(333, 21);
+      this.edUsrMail.Size = new System.Drawing.Size(304, 28);
       this.edUsrMail.TabIndex = 2;
       this.toolTip.SetToolTip(this.edUsrMail, "Siehe Email: Worx Landroid account created");
       this.edUsrMail.TextChanged += new System.EventHandler(this.edUsrMail_TextChanged);
@@ -1215,9 +1219,9 @@
       // 
       this.txUsrPass.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.txUsrPass.AutoSize = true;
-      this.txUsrPass.Location = new System.Drawing.Point(3, 88);
+      this.txUsrPass.Location = new System.Drawing.Point(3, 109);
       this.txUsrPass.Name = "txUsrPass";
-      this.txUsrPass.Size = new System.Drawing.Size(61, 13);
+      this.txUsrPass.Size = new System.Drawing.Size(90, 20);
       this.txUsrPass.TabIndex = 3;
       this.txUsrPass.Text = "&Kennwort";
       this.txUsrPass.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1225,10 +1229,10 @@
       // edUsrPass
       // 
       this.edUsrPass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.edUsrPass.Location = new System.Drawing.Point(70, 84);
+      this.edUsrPass.Location = new System.Drawing.Point(99, 105);
       this.edUsrPass.Name = "edUsrPass";
       this.edUsrPass.PasswordChar = '*';
-      this.edUsrPass.Size = new System.Drawing.Size(163, 21);
+      this.edUsrPass.Size = new System.Drawing.Size(149, 28);
       this.edUsrPass.TabIndex = 4;
       this.toolTip.SetToolTip(this.edUsrPass, "Siehe Email: Worx Landroid account created");
       this.edUsrPass.TextChanged += new System.EventHandler(this.edUsrPass_TextChanged);
@@ -1237,9 +1241,9 @@
       // 
       this.txUsrName.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.txUsrName.AutoSize = true;
-      this.txUsrName.Location = new System.Drawing.Point(3, 115);
+      this.txUsrName.Location = new System.Drawing.Point(3, 143);
       this.txUsrName.Name = "txUsrName";
-      this.txUsrName.Size = new System.Drawing.Size(40, 13);
+      this.txUsrName.Size = new System.Drawing.Size(59, 20);
       this.txUsrName.TabIndex = 9;
       this.txUsrName.Text = "&Name";
       this.txUsrName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1247,9 +1251,9 @@
       // edUsrName
       // 
       this.edUsrName.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.edUsrName.Location = new System.Drawing.Point(70, 111);
+      this.edUsrName.Location = new System.Drawing.Point(99, 139);
       this.edUsrName.Name = "edUsrName";
-      this.edUsrName.Size = new System.Drawing.Size(163, 21);
+      this.edUsrName.Size = new System.Drawing.Size(149, 28);
       this.edUsrName.TabIndex = 10;
       this.toolTip.SetToolTip(this.edUsrName, "Falls Du mehrere Landroiden hast und wechseln willst mach es leer.");
       // 
@@ -1259,7 +1263,7 @@
       this.txUsrUuid.AutoSize = true;
       this.txUsrUuid.Location = new System.Drawing.Point(3, 7);
       this.txUsrUuid.Name = "txUsrUuid";
-      this.txUsrUuid.Size = new System.Drawing.Size(32, 13);
+      this.txUsrUuid.Size = new System.Drawing.Size(48, 20);
       this.txUsrUuid.TabIndex = 13;
       this.txUsrUuid.Text = "Uuid";
       this.txUsrUuid.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1268,19 +1272,19 @@
       // 
       this.edUsrUuid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
       this.tlpUsrSet.SetColumnSpan(this.edUsrUuid, 2);
-      this.edUsrUuid.Location = new System.Drawing.Point(70, 3);
+      this.edUsrUuid.Location = new System.Drawing.Point(99, 3);
       this.edUsrUuid.Name = "edUsrUuid";
       this.edUsrUuid.ReadOnly = true;
-      this.edUsrUuid.Size = new System.Drawing.Size(333, 21);
+      this.edUsrUuid.Size = new System.Drawing.Size(304, 28);
       this.edUsrUuid.TabIndex = 14;
       this.toolTip.SetToolTip(this.edUsrUuid, "Aus der Email: Worx Landroid account created");
       // 
       // cbOnTop
       // 
       this.cbOnTop.AutoSize = true;
-      this.cbOnTop.Location = new System.Drawing.Point(70, 219);
+      this.cbOnTop.Location = new System.Drawing.Point(99, 275);
       this.cbOnTop.Name = "cbOnTop";
-      this.cbOnTop.Size = new System.Drawing.Size(161, 17);
+      this.cbOnTop.Size = new System.Drawing.Size(149, 24);
       this.cbOnTop.TabIndex = 12;
       this.cbOnTop.Text = "Fenster im &Vordergrund";
       this.cbOnTop.UseVisualStyleBackColor = true;
@@ -1290,9 +1294,9 @@
       // 
       this.txUsrBroker.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.txUsrBroker.AutoSize = true;
-      this.txUsrBroker.Location = new System.Drawing.Point(3, 142);
+      this.txUsrBroker.Location = new System.Drawing.Point(3, 177);
       this.txUsrBroker.Name = "txUsrBroker";
-      this.txUsrBroker.Size = new System.Drawing.Size(46, 13);
+      this.txUsrBroker.Size = new System.Drawing.Size(65, 20);
       this.txUsrBroker.TabIndex = 9;
       this.txUsrBroker.Text = "Broker";
       this.txUsrBroker.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1301,19 +1305,19 @@
       // 
       this.edUsrBroker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
       this.tlpUsrSet.SetColumnSpan(this.edUsrBroker, 2);
-      this.edUsrBroker.Location = new System.Drawing.Point(70, 138);
+      this.edUsrBroker.Location = new System.Drawing.Point(99, 173);
       this.edUsrBroker.Name = "edUsrBroker";
       this.edUsrBroker.ReadOnly = true;
-      this.edUsrBroker.Size = new System.Drawing.Size(333, 21);
+      this.edUsrBroker.Size = new System.Drawing.Size(304, 28);
       this.edUsrBroker.TabIndex = 15;
       // 
       // txUsrMac
       // 
       this.txUsrMac.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.txUsrMac.AutoSize = true;
-      this.txUsrMac.Location = new System.Drawing.Point(3, 196);
+      this.txUsrMac.Location = new System.Drawing.Point(3, 245);
       this.txUsrMac.Name = "txUsrMac";
-      this.txUsrMac.Size = new System.Drawing.Size(33, 13);
+      this.txUsrMac.Size = new System.Drawing.Size(47, 20);
       this.txUsrMac.TabIndex = 9;
       this.txUsrMac.Text = "MAC";
       this.txUsrMac.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1321,19 +1325,19 @@
       // edUsrMac
       // 
       this.edUsrMac.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.edUsrMac.Location = new System.Drawing.Point(70, 192);
+      this.edUsrMac.Location = new System.Drawing.Point(99, 241);
       this.edUsrMac.Name = "edUsrMac";
       this.edUsrMac.ReadOnly = true;
-      this.edUsrMac.Size = new System.Drawing.Size(163, 21);
+      this.edUsrMac.Size = new System.Drawing.Size(149, 28);
       this.edUsrMac.TabIndex = 15;
       // 
       // txUsrBoard
       // 
       this.txUsrBoard.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.txUsrBoard.AutoSize = true;
-      this.txUsrBoard.Location = new System.Drawing.Point(3, 169);
+      this.txUsrBoard.Location = new System.Drawing.Point(3, 211);
       this.txUsrBoard.Name = "txUsrBoard";
-      this.txUsrBoard.Size = new System.Drawing.Size(41, 13);
+      this.txUsrBoard.Size = new System.Drawing.Size(59, 20);
       this.txUsrBoard.TabIndex = 9;
       this.txUsrBoard.Text = "Board";
       this.txUsrBoard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1341,19 +1345,19 @@
       // edUsrBoard
       // 
       this.edUsrBoard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-      this.edUsrBoard.Location = new System.Drawing.Point(70, 165);
+      this.edUsrBoard.Location = new System.Drawing.Point(99, 207);
       this.edUsrBoard.Name = "edUsrBoard";
       this.edUsrBoard.ReadOnly = true;
-      this.edUsrBoard.Size = new System.Drawing.Size(163, 21);
+      this.edUsrBoard.Size = new System.Drawing.Size(149, 28);
       this.edUsrBoard.TabIndex = 15;
       // 
       // txUsrApi
       // 
       this.txUsrApi.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.txUsrApi.AutoSize = true;
-      this.txUsrApi.Location = new System.Drawing.Point(3, 34);
+      this.txUsrApi.Location = new System.Drawing.Point(3, 41);
       this.txUsrApi.Name = "txUsrApi";
-      this.txUsrApi.Size = new System.Drawing.Size(27, 13);
+      this.txUsrApi.Size = new System.Drawing.Size(39, 20);
       this.txUsrApi.TabIndex = 16;
       this.txUsrApi.Text = "&API";
       this.txUsrApi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1365,11 +1369,10 @@
       this.cbUsrApi.Items.AddRange(new object[] {
             "WR - Worx Landroid",
             "KR - Kress Mission",
-            "LX - Landxcape",
-            "SM - Ferrex Smart"});
-      this.cbUsrApi.Location = new System.Drawing.Point(70, 30);
+            "LX - Landxcape"});
+      this.cbUsrApi.Location = new System.Drawing.Point(99, 37);
       this.cbUsrApi.Name = "cbUsrApi";
-      this.cbUsrApi.Size = new System.Drawing.Size(163, 21);
+      this.cbUsrApi.Size = new System.Drawing.Size(149, 28);
       this.cbUsrApi.TabIndex = 17;
       this.cbUsrApi.SelectedIndexChanged += new System.EventHandler(this.cbUsrApi_SelectedIndexChanged);
       // 
@@ -1387,7 +1390,7 @@
       this.tlpUsrBtn.Controls.Add(this.pbDisconnect, 4, 0);
       this.tlpUsrBtn.Controls.Add(this.pbConnect, 3, 0);
       this.tlpUsrBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.tlpUsrBtn.Location = new System.Drawing.Point(0, 355);
+      this.tlpUsrBtn.Location = new System.Drawing.Point(0, 348);
       this.tlpUsrBtn.Margin = new System.Windows.Forms.Padding(0);
       this.tlpUsrBtn.Name = "tlpUsrBtn";
       this.tlpUsrBtn.RowCount = 1;
@@ -1462,9 +1465,9 @@
       // 
       this.tpZone.Controls.Add(this.tlZone);
       this.tpZone.Controls.Add(this.tlZoneBtn);
-      this.tpZone.Location = new System.Drawing.Point(4, 22);
+      this.tpZone.Location = new System.Drawing.Point(4, 29);
       this.tpZone.Name = "tpZone";
-      this.tpZone.Size = new System.Drawing.Size(406, 385);
+      this.tpZone.Size = new System.Drawing.Size(406, 378);
       this.tpZone.TabIndex = 9;
       this.tpZone.Text = "Zonen";
       this.tpZone.UseVisualStyleBackColor = true;
@@ -1482,7 +1485,7 @@
       this.tlZone.RowCount = 2;
       this.tlZone.RowStyles.Add(new System.Windows.Forms.RowStyle());
       this.tlZone.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-      this.tlZone.Size = new System.Drawing.Size(406, 355);
+      this.tlZone.Size = new System.Drawing.Size(406, 348);
       this.tlZone.TabIndex = 14;
       // 
       // dgZone
@@ -1521,7 +1524,7 @@
       this.chMzStart.MinimumWidth = 8;
       this.chMzStart.Name = "chMzStart";
       this.chMzStart.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-      this.chMzStart.Width = 41;
+      this.chMzStart.Width = 97;
       // 
       // chMz0
       // 
@@ -1530,7 +1533,7 @@
       this.chMz0.MinimumWidth = 8;
       this.chMz0.Name = "chMz0";
       this.chMz0.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-      this.chMz0.Width = 20;
+      this.chMz0.Width = 26;
       // 
       // chMz1
       // 
@@ -1539,7 +1542,7 @@
       this.chMz1.MinimumWidth = 8;
       this.chMz1.Name = "chMz1";
       this.chMz1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-      this.chMz1.Width = 20;
+      this.chMz1.Width = 26;
       // 
       // chMz2
       // 
@@ -1548,7 +1551,7 @@
       this.chMz2.MinimumWidth = 8;
       this.chMz2.Name = "chMz2";
       this.chMz2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-      this.chMz2.Width = 20;
+      this.chMz2.Width = 26;
       // 
       // chMz3
       // 
@@ -1557,7 +1560,7 @@
       this.chMz3.MinimumWidth = 8;
       this.chMz3.Name = "chMz3";
       this.chMz3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-      this.chMz3.Width = 20;
+      this.chMz3.Width = 26;
       // 
       // chMz4
       // 
@@ -1566,7 +1569,7 @@
       this.chMz4.MinimumWidth = 8;
       this.chMz4.Name = "chMz4";
       this.chMz4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-      this.chMz4.Width = 20;
+      this.chMz4.Width = 26;
       // 
       // chMz5
       // 
@@ -1575,7 +1578,7 @@
       this.chMz5.MinimumWidth = 8;
       this.chMz5.Name = "chMz5";
       this.chMz5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-      this.chMz5.Width = 20;
+      this.chMz5.Width = 26;
       // 
       // chMz6
       // 
@@ -1584,7 +1587,7 @@
       this.chMz6.MinimumWidth = 8;
       this.chMz6.Name = "chMz6";
       this.chMz6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-      this.chMz6.Width = 20;
+      this.chMz6.Width = 26;
       // 
       // chMz7
       // 
@@ -1593,7 +1596,7 @@
       this.chMz7.MinimumWidth = 8;
       this.chMz7.Name = "chMz7";
       this.chMz7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-      this.chMz7.Width = 20;
+      this.chMz7.Width = 26;
       // 
       // chMz8
       // 
@@ -1602,7 +1605,7 @@
       this.chMz8.MinimumWidth = 8;
       this.chMz8.Name = "chMz8";
       this.chMz8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-      this.chMz8.Width = 20;
+      this.chMz8.Width = 26;
       // 
       // chMz9
       // 
@@ -1611,7 +1614,7 @@
       this.chMz9.MinimumWidth = 8;
       this.chMz9.Name = "chMz9";
       this.chMz9.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-      this.chMz9.Width = 20;
+      this.chMz9.Width = 26;
       // 
       // chMzPerc
       // 
@@ -1628,7 +1631,7 @@
       this.txZoneDist.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.txZoneDist.Location = new System.Drawing.Point(3, 86);
       this.txZoneDist.Name = "txZoneDist";
-      this.txZoneDist.Size = new System.Drawing.Size(400, 269);
+      this.txZoneDist.Size = new System.Drawing.Size(400, 262);
       this.txZoneDist.TabIndex = 13;
       this.txZoneDist.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
@@ -1642,7 +1645,7 @@
       this.tlZoneBtn.Controls.Add(this.pbZoneSave, 3, 0);
       this.tlZoneBtn.Controls.Add(this.pbZoneStart, 1, 0);
       this.tlZoneBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.tlZoneBtn.Location = new System.Drawing.Point(0, 355);
+      this.tlZoneBtn.Location = new System.Drawing.Point(0, 348);
       this.tlZoneBtn.Margin = new System.Windows.Forms.Padding(0);
       this.tlZoneBtn.Name = "tlZoneBtn";
       this.tlZoneBtn.RowCount = 1;
@@ -1673,9 +1676,9 @@
       // tpAct
       // 
       this.tpAct.Controls.Add(this.tlpAct);
-      this.tpAct.Location = new System.Drawing.Point(4, 22);
+      this.tpAct.Location = new System.Drawing.Point(4, 29);
       this.tpAct.Name = "tpAct";
-      this.tpAct.Size = new System.Drawing.Size(406, 385);
+      this.tpAct.Size = new System.Drawing.Size(406, 378);
       this.tpAct.TabIndex = 10;
       this.tpAct.Text = "ActLog";
       this.tpAct.UseVisualStyleBackColor = true;
@@ -1697,14 +1700,14 @@
       this.tlpAct.RowCount = 2;
       this.tlpAct.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
       this.tlpAct.RowStyles.Add(new System.Windows.Forms.RowStyle());
-      this.tlpAct.Size = new System.Drawing.Size(406, 385);
+      this.tlpAct.Size = new System.Drawing.Size(406, 378);
       this.tlpAct.TabIndex = 0;
       // 
       // pbActCsv
       // 
       this.pbActCsv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
       this.pbActCsv.Enabled = false;
-      this.pbActCsv.Location = new System.Drawing.Point(197, 358);
+      this.pbActCsv.Location = new System.Drawing.Point(197, 351);
       this.pbActCsv.Name = "pbActCsv";
       this.pbActCsv.Size = new System.Drawing.Size(80, 24);
       this.pbActCsv.TabIndex = 3;
@@ -1732,7 +1735,7 @@
       this.lvActLog.Margin = new System.Windows.Forms.Padding(0);
       this.lvActLog.Name = "lvActLog";
       this.lvActLog.ShowItemToolTips = true;
-      this.lvActLog.Size = new System.Drawing.Size(406, 355);
+      this.lvActLog.Size = new System.Drawing.Size(406, 348);
       this.lvActLog.TabIndex = 0;
       this.lvActLog.UseCompatibleStateImageBehavior = false;
       this.lvActLog.View = System.Windows.Forms.View.Details;
@@ -1769,7 +1772,7 @@
       this.pbActLog.Anchor = System.Windows.Forms.AnchorStyles.Right;
       this.pbActLog.Enabled = false;
       this.pbActLog.Image = global::DesktopApp.AppRes.refresh16;
-      this.pbActLog.Location = new System.Drawing.Point(283, 358);
+      this.pbActLog.Location = new System.Drawing.Point(283, 351);
       this.pbActLog.Name = "pbActLog";
       this.pbActLog.Size = new System.Drawing.Size(120, 24);
       this.pbActLog.TabIndex = 1;
@@ -1782,9 +1785,9 @@
       // 
       this.lActHint.Anchor = System.Windows.Forms.AnchorStyles.Left;
       this.lActHint.AutoSize = true;
-      this.lActHint.Location = new System.Drawing.Point(3, 363);
+      this.lActHint.Location = new System.Drawing.Point(3, 353);
       this.lActHint.Name = "lActHint";
-      this.lActHint.Size = new System.Drawing.Size(123, 13);
+      this.lActHint.Size = new System.Drawing.Size(183, 20);
       this.lActHint.TabIndex = 2;
       this.lActHint.Text = "Login erforderlich ...";
       // 
@@ -1792,9 +1795,9 @@
       // 
       this.tpPlugin.Controls.Add(this.spPlugin);
       this.tpPlugin.Controls.Add(this.tlPluginBtn);
-      this.tpPlugin.Location = new System.Drawing.Point(4, 22);
+      this.tpPlugin.Location = new System.Drawing.Point(4, 29);
       this.tpPlugin.Name = "tpPlugin";
-      this.tpPlugin.Size = new System.Drawing.Size(406, 385);
+      this.tpPlugin.Size = new System.Drawing.Size(406, 378);
       this.tpPlugin.TabIndex = 6;
       this.tpPlugin.Text = "Plugin";
       this.tpPlugin.UseVisualStyleBackColor = true;
@@ -1814,8 +1817,8 @@
       // spPlugin.Panel2
       // 
       this.spPlugin.Panel2.Controls.Add(this.pgPlugin);
-      this.spPlugin.Size = new System.Drawing.Size(406, 355);
-      this.spPlugin.SplitterDistance = 168;
+      this.spPlugin.Size = new System.Drawing.Size(406, 348);
+      this.spPlugin.SplitterDistance = 164;
       this.spPlugin.TabIndex = 4;
       // 
       // lvPlugin
@@ -1831,7 +1834,7 @@
       this.lvPlugin.Margin = new System.Windows.Forms.Padding(2);
       this.lvPlugin.MultiSelect = false;
       this.lvPlugin.Name = "lvPlugin";
-      this.lvPlugin.Size = new System.Drawing.Size(406, 168);
+      this.lvPlugin.Size = new System.Drawing.Size(406, 164);
       this.lvPlugin.TabIndex = 0;
       this.lvPlugin.UseCompatibleStateImageBehavior = false;
       this.lvPlugin.View = System.Windows.Forms.View.Details;
@@ -1855,7 +1858,7 @@
       this.pgPlugin.Margin = new System.Windows.Forms.Padding(2);
       this.pgPlugin.Name = "pgPlugin";
       this.pgPlugin.PropertySort = System.Windows.Forms.PropertySort.NoSort;
-      this.pgPlugin.Size = new System.Drawing.Size(406, 183);
+      this.pgPlugin.Size = new System.Drawing.Size(406, 180);
       this.pgPlugin.TabIndex = 3;
       this.pgPlugin.ToolbarVisible = false;
       // 
@@ -1866,7 +1869,7 @@
       this.tlPluginBtn.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
       this.tlPluginBtn.Controls.Add(this.pbPluginDoit, 1, 0);
       this.tlPluginBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.tlPluginBtn.Location = new System.Drawing.Point(0, 355);
+      this.tlPluginBtn.Location = new System.Drawing.Point(0, 348);
       this.tlPluginBtn.Margin = new System.Windows.Forms.Padding(0);
       this.tlPluginBtn.Name = "tlPluginBtn";
       this.tlPluginBtn.RowCount = 1;
@@ -1888,9 +1891,9 @@
       // tpMqtt
       // 
       this.tpMqtt.Controls.Add(this.txMqtt);
-      this.tpMqtt.Location = new System.Drawing.Point(4, 22);
+      this.tpMqtt.Location = new System.Drawing.Point(4, 29);
       this.tpMqtt.Name = "tpMqtt";
-      this.tpMqtt.Size = new System.Drawing.Size(406, 385);
+      this.tpMqtt.Size = new System.Drawing.Size(406, 378);
       this.tpMqtt.TabIndex = 7;
       this.tpMqtt.Text = "Mqtt";
       this.tpMqtt.UseVisualStyleBackColor = true;
@@ -1903,15 +1906,15 @@
       this.txMqtt.Name = "txMqtt";
       this.txMqtt.ReadOnly = true;
       this.txMqtt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-      this.txMqtt.Size = new System.Drawing.Size(406, 385);
+      this.txMqtt.Size = new System.Drawing.Size(406, 378);
       this.txMqtt.TabIndex = 0;
       // 
       // tpTrace
       // 
       this.tpTrace.Controls.Add(this.rtLog);
-      this.tpTrace.Location = new System.Drawing.Point(4, 22);
+      this.tpTrace.Location = new System.Drawing.Point(4, 29);
       this.tpTrace.Name = "tpTrace";
-      this.tpTrace.Size = new System.Drawing.Size(406, 385);
+      this.tpTrace.Size = new System.Drawing.Size(406, 378);
       this.tpTrace.TabIndex = 8;
       this.tpTrace.Text = "Trace";
       this.tpTrace.UseVisualStyleBackColor = true;
@@ -1923,7 +1926,7 @@
       this.rtLog.Margin = new System.Windows.Forms.Padding(2);
       this.rtLog.Name = "rtLog";
       this.rtLog.ReadOnly = true;
-      this.rtLog.Size = new System.Drawing.Size(406, 385);
+      this.rtLog.Size = new System.Drawing.Size(406, 378);
       this.rtLog.TabIndex = 2;
       this.rtLog.Text = "";
       this.rtLog.WordWrap = false;
@@ -1935,7 +1938,7 @@
       // 
       // FormMain
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(414, 411);
       this.Controls.Add(this.tcMain);

@@ -45,12 +45,14 @@ namespace DesktopApp
   }
   [DataContract]
   public struct LsOAuth {
-    [DataMember(Name = "access_token")]
-    public string Token;
-    [DataMember(Name = "expires_in")]
-    public int Expires;
     [DataMember(Name = "token_type")]
     public string Type;
+    [DataMember(Name = "expires_in")]
+    public int Expires;
+    [DataMember(Name = "access_token")]
+    public string Access;
+    [DataMember(Name = "refresh_token")]
+    public string Refresh;
   }
   [DataContract]
   public struct LsUserMe {
@@ -61,12 +63,47 @@ namespace DesktopApp
     [DataMember(Name = "pkcs12")]
     public string Pkcs12;
   }
+
+  /*  Product items: [{
+   *  "id":12061,"uuid":"96c52ef5-4410-4002-9d84-34c5b8bbcb6d","product_id":22,"user_id":1020,
+   *  "serial_number":"30173502161229020238","mac_address":"F0FE6B207964","name":"Gustav","locked":false,
+   *  "firmware_version":3.45,"firmware_auto_upgrade":false,"push_notifications":true,"sim":null,
+   *  "push_notifications_level":"warning","test":false,"iot_registered":true,"mqtt_registered":true,
+   *  "pin_code":null,"registered_at":"2017-03-27 00:00:00","online":true,"app_settings":null,"accessories":null,
+   *  "features":{"chassis":"s_2017","display_type":"led","input_type":"keyboard_led","lock":true,
+   *              "mqtt":true,"multi_zone":true,"multi_zone_percentage":true,"multi_zone_zones":4,
+   *              "rain_delay":true,"unrestricted_mowing_time":true,"wifi_pairing":"smartlink"},
+   *  "pending_radio_link_validation":null,
+   *  "mqtt_endpoint":"iot.eu-west-1.worxlandroid.com",
+   *  "mqtt_topics":{"command_in":"DB510\/F0FE6B207964\/commandIn","command_out":"DB510\/F0FE6B207964\/commandOut"},
+   *  "warranty_registered":true,"purchased_at":"2017-03-24 00:00:00","warranty_expires_at":"2020-03-24 00:00:00",
+   *  "setup_location":{"latitude":50.5130831,"longitude":12.4183362},
+   *  "city":{"id":2954602,"country_id":276,"name":"Auerbach","latitude":50.51667,"longitude":12.4,"created_at":"2018-02-15 22:21:33","updated_at":"2018-02-15 22:21:33"},
+   *  "time_zone":"Europe\/Berlin","lawn_size":550,"lawn_perimeter":null,
+   *  "auto_schedule_settings":{"boost":0,"exclusion_scheduler":{"days":[{"slots":[],"exclude_day":false},{"slots":[],"exclude_day":false},{"slots":[],"exclude_day":false},{"slots":[],"exclude_day":false},{"slots":[],"exclude_day":false},{"slots":[],"exclude_day":false},{"slots":[],"exclude_day":false}],"exclude_nights":true},
+   *                            "grass_type":null,"irrigation":null,"nutrition":null,"soil_type":null},
+   *  "auto_schedule":false,
+   *  "distance_covered":2813588,"mower_work_time":180560,
+   *  "blade_work_time":165998,"blade_work_time_reset":null,"blade_work_time_reset_at":null,
+   *  "battery_charge_cycles":13912,"battery_charge_cycles_reset":null,"battery_charge_cycles_reset_at":null,
+   *  "messages_in":1484,"messages_out":164756,"raw_messages_in":4616,"raw_messages_out":164756,
+   *  "created_at":"2017-03-13 19:27:22","updated_at":"2022-08-11 16:02:27"},
+   *  ,"last_status":{"timestamp":"2022-10-04 18:02:21","payload": ...
+   *  ]
+  */
   [DataContract]
   public struct LsMqttTopic {
     [DataMember(Name = "command_in")]
     public string CmdIn;
     [DataMember(Name = "command_out")]
     public string CmdOut;
+  }
+  [DataContract]
+  public struct LsLastStatus {
+    [DataMember(Name = "timestamp")]
+    public string TimeStamp;
+    [DataMember(Name = "payload")]
+    public LsMqtt PayLoad;
   }
   [DataContract]
   public struct LsProductItem {
@@ -78,8 +115,12 @@ namespace DesktopApp
     public string Name;
     [DataMember(Name = "firmware_auto_upgrade")]
     public bool AutoUpgd;
+    [DataMember(Name = "mqtt_endpoint")]
+    public string Endpoint;
     [DataMember(Name = "mqtt_topics")]
     public LsMqttTopic Topic;
+    [DataMember(Name = "last_status")]
+    public LsLastStatus Last;
   }
   [DataContract]
   public struct LsMqtt {
@@ -195,6 +236,9 @@ namespace DesktopApp
     public enum States { None, Connected, Subscribed, Exit, Unsubscribed, Disconnected };
 
     private WebClient _client = new WebClient();
+    private string _tokRef = null;
+    private DateTime _tokDT;
+    private int _tokExp = 3600;
     private X509Certificate2 _certWX = null;
     private MqttClient _mqtt = null;
     private string _api, _uuid, _board, _mac;
@@ -228,20 +272,22 @@ namespace DesktopApp
     }
     public bool WebApi(string api, string mail, string pass, string uuid) {
       NameValueCollection nvc = new NameValueCollection();
-      string str;
-      string sec = ConfigurationManager.AppSettings[$"{api}_CliSec"];
+      string str, url_lgn, url_api;
       byte[] buf;
 
-      _api = ConfigurationManager.AppSettings[$"{api}_WebApi"];
+      _api = api;
+      url_lgn = ConfigurationManager.AppSettings[$"{_api}_Login"];
+      url_api = ConfigurationManager.AppSettings[$"{_api}_WebApi"];
       #region Anmeldung
       nvc.Add("username", mail);
       nvc.Add("password", pass);
       nvc.Add("grant_type", "password");
-      nvc.Add("client_id", "1");
-      nvc.Add("client_secret", sec);
+      nvc.Add("client_id", ConfigurationManager.AppSettings[$"{_api}_CliId"]);
+      //nvc.Add("client_secret", sec);
       nvc.Add("scope", "*");
       try {
-        buf = _client.UploadValues(_api + "oauth/token", nvc);
+        buf = _client.UploadValues(url_lgn + "oauth/token", nvc);
+        //buf = _client.UploadValues(_api + "oauth/token", nvc);
         str = Encoding.UTF8.GetString(buf);
         Debug.WriteLine("Oauth token: {0}", str);
         Log(string.Format("Oauth token: {0}", str), 1);
@@ -249,7 +295,10 @@ namespace DesktopApp
           DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(LsOAuth));
           LsOAuth lsoa = (LsOAuth)dcjs.ReadObject(ms);
 
-          _client.Headers["Authorization"] = string.Format("{0} {1}", lsoa.Type, lsoa.Token);
+          _client.Headers["Authorization"] = string.Format("{0} {1}", lsoa.Type, lsoa.Access);
+          _tokRef = lsoa.Refresh;
+          _tokExp = lsoa.Expires;
+          _tokDT = DateTime.Now;
           ms.Close();
         }
       } catch( Exception ex ) {
@@ -260,6 +309,7 @@ namespace DesktopApp
       #endregion
 
       try {
+        /*
         #region Benutzer
         buf = _client.DownloadData(_api + "users/me");
         str = Encoding.UTF8.GetString(buf);
@@ -273,9 +323,10 @@ namespace DesktopApp
           ms.Close();
         }
         #endregion
+        */
 
         #region Product items
-        buf = _client.DownloadData(_api + "product-items");
+        buf = _client.DownloadData(url_api + "product-items?status=1");
         str = Encoding.UTF8.GetString(buf);
         Debug.WriteLine("Product items: {0}", str);
         Log(string.Format("Product items: {0}", str), 1);
@@ -287,6 +338,7 @@ namespace DesktopApp
         }
         #endregion
 
+        /*
         #region Status
         buf = null;
         foreach( LsProductItem pi in Products ) {
@@ -307,10 +359,11 @@ namespace DesktopApp
           Recv();
         }
         #endregion
+        */
 
         if( api == "SM" ) return Products.Count > 0;
         #region Certificate
-        buf = _client.DownloadData(_api + "users/certificate");
+        buf = _client.DownloadData(url_api + "users/certificate");
         str = Encoding.UTF8.GetString(buf);
         Debug.WriteLine("Certificate: {0}", str);
         Log(string.Format("Certificate: {0}", str), 1);
@@ -340,7 +393,7 @@ namespace DesktopApp
       }
 
       buf = null;
-      return !string.IsNullOrEmpty(Broker) && _certWX != null && Products.Count > 0;
+      return _certWX != null && Products.Count > 0;
     }
     public bool LoadAWS() {
       string name = "AWS" + ArgCfg() + ".p12";
@@ -358,12 +411,53 @@ namespace DesktopApp
       return false;
     }
 
+    private bool RefreshToken() {
+      NameValueCollection nvc = new NameValueCollection();
+      string str;
+      byte[] buf;
+
+      str = ConfigurationManager.AppSettings[$"{_api}_Login"];
+      nvc.Add("grant_type", "refresh_token");
+      nvc.Add("scope", "*");
+      nvc.Add("client_id", ConfigurationManager.AppSettings[$"{_api}_CliId"]);
+      nvc.Add("refresh_token", _tokRef);
+      try {
+        buf = _client.UploadValues(str + "oauth/token", nvc);
+        str = Encoding.UTF8.GetString(buf);
+        Debug.WriteLine("Oauth token: {0}", str);
+        //Log(string.Format("Oauth token: {0}", str), 1);
+        using( MemoryStream ms = new MemoryStream(buf) ) {
+          DataContractJsonSerializer dcjs = new DataContractJsonSerializer(typeof(LsOAuth));
+          LsOAuth lsoa = (LsOAuth)dcjs.ReadObject(ms);
+
+          _client.Headers["Authorization"] = string.Format("{0} {1}", lsoa.Type, lsoa.Access);
+          _tokRef = lsoa.Refresh;
+          _tokExp = lsoa.Expires;
+          _tokDT = DateTime.Now;
+          ms.Close();
+        }
+      } catch( Exception ex ) {
+        Err(ex.Message);
+        Log(ex.ToString(), 9);
+        return false;
+      }
+      return true;
+    }
+
     public List<Activity> GetActivities(string name) {
+      string str;
       List<Activity> ls = new List<Activity>();
 
+      str = ConfigurationManager.AppSettings[$"{_api}_WebApi"];
+      if( (_tokDT - DateTime.Now).TotalSeconds > _tokExp ) {
+        if( !RefreshToken() ) {
+          Log("Could not refresh token", 9);
+          return ls;
+        }
+      }
       foreach( LsProductItem pi in Products ) {
         if( pi.Name == name ) {
-          byte[] buf = _client.DownloadData(_api + "product-items/" + pi.SerialNo + "/activity-log");
+          byte[] buf = _client.DownloadData(str + "product-items/" + pi.SerialNo + "/activity-log");
 
           if( buf != null ) {
             MemoryStream ms = new MemoryStream(buf);
@@ -434,9 +528,9 @@ namespace DesktopApp
         _mqtt.Subscribe(_cmdOut, _cmdQos);
         Log(string.Format("Subscribe init"));
 
-        _msgId = _mqtt.Publish(_cmdIn, Encoding.ASCII.GetBytes("{}"));
-        _msgPoll = true;
-        Log(string.Format("Publish send '{0}'", _msgId));
+        //_msgId = _mqtt.Publish(_cmdIn, Encoding.ASCII.GetBytes("{}"));
+        //_msgPoll = true;
+        //Log(string.Format("Publish send '{0}'", _msgId));
       } catch( Exception ex ) {
         if( first ) Err(ex.Message);
         Log(ex.ToString(), 9);
@@ -470,15 +564,25 @@ namespace DesktopApp
     public bool Connected { get { return _mqtt != null && _mqtt.IsConnected; } }
     public bool Polling { get { return _msgPoll && _mqtt != null && _mqtt.IsConnected; } }
     public void Poll() {
-      _msgId = _mqtt.Publish(_cmdIn, Encoding.UTF8.GetBytes("{}"));
+      string cfg;
+
+      cfg = "{" + (Data.Cfg.Id != null ? $"\"id\":{Data.Cfg.Id}" : "") + "}";
+      _msgId = _mqtt.Publish(_cmdIn, Encoding.UTF8.GetBytes(cfg));
       _msgPoll = true;
     }
     public void Publish(string s) {
       _msgId = _mqtt.Publish(_cmdIn, Encoding.UTF8.GetBytes(s));
     }
+    public void PublishWithId(string s) {
+      string cfg;
+
+      cfg = "{" + (Data.Cfg.Id != null ? $"\"id\":{Data.Cfg.Id}," : "") + s + "}";
+      _msgId = _mqtt.Publish(_cmdIn, Encoding.UTF8.GetBytes(cfg));
+    }
     private void MqttMsgSubscribed(object sender, MqttMsgSubscribedEventArgs e) {
       Log(string.Format("Subscribe done '{0}'", e.MessageId));
       State = States.Subscribed;
+      Poll();
     }
     private void MqttMsgUnsubscribed(object sender, MqttMsgUnsubscribedEventArgs e) {
       State = States.Unsubscribed;
